@@ -314,6 +314,33 @@ button {
 	color: #aaa !important;
 }
 
+.sep-half-bottom {
+	margin-bottom: 30px;
+}
+
+form.line-form {
+	border: none;
+}
+
+form.line-form.two-fields .form-group {
+	float: left;
+	width: 40%;
+}
+form.line-form.two-fields button {
+	float: left;
+	width: 20%;
+}
+form.line-form button, form.line-form button:hover, form.line-form button:focus {
+	height: 69px;
+	font-size: inherit;
+	line-height: 24px;
+	padding: 20px 25px;
+	border-radius: 0 3px 3px 0;
+	border-left: none;
+	overflow: hidden;
+	margin: 0;
+}
+
 /*----------------------------------------------------------------------------------------
 						CONTACT FORM STYLE
 ----------------------------------------------------------------------------------------*/
@@ -620,12 +647,22 @@ a.read-more:hover {
 	margin: 0 0 60px 0;
 }
 
+
+h3.title,
+h4.title {
+	margin: 0 0 30px 0;
+}
+
 h1.sub-title,
 h2.sub-title,
 h3.sub-title,
 h4.sub-title {
 	color: #00c0ff;
 	margin: 0 0 60px 0;
+}
+
+.bg-color2 .sub-title{
+	color:#fff;
 }
 
 .big-title,
@@ -1571,6 +1608,9 @@ nav.navbar .container {
 .container .portfolio-list li {
 	width: 33.33%;
 	padding: 10px;
+}
+.container .portfolio-4col li {
+	width: 25%;
 }
 @media (max-width: 1400px) {
 
