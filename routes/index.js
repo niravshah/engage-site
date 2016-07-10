@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 router.get('/home', function(req, res) {
   console.log("HOST:", req.get('host'));
 
-  if(req.get('host') == 'engagewithin.ro'){
+  if(req.get('host').indexOf('ro')>-1){
     res.render('index', content['ro']);
   }else{
     res.render('index', content['en']);
