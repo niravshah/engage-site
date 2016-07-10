@@ -221,6 +221,7 @@ if($('.video-bg')[0]) {
         if($(this).valid()){
             $('#contact_submit').button('loading'); 
             var action = $(this).attr('action');
+
             $.ajax({
                 url: action,
                 type: 'POST',
@@ -234,7 +235,7 @@ if($('.video-bg')[0]) {
 					$('#modalContact').modal('hide');
 					
 					//Use modal popups to display messages
-					$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>Well done!<br>Your message has been successfully sent!');
+					$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>Your message has been successfully sent.<br/>We will be in touch soon.');
 					$('#modalMessage').modal('show');
                 },
                 error: function() {

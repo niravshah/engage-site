@@ -188,7 +188,7 @@
                 <div class="col-md-5">
                     <div class="form-container wow flipInY" data-wow-duration="1s" data-wow-delay="0.5s">
                         <h3 class="title">Book Now</h3>
-                        <form action="scripts/contact.php" role="form" id="contact_form" novalidate>
+                        <form action='/mailjet' role="form" id="contact_form" novalidate>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="contact_name" placeholder="Full name"
                                        name="name">
@@ -202,7 +202,7 @@
                                           id="contact_message" name="message"></textarea>
                             </div>
                             <button type="submit" id="contact_submit" data-loading-text="•••"
-                                    class="btn btn-lg btn-block btn-primary">Order
+                                    class="btn btn-lg btn-block btn-primary">Send Request
                             </button>
                         </form>
                     </div>
@@ -253,4 +253,7 @@
     </div>
 </div>
 <!-- MODALS END-->
+{%endblock%}
+{%block scripts%}
+
 {%endblock%}
