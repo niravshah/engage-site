@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
+  console.log("HOST:", req.get('host'));
   res.render('index', { title: 'Express' });
 });
 
