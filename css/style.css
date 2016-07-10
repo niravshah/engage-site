@@ -667,7 +667,7 @@ h4.sub-title {
 
 .big-title,
 .giant-title {
-	font-size: 50px;
+	font-size: 40px;
 	font-weight: 100;
 	text-transform: uppercase;
 	margin-bottom: 40px;
@@ -675,7 +675,7 @@ h4.sub-title {
 }
 
 .big-title b{
-	font-size: 60px;
+	font-size: 50px;
 }
 
 
@@ -689,10 +689,11 @@ h4.sub-title {
 }
 
 .small-title {
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 100;
 	color:white;
 	font-family: 'Roboto', sans-serif;
+	line-height: 1.5em;
 }
 
 .icon {

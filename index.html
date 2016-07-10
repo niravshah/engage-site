@@ -13,6 +13,8 @@
     <!-- Loading Elements Styles -->
     <link href="css/style.css" rel="stylesheet">
 
+    <link href="css/engage.css" rel="stylesheet">
+
     <!-- Loading Magnific-Popup Styles -->
     <link href="css/magnific-popup.css" rel="stylesheet">
 
@@ -40,24 +42,24 @@
     <!-- NAVIGATION -->
     <nav class="navbar bg-color3 navbar-fixed-top navbar-slide" src="./images/logo.png">
         <div class="container-fluid">
-            <a class="navbar-brand goto" href="#intro-left-image"><img src="./images/logo.png" height="30" alt="Engage"></a>
+            <a class="navbar-brand goto" href="#home"><img src="./images/logo.png" height="30" alt="Engage"></a>
             <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse"
                     data-target=".navMenuCollapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span></button>
             <div class="collapse navbar-collapse navMenuCollapse">
                 <ul class="nav">
-                    <li><a href="#benefits-2col-center-img">Benefits</a></li>
-                    <li><a href="#video-full">How it works?</a></li>
-                    <li><a href="#portfolio-grid-app">Screens</a></li>
-                    <li><a href="#testimonials-grid">Our Clients</a></li>
-                    <li><a href="#download-center-app-image" src="./images/logo.png">Download</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#how-it-works-1">How it works?</a></li>
+                    <li><a href="#request-demo">Request Demo</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- DOWNLOAD CENTER APP IMAGE BLOCK -->
-    <section id="download-center-app-image" class="bg-color3 text-center dark-bg">
+    <section id="home" class="bg-color3 text-center dark-bg">
         <img src="images/bg11.jpg" style="position: absolute;top: 0;left:0;width:100%;">
         <div class="container">
             <img src="images/icon.png" class="sep-bottom" alt="Engage Logo">
@@ -74,86 +76,99 @@
         </div>
     </section>
 
-    <!-- CONTENT-RIGHT BLOCK -->
-    <section id="content-right" class="bg-color3" style="padding: 100px 0px;">
+    <section id="about" class="bg-color3" style="padding: 100px 0px;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><img class="screen" src="images/screen-1.png" alt="screen"></div>
+                <div class="col-md-6" style="padding-top: 50px;">
+                    <img class="screen" src="images/screen-1.png" alt="screen">
+                </div>
                 <div class="col-md-5 col-md-offset-1">
                     <h2>Meet Engage</h2>
                     <h4 class="sub-title" style="margin-bottom:20px;">
                         Our platform for Employee Development through managed Community Service Projects.
                     </h4>
                     <p>
-                        Engage lets you highlight key professional skills in your employees and develop them through
-                        participation
-                        and delivery of community services projects. </p>
+                        Engage lets you highlight and develop key professional skills in your employees through
+                        participation and delivery of community service projects. </p>
+
                     <p> We work with NGOs to structure and define projects that can
                         help participants develop skills like leadership, communication, project management and
                         resilience.
                     </p>
                     <p class="sep-bottom">
                         Employees can than use our highly interactive platform to manage and deliver these projects with
-                        management and HR oversight. We provide you detailed insights and reporting on where your
-                        employees are
-                        at each step of the project.
+                        management and HR oversight. We provide you detailed insights and reporting on how your
+                        employees are performing at each step of the project.
                     </p>
-                    <a class="btn btn-default btn-lg" href="#">Live Demo <i class="icon right-icon icon-power"></i></a>
+                    <a class="btn btn-default btn-lg" href="#request-demo"><i class="icon left-icon icon-hourglass"></i>Request Demo</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- BENEFITS GRID NUM BLOCK -->
-    <section id="benefits-grid-num" class="dark-bg bg-color1 cover-bg" style="background: rgba(39,62,84,0.95);">
+
+    <section id="benefits" class="dark-bg bg-color1 cover-bg" style="background: rgba(39,62,84,0.95);">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <ul class="item-list-left">
-                        <li><i class="num-icon">1</i>
-                            <h3>Fully Responsive</h3>
-                            <p>Your project looks great on any device. Content can be easily read and a user understands
-                                freely what you wanted to say him or her.</p>
-                        </li>
-                        <li><i class="num-icon">2</i>
-                            <h3>PSD Is Included </h3>
-                            <p>The graphic source file in PSD format is included in the archive.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <ul class="item-list-left">
-                        <li><i class="num-icon">3</i>
-                            <h3>Pure &amp; Simple</h3>
-                            <p>No fluff. Nothing should lead the visitor away from the main essence of website. There
-                                must be just important information.</p>
-                        </li>
-                        <li><i class="num-icon">4</i>
-                            <h3>Documentation</h3>
-                            <p>The detailed documentation will help you in adjusting the project with little effort
-                                according to your requirements.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-4">
-                    <ul class="item-list-left">
-                        <li><i class="num-icon">5</i>
-                            <h3>Color Schemes</h3>
-                            <p>The set of ready made CSS files with different color schemes will help you in quick
-                                landing’s adaptation according to your benchmark style.</p>
-                        </li>
-                        <li><i class="num-icon">6</i>
-                            <h3>Multiplatform</h3>
-                            <p>The page is adapted to the most of the popular platform in segment.</p>
-                        </li>
-                    </ul>
+                <div class="col-md-12">
+                    <div class="row sep-half-bottom">
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">1</i>
+                                    <h3>Simple</h3>
+                                    <p>Engage is extremely simple & intuitive to use.
+                                        You or your employees will not need any special training to plan and manage your CSR initiatives.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">2</i>
+                                    <h3>Interactive</h3>
+                                    <p>One of our key aim is to boost collaboration and team work. Our interactive always live project boards make communication fun and easy.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">3</i>
+                                    <h3>Integrated</h3>
+                                    <p>Engage can integrate with your existing HR systems. You can easily import and export existing data into the platform through our powerful data tools.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">4</i>
+                                    <h3>Plan</h3>
+                                    <p>Engage has been purposefully designed to make planning and scheduling of project tasks easy and interactive. Milestones allow participants </p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">5</i>
+                                    <h3>Manage</h3>
+                                    <p>Live status reporting and task assignments offer participants an intuitive and effective way to manage and communicate progress on their projects.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4">
+                            <ul class="item-list-left">
+                                <li><i class="num-icon">6</i>
+                                    <h3>Report</h3>
+                                    <p>Our powerful reporting tools allow you to visualise and discover hidden gaps and strengths in your current talent pool.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- CONTENT LEFT BLOCK -->
-    <section id="content-left" style="padding-top:100px;">
+    <section id="how-it-works-1" class="how-it-works" style="padding-top:100px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-push-6">
@@ -162,18 +177,19 @@
                 <div class="col-md-5 col-md-pull-6 editContent">
                     <h2>Employee Development</h2>
                     <h4 class="sub-title">Grow your employees through professional skill development.</h4>
-                    <p>So, what is the secret of successful template design? First of all, it is its friendliness – both
-                        for the template’s owner and for his or her future targeted audience. UX and UI are not just
-                        empty phrases for us. It is very important for us that the user could understand correctly the
-                        message your project’s trying to say.</p>
+                    <p>Planning, managing and delivering community service projects requires a combination of
+                        leadership, project management, communication, resilience and team work skills.</p>
+                    <p>
+                        We work very closely with all participating NGOs to define projects that require
+                        a good combination of these key professional skills.
+                        Hence Engage offers an excellent platform for participants to develop
+                        skills that help them advance in their career and add more value to your organization.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- CONTENT RIGHT 2 BLOCK -->
-    <section id="content-right-2">
+    <section id="how-it-works-2" class="how-it-works">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -182,17 +198,13 @@
                 <div class="col-md-5 col-md-offset-1 editContent">
                     <h2>Giving Back</h2>
                     <h4 class="sub-title">Description of the steps of delivery</h4>
-                    <p>So, what is the secret of successful template design? First of all, it is its friendliness – both
-                        for the template’s owner and for his or her future targeted audience. UX and UI are not just
-                        empty phrases for us. It is very important for us that the user could understand correctly the
-                        message your project’s trying to say.</p>
+                    <p></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTENT LEFT BLOCK -->
-    <section id="content-left-1">
+    <section id="how-it-works-3" class="how-it-works">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-push-6">
@@ -201,17 +213,13 @@
                 <div class="col-md-5 col-md-pull-6 editContent">
                     <h2>Employee Retention</h2>
                     <h4 class="sub-title">Boost retention by increasing employee pride in organization.</h4>
-                    <p>So, what is the secret of successful template design? First of all, it is its friendliness – both
-                        for the template’s owner and for his or her future targeted audience. UX and UI are not just
-                        empty phrases for us. It is very important for us that the user could understand correctly the
-                        message your project’s trying to say.</p>
+                    <p></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT HALF TEAM BLOCK -->
-    <section id="contact-half-team" class="bg-color2 cover-bg" style="">
+    <section id="request-demo" class="bg-color2 cover-bg" style="padding-bottom: 50px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -237,16 +245,23 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-md-offset-1 dark-bg editContent">
-                    <h2 class="title"><strong>Free Consultation</strong></h2>
-                    <p class="sep-bottom">In our work we try to use only the most modern, convenient and interesting
-                        solutions. We want the template you downloaded look unique and new for such a long time as it is
-                        possible.</p>
-                    <p class="sep-bottom">In our work we try to use only the most modern, convenient and interesting
-                        solutions. We want the template you downloaded look unique and new for such a long time as it is
-                        possible.</p>
-                    <p class="sep-bottom">In our work we try to use only the most modern, convenient and interesting
-                        solutions. We want the template you downloaded look unique and new for such a long time as it is
-                        possible.</p>
+                    <h2 class="title"><strong>Request A Demo</strong></h2>
+                    <p class="sep-bottom">
+                        Employees & Culture are extremely unique to each organization and change at various stages of
+                        organizations growth.
+                        We can work with you to define employee development objectives and CSR targets that are priority
+                        for your organization.
+                    </p>
+                    <p class="sep-bottom">
+                        We can suggest NGOs and Projects that are most suitable to achieve your goals and how you can
+                        use the projects to
+                        achieve your employee and community engagement targets.
+                    </p>
+                    <p class="sep-bottom">
+                        Book your free consultation day today to explore how Engage can help you boost employee
+                        retention
+                        and develop a sense of pride and belonging amongst your employees towards your organization.
+                    </p>
                 </div>
             </div>
         </div>
