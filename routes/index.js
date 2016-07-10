@@ -1,13 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+var content = {};
+
+content['en'] = {'s1.heading.1' : 'EMPLOYEE ENGAGEMENT'}
+content['ro'] = {'s1.heading.1' : 'IMPLICAREA ANGAJAȚILOR'}
+
+router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/home', function(req, res, next) {
+router.get('/home', function(req, res) {
   console.log("HOST:", req.get('host'));
-  res.render('index', { title: 'Express' });
+
+  if(req.get('host') == 'engagewithin.ro'){
+    res.render('index', content['ro']);
+  }else{
+    res.render('index', content['en']);
+  }
+
 });
 
 
