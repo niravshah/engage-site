@@ -29,9 +29,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="304">
+              <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+              <folding>
+                <element signature="n#nav#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#section#0;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#section#4;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#section#5;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#section#6;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#section#7;n#div#0;n#!!top" expanded="false" />
+                <marker date="1468222976000" expanded="false" signature="1636:1768" ph="..." />
+                <marker date="1468222976000" expanded="false" signature="1914:2655" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,18 +48,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="engageapp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engageapp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+            <state relative-caret-position="75">
+              <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -682,12 +681,12 @@
       <option name="presentableId" value="Default" />
       <updated>1467877711361</updated>
       <workItem from="1467877712689" duration="14800000" />
-      <workItem from="1468106886309" duration="12929000" />
+      <workItem from="1468106886309" duration="16256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27729000" />
+    <option name="totallyTimeSpent" value="31056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
@@ -828,14 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engageapp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -844,10 +835,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+          <folding>
+            <element signature="n#nav#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#section#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#section#4;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#section#5;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#section#6;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#section#7;n#div#0;n#!!top" expanded="false" />
+            <marker date="1468222976000" expanded="false" signature="1636:1768" ph="..." />
+            <marker date="1468222976000" expanded="false" signature="1914:2655" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="36" column="33" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
           <folding />
         </state>
       </provider>
