@@ -68,7 +68,7 @@ content['ro'] = {
     s4_4: 'Unul dintre obiectivele noastre principale este sa inbunatatim colaborarea si munca in echipa, cu ajutorul bordurile de proiecte live am realizat exact acest lucru.',
     s4_5: 'Integrare',
     s4_6: 'Engage poate poate fi sincronizat cu sistemul de HR. Puteti face import/export de date deja existente in sistem.',
-    s4_7: 'Plan'
+    s4_7: 'Plan',
     s4_8: 'Designul platformei a fost creat special pentru a face stabilirea de taskuri intr-un proiect cat mai usoara si interactiva ',
     s4_9: 'Administreaza',
     s4_10: 'Statusul pentru proiecte live ofera participantilor o modalitate usoara si intuitiva de a urmari si raporta progresul facut in timpul proiectelor.',
@@ -78,8 +78,7 @@ content['ro'] = {
     s5_1: 'Dezvoltare angajati',
     s5_2: 'Ofera-le angajatilor tai posibilitatea sa creasca si sa isi dezvolte noi skilluri.',
     s5_3: 'Planificarea si executarea unui proiect non profit necesita aceiasi combinatie de leadership, management si perseverenta ca in proiectele de zi cu zi .',
-    s5_4: 'Lucram indeaproape cu toate ONG urile partenere pentru a identifica proiectele care necesita abilitatile cheie cerute de majoritatea angajatorilor. Engage ofera o platforma excelenta pentru angajatii care urmaresc o crestere exponentiala a abilitatilor profesionale si o avansare rapida in cariera.'
-
+    s5_4: 'Lucram indeaproape cu toate ONG urile partenere pentru a identifica proiectele care necesita abilitatile cheie cerute de majoritatea angajatorilor. Engage ofera o platforma excelenta pentru angajatii care urmaresc o crestere exponentiala a abilitatilor profesionale si o avansare rapida in cariera.',
     s6_1: 'O modalitate inovatoare de a da inapoi comunitatii tale',
     s6_2: 'Indeplineste-ti obiectivele de sustenabilitate ajutand comunitatea locala, ',
     s6_3: 'Sustenabilitatea reprezinta un obiectiv cheie pentru o mare parte a companiilor in urmatorii ani. O politica solida de CSR va contribuii la diferentierea firmelor pe piata si la o mai buna ideplinire a obiectivelor de sustenabilitate',
@@ -87,9 +86,8 @@ content['ro'] = {
 
     s7_1:'Retentie angajati',
     s7_2:'Inbunatateste rata de retentie a angajatilor.',
-    s7_3:'Pentru orice companie care lucreazã într-un mediu puternic concurenþial, ataºamentul faþã de brand al angajaþilor este esenþial. 
+    s7_3:'Pentru orice companie care lucreazã într-un mediu puternic concurenþial, ataºamentul faþã de brand al angajaþilor este esenþial.',
     s7_4:'Ataºamentul nu se obþine doar prin salarii atractive. Din ce în ce mai multi angajaþi resimt nevoia de a fi mândri de compania la care lucreazã, acest sentiment poate fi cultivat prin implicarea lor in programe umanitare si integrarea de noi practici umanitare si de voluntariat in cultura companiei',
-
     s8_1: 'Cultura companiei este unica si se poate schimba in functie de stadiul in care se afla compania, lucram indeaproape cu clientii nostrii pentru a-i ajuta sa isi defineasca obiectivele si abilitatile cheie pe care urmaresc sa le dezvolte in interiorul organizatiei.',
     s8_2: 'Recomandam cele mai potrivite proiecte pentru cultura companiei tale',
     s8_3: 'Programeaza un demo.'
