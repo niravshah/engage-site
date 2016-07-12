@@ -76,22 +76,27 @@ content['ro'] = {
     s4_12: 'Engage va permite sa generati rapoarte detaliate pentru a descoperi oamenii si departamentele care necesita mai multa atentie si imbunatatire.',
 
     s5_1: 'Dezvoltare angajati',
-    s5_2: 'Ofera-le angajatilor tai posibilitatea sa creasca si sa isi dezvolte noi skilluri.',
+    s5_2: 'Ofera-le angajatilor tai oportunitatea de asi dezvolte noi abilitati.',
     s5_3: 'Planificarea si executarea unui proiect non profit necesita aceiasi combinatie de leadership, management si perseverenta ca in proiectele de zi cu zi .',
-    s5_4: 'Lucram indeaproape cu toate ONG urile partenere pentru a identifica proiectele care necesita abilitatile cheie cerute de majoritatea angajatorilor. Engage ofera o platforma excelenta pentru angajatii care urmaresc o crestere exponentiala a abilitatilor profesionale si o avansare rapida in cariera.',
+    s5_4: 'Lucram indeaproape cu toate ONG urile partenere pentru a identifica proiectele care necesita abilitatile cheie cerute de majoritatea angajatorilor.  Engage ofera o platforma excelenta pentru angajatii care urmaresc o crestere exponentiala a abilitatilor profesionale si o avansare rapida in cariera.',
     s6_1: 'O modalitate inovatoare de a da inapoi comunitatii tale',
     s6_2: 'Indeplineste-ti obiectivele de sustenabilitate ajutand comunitatea locala, ',
     s6_3: 'Sustenabilitatea reprezinta un obiectiv cheie pentru o mare parte a companiilor in urmatorii ani. O politica solida de CSR va contribuii la diferentierea firmelor pe piata si la o mai buna ideplinire a obiectivelor de sustenabilitate',
-    s6_4: 'Lucrand si oferind suport comunitatilor locale companiile pot contribui la crearea unei mediu de lucru mai sanatos si mai productiv pentru angajatii lor imbunatatind in acelasi timp si nivelul de incredere pe care il au clientii in brandul lor ',
-
+    s6_4: 'Ajutand si oferind suport comunitatilor locale companiile pot contribui la crearea unei mediu de lucru mai sanatos si mai productiv pentru angajatii lor imbunatatind in acelasi timp si nivelul de incredere pe care il au clientii in brandul lor ',
     s7_1:'Retentie angajati',
     s7_2:'Inbunatateste rata de retentie a angajatilor.',
-    s7_3:'Pentru orice companie care lucreazã într-un mediu puternic concurenþial, ataºamentul faþã de brand al angajaþilor este esenþial.',
-    s7_4:'Ataºamentul nu se obþine doar prin salarii atractive. Din ce în ce mai multi angajaþi resimt nevoia de a fi mândri de compania la care lucreazã, acest sentiment poate fi cultivat prin implicarea lor in programe umanitare si integrarea de noi practici umanitare si de voluntariat in cultura companiei',
-    s8_1: 'Cultura companiei este unica si se poate schimba in functie de stadiul in care se afla compania, lucram indeaproape cu clientii nostrii pentru a-i ajuta sa isi defineasca obiectivele si abilitatile cheie pe care urmaresc sa le dezvolte in interiorul organizatiei.',
-    s8_2: 'Recomandam cele mai potrivite proiecte pentru cultura companiei tale',
-    s8_3: 'Programeaza un demo.'
+    s7_3:'Pentru orice companie care lucreaza într-un mediu puternic concurential, atasamentul fata de brand al angajatilor este esential',
+    s7_4:'Atasamentul nu se obtine doar prin salarii atractive. Din ce în ce mai multi angajati resimt nevoia de a fi mandri de compania la care lucreaza, acest sentiment poate fi cultivat prin implicarea lor in programe umanitare si integrarea de noi practici umanitare si de voluntariat in cultura companiei',
+
+    s8_1:'Programeaza un demo',
+    s8_2:'Trimite',
+    s8_3:'Cereti un demo pentru organizatia dumneavoastra',
+    s8_4:'Cultura companiei este unica si se poate schimba in functie de stadiul in care se afla compania, lucram indeaproape cu clientii nostrii pentru a-i ajuta sa isi defineasca obiectivele si abilitatile cheie pe care urmaresc sa le dezvolte in interiorul organizatiei.',
+    s8_5:'Recomandam cele mai potrivite proiecte pentru cultura companiei tale in functie de obiectivele si abilitatile pe care vreti sa le promovati.',
+    s8_6:'Programeaza astazi un demo si afla cum te putem ajuta sa iti dezvolti angajatii.'
     };
+
+
 
 router.get('/', function (req, res) {
     res.redirect('/home')
