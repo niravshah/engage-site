@@ -1,19 +1,20 @@
 var express = require('express');
 var app = express();
 
-
-var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
+app.use(logger('dev'));
+
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-app.use(favicon(path.join(__dirname, 'public/images/favicons', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
+var favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname, 'public/images/favicons', 'favicon.ico')));
 
 var swig = require('swig');
 app.set('views', path.join(__dirname, 'views'));
@@ -24,12 +25,14 @@ swig.setDefaults({
   cache: false
 });
 
+app.use(function(req,res,next){
+  next();
+})
+
 var routes = require('./routes/index');
 var mailjet = require('./routes/mailjet')
 app.use('/', routes);
 app.use('/',mailjet);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,7 +42,6 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -54,7 +56,7 @@ if (app.get('env') === 'development') {
 }
 
 // production error handler
-// no stacktraces leaked to user
+// no stack traces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -62,8 +64,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 app.listen(9000, function() {
   console.log('Example app listening on port 9000!');
