@@ -13,3 +13,19 @@
 .how-it-works p{
     text-align: justify;
 }
+
+@media (max-width: 767px){
+    .big-title, .giant-title {
+        font-size: 30px;
+        color: black;
+    }
+
+    .big-title b{
+        font-size: 30px;
+        color: black;
+    }
+
+    .hero{
+        background-color: #3f3f3f;
+    }
+}
