@@ -1,21 +1,25 @@
-{% extends 'layout.html' %}
-
-{% block content %}
+{% extends 'layout.html' %} {% block content %}
 <div id="wrap">
     <!-- NAVIGATION -->
     <nav class="navbar bg-color3 navbar-fixed-top navbar-slide" src="./images/logo.png">
         <div class="container-fluid">
-            <a class="navbar-brand goto" href="#home"><img src="./images/logo.png" height="30" alt="Engage"></a>
-            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse"
-                    data-target=".navMenuCollapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span></button>
+            <a class="navbar-brand goto" href="#home">
+                <img src="./images/logo.png" height="30" alt="Engage">
+            </a>
+            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"><span class="icon-bar"></span>  <span class="icon-bar"></span>  <span class="icon-bar"></span>
+            </button>
             <div class="collapse navbar-collapse navMenuCollapse">
                 <ul class="nav">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#how-it-works-1">How it works?</a></li>
-                    <li><a href="#request-demo">Request Demo</a></li>
+                    <li><a href="#home">Home</a>
+                    </li>
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#benefits">Benefits</a>
+                    </li>
+                    <li><a href="#how-it-works-1">How it works?</a>
+                    </li>
+                    <li><a href="#request-demo">Request Demo</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -50,7 +54,7 @@
                     <h2>{{s3_1}}</h2>
                     <h4 class="sub-title" style="margin-bottom:20px;">{{s3_2}}</h4>
                     <p>{{s3_3}}</p>
-                    <p> {{s3_4}}</p>
+                    <p>{{s3_4}}</p>
                     <p class="sep-bottom">{{s3_5}}</p>
                     <a class="btn btn-default btn-lg" href="#request-demo"><i class="icon left-icon icon-hourglass"></i>{{s3_6}}</a>
                 </div>
@@ -147,9 +151,10 @@
                     <img class="screen" src="images/bg10.jpg" alt="screen">
                 </div>
                 <div class="col-md-5 col-md-offset-1 editContent">
-                    <h2>Giving Back</h2>
-                    <h4 class="sub-title">Description of the steps of delivery</h4>
-                    <p></p>
+                    <h2>{{s6_1}}</h2>
+                    <h4 class="sub-title">{{s6_2}}</h4>
+                    <p>{{s6_3}}</p>
+                    <p>{{s6_4}}</p>
                 </div>
             </div>
         </div>
@@ -162,9 +167,10 @@
                     <img class="screen" src="images/bg12.jpg" alt="screen">
                 </div>
                 <div class="col-md-5 col-md-pull-6 editContent">
-                    <h2>Employee Retention</h2>
-                    <h4 class="sub-title">Boost retention by increasing employee pride in organization.</h4>
-                    <p></p>
+                    <h2>{{s7_1}}</h2>
+                    <h4 class="sub-title">{{s7_2}}</h4>
+                    <p>{{s7_3}}</p>
+                    <p>{{s7_4}}</p>
                 </div>
             </div>
         </div>
@@ -175,43 +181,27 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="form-container wow flipInY" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h3 class="title">Book Now</h3>
+                        <h3 class="title">{{s8_1}}</h3>
                         <form action='/mailjet' role="form" id="contact_form" novalidate>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="contact_name" placeholder="Full name"
-                                       name="name">
+                                <input type="text" class="form-control" id="contact_name" placeholder="Full name" name="name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="contact_email" placeholder="Email Address"
-                                       name="email">
+                                <input type="email" class="form-control" id="contact_email" placeholder="Email Address" name="email">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" placeholder="Your message or question"
-                                          id="contact_message" name="message"></textarea>
+                                <textarea class="form-control" rows="4" placeholder="Your message or question" id="contact_message" name="message"></textarea>
                             </div>
-                            <button type="submit" id="contact_submit" data-loading-text="•••"
-                                    class="btn btn-lg btn-block btn-primary">Send Request
-                            </button>
+                            <button type="submit" id="contact_submit" data-loading-text="•••" class="btn btn-lg btn-block btn-primary">{{s8_2}}</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-6 col-md-offset-1 dark-bg editContent">
-                    <h2 class="title"><strong>Request A Demo</strong></h2>
-                    <p class="sep-bottom">
-                        Employees & Culture are extremely unique to each organization and change at various stages of
-                        organizations growth.
-                        We can work with you to define employee development objectives and CSR targets that are priority
-                        for your organization.
-                    </p>
-                    <p class="sep-bottom">
-                        We can suggest NGOs and Projects that are most suitable to achieve your goals and how you can
-                        use the projects to
-                        achieve your employee and community engagement targets.
-                    </p>
-                    <p class="sep-bottom">
-                        Book your free consultation day today to explore how Engage can help you boost employee
-                        retention
-                        and develop a sense of pride and belonging amongst your employees towards your organization.
+                    <h2 class="title"><strong>{{s8_3}}</strong></h2>
+                    <p class="sep-bottom">{{s8_4}}</p>
+                    <p class="sep-bottom">{{s8_5}}</p>
+                    <p class="sep-bottom">{{s8_6}}
+                      
                     </p>
                 </div>
             </div>
@@ -221,12 +211,17 @@
     <footer id="footer-center" class="text-center bg-color3">
         <div class="container">
             <ul class="soc-list sep-bottom">
-                <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a></li>
-                <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a></li>
-                <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a></li>
+                <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
+                </li>
+                <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
+                </li>
+                <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
+                </li>
             </ul>
-            <p class="editContent">© 2016 Engage Within<br>
-                <img style="margin-top: 20px;" src="images/footer-logo.png" alt=""></div>
+            <p class="editContent">© 2016 Engage Within
+                <br>
+                <img style="margin-top: 20px;" src="images/footer-logo.png" alt="">
+        </div>
     </footer>
 </div>
 <!-- /#wrap -->
@@ -241,7 +236,5 @@
     </div>
 </div>
 <!-- MODALS END-->
-{%endblock%}
-{%block scripts%}
+{%endblock%} {%block scripts%} {%endblock%}
 
-{%endblock%}
