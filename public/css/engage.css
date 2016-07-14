@@ -14,10 +14,22 @@
     text-align: justify;
 }
 
+.hero image{
+    margin-bottom:60px;
+}
+
 @media (max-width: 767px){
+    #home{
+        padding-top:120px;
+    }
+    
+   
     .big-title, .giant-title {
         font-size: 30px;
         color: black;
+    }
+    .hero image{
+        margin-bottom:20px;
     }
 
     .big-title b{
@@ -25,7 +37,12 @@
         color: black;
     }
 
-    .hero{
-        background-color: #3f3f3f;
+    section{
+        padding-bottom: 20px;
+        padding-top:20px;
+    }
+    .small-title{
+        font-size:14px;
     }
 }
+
