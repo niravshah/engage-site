@@ -1,0 +1,134 @@
+{% extends 'layout.html' %} {% block content %}
+<div id="wrap">
+    <!-- NAVIGATION -->
+    <nav class="navbar bg-color3 navbar-fixed-top navbar-slide" src="./images/logo.png">
+        <div class="container-fluid">
+            <a class="navbar-brand goto" href="#home">
+                <img src="./images/logo.png" height="30" alt="Engage">
+            </a>
+            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"><span class="icon-bar"></span>  <span class="icon-bar"></span>  <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse navMenuCollapse">
+                <div class="login-panel">
+                    <a class="btn btn-primary" href="/">Home</a>
+                    <a class="btn btn-success" href="#">Join Now</a>
+                </div>
+                <ul class="nav">
+                    <li><a href="#home">Home</a>
+                    </li>
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#benefits">Benefits</a>
+                    </li>
+                    <li><a href="#how-it-works-1">How it works?</a>
+                    </li>
+                    <li><a href="#request-demo">Request Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION:1 INTRO-->
+    <header id="ngo-home" class="intro-block bg-color1 dark-bg text-center">
+        <div class="container">
+            <div class="slogan">
+                <img src="./images/icon.png" alt="logo" class="sep-bottom">
+                <h2 class="big-title"><b>{{s1_1}}</b><br/>{{s1_2}}</h2>
+
+            </div>
+            <form action="scripts/booking.php" method="post" id="booking_form" class="validation-message clearfix line-form three-fields sep-half-bottom" novalidate>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="loc" id="location" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" id="booking_email" placeholder="NGO Name">
+                </div>
+                <button class="btn btn-primary" type="submit" id="booking_submit" data-loading-text="•••">Join</button>
+            </form>
+        </div>
+    </header>
+    <!-- END:SECTION:1 INTRO-->
+
+    <!-- STEPS CENTER BLOCK -->
+    <section id="steps-center" style="padding-bottom:20px">
+        <div class="container">
+            <div class="sep-bottom text-center">
+                <h2>Step by Step</h2>
+                <p class="desc-text editContent">In our work we try to use only the most modern, convenient and interesting solutions.<br>
+                    We want the template you downloaded look unique and new for such a long time as it is possible.</p>
+            </div>
+
+            <ul class="step-center-block">
+                <li>
+                    <div class="step-num">1</div>
+                    <div class="step-img"><img src="images/step1.png" class="screen" alt=""></div>
+                    <div class="step-text">
+                        <h3 class="title">Planning</h3>
+                        <p>You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look like.
+                            We could paste here the part of some article or couple of paragraphs from interesting book (that you have read for sure and may be even liked) or text in unfamiliar language ever. But we did not. We spent time on writing our own text, the text that you are reading now just like users will read your content in nearest future.</p>
+                    </div>
+                </li>
+                <li class="reverse">
+                    <div class="step-num">2</div>
+                    <div class="step-img"><img src="images/step2.png" class="screen" alt=""></div>
+                    <div class="step-text">
+                        <h3 class="title">Development</h3>
+                        <p>You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look like.
+                            We could paste here the part of some article or couple of paragraphs from interesting book (that you have read for sure and may be even liked) or text in unfamiliar language ever. But we did not. We spent time on writing our own text, the text that you are reading now just like users will read your content in nearest future.</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-num">3</div>
+                    <div class="step-img"><img src="images/step3.png" class="screen" alt=""></div>
+                    <div class="step-text">
+                        <h3 class="title">Promotion</h3>
+                        <p>You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look like.
+                            We could paste here the part of some article or couple of paragraphs from interesting book (that you have read for sure and may be even liked) or text in unfamiliar language ever. But we did not. We spent time on writing our own text, the text that you are reading now just like users will read your content in nearest future.</p>
+                    </div>
+                </li>
+                <li class="reverse">
+                    <div class="step-num">4</div>
+                    <div class="step-img"><img src="images/step4.png" class="screen" alt=""></div>
+                    <div class="step-text">
+                        <h3 class="title">Get a Profit</h3>
+                        <p>You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look like.
+                            We could paste here the part of some article or couple of paragraphs from interesting book (that you have read for sure and may be even liked) or text in unfamiliar language ever. But we did not. We spent time on writing our own text, the text that you are reading now just like users will read your content in nearest future.</p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </section>
+
+
+    <footer id="footer-center" class="text-center bg-color1 dark-bg">
+        <div class="container">
+            <ul class="soc-list sep-bottom">
+                <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
+                </li>
+                <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
+                </li>
+                <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
+                </li>
+            </ul>
+            <p class="editContent">© 2016 Engage Within
+                <br>
+                <img style="margin-top: 20px;" src="images/footer-logo.png" alt="">
+        </div>
+    </footer>
+</div>
+<!-- /#wrap -->
+
+<!-- MODALS BEGIN-->
+<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 class="modal-title">&nbsp;</h3>
+        </div>
+    </div>
+</div>
+<!-- MODALS END-->
+{%endblock%} {%block scripts%} {%endblock%}
+

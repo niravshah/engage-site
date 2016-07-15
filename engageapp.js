@@ -27,11 +27,13 @@ swig.setDefaults({
 
 app.use(function(req,res,next){
   next();
-})
+});
 
 var routes = require('./routes/index');
 var mailjet = require('./routes/mailjet')
+var ngoLanding = require('./routes/ngo-landing')
 app.use('/', routes);
+app.use('/', ngoLanding);
 app.use('/',mailjet);
 
 // catch 404 and forward to error handler

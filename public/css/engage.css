@@ -1,48 +1,119 @@
-.how-it-works{
+.how-it-works {
     padding-bottom: 50px;
 }
 
-.how-it-works h2{
+.how-it-works h2 {
     font-size: 40px;
 }
 
-.how-it-works h4{
+.how-it-works h4 {
     margin-bottom: 40px;
 }
 
-.how-it-works p{
+.how-it-works p {
     text-align: justify;
 }
 
-.hero image{
-    margin-bottom:60px;
+.hero image {
+    margin-bottom: 60px;
 }
 
-@media (max-width: 767px){
-    #home{
-        padding-top:120px;
+form.line-form.three-fields .form-group {
+    float: left;
+    width: 40%;
+}
+
+form.line-form.three-fields button {
+    float: left;
+    width: 20%;
+}
+
+@media (max-width: 767px) {
+    #home {
+        padding-top: 120px;
     }
-    
-   
+
     .big-title, .giant-title {
         font-size: 30px;
         color: black;
     }
-    .hero image{
-        margin-bottom:20px;
+
+    .hero image {
+        margin-bottom: 20px;
     }
 
-    .big-title b{
+    .big-title b {
         font-size: 30px;
         color: black;
     }
 
-    section{
+    section {
         padding-bottom: 20px;
-        padding-top:20px;
+        padding-top: 20px;
     }
-    .small-title{
-        font-size:14px;
+
+    .small-title {
+        font-size: 14px;
     }
 }
 
+#ngo-home {
+    background: url("/images/bg10.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+
+ul.step-center-block li:not(:last-child):before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 100px;
+    left: 50%;
+    bottom: 0;
+    width: 1px;
+    background: #00c0ff;
+}
+
+ul.step-center-block li, ul.step-left-block li, ul.step-path-block li {
+    padding-bottom: 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+ul.step-center-block li .step-num, ul.step-left-block li .step-num {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 50%;
+    margin-left: -50px;
+    top: 0;
+    border: 1px solid #00c0ff;
+    border-radius: 50%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    line-height: 100px;
+    overflow: hidden;
+    font-size: 50px;
+    font-weight: lighter;
+}
+
+ul.step-center-block li .step-img, ul.step-path-block li .step-img {
+    float: right;
+    width: 40%;
+    position: relative;
+    z-index: 2;
+}
+
+ul.step-center-block li .step-text, ul.step-left-block li .step-text, ul.step-path-block li .step-text {
+    float: left;
+    width: 40%;
+}
+
+ul.step-center-block li.reverse .step-img, ul.step-path-block li.reverse .step-img {
+    float: left;
+}
+
+ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-text {
+    float: right;
+}
