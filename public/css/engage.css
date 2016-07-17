@@ -1,3 +1,7 @@
+.no-padding{
+    padding:0px;
+}
+
 .how-it-works {
     padding-bottom: 50px;
 }
@@ -116,4 +120,27 @@ ul.step-center-block li.reverse .step-img, ul.step-path-block li.reverse .step-i
 
 ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-text {
     float: right;
+}
+
+.slides-pagination{
+    width:50%;
+    bottom: 10%;
+}
+
+.slides-navigation{
+    width:50%;
+    bottom:20%;
+    top:auto;
+}
+
+.next-nav{
+    position: absolute;
+    width: 50%;
+    text-align: center;
+    bottom: 15%;
+    z-index: 99;
+}
+
+.slides-container .col-md-6{
+    height:100vh;
 }

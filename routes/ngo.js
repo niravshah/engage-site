@@ -11,9 +11,19 @@ content['ro'] = {};
 router.get('/ngo', function (req, res) {
     var host = '' + req.get('host');
     if (host.indexOf('ro') > -1) {
-        res.render('ngo-landing', content['ro']);
+        res.render('ngo/landing', content['ro']);
     } else {
-        res.render('ngo-landing', content['en']);
+        res.render('ngo/landing', content['en']);
+    }
+
+});
+
+router.get('/ngo/onboard', function (req, res) {
+    var host = '' + req.get('host');
+    if (host.indexOf('ro') > -1) {
+        res.render('ngo/onboarding', content['ro']);
+    } else {
+        res.render('ngo/onboarding', content['en']);
     }
 
 });

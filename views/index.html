@@ -1,4 +1,10 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+{%block stylesheets%}
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/magnific-popup.css" rel="stylesheet">
+{%endblock%}
+
+{% block content %}
 <div id="wrap">
     <!-- NAVIGATION -->
     <nav class="navbar bg-color3 navbar-fixed-top navbar-slide" src="./images/logo.png">
@@ -235,5 +241,14 @@
     </div>
 </div>
 <!-- MODALS END-->
-{%endblock%} {%block scripts%} {%endblock%}
+{%endblock%}
+
+{%block scripts%}
+<script src="/scripts/jquery.smooth-scroll.min.js"></script>
+<script src="/scripts/jquery.magnific-popup.min.js"></script>
+<script src="/scripts/waypoints.min.js"></script>
+<script src="/scripts/custom.js"></script>
+<script src="/scripts/jquery.validate.min.js"></script>
+<script src="/scripts/smoothscroll.js"></script>
+{%endblock%}
 

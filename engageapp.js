@@ -31,9 +31,9 @@ app.use(function(req,res,next){
 
 var routes = require('./routes/index');
 var mailjet = require('./routes/mailjet')
-var ngoLanding = require('./routes/ngo-landing')
+var ngo = require('./routes/ngo')
 app.use('/', routes);
-app.use('/', ngoLanding);
+app.use('/', ngo);
 app.use('/',mailjet);
 
 // catch 404 and forward to error handler

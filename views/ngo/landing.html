@@ -1,4 +1,12 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends '../layout.html' %}
+
+{%block stylesheets%}
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/magnific-popup.css" rel="stylesheet">
+{%endblock%}
+
+
+{% block content %}
 <div id="wrap">
     <!-- NAVIGATION -->
     <nav class="navbar bg-color3 navbar-fixed-top navbar-slide" src="./images/logo.png">
@@ -39,10 +47,10 @@
             </div>
             <form action="scripts/booking.php" method="post" id="booking_form" class="validation-message clearfix line-form three-fields sep-half-bottom" novalidate>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="loc" id="location" placeholder="Your Email">
+                    <input class="form-control" type="text" name="loc" id="location" placeholder="Your Name">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email" id="booking_email" placeholder="NGO Name">
+                    <input class="form-control" type="email" name="email" id="booking_email" placeholder="Your Email">
                 </div>
                 <button class="btn btn-primary" type="submit" id="booking_submit" data-loading-text="•••">Join</button>
             </form>
@@ -130,5 +138,16 @@
     </div>
 </div>
 <!-- MODALS END-->
-{%endblock%} {%block scripts%} {%endblock%}
+{%endblock%}
+
+{%block scripts%}
+<script src="/scripts/jquery.smooth-scroll.min.js"></script>
+<script src="/scripts/jquery.magnific-popup.min.js"></script>
+<script src="/scripts/waypoints.min.js"></script>
+<script src="/scripts/custom.js"></script>
+<script src="/scripts/jquery.validate.min.js"></script>
+<script src="/scripts/smoothscroll.js"></script>
+{%endblock%}
+
+
 

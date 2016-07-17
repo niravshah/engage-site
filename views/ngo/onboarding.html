@@ -1,0 +1,82 @@
+{% extends '../layout.html' %}
+{%block stylesheets%}
+<link href="/css/superslides.css" rel="stylesheet">
+<link href="/css/dropzone.css" rel="stylesheet">
+{% endblock%}
+{% block content %}
+<div id="wrap">
+    <section id="ngo-onboard" class="no-padding">
+            <div id="slides">
+                <ul class="slides-container">
+                    <li>
+                        <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row md-mt-40">
+                                    <div class="col-sm-4">
+                                        <form action="/file-upload"
+                                              class="dropzone"
+                                              id="dropzone-logo"></form>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <form action="/file-upload"
+                                              class="dropzone"
+                                              id="dropzone-banner"></form>
+                                    </div>
+                                </div>
+                                <div class="row md-mt-20">
+                                    <div class="form-group">
+                                        <label for="usr">Name:</label>
+                                        <input type="text" class="form-control" id="usr">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment">Comment:</label>
+                                        <textarea maxlength="200" class="form-control" rows="5" id="comment"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 bg-color1">
+
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6 bg-color2">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="next-nav">
+                    <button id="nextbtn" type="button" class="btn btn-success">Success</button>
+                </div>
+            </div>
+    </section>
+</div>
+
+{%endblock%}
+{%block scripts%}
+<script src="/scripts/jquery.superslides.min.js"></script>
+<script src="/scripts/dropzone.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#slides').superslides();
+        $('#nextbtn').on('click', function() {
+            console.log('ss next')
+           $('#slides').superslides('animate','next');
+        });
+
+        Dropzone.options.dropzoneLogo = { dictDefaultMessage:'Upload Logo'};
+        Dropzone.options.dropzoneBanner = { dictDefaultMessage:'Upload Banner'};
+
+    });
+
+
+</script>
+{%endblock%}
