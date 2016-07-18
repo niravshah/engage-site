@@ -2,81 +2,149 @@
 {%block stylesheets%}
 <link href="/css/superslides.css" rel="stylesheet">
 <link href="/css/dropzone.css" rel="stylesheet">
+<link href="/css/fonts.css" rel="stylesheet">
+<link href="/css/bootstrap-material-design.css" rel="stylesheet">
+<link href="/css/ripples.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 {% endblock%}
 {% block content %}
 <div id="wrap">
-    <section id="ngo-onboard" class="no-padding">
-            <div id="slides">
-                <ul class="slides-container">
-                    <li>
-                        <div class="container-fluid">
+    <section id="ngo-onboard" class="no-padding" ng-app="onboardingApp">
+        <div id="slides">
+            <ul class="slides-container">
+                <li>
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="row md-mt-40">
-                                    <div class="col-sm-4">
+                            <div class="col-md-6 md-p-50">
+                                <div class="row md-mt-20">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating md-pb-20">
+                                            <label for="i5" class="control-label">Name</label>
+                                            <input type="email" class="form-control" id="i5">
+                                            <span class="help-block">Enter your NGOs name here</span>
+                                        </div>
+                                        <div class="form-group label-floating md-pb-20">
+                                            <label for="s1" class="control-label">Category</label>
+                                            <select id="s1" class="form-control">
+                                                <option value=""></option>
+                                                <option value="education">Education</option>
+                                                <option value="arts-culture">Arts & Culture</option>
+                                                <option value="medical-research">Medical Research</option>
+                                                <option value="patient-family-support">Patient and Family Support
+                                                </option>
+                                                <option value="disaster-relief-humanitarian">Disaster Relief &
+                                                    Humanitarian
+                                                </option>
+                                                <option value="peace-human-rights">Peace & Human Rights</option>
+                                                <option value="child-sponsorship">Child Sponsorship</option>
+                                                <option value="environment-conservation">Environmental Conservation &
+                                                    Protection
+                                                </option>
+                                                <option value="parks-nature">Parks and Nature Centers</option>
+                                                <option value="wildlife-conservation">Wildlife Conservation</option>
+                                                <option value="pet-animal-welfare">Pet and Animal Welfare</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label for="textArea" class="control-label">Short Introduction</label>
+                                            <textarea class="form-control" rows="10" id="textArea"></textarea>
+                                            <span class="help-block">This information will appear at the top of your NGOs profile.<br/> Use this space to tell organizations more about what you do.</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mdc-bg-blue-600">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 md-p-50">
+                                <div class="row md-mt-20">
+                                    <div class="col-md-12 md-pb-50">
+                                        <label class="md-pb-10">Upload Logo</label>
                                         <form action="/file-upload"
                                               class="dropzone"
                                               id="dropzone-logo"></form>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
+                                        <label class="md-pb-10">Upload Banner</label>
                                         <form action="/file-upload"
                                               class="dropzone"
                                               id="dropzone-banner"></form>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6 mdc-bg-blue-600">
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 md-p-30" ng-controller="teamController">
                                 <div class="row md-mt-20">
-                                    <div class="form-group">
-                                        <label for="usr">Name:</label>
-                                        <input type="text" class="form-control" id="usr">
+                                    <div class="col-md-4 form-group label-floating">
+                                        <label for="i6" class="control-label">Name</label>
+                                        <input type="email" class="form-control" id="i6">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="comment">Comment:</label>
-                                        <textarea maxlength="200" class="form-control" rows="5" id="comment"></textarea>
+                                    <div class="col-md-4 form-group label-floating">
+                                        <label for="i7" class="control-label">Email</label>
+                                        <input type="email" class="form-control" id="i7">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-primary">Upload Image</a>
+                                            <a href="javascript:void(0)" class="btn btn-success">Add</a>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="col-md-6 bg-color1">
-
-                            </div>
-                        </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6">
-                                </div>
-                                <div class="col-md-6 bg-color2">
+                                <div class="row md-mt-20">
+                                    <div ui-view="teamView"></div>
                                 </div>
                             </div>
+                            <div class="col-md-6 mdc-bg-blue-600">
+                            </div>
                         </div>
-                    </li>
-                </ul>
-                <div class="next-nav">
-                    <button id="nextbtn" type="button" class="btn btn-success">Success</button>
-                </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="next-nav">
+                <a id="nextbtn" href="#" class="btn btn-raised btn-success">Next></a>
             </div>
+        </div>
     </section>
 </div>
 
 {%endblock%}
 {%block scripts%}
-<script src="/scripts/jquery.superslides.min.js"></script>
-<script src="/scripts/dropzone.js"></script>
+<script src="/scripts/angular.min.js" type="text/javascript"></script>
+<script src="/scripts/angular-ui-router.min.js" type="text/javascript"></script>
+<script src="/scripts/jquery.superslides.min.js" type="text/javascript"></script>
+<script src="/scripts/dropzone.js" type="text/javascript"></script>
+<script src="/scripts/ripples.min.js" type="text/javascript"></script>
+<script src="/scripts/material.min.js" type="text/javascript"></script>
+<script src="/scripts/onboardingApp.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
+        $.material.init();
+        $.material.ripples();
         $('#slides').superslides();
-        $('#nextbtn').on('click', function() {
+        $('#nextbtn').on('click', function () {
             console.log('ss next')
-           $('#slides').superslides('animate','next');
+            $('#slides').superslides('animate', 'next');
         });
 
-        Dropzone.options.dropzoneLogo = { dictDefaultMessage:'Upload Logo'};
-        Dropzone.options.dropzoneBanner = { dictDefaultMessage:'Upload Banner'};
+        Dropzone.options.dropzoneLogo = {dictDefaultMessage: 'Click Here or Drop Files to Upload'};
+        Dropzone.options.dropzoneBanner = {dictDefaultMessage: 'Click Here or Drop Files to Upload'};
 
     });
-
-
 </script>
 {%endblock%}
