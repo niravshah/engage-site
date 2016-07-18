@@ -1,5 +1,15 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        Basic panel
+<div class="list-group">
+    <div ng-repeat="member in teamMembers">
+        <div class="list-group-item">
+            <div class="row-picture">
+                <img class="circle" ng-src="{[{member.avatar}]}" alt="icon">
+            </div>
+            <div class="row-content">
+                <h4 class="list-group-item-heading">{[{member.name}]}</h4>
+                <p class="list-group-item-text">{[{member.email}]}</p>
+                <p class="list-group-item-text">{[{member.designation}]}</p>
+            </div>
+        </div>
+        <div class="list-group-separator"></div> 
     </div>
 </div>

@@ -19,14 +19,19 @@ app.controller('teamController', function ($scope) {
     $scope.init = function(){
         console.log('teamController init');
     };
+    
+    $scope.addNewMember = function($scope){
+        
+    };
 
-    $scope.teamMembers = {
-        "1": {
+    $scope.teamMembers = [
+        {
             "name": "Anna Smith",
             "email": "anna.smith@email.com",
             "designation": "Corporate Relations",
-            "avatar":'/images/anna.jpg'
+            "avatar":'http://lorempixel.com/56/56/people/1g'
         }
-    }
+    ]
+    
     $scope.init();
 });
