@@ -133,6 +133,11 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     top:auto;
 }
 
+.slides-navigation a.next{
+    right:auto;
+    left:40%;
+}
+
 .next-nav{
     position: absolute;
     width: 50%;
