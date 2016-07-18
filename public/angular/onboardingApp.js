@@ -19,5 +19,14 @@ app.controller('teamController', function ($scope) {
     $scope.init = function(){
         console.log('teamController init');
     };
+
+    $scope.teamMembers = {
+        "1": {
+            "name": "Anna Smith",
+            "email": "anna.smith@email.com",
+            "designation": "Corporate Relations",
+            "avatar":'/images/anna.jpg'
+        }
+    }
     $scope.init();
 });
