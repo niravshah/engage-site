@@ -35,15 +35,18 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
 
     $scope.init = function(){
         $scope.data = {};
-        $scope.data.basicInfo = {
+        $scope.data.basicInfo = {};
+        $scope.data.teamMembers=[];
+        $scope.data.projects=[];
+        $scope.newMember = {};
+        console.log('onboardingAppController init', $scope.data)
 
-        };
-        $scope.data.teamMembers = [
+        /*$scope.data.teamMembers = [
             {
                 "name": "Anna Smith",
                 "email": "anna.smith@email.com",
                 "title": "Corporate Relations",
-                "avatar":"http://lorempixel.com/56/56/people/1g"
+                "avatar":"https://randomuser.me/api/portraits/women/49.jpg"
             }
         ];
 
@@ -54,7 +57,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
                 "title": "Corporate Relations",
                 "avatar":"http://lorempixel.com/86/86/people/1g"
             }
-        ];
+        ];*/
 
     };
 
@@ -97,6 +100,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     }
 
     $scope.addNewMember = function(){
+        console.log('addNewMember', $scope.newMember)
         $scope.data.teamMembers.push($scope.newMember);
         $scope.newMember = {};
     };
@@ -106,4 +110,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         $scope.newProject = {};
     };
 
+    $scope.remove = function(array, index){
+        array.splice(index, 1);
+    }
 }]);

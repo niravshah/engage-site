@@ -41,7 +41,7 @@
                                 <p>{[{member.email}]} - {[{member.title}]}</p>
                             </div>
                             <footer class="card-footer">
-                                <button class="btn btn-sm btn-danger btn-flat">Delete</button>
+                                <button ng-click="remove(data.projects,$index)" class="btn btn-sm btn-danger btn-flat">Delete</button>
                             </footer>
                         </div>
                     </div>
