@@ -1,15 +1,49 @@
-<div class="list-group">
-    <div ng-repeat="member in teamMembers">
-        <div class="list-group-item">
-            <div class="row-picture">
-                <img class="circle" ng-src="{[{member.avatar}]}" alt="icon">
-            </div>
-            <div class="row-content">
-                <h4 class="list-group-item-heading">{[{member.name}]}</h4>
-                <p class="list-group-item-text">{[{member.email}]}</p>
-                <p class="list-group-item-text">{[{member.designation}]}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 md-p-30">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Team Members</h4></div>
+                    <div class="panel-body">
+                        <div class="row form-group label-floating">
+                            <label for="i6" class="control-label">Name</label>
+                            <input ng-model="newMember.name" name="name" type="text" class="form-control" id="i6">
+                        </div>
+                        <div class="row form-group label-floating">
+                            <label for="i7" class="control-label">Email</label>
+                            <input ng-model="newMember.email" type="email" class="form-control" id="i7">
+                        </div>
+                        <div class="row form-group label-floating">
+                            <label for="i8" class="control-label">Title</label>
+                            <input ng-model="newMember.title" type="text" class="form-control" id="i8">
+                        </div>
+                        <div class="row form-group">
+                            <a ng-model="newMember.avatar" name="file" ngf-pattern="'image/*'"
+                               ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-sm btn-primary btn-raised">Upload Image</a>
+                            <a ng-click="addNewMember();" class="btn btn-sm btn-success btn-raised">Add</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="list-group-separator"></div> 
+        <div class="section col-md-6 mdc-bg-blue-600">
+            <div class="row md-p-50">
+                <div class="list-group" style="overflow-y: auto">
+                    <div class="well" ng-repeat="member in data.teamMembers track by $index">
+                        <div class="list-group-item">
+                            <div class="row-picture">
+                                <!--img class="circle" ng-src="{[{member.avatar}]}" alt="icon"-->
+                                <img ngf-thumbnail="member.avatar || '/thumb.jpg'" class="circle">
+                            </div>
+                            <div class="row-content">
+                                <h4 class="list-group-item-heading">{[{member.name}]}</h4>
+                                <p class="list-group-item-text">{[{member.email}]}</p>
+                                <p class="list-group-item-text">{[{member.title}]}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

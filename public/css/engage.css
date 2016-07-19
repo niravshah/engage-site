@@ -124,28 +124,21 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
 
 .slides-pagination{
     width:50%;
-    bottom: 10%;
-}
-
-.slides-navigation{
-    width:50%;
-    bottom:20%;
-    top:auto;
-}
-
-.slides-navigation a.next{
-    right:auto;
-    left:40%;
+    bottom: 5%;
 }
 
 .next-nav{
     position: absolute;
     width: 50%;
     text-align: center;
-    bottom: 15%;
+    bottom: 8%;
     z-index: 99;
 }
 
-.slides-container .col-md-6{
+.slides-container .section{
     height:100vh;
+}
+
+.img-upload-btns a{
+    float:right;
 }
