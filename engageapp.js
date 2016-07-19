@@ -1,5 +1,16 @@
+var env = process.env.NODE_ENV || 'dev'
+var config = require('./config')[env]
+console.log("ENV:", env);
+
 var express = require('express');
 var app = express();
+
+var mongoose = require('mongoose');
+mongoose.connect(config.mongoUrl);
+
+var me_config = require('./me_config')[env]
+var mongo_express = require('mongo-express/lib/middleware')
+app.use('/mongo_express', mongo_express(me_config.mongo_express_config))
 
 var logger = require('morgan');
 app.use(logger('dev'));
@@ -31,7 +42,10 @@ app.use(function(req,res,next){
 
 var routes = require('./routes/index');
 var mailjet = require('./routes/mailjet')
-var ngo = require('./routes/ngo')
+var ngo = require('./routes/ngo');
+var restify = require('./routes/restify');
+
+app.use(restify);
 app.use('/', routes);
 app.use('/', ngo);
 app.use('/',mailjet);
