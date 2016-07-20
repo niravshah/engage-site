@@ -27,43 +27,21 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();
-
         $('#slides').superslides({'pagination':false});
-        //$('#prevBtn').attr('disabled', true);
-        //$('#doneBtn').hide();
     });
 
     $scope.init = function(){
         $scope.data = {};
         $scope.data.basicInfo = {};
+        $scope.data.basicInfo.d = {};
         $scope.data.teamMembers=[];
         $scope.data.projects=[];
         $scope.newMember = {};
-        console.log('onboardingAppController init', $scope.data)
-
-        /*$scope.data.teamMembers = [
-            {
-                "name": "Anna Smith",
-                "email": "anna.smith@email.com",
-                "title": "Corporate Relations",
-                "avatar":"https://randomuser.me/api/portraits/women/49.jpg"
-            }
-        ];
-
-        $scope.data.projects = [
-            {
-                "name": "Anna Smith",
-                "email": "anna.smith@email.com",
-                "title": "Corporate Relations",
-                "avatar":"http://lorempixel.com/86/86/people/1g"
-            }
-        ];*/
-
     };
 
     $scope.init();
 
-    $scope.section1NextClicked = function(){
+    $scope.saveSection1 = function(){
         
         var files = [];
         if ($scope.data.basicInfo.banner) {
@@ -80,39 +58,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         
         $('#slides').superslides('animate', 'next');
     }
-    
-
-    $scope.ssNextClicked = function(){
-        $('#slides').superslides('animate', 'next');
-
-        var nextIndex = $('#slides').superslides('next');
-        var size = $('#slides').superslides('size')-1;
-        var prevIndex = $('#slides').superslides('prev');
-        if(nextIndex == size){
-            $('#nextBtn').attr('disabled', true);
-            $('#doneBtn').show();
-        }
-        if(prevIndex != 0){
-            $('#prevBtn').removeAttr('disabled');
-        }
-    };
-
-    $scope.ssPreviousClicked = function(){
-
-        $('#slides').superslides('animate', 'prev');
-        var prevIndex = $('#slides').superslides('prev');
-        var nextIndex = $('#slides').superslides('next');
-        var size = $('#slides').superslides('size')-1;
-
-        if(prevIndex == 0){
-            $('#prevBtn').attr('disabled', true);
-        }
-        if(nextIndex != size){
-            $('#nextBtn').removeAttr('disabled');
-            $('#doneBtn').hide();
-        }
-    };
-
+   
     $scope.ssDoneClicked = function(){
         console.log("ssDoneClicked", $scope.data);       
     };
