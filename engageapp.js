@@ -44,8 +44,10 @@ var routes = require('./routes/index');
 var mailjet = require('./routes/mailjet')
 var ngo = require('./routes/ngo');
 var restify = require('./routes/restify');
+var fileUpload = require('./routes/fileUpload');
 
 app.use(restify);
+app.use(fileUpload);
 app.use('/', routes);
 app.use('/', ngo);
 app.use('/',mailjet);

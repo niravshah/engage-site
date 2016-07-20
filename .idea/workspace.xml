@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="222f4da9-45dc-49af-97ca-84b03a55af34" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/fileUpload.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engageapp.js" afterPath="$PROJECT_DIR$/engageapp.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/onboardingApp.js" afterPath="$PROJECT_DIR$/public/angular/onboardingApp.js" />
     </list>
     <ignored path="engage-site.iws" />
@@ -25,11 +27,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="onboardingApp.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="onboardingApp.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+            <state relative-caret-position="280">
+              <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fileUpload.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/fileUpload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="engageapp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engageapp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ngo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/ngo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="31" column="24" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -112,12 +144,13 @@
         <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/me_config.js" />
         <option value="$PROJECT_DIR$/models/ngoInfo.js" />
-        <option value="$PROJECT_DIR$/engageapp.js" />
         <option value="$PROJECT_DIR$/models/ngo.js" />
         <option value="$PROJECT_DIR$/routes/restify.js" />
         <option value="$PROJECT_DIR$/public/angular/partials/teamView.html" />
         <option value="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
         <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
+        <option value="$PROJECT_DIR$/engageapp.js" />
+        <option value="$PROJECT_DIR$/routes/fileUpload.js" />
       </list>
     </option>
   </component>
@@ -751,16 +784,16 @@
       <updated>1467877711361</updated>
       <workItem from="1467877712689" duration="14800000" />
       <workItem from="1468106886309" duration="16798000" />
-      <workItem from="1468481291665" duration="40333000" />
+      <workItem from="1468481291665" duration="40905000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71931000" />
+    <option name="totallyTimeSpent" value="72503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -945,14 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/ngo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
@@ -1106,14 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engageapp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/ngo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1156,10 +1173,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/ngo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="31" column="24" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="106" column="12" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+        <state relative-caret-position="280">
+          <caret line="132" column="37" selection-start-line="132" selection-start-column="37" selection-end-line="132" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engageapp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/fileUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
           <folding />
         </state>
       </provider>
