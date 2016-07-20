@@ -63,6 +63,23 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
 
     $scope.init();
 
+    $scope.section1NextClicked = function(){
+        $('#slides').superslides('animate', 'next');
+        var files = [];
+
+        if ($scope.data.basicInfo.banner) {
+            files.push($scope.data.basicInfo.banner);
+        }
+        
+        if ($scope.data.basicInfo.logo) {
+            files.push($scope.data.basicInfo.logo);
+        }
+
+        if (files && files.length) {
+            $scope.upload(files, $scope.data.basicInfo);
+        }
+    }
+    
 
     $scope.ssNextClicked = function(){
         $('#slides').superslides('animate', 'next');
@@ -98,20 +115,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     $scope.ssDoneClicked = function(){
         console.log("ssDoneClicked", $scope.data);
 
-        var files = [];
-
-        if ($scope.data.basicInfo.banner) {
-            files.push($scope.data.basicInfo.banner);
-            //$scope.upload($scope.data.basicInfo.banner);
-        }
-        if ($scope.data.basicInfo.logo) {
-            files.push($scope.data.basicInfo.logo);
-            //$scope.upload($scope.data.basicInfo.logo);
-        }
-
-        if (files && files.length) {
-            $scope.upload(files);
-        }
+        
 
     };
 
@@ -130,7 +134,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         array.splice(index, 1);
     }
 
-    $scope.upload = function (file) {
+    $scope.upload = function (file, addMore) {
         Upload.upload({
             url: '/photos/upload',
             data: {file: file},
