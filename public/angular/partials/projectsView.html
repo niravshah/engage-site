@@ -1,9 +1,12 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 md-p-30">
-            <div class="row">
+        <div class="col-md-6 ">
+            <div class="row md-mt-20 md-ml-20 md-mb-40">
+                <img src="/images/logo.png" style="height: 40px;width: auto">
+            </div>
+            <div class="row md-p-30">
                 <div class="panel panel-primary">
-                    <div class="panel-heading md-pt-10 md-pb-10"><h4>Add New Project</h4></div>
+                    <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Projects</h4></div>
                     <div class="panel-body">
                         <div class="row form-group label-floating">
                             <label for="i6" class="control-label">Name</label>
@@ -18,11 +21,27 @@
                             <input ng-model="newProject.title" type="text" class="form-control" id="i8">
                         </div>
                         <div class="row form-group">
-                            <a ng-model="newProject.avatar" name="file" ngf-pattern="'image/*'"
-                               ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select
-                               class="btn btn-sm btn-primary btn-raised">Upload Image</a>
-                            <a ng-click="addNewProject()" class="btn btn-sm btn-success btn-raised">Add</a>
+                            <div class="col-md-6">
+                                <a ng-model="newProject.avatar" name="file" ngf-pattern="'image/*'"
+                                   ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select
+                                   class="btn btn-primary btn-raised">Upload Image</a>
+                                <p>{[{newProject.avatar}]}</p>
+                            </div>
+                            <div class="col-md-6 next-btn">
+                                <a ng-click="addNewProject()" class="btn btn-success btn-raised">Add</a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 md-mt-40 next-btn">
+                    <a ng-disabled="userForm.$invalid" ng-click="saveSection3()" href="#"
+                       class="btn btn-lg btn-raised btn-info">Done</a>
+                </div>
+                <div class="col-md-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 90%"></div>
                     </div>
                 </div>
             </div>
@@ -44,6 +63,14 @@
                                 <button ng-click="remove(data.projects,$index)" class="btn btn-sm btn-danger btn-flat">Delete</button>
                             </footer>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="md-m-40 panel panel-default br-10">
+                    <div class="panel-body">
+                        Lets start with the basics. The information you fill on the left will appear on your organizations
+                        home page. So make sure you get your Organizations details and key objectives listed down accurately.
                     </div>
                 </div>
             </div>

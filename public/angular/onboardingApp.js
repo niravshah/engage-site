@@ -41,27 +41,36 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
 
     $scope.init();
 
-    $scope.saveSection1 = function(){
-        
-        var files = [];
-        if ($scope.data.basicInfo.banner) {
-            $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
-            files.push($scope.data.basicInfo.banner);
-        }
-        
-        if ($scope.data.basicInfo.logo) {
-            $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
-            files.push($scope.data.basicInfo.logo);
-        }
+    $scope.saveSection1 = function(isValid){
+        if(isValid) {
+            var files = [];
+            if ($scope.data.basicInfo.banner) {
+                $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
+                files.push($scope.data.basicInfo.banner);
+            }
 
-        $scope.upload(files, $scope.data.basicInfo.d);
-        
-        $('#slides').superslides('animate', 'next');
-    }
-   
-    $scope.ssDoneClicked = function(){
-        console.log("ssDoneClicked", $scope.data);       
+            if ($scope.data.basicInfo.logo) {
+                $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
+                files.push($scope.data.basicInfo.logo);
+            }
+
+            $scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1');
+
+            $('#slides').superslides('animate', 'next');
+        }else{
+            console.log('Invalid Form');
+        }
     };
+
+    $scope.saveSection2 = function(){
+        $('#slides').superslides('animate', 'next');
+    };
+
+    $scope.saveSection3 = function(){
+        //$('#slides').superslides('animate', 'next');
+    };
+
+
 
     $scope.addNewMember = function(){
         console.log('addNewMember', $scope.newMember)
@@ -78,9 +87,9 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         array.splice(index, 1);
     }
 
-    $scope.upload = function (file, addMore) {
+    $scope.upload = function (file, addMore, url) {
         Upload.upload({
-            url: '/photos/upload',
+            url: url,
             data: {file: file, addData: addMore},
             arrayKey: '[]'
         }).then(function (resp) {

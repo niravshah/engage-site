@@ -96,8 +96,6 @@ content['ro'] = {
     s8_6:'Programeaza astazi un demo si afla cum te putem ajuta sa iti dezvolti angajatii.'
     };
 
-
-
 router.get('/', function (req, res) {
     res.redirect('/home')
 });

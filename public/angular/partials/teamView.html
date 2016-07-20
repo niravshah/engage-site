@@ -1,7 +1,11 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 md-p-30">
-            <div class="row">
+        <div class="col-md-7">
+            <div class="row md-mt-20 md-ml-20 md-mb-40">
+                <img src="/images/logo.png" style="height: 40px;width: auto">
+            </div>
+
+            <div class="row md-p-50">
                 <div class="panel panel-primary">
                     <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Team Members</h4></div>
                     <div class="panel-body">
@@ -18,15 +22,31 @@
                             <input ng-model="newMember.title" type="text" class="form-control" id="i8">
                         </div>
                         <div class="row form-group">
+                            <div class="col-md-6">
                             <a ng-model="newMember.avatar" name="avatar" ngf-pattern="'image/*'"
-                               ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-sm btn-primary btn-raised">Upload Image</a>
-                            <a ng-click="addNewMember();" class="btn btn-sm btn-success btn-raised">Add</a>
+                               ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
+                                <p>{[{newMember.avatar.name}]}</p>
+                            </div>
+                            <div class="col-md-6 next-btn">
+                            <a ng-click="addNewMember();" class="btn btn-success btn-raised">Add</a>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 md-mt-40 next-btn">
+                    <a ng-disabled="userForm.$invalid" ng-click="saveSection2()" href="#"
+                       class="btn btn-lg btn-raised btn-info">Next</a>
+                </div>
+                <div class="col-md-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 66.66%"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="section col-md-6 mdc-bg-blue-600">
+        <div class="section col-md-5 mdc-bg-blue-600">
             <div class="row md-p-50">
                 <div class="list-group" style="overflow-y: auto">
                     <div class="well" ng-repeat="member in data.teamMembers track by $index">
@@ -44,6 +64,14 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="md-m-40 panel panel-default br-10">
+                    <div class="panel-body">
+                        Lets start with the basics. The information you fill on the left will appear on your organizations
+                        home page. So make sure you get your Organizations details and key objectives listed down accurately.
                     </div>
                 </div>
             </div>

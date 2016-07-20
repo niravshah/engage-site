@@ -122,23 +122,25 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     float: right;
 }
 
-.slides-pagination{
-    width:50%;
-    bottom: 5%;
-}
-
-.next-nav{
-    position: absolute;
-    width: 50%;
-    text-align: center;
-    bottom: 8%;
-    z-index: 99;
-}
-
 .slides-container .section{
     height:100vh;
 }
 
-.img-upload-btns a{
+.next-btn a{
     float:right;
+}
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+
+.form-group label{
+    color:black;
+    font-size: 14px !important;
+}
+
+.br-10{
+    border-radius: 10px;
 }
