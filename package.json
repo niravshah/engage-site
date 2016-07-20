@@ -15,6 +15,7 @@
     "mongo-express": "^0.30.59",
     "mongoose": "^4.5.5",
     "morgan": "~1.6.1",
+    "multer": "^1.1.0",
     "node-mailjet": "^3.0.1",
     "serve-favicon": "~2.3.0",
     "swig": "^1.4.2"

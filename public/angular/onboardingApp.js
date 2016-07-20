@@ -97,7 +97,23 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
 
     $scope.ssDoneClicked = function(){
         console.log("ssDoneClicked", $scope.data);
-    }
+
+        var files = [];
+
+        if ($scope.data.basicInfo.banner) {
+            files.push($scope.data.basicInfo.banner);
+            //$scope.upload($scope.data.basicInfo.banner);
+        }
+        if ($scope.data.basicInfo.logo) {
+            files.push($scope.data.basicInfo.logo);
+            //$scope.upload($scope.data.basicInfo.logo);
+        }
+
+        if (files && files.length) {
+            $scope.upload(files);
+        }
+
+    };
 
     $scope.addNewMember = function(){
         console.log('addNewMember', $scope.newMember)
@@ -113,4 +129,18 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     $scope.remove = function(array, index){
         array.splice(index, 1);
     }
+
+    $scope.upload = function (file) {
+        Upload.upload({
+            url: 'upload/url',
+            data: {file: file}
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
 }]);
