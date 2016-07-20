@@ -4,26 +4,24 @@
             <div class="col-md-12">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i1" class="control-label">Name</label>
-                    <input ng-model = "data.basicInfo.name" name="name" type="text" class="form-control" id="i1">
+                    <input ng-model="data.basicInfo.name" name="name" type="text" class="form-control" id="i1">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group label-floating md-pb-20">
                     <label for="s1" class="control-label">Category</label>
-                    <select ng-model = "data.basicInfo.category" id="s1" class="form-control">
+                    <select ng-model="data.basicInfo.category" id="s1" class="form-control">
                         <option value=""></option>
                         <option value="education">Education</option>
                         <option value="arts-culture">Arts & Culture</option>
                         <option value="medical-research">Medical Research</option>
                         <option value="patient-family-support">Patient and Family Support
                         </option>
-                        <option value="disaster-relief-humanitarian">Disaster Relief &
-                            Humanitarian
+                        <option value="disaster-relief-humanitarian">Disaster Relief & Humanitarian
                         </option>
                         <option value="peace-human-rights">Peace & Human Rights</option>
                         <option value="child-sponsorship">Child Sponsorship</option>
-                        <option value="environment-conservation">Environmental Conservation &
-                            Protection
+                        <option value="environment-conservation">Environmental Conservation & Protection
                         </option>
                         <option value="parks-nature">Parks and Nature Centers</option>
                         <option value="wildlife-conservation">Wildlife Conservation</option>
@@ -35,35 +33,40 @@
             <div class="col-md-12">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i2" class="control-label">Address</label>
-                    <input ng-model = "data.basicInfo.address" name="address" type="text" class="form-control" id="i2">
+                    <input ng-model="data.basicInfo.address" name="address" type="text" class="form-control" id="i2">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i3" class="control-label">Website</label>
-                    <input ng-model = "data.basicInfo.website" name="website" type="text" class="form-control" id="i3">
+                    <input ng-model="data.basicInfo.website" name="website" type="text" class="form-control" id="i3">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i4" class="control-label">Phone Number</label>
-                    <input ng-model = "data.basicInfo.phone" name="phone" type="text" class="form-control" id="i4">
+                    <input ng-model="data.basicInfo.phone" name="phone" type="text" class="form-control" id="i4">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group label-floating">
                     <label for="bio" class="control-label">Short Introduction</label>
-                    <textarea ng-model = "data.basicInfo.bio" name="bio" class="form-control" rows="5" id="bio"></textarea>
+                    <textarea ng-model="data.basicInfo.bio" name="bio" class="form-control" rows="5" id="bio"></textarea>
                     <span class="help-block">This information will appear at the top of your NGOs profile.<br/> Use this space to tell organizations more about what you do.</span>
                 </div>
             </div>
-            <div class="col-md-12 img-upload-btns">
-                <a ng-model="data.basicInfo.banner" name="banner" ngf-pattern="'image/*'"
-                   ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                <a ng-model="data.basicInfo.logo" name="logo" ngf-pattern="'image/*'"
-                   ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
+            <div class="col-md-12 img-upload-btns md-mt-20">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p ng-if="data.basicInfo.logo">Logo Flile : {[{data.basicInfo.logo.name}]}</p>
+                        <p ng-if="data.basicInfo.banner">Banner Flile : {[{data.basicInfo.banner.name}]}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <a ng-model="data.basicInfo.banner" name="banner" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
+                        <a ng-model="data.basicInfo.logo" name="logo" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
+                    </div>
+                </div>
             </div>
-
         </div>
         <div class="section col-md-6 hidden-sm mdc-bg-blue-600">
         </div>

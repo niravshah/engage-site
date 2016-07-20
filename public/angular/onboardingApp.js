@@ -133,7 +133,8 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     $scope.upload = function (file) {
         Upload.upload({
             url: '/photos/upload',
-            data: {file: file}
+            data: {file: file},
+            arrayKey: '[]'
         }).then(function (resp) {
             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
         }, function (resp) {
