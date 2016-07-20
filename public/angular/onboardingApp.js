@@ -28,9 +28,9 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         $.material.init();
         $.material.ripples();
 
-        $('#slides').superslides();
-        $('#prevBtn').attr('disabled', true);
-        $('#doneBtn').hide();
+        $('#slides').superslides({'pagination':false});
+        //$('#prevBtn').attr('disabled', true);
+        //$('#doneBtn').hide();
     });
 
     $scope.init = function(){
@@ -64,20 +64,21 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     $scope.init();
 
     $scope.section1NextClicked = function(){
-        $('#slides').superslides('animate', 'next');
+        
         var files = [];
-
         if ($scope.data.basicInfo.banner) {
+            $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
             files.push($scope.data.basicInfo.banner);
         }
         
         if ($scope.data.basicInfo.logo) {
+            $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
             files.push($scope.data.basicInfo.logo);
         }
 
-        if (files && files.length) {
-            $scope.upload(files, $scope.data.basicInfo);
-        }
+        $scope.upload(files, $scope.data.basicInfo.d);
+        
+        $('#slides').superslides('animate', 'next');
     }
     
 
@@ -113,10 +114,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     };
 
     $scope.ssDoneClicked = function(){
-        console.log("ssDoneClicked", $scope.data);
-
-        
-
+        console.log("ssDoneClicked", $scope.data);       
     };
 
     $scope.addNewMember = function(){
@@ -137,7 +135,7 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     $scope.upload = function (file, addMore) {
         Upload.upload({
             url: '/photos/upload',
-            data: {file: file},
+            data: {file: file, addData: addMore},
             arrayKey: '[]'
         }).then(function (resp) {
             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);

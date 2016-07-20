@@ -1,16 +1,23 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 md-p-40">
-            <div class="col-md-12">
+            <div class="col-md-7">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i1" class="control-label">Name</label>
-                    <input ng-model="data.basicInfo.name" name="name" type="text" class="form-control" id="i1">
+                    <input ng-model="data.basicInfo.d.name" name="name" type="text" class="form-control" id="i1">
+                </div>
+            </div>
+             <div class="col-md-5">
+                <div class="form-group label-floating md-pb-20">
+                    <label for="i2" class="control-label">Unique Short Name</label>
+                    <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control" id="i2" required="true">
+                    <span class="help-block">This will be used to create your unique short URL</span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group label-floating md-pb-20">
                     <label for="s1" class="control-label">Category</label>
-                    <select ng-model="data.basicInfo.category" id="s1" class="form-control">
+                    <select ng-model="data.basicInfo.d.category" id="s1" class="form-control">
                         <option value=""></option>
                         <option value="education">Education</option>
                         <option value="arts-culture">Arts & Culture</option>
@@ -33,25 +40,25 @@
             <div class="col-md-12">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i2" class="control-label">Address</label>
-                    <input ng-model="data.basicInfo.address" name="address" type="text" class="form-control" id="i2">
+                    <input ng-model="data.basicInfo.d.address" name="address" type="text" class="form-control" id="i2">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i3" class="control-label">Website</label>
-                    <input ng-model="data.basicInfo.website" name="website" type="text" class="form-control" id="i3">
+                    <input ng-model="data.basicInfo.d.website" name="website" type="text" class="form-control" id="i3">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group label-floating md-pb-20">
                     <label for="i4" class="control-label">Phone Number</label>
-                    <input ng-model="data.basicInfo.phone" name="phone" type="text" class="form-control" id="i4">
+                    <input ng-model="data.basicInfo.d.phone" name="phone" type="text" class="form-control" id="i4">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group label-floating">
                     <label for="bio" class="control-label">Short Introduction</label>
-                    <textarea ng-model="data.basicInfo.bio" name="bio" class="form-control" rows="5" id="bio"></textarea>
+                    <textarea ng-model="data.basicInfo.d.bio" name="bio" class="form-control" rows="5" id="bio"></textarea>
                     <span class="help-block">This information will appear at the top of your NGOs profile.<br/> Use this space to tell organizations more about what you do.</span>
                 </div>
             </div>
@@ -62,13 +69,13 @@
                         <p ng-if="data.basicInfo.banner">Banner Flile : {[{data.basicInfo.banner.name}]}</p>
                     </div>
                     <div class="col-md-6">
-                        <a ng-model="data.basicInfo.banner" name="banner" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                        <a ng-model="data.basicInfo.logo" name="logo" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
+                        <a ng-model="data.basicInfo.banner" id="banner" name="banner" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
+                        <a ng-model="data.basicInfo.logo" id="logo" name="logo" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
-                <a ng-click = "section1NextClicked()" href="#" class="btn btn-raised btn-info">Next</a>
+                <a ng-click="section1NextClicked()" href="#" class="btn btn-raised btn-info">Next</a>
             </div>
         </div>
         <div class="section col-md-6 hidden-sm mdc-bg-blue-600">
