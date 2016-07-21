@@ -6,10 +6,8 @@ var aws = require('aws-sdk');
 var Ngo = require('../models/ngo');
 
 var s3 = new aws.S3({signatureVersion: 'v4'});
-aws.config.region = 'eu-central-1';
-//aws.config.update({accessKeyId: 'AKIAJ4D2THKELCUJJEHQ', secretAccessKey: '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'});
 
-var storage = multerS3({
+var s3Sotrage = multerS3({
     s3: s3,
     bucket: 'engage-site-nns',
     acl: 'public-read',
@@ -17,21 +15,20 @@ var storage = multerS3({
         cb(null, {fieldName: file.fieldname});
     },
     key: function (req, file, cb) {
-        //cb(null, Date.now().toString())
-        cb(null, Date.now() + '-'+ file.originalname);
+        cb(null, Date.now() + '-' + file.originalname);
     }
 });
 
-/*var storage = multer.diskStorage({
- destination: function (req, file, cb) {
- cb(null, 'uploads/')
- },
- filename: function (req, file, cb) {
- cb(null, Date.now() + '-'+ file.originalname)
- }
- });*/
+var localStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+});
 
-var upload = multer({storage: storage});
+var upload = multer({storage: s3Sotrage});
 
 router.get('/ngo/onboard', function (req, res) {
     var host = '' + req.get('host');
@@ -56,7 +53,9 @@ router.post('/ngo/onboard/section1', upload.array('file[]'), function (req, res)
         }
     }
 
-    req.body.addData.sname = req.body.addData.sname.toLowerCase().replace(/ /g, '-')
+    if(typeof req.body.addData.sname != 'undefined') {
+        req.body.addData.sname = req.body.addData.sname.toLowerCase().replace(/ /g, '-')
+    }
 
     var newNgo = new Ngo(req.body.addData);
     newNgo.save(function (err, ngo) {
