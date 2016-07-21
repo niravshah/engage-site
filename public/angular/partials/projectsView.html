@@ -5,32 +5,33 @@
                 <img src="/images/logo.png" style="height: 40px;width: auto">
             </div>
             <div class="row md-p-20">
-                <div class="col-md-8">
+                <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Projects</h4></div>
                     <div class="panel-body">
-                        <div class="row form-group label-floating">
+                        <div class="row">
+                        <div class="col-md-12 form-group label-floating">
                             <label for="name" class="control-label">Name</label>
                             <input ng-model="newProject.name" name="name" type="text" class="form-control" id="name">
                         </div>
-                        <div class="row form-group label-floating">
+                        <div class="col-md-12 form-group label-floating">
                             <label for="location" class="control-label">Location</label>
                             <input ng-model="newProject.location" type="text" class="form-control" id="location">
                         </div>
-                        <div class="row form-group label-floating">
+                        <div class="col-md-12 form-group label-floating">
                             <label for="dates" class="control-label">Dates</label>
                                 <input ng-model="newProject.dates" type="text" class="form-control" id="dates">
                         </div>
-                        <div class="row form-group label-floating">
+                        <div class="col-md-12 form-group label-floating">
                             <label for="teamSize" class="control-label">Desired Team Size</label>
                             <input ng-model="newProject.teamSize" type="text" class="form-control" id="teamSize">
                         </div>
-                        <div class="row form-group label-floating required">
+                        <div class="col-md-12 form-group label-floating required">
                             <label for="description" class="control-label">Description</label>
                         <textarea ng-model="newProject.description" name="newProject" class="form-control" rows="5"
                                   id="description" ></textarea>
                         </div>
-                        <div class="row form-group">
+                        <div class="col-md-12 form-group">
                             <div class="col-md-6">
                                 <a ng-model="newProject.avatar" name="file" ngf-pattern="'image/*'"
                                    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select
@@ -40,6 +41,7 @@
                             <div class="col-md-6 next-btn">
                                 <a ng-click="addNewProject()" class="btn btn-success btn-raised">Add</a>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
