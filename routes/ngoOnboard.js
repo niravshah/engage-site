@@ -7,7 +7,8 @@ var Ngo = require('../models/ngo');
 
 var s3 = new aws.S3({signatureVersion: 'v4'});
 aws.config.region = 'eu-central-1';
-aws.config.update({accessKeyId: 'AKIAJ4D2THKELCUJJEHQ', secretAccessKey: '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'});
+//aws.config.update({accessKeyId: 'AKIAJ4D2THKELCUJJEHQ', secretAccessKey: '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'});
+
 var storage = multerS3({
     s3: s3,
     bucket: 'engage-site-nns',
