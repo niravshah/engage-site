@@ -1,5 +1,5 @@
-.no-padding{
-    padding:0px;
+.no-padding {
+    padding: 0px;
 }
 
 .how-it-works {
@@ -122,25 +122,43 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     float: right;
 }
 
-.slides-container .section{
-    height:100vh;
+.slides-container .section {
+    height: 100vh;
 }
 
-.next-btn a{
-    float:right;
+.next-btn a {
+    float: right;
 }
 
 .required label:after {
     color: #e32;
     content: ' *';
-    display:inline;
+    display: inline;
 }
 
-.form-group label{
-    color:black;
+.form-group label {
+    color: black;
     font-size: 14px !important;
 }
 
-.br-10{
+.br-10 {
     border-radius: 10px;
+}
+
+.ngo-logo-parent {
+    position: relative;
+}
+
+.ngo-logo-child {
+    position: absolute;
+    top: -100px;
+    z-index: 99;
+    left: 40px;
+    width:200px;
+    height:200px;
+}
+
+.ngo-logo-child img{
+    width:100%;
+    height:auto;
 }
