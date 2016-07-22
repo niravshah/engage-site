@@ -54,9 +54,17 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
                 files.push($scope.data.basicInfo.logo);
             }
 
-            $scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1');
+            $scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1', function(resp,err){
+                if(err){
+                    console.log('File Upload Error')
+                }else{
+                    console.log('File Upload Success',resp);
+                    $scope.data.id = resp.data._id;
+                }
+            });
 
             $('#slides').superslides('animate', 'next');
+            
         }else{
             console.log('Invalid Form');
         }
@@ -71,7 +79,14 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
                 team[i].avatar = team[i].avatar.name;
             }
         }
-        $scope.upload(files, team,'/ngo/onboard/section2');
+        $scope.upload(files,team, '/ngo/onboard/section2/'+$scope.data.id,function(resp,err){
+            if(err){
+                console.log('File Upload Error')
+            }else{
+                console.log('File Upload Success',resp);
+            }
+        });
+
         $('#slides').superslides('animate', 'next');
     };
 
@@ -100,19 +115,16 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         array.splice(index, 1);
     }
 
-    $scope.upload = function (file, addMore, url) {
+    $scope.upload = function (file, addMore, url, cb) {
         Upload.upload({
             url: url,
             data: {file: file, addData: addMore},
             arrayKey: '[k]',
             objectKey: '[k]'
         }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            cb(resp,null);
         }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            cb(null,resp);
         });
     };
 }]);
