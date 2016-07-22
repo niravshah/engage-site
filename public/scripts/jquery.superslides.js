@@ -72,7 +72,7 @@ Superslides = function(el, options) {
         });
 
         that.css.containers();
-        that.css.images();
+        //that.css.images();
       }, 10);
     });
 

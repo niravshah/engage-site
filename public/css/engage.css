@@ -162,3 +162,8 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     width:100%;
     height:auto;
 }
+
+.ss-slide-logo{
+    height: 40px;
+    width: auto
+}
