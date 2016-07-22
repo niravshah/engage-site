@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="222f4da9-45dc-49af-97ca-84b03a55af34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/onboardingApp.js" afterPath="$PROJECT_DIR$/public/angular/onboardingApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/partials/teamView.html" afterPath="$PROJECT_DIR$/public/angular/partials/teamView.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/ngoOnboard.js" afterPath="$PROJECT_DIR$/routes/ngoOnboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.html" afterPath="$PROJECT_DIR$/views/layout.html" />
     </list>
     <ignored path="engage-site.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +25,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ngoOnboard.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3810">
+              <caret line="254" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ngoOnboard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/ngoOnboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+            <state relative-caret-position="265">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -118,7 +136,6 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/engageapp.js" />
         <option value="$PROJECT_DIR$/routes/ngo.js" />
-        <option value="$PROJECT_DIR$/views/layout.html" />
         <option value="$PROJECT_DIR$/public/css/engage.css" />
         <option value="$PROJECT_DIR$/views/ngo/landing.html" />
         <option value="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
@@ -126,6 +143,7 @@
         <option value="$PROJECT_DIR$/public/angular/partials/teamView.html" />
         <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
         <option value="$PROJECT_DIR$/routes/ngoOnboard.js" />
+        <option value="$PROJECT_DIR$/views/layout.html" />
       </list>
     </option>
   </component>
@@ -791,12 +809,12 @@
       <updated>1467877711361</updated>
       <workItem from="1467877712689" duration="14800000" />
       <workItem from="1468106886309" duration="16798000" />
-      <workItem from="1468481291665" duration="59985000" />
+      <workItem from="1468481291665" duration="60274000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91583000" />
+    <option name="totallyTimeSpent" value="91872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
@@ -810,7 +828,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5141319" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5141319" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.49275362" order="0" side_tool="false" content_ui="combo" />
@@ -924,14 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="593" column="1" selection-start-line="593" selection-start-column="1" selection-end-line="593" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="254" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1138,14 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/engage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -1213,8 +1215,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/ngoOnboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+        <state relative-caret-position="265">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3810">
+          <caret line="254" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
           <folding />
         </state>
       </provider>
