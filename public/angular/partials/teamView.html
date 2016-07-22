@@ -10,6 +10,7 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Team Members</h4></div>
                     <div class="panel-body">
+                        <form name="teamDetailsForm" novalidate>
                         <div class="row form-group label-floating">
                             <label for="i6" class="control-label">Name</label>
                             <input ng-model="newMember.name" name="name" type="text" class="form-control" id="i6">
@@ -29,16 +30,17 @@
                                 <p>{[{newMember.avatar.name}]}</p>
                             </div>
                             <div class="col-md-6 next-btn">
-                            <a ng-click="addNewMember();" class="btn btn-success btn-raised">Add</a>
+                            <a ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
                                 </div>
                         </div>
+                        </form>
                     </div>
                 </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
-                    <a ng-disabled="userForm.$invalid" ng-click="saveSection2()" href="#"
+                    <a ng-click="saveSection2()" href="#"
                        class="btn btn-lg btn-raised btn-info">Next</a>
                 </div>
                 <div class="col-md-12 md-mt-20">

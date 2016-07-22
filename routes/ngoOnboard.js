@@ -28,7 +28,8 @@ var localStorage = multer.diskStorage({
     }
 });
 
-var upload = multer({storage: s3Sotrage});
+//var upload = multer({storage: s3Sotrage});
+var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
     var host = '' + req.get('host');
@@ -45,7 +46,6 @@ router.post('/ngo/onboard/section1', upload.array('file[]'), function (req, res)
     console.log('Multer', req.files, req.body);
 
     for (var i = 0; i < req.files.length; i++) {
-        console.log('For Loop', req.files[i].originalname, req.body.addData.logo)
         if (req.files[i].originalname == req.body.addData.logo) {
             req.body.addData.logo = req.files[i].location
         } else if (req.files[i].originalname == req.body.addData.banner) {
@@ -53,7 +53,7 @@ router.post('/ngo/onboard/section1', upload.array('file[]'), function (req, res)
         }
     }
 
-    if(typeof req.body.addData.sname != 'undefined') {
+    if (typeof req.body.addData.sname != 'undefined') {
         req.body.addData.sname = req.body.addData.sname.toLowerCase().replace(/ /g, '-')
     }
 
@@ -65,5 +65,22 @@ router.post('/ngo/onboard/section1', upload.array('file[]'), function (req, res)
 
 });
 
+router.post('/ngo/onboard/section2', upload.any(), function (req, res) {
+
+    console.log('Multer', req.files, req.body);
+    var files = req.files;
+    var data = req.body;
+    for (var i = 0; i < files.length; i++) {
+        for (var k = 0; k < data.length; k++) {
+            console.log(i,k,files[i].originam)
+            if (files[i].originalname == data[k].avatar) {
+                data[k].avatar = files[i].path;
+                //data[k].avatar = files[i].location;
+            }
+        }
+    }
+
+    console.log('Section 2 : Data : Post Conversion', data);
+});
 
 module.exports = router;

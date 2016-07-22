@@ -63,6 +63,15 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
     };
 
     $scope.saveSection2 = function(){
+        var team = $scope.data.teamMembers;
+        var files = [];
+        for(var i=0 ; i<team.length;i++){
+            if(typeof team[i].avatar != 'undefined') {
+                files.push(team[i].avatar);
+                team[i].avatar = team[i].avatar.name;
+            }
+        }
+        $scope.upload(files, team,'/ngo/onboard/section2');
         $('#slides').superslides('animate', 'next');
     };
 
@@ -72,10 +81,14 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
 
 
 
-    $scope.addNewMember = function(){
-        console.log('addNewMember', $scope.newMember)
-        $scope.data.teamMembers.push($scope.newMember);
-        $scope.newMember = {};
+    $scope.addNewMember = function(isValid){
+        if(isValid) {
+            console.log('addNewMember', $scope.newMember)
+            $scope.data.teamMembers.push($scope.newMember);
+            $scope.newMember = {};
+        }else{
+            console.log('Invalid Form')
+        }
     };
 
     $scope.addNewProject = function(){
@@ -91,7 +104,8 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
         Upload.upload({
             url: url,
             data: {file: file, addData: addMore},
-            arrayKey: '[]'
+            arrayKey: '[k]',
+            objectKey: '[k]'
         }).then(function (resp) {
             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
         }, function (resp) {
