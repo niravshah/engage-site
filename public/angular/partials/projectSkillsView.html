@@ -1,0 +1,40 @@
+<div class="row">
+    <form class="md-p-20" name="projectForm" novalidate>
+        <div class="col-md-12">
+            <div class="form-group label-floating md-pb-20 required">
+                <label class="control-label">Skills Required</label>
+                <selectize config='selectizeConfig' options='selectizeSkills'
+                           ng-model="newProject.skillsRequired"></selectize>
+                <span class="help-block">Volunteers will be present on event days to help</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating md-pb-20 required">
+                <label class="control-label">Skills Gained</label>
+                <selectize config='selectizeConfig' options='selectizeSkills' ng-model="newProject.skillsGained"></selectize>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating md-pb-20 required">
+                <label for="qualifications" class="control-label">Specific Qualifications or Check
+                    Required</label>
+                <textarea ng-model="newProject.qualifications" name="qualifications"
+                      class="form-control" rows="5"
+                      id="qualifications"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12 img-upload-btns md-mt-20">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <a ui-sref="projects.home" class="btn btn-sm btn-raised btn-primary">Back</a>
+                    </div>
+                </div>
+                <div class="col-md-6 next-btn">
+                    <a ng-disabled="userForm.$invalid" ng-click="saveSection3()" href="#"
+                       class="btn btn-raised btn-info">Add Project</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
