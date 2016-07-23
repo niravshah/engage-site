@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
                 <label for="i1" class="control-label">Name</label>
-                <input ng-model="newProject.name" name="name" type="text" class="form-control" id="i1">
+                <input ng-model="newProject.name" name="name" type="text" class="form-control" id="i1" required>
             </div>
         </div>
         <div class="col-md-6">
@@ -26,9 +26,7 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
                 <label for="contact" class="control-label">NGO Contact</label>
-                <select ng-model="newProject.contact" name="contact" id="contact" class="form-control">
-                    <option ng-repeat = "contact in teamMembers" value="{[{contact.member}]}">{[{contact.member}]}</option>
-                </select>
+                <select ng-options="item as item.name for item in teamMembers track by item.email" ng-model="newProject.contact" name="contact" id="contact" class="form-control"></select>
             </div>
         </div>
         <div class="col-md-6">
@@ -76,19 +74,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
-                        <a ng-model="newProject.newProjectBanner" id="newProjectBanner" name="newProjectBanner"
+                        <a ng-model="newProject.banner" id="banner" name="banner"
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                            class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                        <a ui-sref="projects.skills" class="btn btn-sm btn-raised btn-primary">Add Skills & Qualifications</a>
-
+                        <a ui-sref="projects.skills" class="btn btn-sm btn-raised btn-primary">Add Skills &
+                            Qualifications</a>
                     </div>
                     <div class="row">
                         <span ng-if="newProject.newProjectBanner">[ Banner File : {[{data.basicInfo.banner.name}]} ]</span>
                     </div>
                 </div>
                 <div class="col-md-6 next-btn">
-                    <a ng-disabled="userForm.$invalid" ng-click="saveSection3()" href="#"
+                    <a ng-disabled="projectForm.$invalid" ng-click="addNewProject(projectForm.$valid)"
                        class="btn btn-raised btn-info">Add Project</a>
                 </div>
             </div>

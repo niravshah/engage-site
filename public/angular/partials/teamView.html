@@ -30,7 +30,7 @@
                                 <p>{[{newMember.avatar.name}]}</p>
                             </div>
                             <div class="col-md-6 next-btn">
-                            <a ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
+                            <a ng-disabled="teamDetailsForm.$invalid" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
                                 </div>
                         </div>
                         </form>
@@ -40,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
-                    <a ui-sref="projects.home" ng-click="saveSection2()" href="#"
+                    <a ui-sref="projects.home" ng-click="teamMembersNext()"
                        class="btn btn-lg btn-raised btn-info">Next</a>
                 </div>
                 <div class="col-md-12 md-mt-20">
@@ -54,16 +54,15 @@
             <div class="row md-p-50">
                 <div class="list-group" style="overflow-y: auto">
                     <div class="well" ng-repeat="member in data.teamMembers track by $index">
-                        <button type="button" class="close" aria-hidden="true" ng-click="remove(data.teamMembers,$index)">×</button>
+                        <button type="button" class="close" aria-hidden="true" ng-click="removeMember(data.teamMembers,$index,member.id)">×</button>
                         <div class="list-group-item">
                             <div class="row-picture">
-                                <img ngf-thumbnail="member.avatar || '/images/user.png'" class="circle">
+                                <img ngf-thumbnail="member.avatar" class="circle">
                             </div>
                             <div class="row-content">
                                 <h4 class="list-group-item-heading">{[{member.name}]}</h4>
                                 <p class="list-group-item-text">{[{member.email}]}</p>
                                 <p class="list-group-item-text">{[{member.title}]}</p>
-
                             </div>
                         </div>
 

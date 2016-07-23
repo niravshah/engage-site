@@ -24,6 +24,7 @@ app.use(cookieParser());
 
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
 
 var favicon = require('serve-favicon');
 app.use(favicon(path.join(__dirname, 'public/images/favicons', 'favicon.ico')));

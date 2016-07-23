@@ -9,15 +9,13 @@
                     <div class="col-md-7">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="i1" class="control-label">Name</label>
-                            <input ng-model="data.basicInfo.d.name" name="name" type="text" class="form-control" id="i1"
-                                   >
+                            <input ng-model="data.basicInfo.d.name" name="name" type="text" class="form-control" id="i1">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="sname" class="control-label">Unique Short Name</label>
-                            <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control"
-                                   id="sname" />
+                            <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control" id="sname" required />
                             <span class="help-block">This will be used to create your unique short URL</span>
                         </div>
                     </div>
@@ -68,7 +66,7 @@
                         <div class="form-group label-floating required">
                             <label for="bio" class="control-label">Your Mission Statement</label>
                         <textarea ng-model="data.basicInfo.d.bio" name="bio" class="form-control" rows="5"
-                                  id="bio" ></textarea>
+                                  id="bio"></textarea>
                             <span class="help-block">This information will appear at the top of your NGOs profile. Use this space to tell organizations more about what you do.</span>
                         </div>
                     </div>
@@ -90,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 next-btn">
-                                <a ng-disabled="userForm.$invalid" ui-sref="team" ng-click="saveSection1(userForm.$valid)" href="#"
+                                <a ng-disabled="userForm.$invalid" ui-sref="team" ng-click="saveNgo(userForm.$valid)" href="#"
                                    class="btn btn-lg btn-raised btn-info">Next</a>
                             </div>
                             <div class="col-md-12 md-mt-20">

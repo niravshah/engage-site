@@ -11,7 +11,8 @@
         <div class="col-md-12">
             <div class="form-group label-floating md-pb-20 required">
                 <label class="control-label">Skills Gained</label>
-                <selectize config='selectizeConfig' options='selectizeSkills' ng-model="newProject.skillsGained"></selectize>
+                <selectize config='selectizeConfig' options='selectizeSkills'
+                           ng-model="newProject.skillsGained"></selectize>
             </div>
         </div>
         <div class="col-md-12">
@@ -19,8 +20,8 @@
                 <label for="qualifications" class="control-label">Specific Qualifications or Check
                     Required</label>
                 <textarea ng-model="newProject.qualifications" name="qualifications"
-                      class="form-control" rows="5"
-                      id="qualifications"></textarea>
+                          class="form-control" rows="5"
+                          id="qualifications"></textarea>
             </div>
         </div>
         <div class="col-md-12 img-upload-btns md-mt-20">
@@ -29,10 +30,6 @@
                     <div class="row">
                         <a ui-sref="projects.home" class="btn btn-sm btn-raised btn-primary">Back</a>
                     </div>
-                </div>
-                <div class="col-md-6 next-btn">
-                    <a ng-disabled="userForm.$invalid" ng-click="saveSection3()" href="#"
-                       class="btn btn-raised btn-info">Add Project</a>
                 </div>
             </div>
         </div>

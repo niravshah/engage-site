@@ -31,7 +31,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
 });
 
 
-app.controller('mainInfoController', ['$scope', 'Upload', '$state', function ($scope, $rootScope, Upload, $state) {
+app.controller('mainInfoController', ['$scope', '$rootScope','Upload', function ($scope, $rootScope, Upload) {
 
 
     $scope.init = function () {
@@ -42,36 +42,36 @@ app.controller('mainInfoController', ['$scope', 'Upload', '$state', function ($s
 
     $scope.init();
 
-    $scope.saveSection1 = function (isValid) {
+    $scope.saveNgo = function (isValid) {
         if (isValid) {
-            console.log("saveSection1");
-            /*var files = [];
-             if ($scope.data.basicInfo.banner) {
-             $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
-             files.push($scope.data.basicInfo.banner);
-             }
+            var files = [];
+            if ($scope.data.basicInfo.banner) {
+                $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
+                files.push($scope.data.basicInfo.banner);
+            }
 
-             if ($scope.data.basicInfo.logo) {
-             $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
-             files.push($scope.data.basicInfo.logo);
-             }
+            if ($scope.data.basicInfo.logo) {
+                $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
+                files.push($scope.data.basicInfo.logo);
+            }
 
-             $scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1', function(resp,err){
-             if(err){
-             console.log('File Upload Error')
-             }else{
-             console.log('File Upload Success',resp);
-             $scope.data.id = resp.data._id;
-             }
-             });*/
-
+            $scope.upload(files, $scope.data.basicInfo.d, '/ngo', function (resp, err) {
+                if (err) {
+                    //console.log('File Upload Error')
+                    $.snackbar({content: "Server error while adding new NGO"});
+                } else {
+                    //console.log('File Upload Success', resp);
+                    $.snackbar({content: "Successfully created new NGO"});
+                    $rootScope.ngoId = resp.data._id;
+                }
+            })
         } else {
-            console.log('Invalid Form');
+            $.snackbar({content: "Add New NGO form is not valid"});
         }
     };
 }]);
 
-app.controller('teamViewController', ['$scope', '$state', 'Upload', function ($scope, $state, Upload) {
+app.controller('teamViewController', ['$scope','$rootScope', '$http', function ($scope, $rootScope, $http) {
 
     $scope.init = function () {
         $scope.data = {};
@@ -83,43 +83,52 @@ app.controller('teamViewController', ['$scope', '$state', 'Upload', function ($s
 
     $scope.addNewMember = function (isValid) {
         if (isValid) {
-            console.log('addNewMember', $scope.newMember)
-            $scope.data.teamMembers.push($scope.newMember);
-            $scope.newMember = {};
+            console.log('addNewMember', $scope.newMember);
+
+            var files = [];
+            if(typeof $scope.newMember.avatar != 'undefined') {
+                files.push($scope.newMember.avatar);
+                $scope.newMember.avatar = $scope.newMember.avatar.name;
+            }
+            $scope.upload(files, $scope.newMember, '/ngo/' + $rootScope.ngoId + '/members', function (resp, err) {
+                if(err){
+                    $.snackbar({content: "Server error while adding new team member"});
+                }else{
+                    $.snackbar({content: "New Team Member added successfully"});
+                    $scope.data.teamMembers.push(resp.data);
+                    $scope.newMember = {};
+                }
+            });
+
         } else {
-            console.log('Invalid Form')
+            $.snackbar({content: "Add New Team member form is not valid"});
         }
     };
 
-    $scope.saveSection2 = function () {
-        console.log("saveSection2");
-        /*var team = $scope.data.teamMembers;
-         var files = [];
-         for (var i = 0; i < team.length; i++) {
-         if (typeof team[i].avatar != 'undefined') {
-         files.push(team[i].avatar);
-         team[i].avatar = team[i].avatar.name;
-         }
-         }
-         scope.upload(files,team, '/ngo/onboard/section2/'+$scope.data.id,function(resp,err){
-         if(err){
-         console.log('File Upload Error')
-         }else{
-         console.log('File Upload Success',resp);
-         }
-         });*/
+    $scope.removeMember = function (array, index, mid) {
+        $http.delete('/ngo/'+ $rootScope.ngoId + '/members/' + mid).then(function(response){
+            array.splice(index, 1);
+        },function(error){
+            $.snackbar({content: "Server Error"});
+        });
+
     };
+    
+    $scope.teamMembersNext = function(){
+        $rootScope.teamMembers = $scope.data.teamMembers;
+    }
 
 }]);
 
-app.controller('projectsViewController', ['$scope', '$state', 'Upload', function ($scope, $state, Upload) {
+app.controller('projectsViewController', ['$scope', '$rootScope', '$http',function ($scope, $rootScope, $http) {
     $scope.init = function () {
         console.log('projectsViewController init');
         $scope.data = {};
         $scope.data.projects = [];
         $scope.newProject = {};
+        $scope.teamMembers = $rootScope.teamMembers;
     };
-    
+
     $scope.selectizeSkills = [
         {id: 1, title: 'Leadership'},
         {id: 2, title: 'Listening'},
@@ -128,7 +137,7 @@ app.controller('projectsViewController', ['$scope', '$state', 'Upload', function
         {id: 5, title: 'Teamwork'},
         {id: 6, title: 'Organising'}
     ];
-    
+
     $scope.selectizeConfig = {
         plugins: ['remove_button'],
         create: false,
@@ -140,13 +149,37 @@ app.controller('projectsViewController', ['$scope', '$state', 'Upload', function
 
     $scope.init();
 
-    $scope.addNewProject = function () {
-        $scope.data.projects.push($scope.newProject);
-        $scope.newProject = {};
+    $scope.addNewProject = function (isValid){
+        if (isValid) {
+            //console.log('addNewProject', $scope.newProject);
+            var files = [];
+            if(typeof $scope.newProject.banner != 'undefined') {
+                files.push($scope.newProject.banner);
+                $scope.newProject.banner = $scope.newProject.banner.name;
+            }
+            $scope.upload(files, $scope.newProject, '/ngo/' + $rootScope.ngoId + '/projects', function (resp, err) {
+                if(err){
+                    $.snackbar({content: "Server error while adding new Project"});
+                }else{
+                    $.snackbar({content: "New Project added successfully"});
+                    $scope.data.projects.push(resp.data);
+                    $scope.newProject = {};
+                }
+            });
+
+        } else {
+            $.snackbar({content: "Add New Project member form is not valid"});
+        }
+
     };
 
-    $scope.saveSection3 = function () {
-        $state.go('team')
+    $scope.removeProject = function (array, index, mid) {
+        $http.delete('/ngo/'+ $rootScope.ngoId + '/projects/' + mid).then(function(response){
+            array.splice(index, 1);
+        },function(error){
+            $.snackbar({content: "Server Error"});
+        });
+
     };
 
 }]);
@@ -157,10 +190,6 @@ app.controller('onboardingAppController', ['$scope', '$state', 'Upload', functio
         $.material.init();
         $.material.ripples();
     });
-
-    $scope.remove = function (array, index) {
-        array.splice(index, 1);
-    };
 
     $scope.upload = function (file, addMore, url, cb) {
         Upload.upload({
