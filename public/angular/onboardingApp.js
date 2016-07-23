@@ -1,4 +1,4 @@
-var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload','selectize']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -24,6 +24,26 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
 
 app.controller('onboardingAppController', ['$scope', 'Upload', function ($scope, Upload) {
 
+    $scope.myModel = 1;
+
+    $scope.myOptions = [
+        {id: 1, title: 'Spectrometer'},
+        {id: 2, title: 'Star Chart'},
+        {id: 3, title: 'Laser Pointer'}
+    ];
+
+    $scope.myConfig = {
+        plugins: ['remove_button'],
+        create: true,
+        valueField: 'id',
+        labelField: 'title',
+        delimiter: '|',
+        placeholder: 'Pick something',
+        onInitialize: function(selectize){
+            // receives the selectize object as an argument
+        },
+        // maxItems: 1
+    };
 
     angular.element(document).ready(function () {
         $.material.init();

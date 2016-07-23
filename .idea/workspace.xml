@@ -4,7 +4,7 @@
     <list default="true" id="222f4da9-45dc-49af-97ca-84b03a55af34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/onboardingApp.js" afterPath="$PROJECT_DIR$/public/angular/onboardingApp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/partials/projectsView.html" afterPath="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/bootstrap-material-design.css" afterPath="$PROJECT_DIR$/public/css/bootstrap-material-design.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ngo/onboarding.html" afterPath="$PROJECT_DIR$/views/ngo/onboarding.html" />
     </list>
     <ignored path="engage-site.iws" />
@@ -27,14 +27,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="onboardingApp.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="onboardingApp.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="134" column="26" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="26" />
+            <state relative-caret-position="-962">
+              <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
               <folding>
-                <marker date="1469267950000" expanded="true" signature="880:939" ph="{...}" />
+                <marker date="1469282631000" expanded="true" signature="1412:1471" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap-material-design.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/bootstrap-material-design.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6159">
+              <caret line="3413" column="1" selection-start-line="3413" selection-start-column="1" selection-end-line="3413" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -42,20 +52,20 @@
       <file leaf-file-name="projectsView.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/angular/partials/projectsView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
+            <state relative-caret-position="-1257">
+              <caret line="17" column="95" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="onboarding.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="onboarding.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/ngo/onboarding.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="271">
+              <caret line="38" column="116" selection-start-line="38" selection-start-column="116" selection-end-line="38" selection-end-column="116" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +84,7 @@
       <file leaf-file-name="mainInfoView.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/angular/partials/mainInfoView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
+            <state relative-caret-position="363">
               <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
               <folding>
                 <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
@@ -135,8 +145,9 @@
         <option value="$PROJECT_DIR$/public/angular/partials/addSkills.html" />
         <option value="$PROJECT_DIR$/public/scripts/custom.js" />
         <option value="$PROJECT_DIR$/views/index.html" />
-        <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
         <option value="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
+        <option value="$PROJECT_DIR$/public/css/bootstrap-material-design.css" />
+        <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
         <option value="$PROJECT_DIR$/views/ngo/onboarding.html" />
       </list>
     </option>
@@ -277,6 +288,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engage-site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engage-site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,12 +850,12 @@
       <updated>1467877711361</updated>
       <workItem from="1467877712689" duration="14800000" />
       <workItem from="1468106886309" duration="16798000" />
-      <workItem from="1468481291665" duration="68879000" />
+      <workItem from="1468481291665" duration="71572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100477000" />
+    <option name="totallyTimeSpent" value="103170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
@@ -1013,14 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/bootstrap-material-design.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="1569" column="18" selection-start-line="1569" selection-start-column="17" selection-end-line="1569" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/partials/shortIntroView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1187,16 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/partials/mainInfoView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
-          <folding>
-            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -1221,10 +1232,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/bootstrap-material-design.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6159">
+          <caret line="3413" column="1" selection-start-line="3413" selection-start-column="1" selection-end-line="3413" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/partials/projectsView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
+        <state relative-caret-position="-1257">
+          <caret line="17" column="95" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="95" />
           <folding />
         </state>
       </provider>
@@ -1237,22 +1256,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/ngo/onboarding.html">
+    <entry file="file://$PROJECT_DIR$/public/angular/partials/mainInfoView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="363">
+          <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="134" column="26" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="26" />
+        <state relative-caret-position="-962">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
           <folding>
-            <marker date="1469267950000" expanded="true" signature="880:939" ph="{...}" />
+            <marker date="1469282631000" expanded="true" signature="1412:1471" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/ngo/onboarding.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="38" column="116" selection-start-line="38" selection-start-column="116" selection-end-line="38" selection-end-column="116" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
