@@ -83,6 +83,28 @@ router.post('/ngo/onboard/section2/:id', upload.any(), function (req, res) {
             }
         }
     }
+
+
+    Ngo.findOne({_id:id},function(err,ngo){
+        if(err){
+            res.status(500).json({'Error':err});
+        }else{
+            console.log(data);
+            ngo.teamMembers = data;
+            console.log('Updated Ngo', ngo);
+            ngo.save(function(err,ngo){
+                if(err) {
+                    res.status(500).json({'Error': err});
+                }
+                else{
+                    res.json(ngo);
+                }
+            })
+        }
+    });
+
+
+    
 });
 
 module.exports = router;

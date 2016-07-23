@@ -1,65 +1,92 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 ">
+        <div class="col-md-7 ">
             <div class="row md-mt-20 md-ml-20 md-mb-20">
                 <img src="/images/logo.png" style="height: 40px;width: auto">
             </div>
-            <div class="row md-p-20">
-                <div class="col-md-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Projects</h4></div>
-                    <div class="panel-body">
-                        <div class="row">
-                        <div class="col-md-12 form-group label-floating">
-                            <label for="name" class="control-label">Name</label>
-                            <input ng-model="newProject.name" name="name" type="text" class="form-control" id="name">
+            <div class="row">
+                <form class="md-p-20" name="projectForm" novalidate>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="i1" class="control-label">Name</label>
+                            <input ng-model="newProject.name" name="name" type="text" class="form-control" id="i1">
                         </div>
-                        <div class="col-md-12 form-group label-floating">
-                            <label for="location" class="control-label">Location</label>
-                            <input ng-model="newProject.location" type="text" class="form-control" id="location">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="contact" class="control-label">NGO Contact</label>
+                            <select ng-model="newProject.contact" name="contact" id="contact" class="form-control">
+                                <option ng-repeat = "contact in teamMembers" value="{[{contact.member}]}">{[{contact.member}]}</option>
+                            </select>
                         </div>
-                        <div class="col-md-12 form-group label-floating">
-                            <label for="dates" class="control-label">Dates</label>
-                                <input ng-model="newProject.dates" type="text" class="form-control" id="dates">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="location" class="control-label">Event Address</label>
+                            <input ng-model="newProject.location" name="location" type="text" class="form-control"
+                                   id="location"/>
                         </div>
-                        <div class="col-md-12 form-group label-floating">
-                            <label for="teamSize" class="control-label">Desired Team Size</label>
-                            <input ng-model="newProject.teamSize" type="text" class="form-control" id="teamSize">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="managingTeam" class="control-label">Managing Team Size</label>
+                            <select ng-model="newProject.managingTeam" name="managingTeam" id="managingTeam"
+                                    class="form-control">
+                                <option value="0">0</option>
+                                <option value="education">1-2</option>
+                                <option value="arts-culture">2-5</option>
+                                <option value="medical-research">5-10</option>
+                            </select>
+                            <span class="help-block">Managing Team will help you manage the project and arrange the events</span>
                         </div>
-                        <div class="col-md-12 form-group label-floating required">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="volunteers" class="control-label">Volunteers Needed</label>
+                            <select ng-model="newProject.volunteers" name="volunteers" id="volunteers"
+                                    class="form-control">
+                                <option value="0">0</option>
+                                <option value="education">1-5</option>
+                                <option value="arts-culture">5-10</option>
+                                <option value="medical-research">10-15</option>
+                                <option value="medical-research">15-20</option>
+                            </select>
+                            <span class="help-block">Volunteers will be present on event days to help</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating required">
                             <label for="description" class="control-label">Description</label>
-                        <textarea ng-model="newProject.description" name="newProject" class="form-control" rows="5"
-                                  id="description" ></textarea>
+                        <textarea ng-model="newProject.description" name="description" class="form-control" rows="8"
+                                  id="description"></textarea>
                         </div>
-                        <div class="col-md-12 form-group">
+                    </div>
+                    <div class="col-md-12 img-upload-btns md-mt-20">
+                        <div class="row">
                             <div class="col-md-6">
-                                <a ng-model="newProject.avatar" name="file" ngf-pattern="'image/*'"
-                                   ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select
-                                   class="btn btn-primary btn-raised">Upload Image</a>
-                                <p>{[{newProject.avatar}]}</p>
+                                <div class="row">
+                                    <a ng-model="newProject.newProjectBanner" id="newProjectBanner" name="newProjectBanner"
+                                       ngf-pattern="'image/*'"
+                                       ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
+                                       class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
+                                    <a ng-model="data.basicInfo.banner" id="banner" name="banner"
+                                       class="btn btn-sm btn-raised btn-primary">Add Skills</a>
+
+                                </div>
+                                <div class="row">
+                                    <span ng-if="newProject.newProjectBanner">[ Banner File : {[{data.basicInfo.banner.name}]} ]</span>
+                                </div>
                             </div>
                             <div class="col-md-6 next-btn">
-                                <a ng-click="addNewProject()" class="btn btn-success btn-raised">Add</a>
+                                <a ng-disabled="userForm.$invalid" ng-click="saveSection1(userForm.$valid)" href="#"
+                                   class="btn btn-raised btn-info">Add Project</a>
                             </div>
                         </div>
-                        </div>
                     </div>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 md-mt-40 next-btn">
-                    <a ng-disabled="userForm.$invalid" ng-click="saveSection3()" href="#"
-                       class="btn btn-lg btn-raised btn-info">Done</a>
-                </div>
-                <div class="col-md-12 md-mt-20">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-        <div class="section col-md-6 mdc-bg-blue-600">
+        <div class="section col-md-5 mdc-bg-blue-600">
             <div class="row md-p-10">
                 <div class="col-md-6 col-sm-4" ng-repeat="member in data.projects track by $index">
                     <div class="card">
@@ -73,7 +100,10 @@
                                 <p>{[{member.email}]} - {[{member.title}]}</p>
                             </div>
                             <footer class="card-footer">
-                                <button ng-click="remove(data.projects,$index)" class="btn btn-sm btn-danger btn-flat">Delete</button>
+                                <button ng-click="remove(data.projects,$index)"
+                                        class="btn btn-sm btn-danger btn-flat">
+                                    Delete
+                                </button>
                             </footer>
                         </div>
                     </div>
@@ -82,8 +112,10 @@
             <div class="row">
                 <div class="md-m-40 panel panel-default br-10">
                     <div class="panel-body">
-                        Lets start with the basics. The information you fill on the left will appear on your organizations
-                        home page. So make sure you get your Organizations details and key objectives listed down accurately.
+                        Lets start with the basics. The information you fill on the left will appear on your
+                        organizations
+                        home page. So make sure you get your Organizations details and key objectives listed down
+                        accurately.
                     </div>
                 </div>
             </div>

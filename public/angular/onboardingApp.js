@@ -1,4 +1,4 @@
-var app = angular.module('onboardingApp', ['ui.router','ngFileUpload']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -10,39 +10,41 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
                 'teamView': {
                     templateUrl: '/angular/partials/teamView.html'
                 },
-                'mainInfoView':{
-                    templateUrl :'/angular/partials/mainInfoView.html'
+                'mainInfoView': {
+                    templateUrl: '/angular/partials/mainInfoView.html'
                 },
                 'projectsView': {
                     templateUrl: '/angular/partials/projectsView.html'
                 }
             }
         })
+
 });
 
 
-app.controller('onboardingAppController', ['$scope','Upload', function ($scope, Upload) {
+app.controller('onboardingAppController', ['$scope', 'Upload', function ($scope, Upload) {
 
 
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();
-        $('#slides').superslides({'pagination':false});
+        $('#slides').superslides({'pagination': false});
     });
 
-    $scope.init = function(){
+    $scope.init = function () {
         $scope.data = {};
         $scope.data.basicInfo = {};
         $scope.data.basicInfo.d = {};
-        $scope.data.teamMembers=[];
-        $scope.data.projects=[];
+        $scope.data.teamMembers = [];
+        $scope.data.projects = [];
         $scope.newMember = {};
+        $scope.newProject = {};
     };
 
     $scope.init();
 
-    $scope.saveSection1 = function(isValid){
-        if(isValid) {
+    $scope.saveSection1 = function (isValid) {
+        if (isValid) {
             var files = [];
             if ($scope.data.basicInfo.banner) {
                 $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
@@ -54,64 +56,63 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
                 files.push($scope.data.basicInfo.logo);
             }
 
-            $scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1', function(resp,err){
-                if(err){
-                    console.log('File Upload Error')
-                }else{
-                    console.log('File Upload Success',resp);
-                    $scope.data.id = resp.data._id;
-                }
-            });
+            /*$scope.upload(files, $scope.data.basicInfo.d,'/ngo/onboard/section1', function(resp,err){
+             if(err){
+             console.log('File Upload Error')
+             }else{
+             console.log('File Upload Success',resp);
+             $scope.data.id = resp.data._id;
+             }
+             });*/
 
             $('#slides').superslides('animate', 'next');
-            
-        }else{
+
+        } else {
             console.log('Invalid Form');
         }
     };
 
-    $scope.saveSection2 = function(){
+    $scope.saveSection2 = function () {
         var team = $scope.data.teamMembers;
         var files = [];
-        for(var i=0 ; i<team.length;i++){
-            if(typeof team[i].avatar != 'undefined') {
+        for (var i = 0; i < team.length; i++) {
+            if (typeof team[i].avatar != 'undefined') {
                 files.push(team[i].avatar);
                 team[i].avatar = team[i].avatar.name;
             }
         }
-        $scope.upload(files,team, '/ngo/onboard/section2/'+$scope.data.id,function(resp,err){
-            if(err){
-                console.log('File Upload Error')
-            }else{
-                console.log('File Upload Success',resp);
-            }
-        });
+        /* $scope.upload(files,team, '/ngo/onboard/section2/'+$scope.data.id,function(resp,err){
+         if(err){
+         console.log('File Upload Error')
+         }else{
+         console.log('File Upload Success',resp);
+         }
+         });*/
 
         $('#slides').superslides('animate', 'next');
     };
 
-    $scope.saveSection3 = function(){
+    $scope.saveSection3 = function () {
         //$('#slides').superslides('animate', 'next');
     };
 
 
-
-    $scope.addNewMember = function(isValid){
-        if(isValid) {
+    $scope.addNewMember = function (isValid) {
+        if (isValid) {
             console.log('addNewMember', $scope.newMember)
             $scope.data.teamMembers.push($scope.newMember);
             $scope.newMember = {};
-        }else{
+        } else {
             console.log('Invalid Form')
         }
     };
 
-    $scope.addNewProject = function(){
+    $scope.addNewProject = function () {
         $scope.data.projects.push($scope.newProject);
         $scope.newProject = {};
     };
 
-    $scope.remove = function(array, index){
+    $scope.remove = function (array, index) {
         array.splice(index, 1);
     }
 
@@ -122,9 +123,9 @@ app.controller('onboardingAppController', ['$scope','Upload', function ($scope, 
             arrayKey: '[k]',
             objectKey: '[k]'
         }).then(function (resp) {
-            cb(resp,null);
+            cb(resp, null);
         }, function (resp) {
-            cb(null,resp);
+            cb(null, resp);
         });
     };
 }]);
