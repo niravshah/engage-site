@@ -128,4 +128,11 @@ app.controller('onboardingAppController', ['$scope', 'Upload', function ($scope,
             cb(null, resp);
         });
     };
+
+    $scope.showAddSkillsModla = function(){
+        //Use modal popups to display messages
+        //$('#modalMessage .modal-title').html('<i class="icon icon-envelope-open"></i>' + data);
+        $('#addSkillsModal').modal('show');
+
+    }
 }]);

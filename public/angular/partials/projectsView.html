@@ -6,12 +6,29 @@
             </div>
             <div class="row">
                 <form class="md-p-20" name="projectForm" novalidate>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="i1" class="control-label">Name</label>
                             <input ng-model="newProject.name" name="name" type="text" class="form-control" id="i1">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="category" class="control-label">Category</label>
+                            <select ng-model="newProject.category" name="category" id="category"
+                                    class="form-control">
+                                <option value="none"></option>
+                                <option value="education">Teaching</option>
+                                <option value="arts-culture">Training</option>
+                                <option value="medical-research">Coaching</option>
+                                <option value="medical-research">Youth Work</option>
+                                <option value="medical-research">Conservation</option>
+                                <option value="medical-research">DIY / Odd Jobs</option>
+                                <option value="medical-research">Community Service</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="col-md-6">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="contact" class="control-label">NGO Contact</label>
@@ -54,7 +71,7 @@
                             <span class="help-block">Volunteers will be present on event days to help</span>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 md-mt-20">
                         <div class="form-group label-floating required">
                             <label for="description" class="control-label">Description</label>
                         <textarea ng-model="newProject.description" name="description" class="form-control" rows="8"
@@ -69,8 +86,7 @@
                                        ngf-pattern="'image/*'"
                                        ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                                        class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                                    <a ng-model="data.basicInfo.banner" id="banner" name="banner"
-                                       class="btn btn-sm btn-raised btn-primary">Add Skills</a>
+                                    <a ng-click="showAddSkillsModla()" class="btn btn-sm btn-raised btn-primary">Add Skills & Qualifications</a>
 
                                 </div>
                                 <div class="row">

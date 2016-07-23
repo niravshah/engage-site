@@ -1,12 +1,14 @@
-{% extends '../layout.html' %} {%block stylesheets%}
+{% extends '../layout.html' %}
+{% block stylesheets%}
 <link href="/css/superslides.css" rel="stylesheet">
 <link href="/css/fonts.css" rel="stylesheet">
 <link href="/css/bootstrap-material-design.css" rel="stylesheet">
 <link href="/css/ripples.css" rel="stylesheet">
-<!--link href="/css/jquery.dropdown.css" rel="stylesheet"-->
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 <link rel="stylesheet" type="text/css"
-      href="//fonts.googleapis.com/icon?family=Material+Icons">{% endblock%} {% block content %}
+      href="//fonts.googleapis.com/icon?family=Material+Icons">
+{% endblock%}
+{% block content %}
 <div id="wrap" ng-app="onboardingApp" >
     <section id="ngo-onboard" class="no-padding" ng-controller="onboardingAppController">
         <div id="slides" style="overflow: auto">
@@ -23,6 +25,60 @@
             </ul>
         </div>
     </section>
+    <!-- MODALS BEGIN-->
+    <div class="modal" id="addSkillsModal">
+        <div class="modal-dialog" style="width:800px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Add Skills & Qualifications</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="skillsRequired" class="control-label">Skills Required</label>
+                            <select ng-model="newProject.skillsRequired" name="skillsRequired" id="skillsRequired"
+                                    class="form-control">
+                                <option value="0">0</option>
+                                <option value="education">1-5</option>
+                                <option value="arts-culture">5-10</option>
+                                <option value="medical-research">10-15</option>
+                                <option value="medical-research">15-20</option>
+                            </select>
+                            <span class="help-block">Volunteers will be present on event days to help</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="skillsGained" class="control-label">Skills Gained</label>
+                            <select ng-model="newProject.skillsGained" name="skillsGained" id="skillsGained"
+                                    class="form-control">
+                                <option value="0">0</option>
+                                <option value="education">1-5</option>
+                                <option value="arts-culture">5-10</option>
+                                <option value="medical-research">10-15</option>
+                                <option value="medical-research">15-20</option>
+                            </select>
+                            <span class="help-block">Volunteers will be present on event days to help</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="qualifications" class="control-label">Specific Qualifications or Check Required</label>
+                                <textarea ng-model="newProject.qualifications" name="qualifications" class="form-control" rows="8"
+                                          id="qualifications"></textarea>
+                            <span class="help-block">Volunteers will be present on event days to help</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODALS END-->
 </div>
 {%endblock%} {%block scripts%}
 <script src="/scripts/angular.min.js" type="text/javascript"></script>
@@ -31,6 +87,5 @@
 <script src="/scripts/jquery.superslides.js" type="text/javascript"></script>
 <script src="/scripts/ripples.min.js" type="text/javascript"></script>
 <script src="/scripts/material.min.js" type="text/javascript"></script>
-<!--script src="/scripts/jquery.dropdown.js" type="text/javascript"></script-->
 <script src="/angular/onboardingApp.js" type="text/javascript"></script>
 {%endblock%}
