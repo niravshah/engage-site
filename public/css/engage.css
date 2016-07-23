@@ -122,7 +122,7 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     float: right;
 }
 
-.slides-container .section {
+.slides-container-section {
     height: 100vh;
 }
 
