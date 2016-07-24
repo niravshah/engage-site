@@ -171,3 +171,18 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
 .ng-invalid-name-exists{
     color:red;
 }
+.section-header{
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #cecbcb;
+}
+
+.onboarding-done-btn{
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+}

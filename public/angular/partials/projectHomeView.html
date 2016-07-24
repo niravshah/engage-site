@@ -53,23 +53,6 @@
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="form-group label-floating md-pb-20 required">
-                <label  class="control-label">Managing Team Size</label>
-                <selectize config='szTeamConfig' options='managingTeamSize' ng-model="newProject.managingTeam" name="managingTeam"
-                        class="form-control"></selectize>
-                <span class="help-block">Managing Team will help you manage the project and arrange the events</span>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group label-floating md-pb-20 required">
-                <label class="control-label">Volunteers Needed</label>
-                <selectize config='szTeamConfig' options='volunteerTeamSize' ng-model="newProject.volunteers" name="volunteers"
-                        class="form-control">
-                </selectize>
-                <span class="help-block">Volunteers will be present on event days to help</span>
-            </div>
-        </div>
         <div class="col-md-12 md-mt-20">
             <div class="form-group label-floating required">
                 <label for="description" class="control-label">Description</label>
@@ -85,8 +68,7 @@
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                            class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                        <a ui-sref="projects.skills" class="btn btn-sm btn-raised btn-primary">Add Skills &
-                            Qualifications</a>
+                        <a ui-sref="projects.skills" class="btn btn-sm btn-raised btn-primary">Add Team Requirements</a>
                     </div>
                     <div class="row">
                         <span ng-if="newProject.newProjectBanner">[ Banner File : {[{data.basicInfo.banner.name}]} ]</span>
