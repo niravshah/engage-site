@@ -1,4 +1,4 @@
-var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize','ui.bootstrap.datetimepicker']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -30,8 +30,13 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
         });
 });
 
+app.value('selectizeConfig',{
+    plugins: ['remove_button'],
+    create: false,
+    delimiter: ','
+});
 
-app.controller('mainInfoController', ['$scope', '$rootScope','Upload', function ($scope, $rootScope, Upload) {
+app.controller('mainInfoController', ['$scope', '$rootScope', 'Upload', function ($scope, $rootScope, Upload) {
 
 
     $scope.init = function () {
@@ -71,7 +76,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope','Upload', function 
     };
 }]);
 
-app.controller('teamViewController', ['$scope','$rootScope', '$http', function ($scope, $rootScope, $http) {
+app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
     $scope.init = function () {
         $scope.data = {};
@@ -86,14 +91,14 @@ app.controller('teamViewController', ['$scope','$rootScope', '$http', function (
             console.log('addNewMember', $scope.newMember);
 
             var files = [];
-            if(typeof $scope.newMember.avatar != 'undefined') {
+            if (typeof $scope.newMember.avatar != 'undefined') {
                 files.push($scope.newMember.avatar);
                 $scope.newMember.avatar = $scope.newMember.avatar.name;
             }
             $scope.upload(files, $scope.newMember, '/ngo/' + $rootScope.ngoId + '/members', function (resp, err) {
-                if(err){
+                if (err) {
                     $.snackbar({content: "Server error while adding new team member"});
-                }else{
+                } else {
                     $.snackbar({content: "New Team Member added successfully"});
                     $scope.data.teamMembers.push(resp.data);
                     $scope.newMember = {};
@@ -106,61 +111,100 @@ app.controller('teamViewController', ['$scope','$rootScope', '$http', function (
     };
 
     $scope.removeMember = function (array, index, mid) {
-        $http.delete('/ngo/'+ $rootScope.ngoId + '/members/' + mid).then(function(response){
+        $http.delete('/ngo/' + $rootScope.ngoId + '/members/' + mid).then(function (response) {
             array.splice(index, 1);
-        },function(error){
+        }, function (error) {
             $.snackbar({content: "Server Error"});
         });
 
     };
-    
-    $scope.teamMembersNext = function(){
+
+    $scope.teamMembersNext = function () {
         $rootScope.teamMembers = $scope.data.teamMembers;
     }
 
 }]);
 
-app.controller('projectsViewController', ['$scope', '$rootScope', '$http',function ($scope, $rootScope, $http) {
+app.controller('projectsViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
     $scope.init = function () {
         console.log('projectsViewController init');
         $scope.data = {};
         $scope.data.projects = [];
         $scope.newProject = {};
+        $scope.newProject.eDate = new Date();
+        $scope.newProject.sDate = new Date();
         $scope.teamMembers = $rootScope.teamMembers;
     };
 
-    $scope.selectizeSkills = [
-        {id: 1, title: 'Leadership'},
-        {id: 2, title: 'Listening'},
-        {id: 3, title: 'Talking to Others'},
-        {id: 4, title: 'Reading & Writing'},
-        {id: 5, title: 'Teamwork'},
-        {id: 6, title: 'Organising'}
+    $scope.szSkills = [
+        {id: 'leadership', value: 'Leadership'},
+        {id: 'listening', value: 'Listening'},
+        {id: 'talking-to-others', value: 'Talking to Others'},
+        {id: 'reading-and-writing', value: 'Reading & Writing'},
+        {id: 'teamwork', value: 'Teamwork'},
+        {id: 'organising', value: 'Organising'}
     ];
 
-    $scope.selectizeConfig = {
-        plugins: ['remove_button'],
-        create: false,
+    $scope.szCategoryConfig = {
+        valueField: 'id',
+        labelField: 'value',
+        placeholder: 'Select Category'
+    };
+    $scope.szCategory = [
+        {id: 'education', value: 'Teaching'},
+        {id: 'arts-culture', value: 'Training'},
+        {id: 'medical-research', value: 'Coaching'},
+        {id: 'medical-research', value: 'Youth Work'},
+        {id: 'medical-research', value: 'Conservation'},
+        {id: 'medical-research', value: 'DIY / Odd Jobs'},
+        {id: 'medical-research', value: 'Community Service'}
+    ];
+
+    $scope.szSkillsConfig = {
         valueField: 'id',
         labelField: 'title',
-        delimiter: '|',
         placeholder: 'Pick something'
     };
 
+    $scope.szContactConfig = {
+        valueField: 'email',
+        labelField: 'name',
+        placeholder: 'Select Contact'
+    };
+
+    $scope.szTeamConfig = {
+        valueField: 'id',
+        labelField: 'value',
+        placeholder: 'Select Team Size',
+        maxItems:1
+    };
+
+    $scope.managingTeamSize = [
+        {id:'1-2',value:'1-2'},
+        {id:'2-5',value:'2-5'},
+        {id:'5-10',value:'5-10'},
+    ];
+
+    $scope.volunteerTeamSize = [
+        {id:'1-2',value:'1-2'},
+        {id:'2-5',value:'2-5'},
+        {id:'5-10',value:'5-10'},
+    ];
+
     $scope.init();
 
-    $scope.addNewProject = function (isValid){
+    $scope.addNewProject = function (isValid) {
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
             var files = [];
-            if(typeof $scope.newProject.banner != 'undefined') {
+            if (typeof $scope.newProject.banner != 'undefined') {
                 files.push($scope.newProject.banner);
                 $scope.newProject.banner = $scope.newProject.banner.name;
             }
             $scope.upload(files, $scope.newProject, '/ngo/' + $rootScope.ngoId + '/projects', function (resp, err) {
-                if(err){
+                if (err) {
                     $.snackbar({content: "Server error while adding new Project"});
-                }else{
+                } else {
                     $.snackbar({content: "New Project added successfully"});
                     $scope.data.projects.push(resp.data);
                     $scope.newProject = {};
@@ -174,13 +218,18 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http',functi
     };
 
     $scope.removeProject = function (array, index, mid) {
-        $http.delete('/ngo/'+ $rootScope.ngoId + '/projects/' + mid).then(function(response){
+        $http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
             array.splice(index, 1);
-        },function(error){
+        }, function (error) {
             $.snackbar({content: "Server Error"});
         });
 
     };
+
+    $scope.inputOnTimeSet = function(newDate,oldDate){
+        console.log('inputOnTimeSet',newDate,oldDate);
+        $('#dLabel1').dropdown('toggle');
+    }
 
 }]);
 

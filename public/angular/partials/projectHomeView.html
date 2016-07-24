@@ -8,25 +8,18 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="category" class="control-label">Category</label>
-                <select ng-model="newProject.category" name="category" id="category"
+                <label class="control-label">Category</label>
+                <selectize config='szCategoryConfig' options='szCategory' ng-model="newProject.category" name="category"
                         class="form-control">
-                    <option value="none"></option>
-                    <option value="education">Teaching</option>
-                    <option value="arts-culture">Training</option>
-                    <option value="medical-research">Coaching</option>
-                    <option value="medical-research">Youth Work</option>
-                    <option value="medical-research">Conservation</option>
-                    <option value="medical-research">DIY / Odd Jobs</option>
-                    <option value="medical-research">Community Service</option>
-                </select>
+                </selectize>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="contact" class="control-label">NGO Contact</label>
-                <select ng-options="item as item.name for item in teamMembers track by item.email" ng-model="newProject.contact" name="contact" id="contact" class="form-control"></select>
+                <label class="control-label">NGO Contact</label>
+                <selectize config='szContactConfig' options='teamMembers'
+                           ng-model="newProject.contact"></selectize>
             </div>
         </div>
         <div class="col-md-6">
@@ -36,37 +29,51 @@
                        id="location"/>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label class="control-label">Event Start Date </label>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.sDate | date:'yyyy-MM-dd'}]}</a>
+                <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
+                    <datetimepicker data-ng-model="newProject.sDate"
+                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' ,minView:'day'}"></datetimepicker>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label class="control-label">Event End Date</label>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.eDate | date:'yyyy-MM-dd'}]}</a>
+                <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="newProject.eDate"
+                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView:'day' }"></datetimepicker>
+                </ul>
+            </div>
+        </div>
+
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="managingTeam" class="control-label">Managing Team Size</label>
-                <select ng-model="newProject.managingTeam" name="managingTeam" id="managingTeam"
-                        class="form-control">
-                    <option value="0">0</option>
-                    <option value="education">1-2</option>
-                    <option value="arts-culture">2-5</option>
-                    <option value="medical-research">5-10</option>
-                </select>
+                <label  class="control-label">Managing Team Size</label>
+                <selectize config='szTeamConfig' options='managingTeamSize' ng-model="newProject.managingTeam" name="managingTeam"
+                        class="form-control"></selectize>
                 <span class="help-block">Managing Team will help you manage the project and arrange the events</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="volunteers" class="control-label">Volunteers Needed</label>
-                <select ng-model="newProject.volunteers" name="volunteers" id="volunteers"
+                <label class="control-label">Volunteers Needed</label>
+                <selectize config='szTeamConfig' options='volunteerTeamSize' ng-model="newProject.volunteers" name="volunteers"
                         class="form-control">
-                    <option value="0">0</option>
-                    <option value="education">1-5</option>
-                    <option value="arts-culture">5-10</option>
-                    <option value="medical-research">10-15</option>
-                    <option value="medical-research">15-20</option>
-                </select>
+                </selectize>
                 <span class="help-block">Volunteers will be present on event days to help</span>
             </div>
         </div>
         <div class="col-md-12 md-mt-20">
             <div class="form-group label-floating required">
                 <label for="description" class="control-label">Description</label>
-                        <textarea ng-model="newProject.description" name="description" class="form-control" rows="8"
+                        <textarea ng-model="newProject.description" name="description" class="form-control" rows="6"
                                   id="description"></textarea>
             </div>
         </div>

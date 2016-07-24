@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="form-group label-floating md-pb-20 required">
                 <label class="control-label">Skills Required</label>
-                <selectize config='selectizeConfig' options='selectizeSkills'
+                <selectize config='szSkillsConfig' options='szSkills'
                            ng-model="newProject.skillsRequired"></selectize>
                 <span class="help-block">Volunteers will be present on event days to help</span>
             </div>
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="form-group label-floating md-pb-20 required">
                 <label class="control-label">Skills Gained</label>
-                <selectize config='selectizeConfig' options='selectizeSkills'
+                <selectize config='szSkillsConfig' options='szSkills'
                            ng-model="newProject.skillsGained"></selectize>
             </div>
         </div>
