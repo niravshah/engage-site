@@ -42,6 +42,24 @@ router.get('/ngo/onboard', function (req, res) {
 
 });
 
+router.post('/ngo/checksname', function (req, resp) {
+    var sname = req.body.sname;
+    sname = sname.toLowerCase().replace(/ /g, '-');
+    Ngo.findOne({sname: sname}, function (err, ngo) {
+        if (err) {
+            console.log('Error:', err);
+            resp.json({isNameValid: true});
+        }
+        if (ngo) {
+            console.log('Ngo', ngo);
+            resp.json({isNameValid: false});
+        }else{
+            console.log('No Ngo, No Error');
+            resp.json({isNameValid: true});
+        }
+    });
+});
+
 router.post('/ngo', upload.any(), function (req, res) {
 
     //console.log('Multer', req.files, req.body);
@@ -80,7 +98,7 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
     data.id = sid.generate();
 
     for (var i = 0; i < files.length; i++) {
-        console.log(files[i].originalname,data.avatar);
+        console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.avatar) {
             data.avatar = '/' + files[i].path;
             //data.avatar = files[i].location;
@@ -98,7 +116,7 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.teamMembers[origSize+1]);
+                    res.json(ngo.teamMembers[origSize + 1]);
                 }
             })
         }
@@ -106,7 +124,7 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
 
 });
 
-router.delete('/ngo/:id/members/:mid',function(req,res){
+router.delete('/ngo/:id/members/:mid', function (req, res) {
 
     var id = req.params.id;
     var mid = req.params.mid;
@@ -114,14 +132,14 @@ router.delete('/ngo/:id/members/:mid',function(req,res){
         if (err) {
             res.status(500).json({'Error': err});
         } else {
-            var spliceIndex=-1;
-            for(var i =0; i<ngo.teamMembers.length; i++){
-                if(ngo.teamMembers[i].id == mid){
+            var spliceIndex = -1;
+            for (var i = 0; i < ngo.teamMembers.length; i++) {
+                if (ngo.teamMembers[i].id == mid) {
                     spliceIndex = i;
                 }
             }
-            if(spliceIndex >-1){
-                ngo.teamMembers.splice(spliceIndex,1)
+            if (spliceIndex > -1) {
+                ngo.teamMembers.splice(spliceIndex, 1)
             }
 
             console.log('Updated Ngo', ngo);
@@ -148,9 +166,9 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     data.id = sid.generate();
 
     for (var i = 0; i < files.length; i++) {
-        console.log(files[i].originalname,data.avatar);
+        console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
-            data.banner = '/'+files[i].path;
+            data.banner = '/' + files[i].path;
             //data.banner = files[i].location;
         }
     }
@@ -166,7 +184,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.projects[origSize+1]);
+                    res.json(ngo.projects[origSize + 1]);
                 }
             })
         }
@@ -174,7 +192,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
 
 });
 
-router.delete('/ngo/:id/projects/:mid',function(req,res){
+router.delete('/ngo/:id/projects/:mid', function (req, res) {
 
     var id = req.params.id;
     var mid = req.params.mid;
@@ -183,14 +201,14 @@ router.delete('/ngo/:id/projects/:mid',function(req,res){
         if (err) {
             res.status(500).json({'Error': err});
         } else {
-            var spliceIndex=-1;
-            for(var i =0; i<ngo.projects.length; i++){
-                if(ngo.projects[i].id == mid){
+            var spliceIndex = -1;
+            for (var i = 0; i < ngo.projects.length; i++) {
+                if (ngo.projects[i].id == mid) {
                     spliceIndex = i;
                 }
             }
-            if(spliceIndex >-1){
-                ngo.projects.splice(spliceIndex,1)
+            if (spliceIndex > -1) {
+                ngo.projects.splice(spliceIndex, 1)
             }
 
             //console.log('Updated Ngo', ngo);

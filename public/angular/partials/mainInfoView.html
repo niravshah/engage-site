@@ -15,8 +15,13 @@
                     <div class="col-md-5">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="sname" class="control-label">Unique Short Name</label>
-                            <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control" id="sname" required />
-                            <span class="help-block">This will be used to create your unique short URL</span>
+                            <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control" id="sname"
+                                   ng-model-options="{ updateOn: 'blur' }" ui-validate-async="{nameExists:'checkNameUnique($value, userForm.sname.$dirty)'}" required />
+                            <ng-messages for="userForm.sname.$error" ng-if="userForm.sname.$dirty" multiple>
+                                <ng-message when="required">Short Name is Required</ng-message>
+                                <ng-message when="nameExists">This Short Name Exists</ng-message>
+                            </ng-messages>
+
                         </div>
                     </div>
                     <div class="col-md-12">

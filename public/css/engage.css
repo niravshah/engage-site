@@ -167,3 +167,7 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     height: 40px;
     width: auto
 }
+
+.ng-invalid-name-exists{
+    color:red;
+}

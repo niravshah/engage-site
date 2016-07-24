@@ -1,4 +1,4 @@
-var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize','ui.bootstrap.datetimepicker']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate','ngMessages']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -30,13 +30,13 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
         });
 });
 
-app.value('selectizeConfig',{
+app.value('selectizeConfig', {
     plugins: ['remove_button'],
     create: false,
     delimiter: ','
 });
 
-app.controller('mainInfoController', ['$scope', '$rootScope', 'Upload', function ($scope, $rootScope, Upload) {
+app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', function ($scope, $rootScope, $http, $q) {
 
 
     $scope.init = function () {
@@ -74,7 +74,31 @@ app.controller('mainInfoController', ['$scope', '$rootScope', 'Upload', function
             $.snackbar({content: "Add New NGO form is not valid"});
         }
     };
-}]);
+
+    $scope.checkNameUnique = function (sname, isDirty) {
+
+        if (isDirty) {
+            return $q(function (resolve, reject) {
+                $http.post('/ngo/checksname', {sname: sname}).then(function (resp) {
+                    if (resp.data.isNameValid) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+
+                }, function (err) {
+                    reject()
+                });
+            });
+        }
+        else {
+            return true;
+        }
+
+    }
+
+}])
+;
 
 app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
@@ -176,19 +200,19 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
         valueField: 'id',
         labelField: 'value',
         placeholder: 'Select Team Size',
-        maxItems:1
+        maxItems: 1
     };
 
     $scope.managingTeamSize = [
-        {id:'1-2',value:'1-2'},
-        {id:'2-5',value:'2-5'},
-        {id:'5-10',value:'5-10'},
+        {id: '1-2', value: '1-2'},
+        {id: '2-5', value: '2-5'},
+        {id: '5-10', value: '5-10'},
     ];
 
     $scope.volunteerTeamSize = [
-        {id:'1-2',value:'1-2'},
-        {id:'2-5',value:'2-5'},
-        {id:'5-10',value:'5-10'},
+        {id: '1-2', value: '1-2'},
+        {id: '2-5', value: '2-5'},
+        {id: '5-10', value: '5-10'},
     ];
 
     $scope.init();
@@ -226,8 +250,8 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
 
     };
 
-    $scope.inputOnTimeSet = function(newDate,oldDate){
-        console.log('inputOnTimeSet',newDate,oldDate);
+    $scope.inputOnTimeSet = function (newDate, oldDate) {
+        console.log('inputOnTimeSet', newDate, oldDate);
         $('#dLabel1').dropdown('toggle');
     }
 
