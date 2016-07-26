@@ -5,9 +5,9 @@ var content = {};
 
 content['en'] = {
     s1_1: 'EMPLOYEE ENGAGEMENT',
-    s1_2: 'THROUGH MANAGED CSR',
+    s1_2: 'THROUGH MANAGED CSR PROJECTS',
     s2_1: 'Develop employees by grooming key professional skills & personal strengths.',
-    s2_2: 'Give back to your local community through managed CSR Projects.',
+    s2_2: 'Give back to your local community through managed Community Service Projects.',
     s2_3: 'Retain key talent by boosting employee attachment and pride in your organizations brand.',
     s3_1: 'Meet Engage',
     s3_2: 'Our platform for Employee Development through managed Community Service Projects.',

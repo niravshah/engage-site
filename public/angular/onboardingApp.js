@@ -25,7 +25,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
             templateUrl: '/angular/partials/projectHomeView.html'
         })
         .state('projects.skills', {
-            url: '/skills',
+            url: '/team',
             templateUrl: '/angular/partials/projectSkillsView.html'
         });
 });
@@ -160,6 +160,12 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
         $scope.teamMembers = $rootScope.teamMembers;
     };
 
+    $scope.szSkillsConfig = {
+        valueField: 'id',
+        labelField: 'value',
+        placeholder: 'Pick Skills'
+    };
+
     $scope.szSkills = [
         {id: 'leadership', value: 'Leadership'},
         {id: 'listening', value: 'Listening'},
@@ -177,18 +183,13 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
     $scope.szCategory = [
         {id: 'education', value: 'Teaching'},
         {id: 'arts-culture', value: 'Training'},
-        {id: 'medical-research', value: 'Coaching'},
-        {id: 'medical-research', value: 'Youth Work'},
-        {id: 'medical-research', value: 'Conservation'},
-        {id: 'medical-research', value: 'DIY / Odd Jobs'},
-        {id: 'medical-research', value: 'Community Service'}
+        {id: 'coaching', value: 'Coaching'},
+        {id: 'youth-work', value: 'Youth Work'},
+        {id: 'conservation', value: 'Conservation'},
+        {id: 'diy-odd-jobs', value: 'DIY / Odd Jobs'},
+        {id: 'communit-services', value: 'Community Service'}
     ];
 
-    $scope.szSkillsConfig = {
-        valueField: 'id',
-        labelField: 'title',
-        placeholder: 'Pick something'
-    };
 
     $scope.szContactConfig = {
         valueField: 'email',
@@ -206,13 +207,13 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
     $scope.managingTeamSize = [
         {id: '1-2', value: '1-2'},
         {id: '2-5', value: '2-5'},
-        {id: '5-10', value: '5-10'},
+        {id: '5-10', value: '5-10'}
     ];
 
     $scope.volunteerTeamSize = [
         {id: '1-2', value: '1-2'},
         {id: '2-5', value: '2-5'},
-        {id: '5-10', value: '5-10'},
+        {id: '5-10', value: '5-10'}
     ];
 
     $scope.init();

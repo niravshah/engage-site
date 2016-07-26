@@ -18,14 +18,19 @@ router.get('/ngo', function (req, res) {
     }
 });
 
-router.get('/ngo/:id', function (req, res) {
+router.get('/ngo/:id', function (req, res, next) {
 
     Ngo.findOne({'sname': req.params.id}, function (err, ngo) {
         if (err) {
             res.status(500).json({'Error': err});
         }
-        res.render('ngo/landing', ngo);
+        else if (ngo) {
+            res.render('ngo/landing', ngo);
+        } else {
+            next();
+        }
     });
+
 });
 
 module.exports = router;
