@@ -29,8 +29,8 @@ var localStorage = multer.diskStorage({
     }
 });
 
-//var upload = multer({storage: s3Sotrage});
-var upload = multer({storage: localStorage});
+var upload = multer({storage: s3Sotrage});
+//var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
     var host = '' + req.get('host');
@@ -67,11 +67,11 @@ router.post('/ngo', upload.any(), function (req, res) {
     for (var i = 0; i < req.files.length; i++) {
         console.log(i, req.files[i].originalname, req.body.addData.logo, req.body.addData.banner, req.files[i].path)
         if (req.files[i].originalname == req.body.addData.logo) {
-            //req.body.addData.logo = req.files[i].location
-            req.body.addData.logo = '/' + req.files[i].path
+            req.body.addData.logo = req.files[i].location
+            //req.body.addData.logo = '/' + req.files[i].path
         } else if (req.files[i].originalname == req.body.addData.banner) {
-            //req.body.addData.banner = req.files[i].location
-            req.body.addData.banner = '/' + req.files[i].path
+            req.body.addData.banner = req.files[i].location
+            //req.body.addData.banner = '/' + req.files[i].path
         }
     }
 
@@ -100,8 +100,8 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
     for (var i = 0; i < files.length; i++) {
         console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.avatar) {
-            data.avatar = '/' + files[i].path;
-            //data.avatar = files[i].location;
+            //data.avatar = '/' + files[i].path;
+            data.avatar = files[i].location;
         }
     }
 
@@ -168,8 +168,8 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     for (var i = 0; i < files.length; i++) {
         console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
-            data.banner = '/' + files[i].path;
-            //data.banner = files[i].location;
+            //data.banner = '/' + files[i].path;
+            data.banner = files[i].location;
         }
     }
 
