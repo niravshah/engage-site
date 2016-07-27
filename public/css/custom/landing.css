@@ -49,10 +49,6 @@ section{
     margin-bottom: 40px;
 }
 
-.filler{
-    background-color: #ccd9fe;
-}
-
-.filler :after{
+.filler, .filler:after, .filler:before{
     background-color: #ccd9fe;
 }
