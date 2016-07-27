@@ -33,3 +33,13 @@ section{
     height:200px;
     background: #dcd9d9;
 }
+
+.project-container{
+    -moz-box-shadow:    2px 2px 5px 6px #ccc;
+    -webkit-box-shadow: 2px 2px 5px 6px #ccc;
+    box-shadow:         2px 2px 5px 6px #ccc;
+    height:200px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+

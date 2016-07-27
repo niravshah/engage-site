@@ -67,14 +67,37 @@
         <div class="md-m-50 md-p-10">
         </div>
         <section>
-            {{bio}}
+            <div class="row">
+                <div class="col-md-8">
+                    {{bio}}
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        {{address}}
+                    </div>
+                    <div class="row">
+                        {{website}}
+                    </div>
+                    <div class="row">
+                        {{phone}}
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-lg btn-info btn-raised">Request Activity Report</button>
+                    </div>
+                </div>
+            </div>
         </section>
         <section>
             <div class="row">
                 <div class="col-md-8">
                     <div class="row md-mb-50">
                         <div class="col-md-12">
-                        <h3>Projects</h3>
+                            <h3>Projects</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="project-container"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -103,46 +126,46 @@
 
                 </div>
                 <div class="col-md-4">
-                    <div class="row">
-                        <div class="md-mb-50">
-                            <h3>Team Members</h3>
-                        </div>
-                        <div class="list-group">
-                            {% for member in teamMembers %}
-                            <div class="well list-group-item" ng-repeat="member in teamMembers">
-                                {% if member.avatar %}
-                                <div class="row-picture">
-                                    <img src="{{member.avatar}}" class="circle">
-                                </div>
-                                {% endif %}
-                                <div class="row-content">
-                                    <h4 class="list-group-item-heading">{{member.name}}</h4>
-                                    <p class="list-group-item-text">{{member.email}}</p>
-                                    <p class="list-group-item-text">{{member.title}}</p>
-                                </div>
+
+                    <div class="md-mb-50">
+                        <h3>Team Members</h3>
+                    </div>
+                    <div class="list-group">
+                        {% for member in teamMembers %}
+                        <div class="well list-group-item" ng-repeat="member in teamMembers">
+                            {% if member.avatar %}
+                            <div class="row-picture">
+                                <img src="{{member.avatar}}" class="circle">
                             </div>
-                            {% endfor %}
+                            {% endif %}
+                            <div class="row-content">
+                                <h4 class="list-group-item-heading">{{member.name}}</h4>
+                                <p class="list-group-item-text">{{member.email}}</p>
+                                <p class="list-group-item-text">{{member.title}}</p>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-        </section>
+</div>
+</section>
 
-        <footer id="footer-center" class="text-center bg-color1 dark-bg">
-            <div class="container">
-                <ul class="soc-list sep-bottom">
-                    <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
-                    </li>
-                    <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
-                    </li>
-                    <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
-                    </li>
-                </ul>
-                <p class="editContent">© 2016 Engage Within
-                    <br>
-                    <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
-            </div>
-        </footer>
+<footer id="footer-center" class="text-center bg-color1 dark-bg">
+    <div class="container">
+        <ul class="soc-list sep-bottom">
+            <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
+            </li>
+            <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
+            </li>
+            <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
+            </li>
+        </ul>
+        <p class="editContent">© 2016 Engage Within
+            <br>
+            <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
+    </div>
+</footer>
 </div>
 <!-- /#wrap -->
 
