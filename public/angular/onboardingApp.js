@@ -2,10 +2,10 @@ var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selecti
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    $urlRouterProvider.otherwise('welcome');
+    $urlRouterProvider.otherwise('/basic');
     $stateProvider
         .state('home', {
-            url: '/welcome',
+            url: '/basic',
             templateUrl: '/angular/partials/mainInfoView.html',
             controller: 'mainInfoController'
         })
@@ -42,7 +42,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', fun
     $scope.init = function () {
         $scope.data = {};
         $scope.data.basicInfo = {};
-        $scope.data.basicInfo.d = {};
+        $scope.data.basicInfo.d = $rootScope.d || {};
     };
 
     $scope.init();
@@ -66,11 +66,11 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', fun
                     $.snackbar({content: "Server error while adding new NGO"});
                 } else {
                     //console.log('File Upload Success', resp);
-                    $.snackbar({content: "Successfully created new NGO"});
+                    $.snackbar({content: "Basic Details Updated"});
                     $rootScope.ngoId = resp.data._id;
                     $rootScope.sname = resp.data.sname;
                 }
-            })
+            });
         } else {
             $.snackbar({content: "Add New NGO form is not valid"});
         }
@@ -105,7 +105,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
     $scope.init = function () {
         $scope.data = {};
-        $scope.data.teamMembers = [];
+        $scope.data.teamMembers = $rootScope.d.teamMembers || [];
         $scope.newMember = {};
     };
 
@@ -113,7 +113,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
     $scope.addNewMember = function (isValid) {
         if (isValid) {
-            console.log('addNewMember', $scope.newMember);
+            //console.log('addNewMember', $scope.newMember);
 
             var files = [];
             if (typeof $scope.newMember.avatar != 'undefined') {
@@ -144,6 +144,15 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
     };
 
+    $scope.editMember = function(array,index,mid){
+        $http.delete('/ngo/' + $rootScope.ngoId + '/members/' + mid).then(function (response) {
+            $scope.newMember = array[index];
+            array.splice(index, 1);
+        }, function (error) {
+            $.snackbar({content: "Server Error"});
+        });
+    };
+
     $scope.teamMembersNext = function () {
         $rootScope.teamMembers = $scope.data.teamMembers;
     }
@@ -152,12 +161,13 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
 app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
     $scope.init = function () {
-        console.log('projectsViewController init');
-        $scope.data = {};
-        $scope.data.projects = [];
+        //console.log('projectsViewController init');
+
         $scope.newProject = {};
         $scope.newProject.eDate = new Date();
         $scope.newProject.sDate = new Date();
+        $scope.data = {};
+        $scope.data.projects = $rootScope.d.projects || {};
         $scope.teamMembers = $rootScope.teamMembers;
     };
 
@@ -252,10 +262,20 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
 
     };
 
+    $scope.editProject = function (array, index, mid) {
+        $http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
+            $scope.newProject = array[index];
+            array.splice(index, 1);
+        }, function (error) {
+            $.snackbar({content: "Server Error"});
+        });
+
+    };
+
     $scope.inputOnTimeSet = function (newDate, oldDate) {
-        console.log('inputOnTimeSet', newDate, oldDate);
+        //console.log('inputOnTimeSet', newDate, oldDate);
         $('#dLabel1').dropdown('toggle');
-    }
+    };
 
     $scope.doneButtonClicked = function(){
         $window.location.href = '/ngo/' + $rootScope.sname;
@@ -263,7 +283,18 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
 
 }]);
 
-app.controller('onboardingAppController', ['$scope', '$state', 'Upload', function ($scope, $state, Upload) {
+app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', '$location', function ($scope,$rootScope, $state, Upload, $http, $location) {
+
+    $scope.init = function(){
+        $rootScope.sname = $('#server-sname').val();
+        if($rootScope.sname != ""){
+            $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
+                $rootScope.d = resp.data;
+                $rootScope.ngoId = resp.data._id;
+            });
+        }
+    };
+    $scope.init();
 
     angular.element(document).ready(function () {
         $.material.init();

@@ -33,13 +33,20 @@ var upload = multer({storage: s3Sotrage});
 //var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
-    var host = '' + req.get('host');
-    if (host.indexOf('ro') > -1) {
         res.render('ngo/onboarding');
-    } else {
-        res.render('ngo/onboarding');
-    }
+});
 
+
+router.get('/ngo/:sname/edit',function(req,res){
+    var sname = req.params.sname;
+    Ngo.findOne({sname: sname}, function (err, ngo) {
+        if (ngo) {
+            res.render('ngo/onboarding', ngo);
+        }else{
+            res.render('ngo/onboarding');
+        }
+
+    });
 });
 
 router.post('/ngo/checksname', function (req, resp) {
@@ -47,14 +54,14 @@ router.post('/ngo/checksname', function (req, resp) {
     sname = sname.toLowerCase().replace(/ /g, '-');
     Ngo.findOne({sname: sname}, function (err, ngo) {
         if (err) {
-            console.log('Error:', err);
+            //console.log('Error:', err);
             resp.json({isNameValid: true});
         }
         if (ngo) {
-            console.log('Ngo', ngo);
+            //console.log('Ngo', ngo);
             resp.json({isNameValid: false});
-        }else{
-            console.log('No Ngo, No Error');
+        } else {
+            //console.log('No Ngo, No Error');
             resp.json({isNameValid: true});
         }
     });
@@ -65,7 +72,7 @@ router.post('/ngo', upload.any(), function (req, res) {
     //console.log('Multer', req.files, req.body);
 
     for (var i = 0; i < req.files.length; i++) {
-        console.log(i, req.files[i].originalname, req.body.addData.logo, req.body.addData.banner, req.files[i].path)
+        //console.log(i, req.files[i].originalname, req.body.addData.logo, req.body.addData.banner, req.files[i].path)
         if (req.files[i].originalname == req.body.addData.logo) {
             req.body.addData.logo = req.files[i].location
             //req.body.addData.logo = '/' + req.files[i].path
@@ -79,11 +86,20 @@ router.post('/ngo', upload.any(), function (req, res) {
         req.body.addData.sname = req.body.addData.sname.toLowerCase().replace(/ /g, '-')
     }
 
-    var newNgo = new Ngo(req.body.addData);
-    newNgo.save(function (err, ngo) {
-        if (err) res.status(500).json({"Error": err})
-        else res.json(ngo)
-    });
+    if(typeof req.body.addData._id != 'undefined'){
+
+        Ngo.findOneAndUpdate({_id:req.body.addData._id},{$set:req.body.addData},function(err,doc){
+            if (err) res.status(500).json({"Error": err});
+            else res.json(doc)
+        });
+
+    }else{
+        var newNgo = new Ngo(req.body.addData);
+        newNgo.save(function (err, ngo) {
+            if (err) res.status(500).json({"Error": err})
+            else res.json(ngo)
+        });
+    }
 
 });
 
@@ -98,7 +114,7 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
     data.id = sid.generate();
 
     for (var i = 0; i < files.length; i++) {
-        console.log(files[i].originalname, data.avatar);
+        //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.avatar) {
             //data.avatar = '/' + files[i].path;
             data.avatar = files[i].location;
@@ -142,7 +158,7 @@ router.delete('/ngo/:id/members/:mid', function (req, res) {
                 ngo.teamMembers.splice(spliceIndex, 1)
             }
 
-            console.log('Updated Ngo', ngo);
+            //console.log('Updated Ngo', ngo);
             ngo.save(function (err, ngo) {
                 if (err) {
                     res.status(500).json({'Error': err});
@@ -166,7 +182,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     data.id = sid.generate();
 
     for (var i = 0; i < files.length; i++) {
-        console.log(files[i].originalname, data.avatar);
+        //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
             //data.banner = '/' + files[i].path;
             data.banner = files[i].location;

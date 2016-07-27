@@ -12,6 +12,7 @@
 {% block content %}
 <div id="wrap" ng-app="onboardingApp" >
     <section id="ngo-onboard" class="no-padding" ng-controller="onboardingAppController">
+        <input id="server-sname" type="hidden" value="{{sname}}">
         <div ui-view></div>
     </section>
 </div>
