@@ -18,6 +18,12 @@ section{
 .ngo-logo-child img{
     width:100%;
     height:auto;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .banner-bg{
