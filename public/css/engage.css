@@ -145,24 +145,6 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
     border-radius: 10px;
 }
 
-.ngo-logo-parent {
-    position: relative;
-}
-
-.ngo-logo-child {
-    position: absolute;
-    top: -100px;
-    z-index: 99;
-    left: 40px;
-    width:200px;
-    height:200px;
-}
-
-.ngo-logo-child img{
-    width:100%;
-    height:auto;
-}
-
 .ss-slide-logo{
     height: 40px;
     width: auto

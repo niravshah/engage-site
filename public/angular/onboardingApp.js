@@ -68,6 +68,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', fun
                     //console.log('File Upload Success', resp);
                     $.snackbar({content: "Successfully created new NGO"});
                     $rootScope.ngoId = resp.data._id;
+                    $rootScope.sname = resp.data.sname;
                 }
             })
         } else {
@@ -149,7 +150,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
 }]);
 
-app.controller('projectsViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$window', function ($scope, $rootScope, $http, $window) {
     $scope.init = function () {
         console.log('projectsViewController init');
         $scope.data = {};
@@ -187,7 +188,7 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
         {id: 'youth-work', value: 'Youth Work'},
         {id: 'conservation', value: 'Conservation'},
         {id: 'diy-odd-jobs', value: 'DIY / Odd Jobs'},
-        {id: 'communit-services', value: 'Community Service'}
+        {id: 'community-services', value: 'Community Service'}
     ];
 
 
@@ -255,6 +256,10 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', funct
         console.log('inputOnTimeSet', newDate, oldDate);
         $('#dLabel1').dropdown('toggle');
     }
+
+    $scope.doneButtonClicked = function(){
+        $window.location.href = '/ngo/' + $rootScope.sname;
+    };
 
 }]);
 

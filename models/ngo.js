@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 var ngoInfoSchema = new Schema({
     name: {type: String},
     sname: {type: String},
+    bio: {type: String},
     category: {type: String},
     website: {type: String},
     address: {type: String},

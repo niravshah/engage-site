@@ -1,13 +1,18 @@
 {% extends '../layout.html' %}
 
 {%block stylesheets%}
+
+
+<link href="/css/fonts.css" rel="stylesheet">
 <link href="/css/style.css" rel="stylesheet">
+<link href="/css/bootstrap-material-design.css" rel="stylesheet">
+<link href="/css/custom/landing.css" rel="stylesheet">
 {%endblock%}
 
 {% block content %}
 <div class="container">
     <!-- NAVIGATION -->
-    <nav class="navbar bg-color3 navbar-fixed-top navbar-static-top" src="/images/logo.png">
+    <!--nav class="navbar bg-color3 navbar-fixed-top navbar-static-top" src="/images/logo.png">
         <div class="container">
             <a class="navbar-brand goto" href="#home">
                 <img src="/images/logo.png" height="30" alt="Engage">
@@ -35,49 +40,117 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav-->
 
-    <header id="ngo-home" class="intro-block bg-color1 dark-bg text-center md-pt-50 md-pb-50">
-        <div class="container">
-            <div class="slogan">
-                <img src="/images/icon.png" alt="logo" class="md-mt-20 md-mb-40">
-                <h2 class="big-title"><b>{{name}}</b></h2>
+    {% if banner %}
+    <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('{{banner}}')">
+        {% else %}
+        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50"
+                style="background-image: url('/images/bg10.jpg')">
+            {% endif %}
+            <div class="container">
+                <div class="slogan">
+                    <img src="/images/icon.png" alt="logo" class="md-mt-20 md-mb-40">
+                    <h2 class="big-title"><b>{{name}}</b></h2>
+                </div>
+            </div>
+        </header>
+        <div class="ngo-logo-parent">
+            <div class="ngo-logo-child">
+                {% if logo %}
+                <img src={{logo}} alt="logo">
+                {% else %}
+                <div class="logo-replacement"></div>
+                {% endif %}
             </div>
         </div>
-    </header>
-    <div class="ngo-logo-parent">
-        <div class="ngo-logo-child">
-        <img src={{logo}} alt="logo">
+        <div class="md-m-50 md-p-10">
         </div>
-    </div>
-    <section></section>
+        <section>
+            {{bio}}
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row md-mb-50">
+                        <div class="col-md-12">
+                        <h3>Projects</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for project in projects %}
+                        <div class="col-md-6 col-sm-4">
+                            <div class="card">
+                                <div class="card-height-indicator"></div>
+                                <div class="card-content">
+                                    <div class="card-image">
+                                        <img src="{{project.banner}}" class="circle">
+                                        <h3 class="card-image-headline">{{project.name}}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{project.description}}</p>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <button class="btn btn-sm btn-danger btn-flat">
+                                            JOIN
+                                        </button>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
 
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="md-mb-50">
+                            <h3>Team Members</h3>
+                        </div>
+                        <div class="list-group">
+                            {% for member in teamMembers %}
+                            <div class="well list-group-item" ng-repeat="member in teamMembers">
+                                {% if member.avatar %}
+                                <div class="row-picture">
+                                    <img src="{{member.avatar}}" class="circle">
+                                </div>
+                                {% endif %}
+                                <div class="row-content">
+                                    <h4 class="list-group-item-heading">{{member.name}}</h4>
+                                    <p class="list-group-item-text">{{member.email}}</p>
+                                    <p class="list-group-item-text">{{member.title}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <footer id="footer-center" class="text-center bg-color1 dark-bg">
-        <div class="container">
-            <ul class="soc-list sep-bottom">
-                <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
-                </li>
-                <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
-                </li>
-                <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
-                </li>
-            </ul>
-            <p class="editContent">© 2016 Engage Within
-                <br>
-                <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
-        </div>
-    </footer>
+        <footer id="footer-center" class="text-center bg-color1 dark-bg">
+            <div class="container">
+                <ul class="soc-list sep-bottom">
+                    <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
+                    </li>
+                </ul>
+                <p class="editContent">© 2016 Engage Within
+                    <br>
+                    <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
+            </div>
+        </footer>
 </div>
 <!-- /#wrap -->
 
 {%endblock%}
 
 {%block scripts%}
-<script src="/scripts/custom.js"></script>
 <script src="/scripts/jquery.validate.min.js"></script>
 <script src="/scripts/jquery.smooth-scroll.min.js"></script>
 <script src="/scripts/smoothscroll.js"></script>
-<script src="/scripts/jquery.magnific-popup.min.js"></script>
 <script src="/scripts/waypoints.min.js"></script>
 {%endblock%}
