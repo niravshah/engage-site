@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="222f4da9-45dc-49af-97ca-84b03a55af34" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/custom/landing.css" afterPath="$PROJECT_DIR$/public/css/custom/landing.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/partials/projectsView.html" afterPath="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/ngo/landing.html" afterPath="$PROJECT_DIR$/views/ngo/landing.html" />
     </list>
     <ignored path="engage-site.iws" />
@@ -29,13 +29,42 @@
       <file leaf-file-name="landing.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/ngo/landing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="93" column="47" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="47" />
+            <state relative-caret-position="465">
+              <caret line="82" column="61" selection-start-line="82" selection-start-column="61" selection-end-line="82" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#header#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#header#0;n#header#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1469606922000" expanded="false" signature="1028:1057" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ngoOnboard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/ngoOnboard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="onboardingApp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projectsView.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/angular/partials/projectsView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="25" column="72" selection-start-line="25" selection-start-column="72" selection-end-line="25" selection-end-column="72" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,13 +165,13 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/public/angular/partials/projectHomeView.html" />
         <option value="$PROJECT_DIR$/public/angular/partials/projectSkillsView.html" />
-        <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
         <option value="$PROJECT_DIR$/routes/ngo.js" />
         <option value="$PROJECT_DIR$/public/css/engage.css" />
         <option value="$PROJECT_DIR$/models/ngo.js" />
         <option value="$PROJECT_DIR$/public/angular/partials/teamView.html" />
-        <option value="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
         <option value="$PROJECT_DIR$/public/css/custom/landing.css" />
+        <option value="$PROJECT_DIR$/public/angular/onboardingApp.js" />
+        <option value="$PROJECT_DIR$/public/angular/partials/projectsView.html" />
         <option value="$PROJECT_DIR$/views/ngo/landing.html" />
       </list>
     </option>
@@ -816,12 +845,12 @@
       <updated>1467877711361</updated>
       <workItem from="1467877712689" duration="14800000" />
       <workItem from="1468106886309" duration="16798000" />
-      <workItem from="1468481291665" duration="110562000" />
+      <workItem from="1468481291665" duration="111827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142160000" />
+    <option name="totallyTimeSpent" value="143425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="835" extended-state="6" />
@@ -1094,14 +1123,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/ngoOnboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1722">
-          <caret line="57" column="43" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/error.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1180,14 +1201,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="191" column="6" selection-start-line="191" selection-start-column="6" selection-end-line="191" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/engage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-929">
@@ -1235,14 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/partials/projectsView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/angular/partials/teamView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="565">
@@ -1269,14 +1274,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/ngoOnboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/onboardingApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/partials/projectsView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="72" selection-start-line="25" selection-start-column="72" selection-end-line="25" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/ngo/landing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="93" column="47" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="47" />
+        <state relative-caret-position="465">
+          <caret line="82" column="61" selection-start-line="82" selection-start-column="61" selection-end-line="82" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#header#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#header#0;n#header#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1469606922000" expanded="false" signature="1028:1057" ph="..." />
           </folding>
         </state>
       </provider>

@@ -11,37 +11,6 @@
 
 {% block content %}
 <div class="container">
-    <!-- NAVIGATION -->
-    <!--nav class="navbar bg-color3 navbar-fixed-top navbar-static-top" src="/images/logo.png">
-        <div class="container">
-            <a class="navbar-brand goto" href="#home">
-                <img src="/images/logo.png" height="30" alt="Engage">
-            </a>
-            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse"
-                    data-target=".navMenuCollapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <div class="collapse navbar-collapse navMenuCollapse">
-                <div class="login-panel" style="margin-right: 0px !important;">
-                    <a class="btn btn-primary" href="/">Home</a>
-                    <a class="btn btn-success" href="#">Join Now</a>
-                </div>
-                <ul class="nav">
-                    <li><a href="#home">Home</a>
-                    </li>
-                    <li><a href="#about">About</a>
-                    </li>
-                    <li><a href="#benefits">Benefits</a>
-                    </li>
-                    <li><a href="#how-it-works-1">How it works?</a>
-                    </li>
-                    <li><a href="#request-demo">Request Demo</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav-->
-
     {% if banner %}
     <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('{{banner}}')">
         {% else %}
@@ -111,7 +80,8 @@
                                         <h3 class="card-image-headline">{{project.name}}</h3>
                                     </div>
                                     <div class="card-body">
-                                        <p>{{project.description}}</p>
+                                        <p>{{project.location}}</p>
+                                        <p>{{project.sDate|date('Y-m-d') }}</p>
                                     </div>
                                     <footer class="card-footer">
                                         <button class="btn btn-sm btn-danger btn-flat">
