@@ -34,4 +34,20 @@ router.get('/ngo/:id', function (req, res, next) {
 
 });
 
+router.get('/ngo/:id/login', function (req, res, next) {
+
+    Ngo.findOne({'sname': req.params.id}, function (err, ngo) {
+        if (err) {
+            res.status(500).json({'Error': err});
+        }
+        else if (ngo) {
+            console.log(ngo)
+            res.render('ngo/login', ngo);
+        } else {
+            next();
+        }
+    });
+
+});
+
 module.exports = router;

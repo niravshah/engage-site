@@ -1,21 +1,15 @@
-{% extends '../layout.html' %}
-
-{%block stylesheets%}
+{% extends '../layout.html' %} {%block stylesheets%}
 
 
 <link href="/css/fonts.css" rel="stylesheet">
 <link href="/css/style.css" rel="stylesheet">
 <link href="/css/bootstrap-material-design.css" rel="stylesheet">
-<link href="/css/custom/landing.css" rel="stylesheet">
-{%endblock%}
-
-{% block content %}
+<link href="/css/custom/landing.css" rel="stylesheet">{%endblock%} {% block content %}
 <div class="container">
     {% if banner %}
     <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('{{banner}}')">
         {% else %}
-        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50"
-                style="background-image: url('/images/bg10.jpg')">
+        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('/images/bg10.jpg')">
             {% endif %}
             <div class="container">
                 <div class="slogan">
@@ -27,8 +21,7 @@
         <div class="ngo-logo-parent">
             <div class="ngo-logo-child">
                 {% if logo %}
-                <img src={{logo}} alt="logo">
-                {% else %}
+                <img src={{logo}} alt="logo">{% else %}
                 <div class="logo-replacement"></div>
                 {% endif %}
             </div>
@@ -113,30 +106,26 @@
                     </div>
                 </div>
             </div>
-</div>
-</section>
+        </section>
+        <footer id="footer-center" class="text-center bg-color1 dark-bg">
+            <div class="container">
+                <ul class="soc-list sep-bottom">
+                    <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
+                    </li>
+                    <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
+                    </li>
+                </ul>
+                <p class="editContent">© 2016 Engage Within
+                    <br>
+                    <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
+            </div>
+        </footer>
+  </div>
 
-<footer id="footer-center" class="text-center bg-color1 dark-bg">
-    <div class="container">
-        <ul class="soc-list sep-bottom">
-            <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
-            </li>
-            <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
-            </li>
-            <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
-            </li>
-        </ul>
-        <p class="editContent">© 2016 Engage Within
-            <br>
-            <img style="margin-top: 20px;" src="/images/footer-logo.png" alt="">
-    </div>
-</footer>
-</div>
-<!-- /#wrap -->
 
-{%endblock%}
-
-{%block scripts%}
+{%endblock%} {%block scripts%}
 <script src="/scripts/jquery.validate.min.js"></script>
 <script src="/scripts/jquery.smooth-scroll.min.js"></script>
 <script src="/scripts/smoothscroll.js"></script>
