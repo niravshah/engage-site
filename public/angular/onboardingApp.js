@@ -1,8 +1,8 @@
-var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate','ngMessages','angular-jwt']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages', 'angular-jwt']);
 
-app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$httpProvider, jwtInterceptorProvider) {
+app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    jwtInterceptorProvider.tokenGetter = function() {
+    jwtInterceptorProvider.tokenGetter = function () {
         return localStorage.getItem('id_token');
     };
     $httpProvider.interceptors.push('jwtInterceptor');
@@ -12,26 +12,26 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
             url: '/login',
             templateUrl: '/angular/partials/loginView.html',
             controller: 'loginController',
-            authenticate:false
+            authenticate: false
         })
         .state('basic', {
             url: '/basic',
             templateUrl: '/angular/partials/mainInfoView.html',
             controller: 'mainInfoController',
-            authenticate:true
+            authenticate: true
         })
         .state('team', {
             url: '/team',
             templateUrl: '/angular/partials/teamView.html',
             controller: 'teamViewController',
-            authenticate:true        
+            authenticate: true
         })
         .state('projects', {
             abstract: true,
             url: '/projects',
             templateUrl: '/angular/partials/projectsView.html',
             controller: 'projectsViewController',
-            authenticate:true        
+            authenticate: true
         })
         .state('projects.home', {
             url: '',
@@ -40,17 +40,15 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
         .state('projects.skills', {
             url: '/team',
             templateUrl: '/angular/partials/projectSkillsView.html',
-            authenticate:true        
+            authenticate: true
         });
 });
 
-
-
 app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
-    $rootScope.$on('$stateChangeStart', function (event,toState, toParams, fromState, fromParams) {
-        if (!AuthService.getToken() && toState.authenticate) {
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        if (!AuthService.validToken() && toState.authenticate) {
             $state.transitionTo('login');
-            event.preventDefault();            
+            event.preventDefault();
         }
     });
 }]);
@@ -62,25 +60,29 @@ app.value('selectizeConfig', {
 });
 
 app.service('AuthService', ['$http', '$window', 'jwtHelper',
-    function($http, $window,jwtHelper) {
-        this.login = function(username, password) {
+    function ($http, $window, jwtHelper) {
+        this.login = function (username, password, sname) {
             return $http.post('/auth/login', {
                 uname: username,
-                pword: password
+                pword: password,
+                sname: sname
             });
         };
 
-        this.saveToken = function(token) {
+        this.saveToken = function (token) {
             $window.localStorage['jwtToken'] = token;
         };
 
-        this.getToken = function() {
+        this.getToken = function () {
             return $window.localStorage['jwtToken'];
         };
 
-        this.isTokenValid = function(){
-            return jwtHelper.isTokenExpired(expToken);
-        };
+        this.validToken = function () {
+            var token = this.getToken();
+            if (typeof token != 'undefined')
+                return jwtHelper.isTokenExpired(token)
+            else return false;
+        }
 
     }
 ]);
@@ -192,7 +194,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
     };
 
-    $scope.editMember = function(array,index,mid){
+    $scope.editMember = function (array, index, mid) {
         $http.delete('/ngo/' + $rootScope.ngoId + '/members/' + mid).then(function (response) {
             $scope.newMember = array[index];
             array.splice(index, 1);
@@ -325,29 +327,29 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
         $('#dLabel1').dropdown('toggle');
     };
 
-    $scope.doneButtonClicked = function(){
+    $scope.doneButtonClicked = function () {
         $window.location.href = '/ngo/' + $rootScope.sname;
     };
 
 }]);
 
-app.controller('loginController', ['$scope','$rootScope', '$state','AuthService', function ($scope,$rootScope, $state,AuthService) {
+app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
 
-    $scope.init = function(){
+    $scope.init = function () {
         $scope.data = {};
     };
     $scope.init();
 
-    $scope.login = function(){
-        AuthService.login($scope.data.uname,$scope.data.pword).then(function(res){
-            if(res.data.success == true){
+    $scope.login = function () {
+        AuthService.login($scope.data.uname, $scope.data.pword, $rootScope.sname).then(function (res) {
+            if (res.data.success == true) {
                 AuthService.saveToken(res.data.token);
                 $state.go('basic');
-            }else{
-                $.snackbar({content: req.data.message});
+            } else {
+                $.snackbar({content: res.data.message});
             }
 
-        },function(err){
+        }, function (err) {
             console.log(err);
             $.snackbar({content: "Login Error"});
         });
@@ -355,21 +357,22 @@ app.controller('loginController', ['$scope','$rootScope', '$state','AuthService'
 
 }]);
 
-app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope,$rootScope, $state, Upload, $http, AuthService) {
+app.controller('onboardingAppController', ['$scope', '$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope, $rootScope, $state, Upload, $http, AuthService) {
 
-    $scope.init = function(){
+    $scope.init = function () {
         $rootScope.sname = $('#server-sname').val();
-        if($rootScope.sname != ""){
+        if ($rootScope.sname != "") {
             $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
                 $rootScope.d = resp.data;
                 $rootScope.ngoId = resp.data._id;
                 $state.go('basic');
             });
-        };        
+        }
+        ;
     }
-    
+
     $scope.init();
-    
+
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();

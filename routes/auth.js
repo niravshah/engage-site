@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var User = require('../models/user');
 
-module.exports = function(app) {
+module.exports = function (app) {
     router.post('/auth/register', function (req, res, next) {
 
         User.findOne({
@@ -16,7 +16,7 @@ module.exports = function(app) {
                 res.json({success: false, message: 'User already exists'});
             } else if (!user) {
 
-                var newUser = new User({uname: req.body.uname, pword: req.body.pword});
+                var newUser = new User({uname: req.body.uname, pword: req.body.pword, orgId: req.body.orgId});
                 newUser.save(function (err, savedUser) {
                     if (err) {
                         var newErr = new Error('Could not create new user');
@@ -48,14 +48,22 @@ module.exports = function(app) {
                     res.json({success: false, message: 'Authentication failed. Wrong password.'});
                 } else {
 
-                    var token = jwt.sign(user, app.get('superSecret'), {});
+                    if (user.orgId != req.body.sname) {
 
-                    // return the information including token as JSON
-                    res.json({
-                        success: true,
-                        message: 'Enjoy your token!',
-                        token: token
-                    });
+                        res.json({success: false, message: 'You dont have access to this Organization'});
+
+                    } else {
+                        var token = jwt.sign(user, app.get('superSecret'), {});
+
+                        // return the information including token as JSON
+                        res.json({
+                            success: true,
+                            message: 'Enjoy your token!',
+                            token: token
+                        });
+
+                    }
+
                 }
 
             }
