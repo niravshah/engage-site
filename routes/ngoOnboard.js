@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
-var multerS3 = require('multer-s3')
+var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
 var Ngo = require('../models/ngo');
+var User = require('../models/user');
 var sid = require('shortid');
 
 var s3 = new aws.S3({signatureVersion: 'v4'});
@@ -97,7 +98,15 @@ router.post('/ngo', upload.any(), function (req, res) {
         var newNgo = new Ngo(req.body.addData);
         newNgo.save(function (err, ngo) {
             if (err) res.status(500).json({"Error": err})
-            else res.json(ngo)
+            else{
+                var uD = {};
+                uD.orgId = req.body.addData.sname;
+                User.findOneAndUpdate({_id:req.body.addData.uid},{$set:uD},function(err,doc){
+                    if (err) res.status(500).json({"Error": err});
+                    else res.json(ngo)
+                });
+
+            }
         });
     }
 

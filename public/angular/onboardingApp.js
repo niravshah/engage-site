@@ -77,6 +77,7 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
             $window.localStorage['jwtToken'] = token;
             var tokenPayload = jwtHelper.decodeToken(token);
             $window.localStorage['jwtToken_sname'] = tokenPayload._doc.orgId;
+            $window.localStorage['jwtToken_uid'] = tokenPayload._doc._id;
         };
 
         this.getToken = function () {
@@ -101,7 +102,7 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
     }
 ]);
 
-app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', function ($scope, $rootScope, $http, $q) {
+app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$window', function ($scope, $rootScope, $http, $q, $window) {
 
 
     $scope.init = function () {
@@ -124,6 +125,8 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', fun
                 $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
                 files.push($scope.data.basicInfo.logo);
             }
+
+            $scope.data.basicInfo.d.uid = $window.localStorage['jwtToken_uid'];
 
             $scope.upload(files, $scope.data.basicInfo.d, '/ngo', function (resp, err) {
                 if (err) {
@@ -169,7 +172,11 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
 
     $scope.init = function () {
         $scope.data = {};
-        $scope.data.teamMembers = $rootScope.d.teamMembers || [];
+        $scope.data.teamMembers = [];
+        if(typeof  $rootScope.d != 'undefined'){
+            $scope.data.teamMembers = $rootScope.teamMembers || [];
+        }
+
         $scope.newMember = {};
     };
 
@@ -231,7 +238,10 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
         $scope.newProject.eDate = new Date();
         $scope.newProject.sDate = new Date();
         $scope.data = {};
-        $scope.data.projects = $rootScope.d.projects || {};
+        $scope.data.projects = {};
+        if(typeof  $rootScope.d != 'undefined'){
+            $scope.data.projects = $rootScope.d.projects || {};
+        }
         $scope.teamMembers = $rootScope.teamMembers;
     };
 
@@ -372,7 +382,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
 
 }]);
 
-app.controller('onboardingAppController', ['$scope', '$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope, $rootScope, $state, Upload, $http, AuthService) {
+app.controller('onboardingAppController', ['$scope', '$rootScope', '$state', 'Upload', '$http', function ($scope, $rootScope, $state, Upload, $http) {
 
     $scope.init = function () {
         $rootScope.sname = $('#server-sname').val();
