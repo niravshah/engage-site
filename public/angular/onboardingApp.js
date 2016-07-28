@@ -1,10 +1,19 @@
-var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate','ngMessages']);
+var app = angular.module('onboardingApp', ['ui.router', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate','ngMessages','angular-jwt']);
 
-app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider) {
+app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$httpProvider, jwtInterceptorProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    $urlRouterProvider.otherwise('/basic');
+    jwtInterceptorProvider.tokenGetter = function() {
+        return localStorage.getItem('id_token');
+    };
+    $httpProvider.interceptors.push('jwtInterceptor');
+    //$urlRouterProvider.otherwise('/basic');
     $stateProvider
-        .state('home', {
+        .state('login', {
+            url: '/login',
+            templateUrl: '/angular/partials/loginView.html',
+            controller: 'loginController'
+        })
+        .state('basic', {
             url: '/basic',
             templateUrl: '/angular/partials/mainInfoView.html',
             controller: 'mainInfoController'
@@ -35,6 +44,30 @@ app.value('selectizeConfig', {
     create: false,
     delimiter: ','
 });
+
+app.service('AuthService', ['$http', '$window', 'jwtHelper',
+    function($http, $window,jwtHelper) {
+        this.login = function(username, password) {
+            return $http.post('/auth/login', {
+                username: username,
+                password: password
+            });
+        };
+
+        this.saveToken = function(token) {
+            $window.localStorage['jwtToken'] = token;
+        };
+
+        this.getToken = function() {
+            return $window.localStorage['jwtToken'];
+        };
+
+        this.isTokenValid = function(){
+            return jwtHelper.isTokenExpired(expToken);
+        };
+
+    }
+]);
 
 app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', function ($scope, $rootScope, $http, $q) {
 
@@ -98,8 +131,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', fun
 
     }
 
-}])
-;
+}]);
 
 app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
@@ -283,16 +315,41 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
 
 }]);
 
-app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', '$location', function ($scope,$rootScope, $state, Upload, $http, $location) {
+app.controller('loginController', ['$scope','$rootScope', '$state','AuthService', function ($scope,$rootScope, $state,AuthService) {
 
     $scope.init = function(){
-        $rootScope.sname = $('#server-sname').val();
-        if($rootScope.sname != ""){
-            $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
-                $rootScope.d = resp.data;
-                $rootScope.ngoId = resp.data._id;
-            });
+        $scope.data = {};
+    };
+    $scope.init();
+
+    $scope.login = function(){
+        AuthService.login($scope.data.uname,$scope.data.pword).then(function(res){
+            console.log(res);
+        },function(err){
+            console.log(err);
+            $state.go('basic');
+        });
+    }
+
+}]);
+
+app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope,$rootScope, $state, Upload, $http, AuthService) {
+
+    $scope.init = function(){
+
+        if(AuthService.getToken()){
+            $rootScope.sname = $('#server-sname').val();
+            if($rootScope.sname != ""){
+                $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
+                    $rootScope.d = resp.data;
+                    $rootScope.ngoId = resp.data._id;
+                    $state.go('basic');
+                });
+            }
+        }else{
+            $state.go('login');
         }
+
     };
     $scope.init();
 
@@ -313,4 +370,13 @@ app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upl
             cb(null, resp);
         });
     };
+
+    $rootScope.$on( '$stateChangeStart', function(e, toState  , toParams, fromState, fromParams) {
+
+        if(toState.name =='login' && fromState.name != "") {
+            e.preventDefault();
+            $state.go('login');
+        }
+    });
+
 }]);

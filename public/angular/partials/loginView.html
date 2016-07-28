@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row md-mt-20 md-ml-20 md-mb-40">
+                <img class="ss-slide-logo" src="/images/logo.png">
+                <span class="section-header">Login</span>
+            </div>
+            <div class="row">
+                <form class="md-p-20" name="userForm" novalidate>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="uname" class="control-label">Name</label>
+                            <input ng-model="data.uname" name="uname" type="text" class="form-control" id="uname">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="pword" class="control-label">Password</label>
+                            <input ng-model="data.pword" name="pword" type="text" class="form-control" id="pword">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <button class="btn btn-primary btn-raised" ng-click="login()">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="slides-container-section col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
+            <div class="row md-mt-20">
+                <img class="center-block" src="/images/icon.png">
+            </div>
+            <div class="row text-center" style="color:#FFFFFF">
+                <h1 class="text-uppercase" style="font-weight: 400">Welcome Onboard!</h1>
+                <h3>Let us help you change the world</h3>
+            </div>
+            <div class="row text-center md-p-20">
+                <p style="color: #dddddd;line-height: 1.5em;">
+                    This one time setup will create a dedicated space for your organization on the Engage platform.
+                    You will then be able to showcase the work that your organization has been doing and engage with
+                    corporates to
+                    seek partnership for your key projects.
+                </p>
+            </div>
+            <div class="md-mt-40 panel panel-default br-10">
+                <div class="panel-body">
+                    Lets start with the basics. The information you fill on the left will appear on your organizations
+                    home page. So make sure you get your Organizations details and key objectives listed down
+                    accurately.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

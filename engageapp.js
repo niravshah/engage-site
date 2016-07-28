@@ -1,15 +1,15 @@
-var env = process.env.NODE_ENV || 'dev'
-var config = require('./config')[env]
+var env = process.env.NODE_ENV || 'dev';
+var config = require('./config')[env];
 console.log("ENV:", env);
 
 var express = require('express');
 var app = express();
-
+app.set("superSecret",config.superSecret);
 var mongoose = require('mongoose');
 mongoose.connect(config.mongoUrl);
 
-var me_config = require('./me_config')[env]
-var mongo_express = require('mongo-express/lib/middleware')
+var me_config = require('./me_config')[env];
+var mongo_express = require('mongo-express/lib/middleware');
 app.use('/mongo_express', mongo_express(me_config.mongo_express_config))
 
 var logger = require('morgan');
@@ -44,11 +44,13 @@ app.use(function(req,res,next){
 });
 
 var index = require('./routes/index');
-var mailjet = require('./routes/mailjet')
+var auth = require('./routes/auth')(app);
+var mailjet = require('./routes/mailjet');
 var ngo = require('./routes/ngo');
 var ngoOnboard = require('./routes/ngoOnboard');
 var restify = require('./routes/restify');
 
+app.use(auth);
 app.use(index);
 app.use(restify);
 app.use(ngoOnboard);
@@ -57,7 +59,7 @@ app.use(mailjet);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.status(400).render(404);
+  res.status(404).render(404);
 });
 
 // error handlers
