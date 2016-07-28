@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
+var generatePassword = require('password-generator');
+
 var User = require('../models/user');
 
 module.exports = function (app) {
@@ -16,7 +18,17 @@ module.exports = function (app) {
                 res.json({success: false, message: 'User already exists'});
             } else if (!user) {
 
-                var newUser = new User({uname: req.body.uname, pword: req.body.pword, orgId: req.body.orgId});
+
+
+                var newUser = new User({uname: req.body.uname, orgId: req.body.orgId});
+
+                if(typeof req.body.pword != 'undefined'){
+                    newUser.pword = req.body.pword;
+                }else{
+                    newUser.pword = generatePassword();
+                }
+
+
                 newUser.save(function (err, savedUser) {
                     if (err) {
                         var newErr = new Error('Could not create new user');
