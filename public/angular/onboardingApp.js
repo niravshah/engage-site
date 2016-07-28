@@ -6,28 +6,32 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
         return localStorage.getItem('id_token');
     };
     $httpProvider.interceptors.push('jwtInterceptor');
-    $urlRouterProvider.otherwise('/basic');
+    $urlRouterProvider.otherwise('/login');
     $stateProvider
         .state('login', {
             url: '/login',
             templateUrl: '/angular/partials/loginView.html',
-            controller: 'loginController'
+            controller: 'loginController',
+            authenticate:false
         })
         .state('basic', {
             url: '/basic',
             templateUrl: '/angular/partials/mainInfoView.html',
-            controller: 'mainInfoController'
+            controller: 'mainInfoController',
+            authenticate:true
         })
         .state('team', {
             url: '/team',
             templateUrl: '/angular/partials/teamView.html',
-            controller: 'teamViewController'
+            controller: 'teamViewController',
+            authenticate:true        
         })
         .state('projects', {
             abstract: true,
             url: '/projects',
             templateUrl: '/angular/partials/projectsView.html',
-            controller: 'projectsViewController'
+            controller: 'projectsViewController',
+            authenticate:true        
         })
         .state('projects.home', {
             url: '',
@@ -35,18 +39,18 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
         })
         .state('projects.skills', {
             url: '/team',
-            templateUrl: '/angular/partials/projectSkillsView.html'
+            templateUrl: '/angular/partials/projectSkillsView.html',
+            authenticate:true        
         });
 });
 
 
 
 app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
-    $rootScope.$on('$stateChangeStart', function (event) {
-        if (!AuthService.getToken()) {
-            console.log('DENY : Redirecting to Login');
-            event.preventDefault();
-            $state.go('login')
+    $rootScope.$on('$stateChangeStart', function (event,toState, toParams, fromState, fromParams) {
+        if (!AuthService.getToken() && toState.authenticate) {
+            $state.transitionTo('login');
+            event.preventDefault();            
         }
     });
 }]);
@@ -77,19 +81,6 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
         this.isTokenValid = function(){
             return jwtHelper.isTokenExpired(expToken);
         };
-
-        this.setEntity = function(){
-
-            $rootScope.sname = $('#server-sname').val();
-            if($rootScope.sname != ""){
-                $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
-                    $rootScope.d = resp.data;
-                    $rootScope.ngoId = resp.data._id;
-                    $state.go('basic');
-                });
-            };
-
-        }
 
     }
 ]);
@@ -351,7 +342,6 @@ app.controller('loginController', ['$scope','$rootScope', '$state','AuthService'
         AuthService.login($scope.data.uname,$scope.data.pword).then(function(res){
             if(res.data.success == true){
                 AuthService.saveToken(res.data.token);
-                AuthService.setEntity();
                 $state.go('basic');
             }else{
                 $.snackbar({content: req.data.message});
@@ -367,6 +357,19 @@ app.controller('loginController', ['$scope','$rootScope', '$state','AuthService'
 
 app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope,$rootScope, $state, Upload, $http, AuthService) {
 
+    $scope.init = function(){
+        $rootScope.sname = $('#server-sname').val();
+        if($rootScope.sname != ""){
+            $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
+                $rootScope.d = resp.data;
+                $rootScope.ngoId = resp.data._id;
+                $state.go('basic');
+            });
+        };        
+    }
+    
+    $scope.init();
+    
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();
