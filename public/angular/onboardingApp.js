@@ -49,6 +49,10 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
         if (!AuthService.validToken() && toState.authenticate) {
             $state.transitionTo('login');
             event.preventDefault();
+        }else if(!AuthService.validSname($rootScope.sname) && toState.authenticate){
+            $.snackbar({content:"You're not authorized to access this Organization"});
+            $state.transitionTo('login');
+            event.preventDefault();
         }
     });
 }]);
@@ -71,6 +75,8 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
 
         this.saveToken = function (token) {
             $window.localStorage['jwtToken'] = token;
+            var tokenPayload = jwtHelper.decodeToken(token);
+            $window.localStorage['jwtToken_sname'] = tokenPayload._doc.orgId;
         };
 
         this.getToken = function () {
@@ -80,8 +86,16 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
         this.validToken = function () {
             var token = this.getToken();
             if (typeof token != 'undefined')
-                return jwtHelper.isTokenExpired(token)
+                return !jwtHelper.isTokenExpired(token);
             else return false;
+        };
+
+        this.validSname = function(sname){
+            if(sname != "") {
+                return $window.localStorage['jwtToken_sname'] == sname;
+            }
+
+            return true;
         }
 
     }
@@ -344,7 +358,8 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
         AuthService.login($scope.data.uname, $scope.data.pword, $rootScope.sname).then(function (res) {
             if (res.data.success == true) {
                 AuthService.saveToken(res.data.token);
-                $state.go('basic');
+                $state.transitionTo('basic');
+                event.preventDefault();
             } else {
                 $.snackbar({content: res.data.message});
             }

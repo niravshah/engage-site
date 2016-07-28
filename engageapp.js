@@ -48,11 +48,9 @@ var auth = require('./routes/auth')(app);
 var mailjet = require('./routes/mailjet');
 var ngo = require('./routes/ngo');
 var ngoOnboard = require('./routes/ngoOnboard');
-var restify = require('./routes/restify');
 
 app.use(auth);
 app.use(index);
-app.use(restify);
 app.use(ngoOnboard);
 app.use(ngo);
 app.use(mailjet);

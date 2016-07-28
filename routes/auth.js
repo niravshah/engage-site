@@ -47,27 +47,21 @@ module.exports = function (app) {
                 if (user.pword != req.body.pword) {
                     res.json({success: false, message: 'Authentication failed. Wrong password.'});
                 } else {
-
-                    if (user.orgId != req.body.sname) {
-
-                        res.json({success: false, message: 'You dont have access to this Organization'});
-
-                    } else {
-                        var token = jwt.sign(user, app.get('superSecret'), {});
-
-                        // return the information including token as JSON
-                        res.json({
-                            success: true,
-                            message: 'Enjoy your token!',
-                            token: token
-                        });
-
+                    
+                    if (req.body.sname != "") {
+                        if (user.orgId != req.body.sname) {
+                            res.json({success: false, message: 'You dont have access to this Organization'});
+                        }
                     }
-
+                    var token = jwt.sign(user, app.get('superSecret'), {});
+                    // return the information including token as JSON
+                    res.json({
+                        success: true,
+                        message: 'Enjoy your token!',
+                        token: token
+                    });
                 }
-
             }
-
         });
     });
 
