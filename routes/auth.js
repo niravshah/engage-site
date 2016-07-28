@@ -7,7 +7,7 @@ module.exports = function(app) {
     router.post('/auth/register', function (req, res, next) {
 
         User.findOne({
-            uname: req.query.uname
+            uname: req.body.uname
         }, function (err, user) {
 
             if (err) throw err;
@@ -16,7 +16,7 @@ module.exports = function(app) {
                 res.json({success: false, message: 'User already exists'});
             } else if (!user) {
 
-                var newUser = new User({uname: req.query.uname, pword: req.query.pword});
+                var newUser = new User({uname: req.body.uname, pword: req.body.pword});
                 newUser.save(function (err, savedUser) {
                     if (err) {
                         var newErr = new Error('Could not create new user');
@@ -34,7 +34,7 @@ module.exports = function(app) {
     router.post('/auth/login', function (req, res) {
 
         User.findOne({
-            uname: req.query.uname
+            uname: req.body.uname
         }, function (err, user) {
 
             if (err) throw err;
@@ -44,7 +44,7 @@ module.exports = function(app) {
             } else if (user) {
 
                 // check if password matches
-                if (user.pword != req.query.pword) {
+                if (user.pword != req.body.pword) {
                     res.json({success: false, message: 'Authentication failed. Wrong password.'});
                 } else {
 

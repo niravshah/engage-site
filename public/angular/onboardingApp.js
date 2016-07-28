@@ -6,7 +6,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
         return localStorage.getItem('id_token');
     };
     $httpProvider.interceptors.push('jwtInterceptor');
-    //$urlRouterProvider.otherwise('/basic');
+    $urlRouterProvider.otherwise('/basic');
     $stateProvider
         .state('login', {
             url: '/login',
@@ -39,6 +39,18 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider,$h
         });
 });
 
+
+
+app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
+    $rootScope.$on('$stateChangeStart', function (event) {
+        if (!AuthService.getToken()) {
+            console.log('DENY : Redirecting to Login');
+            event.preventDefault();
+            $state.go('login')
+        }
+    });
+}]);
+
 app.value('selectizeConfig', {
     plugins: ['remove_button'],
     create: false,
@@ -49,8 +61,8 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
     function($http, $window,jwtHelper) {
         this.login = function(username, password) {
             return $http.post('/auth/login', {
-                username: username,
-                password: password
+                uname: username,
+                pword: password
             });
         };
 
@@ -65,6 +77,19 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
         this.isTokenValid = function(){
             return jwtHelper.isTokenExpired(expToken);
         };
+
+        this.setEntity = function(){
+
+            $rootScope.sname = $('#server-sname').val();
+            if($rootScope.sname != ""){
+                $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
+                    $rootScope.d = resp.data;
+                    $rootScope.ngoId = resp.data._id;
+                    $state.go('basic');
+                });
+            };
+
+        }
 
     }
 ]);
@@ -324,34 +349,23 @@ app.controller('loginController', ['$scope','$rootScope', '$state','AuthService'
 
     $scope.login = function(){
         AuthService.login($scope.data.uname,$scope.data.pword).then(function(res){
-            console.log(res);
+            if(res.data.success == true){
+                AuthService.saveToken(res.data.token);
+                AuthService.setEntity();
+                $state.go('basic');
+            }else{
+                $.snackbar({content: req.data.message});
+            }
+
         },function(err){
             console.log(err);
-            $state.go('basic');
+            $.snackbar({content: "Login Error"});
         });
     }
 
 }]);
 
 app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upload', '$http', 'AuthService', function ($scope,$rootScope, $state, Upload, $http, AuthService) {
-
-    $scope.init = function(){
-
-        if(AuthService.getToken()){
-            $rootScope.sname = $('#server-sname').val();
-            if($rootScope.sname != ""){
-                $http.get('/ngo/sname/' + $rootScope.sname).then(function (resp) {
-                    $rootScope.d = resp.data;
-                    $rootScope.ngoId = resp.data._id;
-                    $state.go('basic');
-                });
-            }
-        }else{
-            $state.go('login');
-        }
-
-    };
-    $scope.init();
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -370,13 +384,5 @@ app.controller('onboardingAppController', ['$scope','$rootScope', '$state', 'Upl
             cb(null, resp);
         });
     };
-
-    $rootScope.$on( '$stateChangeStart', function(e, toState  , toParams, fromState, fromParams) {
-
-        if(toState.name =='login' && fromState.name != "") {
-            e.preventDefault();
-            $state.go('login');
-        }
-    });
 
 }]);
