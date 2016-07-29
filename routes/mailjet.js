@@ -6,32 +6,34 @@ var transporter = nodemailer.createTransport('smtps://5181531eca7071901ce351edc1
 var EmailTemplate = require('email-templates').EmailTemplate;
 var path = require('path');
 var templateDir = path.join(__dirname, 'templates', 'notify');
-var newsletter = new EmailTemplate(templateDir);
+var notify = new EmailTemplate(templateDir);
 
-router.post('/mailjet', function (req, res) {
+var mailjet = module.exports = {
 
-    var user = {name: {first: 'Joe', last: 'Blogg'}};
-    newsletter.render(user, function (err, result) {
-        if (err) {
-            res.status(500).send(err);
-        } else {
-            transporter.sendMail({
-                from: 'newcontact@movewithin.org',
-                to: 'nirav.shah83@gmail.com',
-                subject: 'Panner Tikka Delivery',
-                html: result.html,
-                text: result.text
-            }, function (err, info) {
-                if (err) {
-                    res.status(500).send(err)
-                } else {
-                    res.status(200).send(info);
-                }
-            });
-        }
-    });
-});
+    sendRegistrationEmail: function (user) {
+        notify.render(user, function (err, result) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                transporter.sendMail({
+                    from: 'hello@engagewithin.com',
+                    to: user.email,
+                    subject: 'Welcome to Engage',
+                    html: result.html,
+                    text: result.text
+                }, function (err, info) {
+                    if (err) {
+                        res.status(500).send(err)
+                    } else {
+                        res.status(200).send(info);
+                    }
+                });
+            }
+        });
+    }
+};
 
-module.exports = router;
+
+
 
 
