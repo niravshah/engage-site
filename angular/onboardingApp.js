@@ -14,6 +14,12 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
             controller: 'loginController',
             authenticate: false
         })
+        .state('reset', {
+            url: '/reset',
+            templateUrl: '/angular/partials/resetView.html',
+            controller: 'resetController',
+            authenticate: false
+        })
         .state('basic', {
             url: '/basic',
             templateUrl: '/angular/partials/mainInfoView.html',
@@ -49,8 +55,8 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
         if (!AuthService.validToken() && toState.authenticate) {
             $state.transitionTo('login');
             event.preventDefault();
-        }else if(!AuthService.validSname($rootScope.sname) && toState.authenticate){
-            $.snackbar({content:"You're not authorized to access this Organization"});
+        } else if (!AuthService.validSname($rootScope.sname) && toState.authenticate) {
+            $.snackbar({content: "You're not authorized to access this Organization"});
             $state.transitionTo('login');
             event.preventDefault();
         }
@@ -72,6 +78,14 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
                 sname: sname
             });
         };
+        this.reset = function (uname, current, newP, newAgain) {
+            return $http.post('/auth/reset', {
+                uname: uname,
+                current: current,
+                newP: newP,
+                newAgain: newAgain
+            });
+        };
 
         this.saveToken = function (token) {
             $window.localStorage['jwtToken'] = token;
@@ -91,8 +105,8 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
             else return false;
         };
 
-        this.validSname = function(sname){
-            if(sname != "") {
+        this.validSname = function (sname) {
+            if (sname != "") {
                 return $window.localStorage['jwtToken_sname'] == sname;
             }
 
@@ -169,7 +183,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
 }]);
 
 app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
-    
+
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();
@@ -178,7 +192,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
     $scope.init = function () {
         $scope.data = {};
         $scope.data.teamMembers = [];
-        if(typeof  $rootScope.d != 'undefined'){
+        if (typeof  $rootScope.d != 'undefined') {
             $scope.data.teamMembers = $rootScope.teamMembers || [];
         }
 
@@ -244,7 +258,7 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
         $scope.newProject.sDate = new Date();
         $scope.data = {};
         $scope.data.projects = {};
-        if(typeof  $rootScope.d != 'undefined'){
+        if (typeof  $rootScope.d != 'undefined') {
             $scope.data.projects = $rootScope.d.projects || {};
         }
         $scope.teamMembers = $rootScope.teamMembers;
@@ -373,8 +387,15 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
         AuthService.login($scope.data.uname, $scope.data.pword, $rootScope.sname).then(function (res) {
             if (res.data.success == true) {
                 AuthService.saveToken(res.data.token);
-                $state.transitionTo('basic');
-                event.preventDefault();
+                if (res.data.resetPassword == true) {
+                    $state.transitionTo('reset');
+                    event.preventDefault();
+
+                } else {
+                    $state.transitionTo('basic');
+                    event.preventDefault();
+                }
+
             } else {
                 $.snackbar({content: res.data.message});
             }
@@ -382,6 +403,29 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
         }, function (err) {
             console.log(err);
             $.snackbar({content: "Login Error"});
+        });
+    }
+
+}]);
+app.controller('resetController', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
+
+    $scope.init = function () {
+        $scope.data = {};
+    };
+    $scope.init();
+
+    $scope.reset = function () {
+        AuthService.reset($scope.data.uname, $scope.data.current, $scope.data.new, $scope.data.newAgain).then(function (res) {
+            if (res.data.success == true) {
+                $.snackbar({content: res.data.message});
+                $state.transitionTo('login');
+            } else {
+                $.snackbar({content: res.data.message});
+            }
+
+        }, function (err) {
+            console.log(err);
+            $.snackbar({content: "Error Resetting Current Password"});
         });
     }
 

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row md-mt-20 md-ml-20 md-mb-40">
+                <img class="ss-slide-logo" src="/images/logo.png">
+                <span class="section-header">Login</span>
+            </div>
+            <div class="row">
+                <form class="md-p-20" name="userForm" novalidate>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="uname" class="control-label">Username</label>
+                            <input ng-model="data.uname" name="uname" type="text" class="form-control" id="uname">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="current" class="control-label">Current Password</label>
+                            <input ng-model="data.current" name="current" type="password" class="form-control" id="current">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="new" class="control-label">New Password</label>
+                            <input ng-model="data.new" name="new" type="password" class="form-control" id="new">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <label for="newAgain" class="control-label">Retype New Password</label>
+                            <input ng-model="data.newAgain" name="newAgain" type="password" class="form-control" id="newAgain">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group label-floating md-pb-20 required">
+                            <button class="btn btn-primary btn-raised" ng-click="reset()">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="slides-container-section col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
+        </div>
+    </div>
+</div>
+</div>

@@ -40,6 +40,38 @@ module.exports = function (app) {
         });
     });
 
+    router.post('/auth/reset', function (req, res, next) {
+
+        User.findOne({
+            uname: req.body.uname
+        }, function (err, user) {
+
+            if (err) throw err;
+
+            if (!user) {
+                res.json({success: false, message: 'User Not Found'});
+            } else if (user) {
+
+                if(user.pword != req.body.current){
+                    res.json({success: false, message: 'Current Password Invalid'});
+                }else  if(req.body.newP != req.body.newAgain){
+                    res.json({success: false, message: 'New Password does not match Retype New Password'});
+                }else {
+
+                    user.resetPassword = false;
+                    user.pword = req.body.newP;
+                    user.save(function (err, doc) {
+                        if (err) {
+                            res.json({success: false, message: 'Error Resetting Password. Please try again'});
+                        } else {
+                            res.json({success: true, message: 'Password Reset Successful'});
+                        }
+                    });
+                }
+
+            }
+        });
+    });
 
     router.post('/auth/login', function (req, res) {
 
@@ -64,11 +96,12 @@ module.exports = function (app) {
                         }
                     }
                     var token = jwt.sign(user, app.get('superSecret'), {});
-                    // return the information including token as JSON
                     res.json({
                         success: true,
                         message: 'Enjoy your token!',
-                        token: token
+                        token: token,
+                        sname: req.body.sname,
+                        resetPassword: user.resetPassword
                     });
                 }
             }
