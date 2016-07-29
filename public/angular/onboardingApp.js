@@ -169,6 +169,11 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
 }]);
 
 app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    
+    angular.element(document).ready(function () {
+        $.material.init();
+        $.material.ripples();
+    });
 
     $scope.init = function () {
         $scope.data = {};

@@ -8,41 +8,50 @@
 
             <div class="row md-p-20">
                 <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading md-pt-10 md-pb-10"><h4>Add Team Members</h4></div>
-                    <div class="panel-body">
-                        <form name="teamDetailsForm" novalidate>
-                        <div class="row form-group label-floating required">
-                            <label for="i6" class="control-label">Name</label>
-                            <input ng-model="newMember.name" name="name" type="text" class="form-control" id="i6" required>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading md-pt-10 md-pb-10">
+                            <h4>Add Team Members</h4>
                         </div>
-                        <div class="row form-group label-floating required">
-                            <label for="i7" class="control-label">Email</label>
-                            <input ng-model="newMember.email" type="email" class="form-control" id="i7" required>
-                        </div>
-                        <div class="row form-group label-floating required">
-                            <label for="i8" class="control-label">Title</label>
-                            <input ng-model="newMember.title" type="text" class="form-control" id="i8" required>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-md-6">
-                            <a ng-model="newMember.avatar" name="avatar" ngf-pattern="'image/*'"
-                               ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
-                                <p>{[{newMember.avatar.name}]}</p>
-                            </div>
-                            <div class="col-md-6 next-btn">
-                            <a ng-disabled="teamDetailsForm.$invalid" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
+                        <div class="panel-body">
+                            <form name="teamDetailsForm" novalidate>
+                                <div class="row form-group label-floating required">
+                                    <label for="i6" class="control-label">Name</label>
+                                    <input ng-model="newMember.name" name="name" type="text" class="form-control" id="i6" required>
                                 </div>
+                                <div class="row form-group label-floating required">
+                                    <label for="i7" class="control-label">Email</label>
+                                    <input ng-model="newMember.email" type="email" class="form-control" id="i7" required>
+                                </div>
+                                <div class="row form-group label-floating required">
+                                    <label for="i8" class="control-label">Title</label>
+                                    <input ng-model="newMember.title" type="text" class="form-control" id="i8" required>
+                                </div>
+                                <div class="row form-group md-pb-20">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" checked="">&nbsp Create new Engage User
+                                        </label>
+                                    </div>
+                                    <p class="help-block"> Checking this will register the team member to Engage and will allow them to login and update your Organisations details</p>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                        <a ng-model="newMember.avatar" name="avatar" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
+                                        <p>{[{newMember.avatar.name}]}</p>
+                                    </div>
+                                    <div class="col-md-6 next-btn">
+                                        <a ng-disabled="teamDetailsForm.$invalid" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        </form>
                     </div>
-                </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
-                    <a ui-sref="projects.home" ng-click="teamMembersNext()"
-                       class="btn btn-lg btn-raised btn-info">Next</a>
+                    <a ui-sref="projects.home" ng-click="teamMembersNext()" class="btn btn-lg btn-raised btn-info">Next</a>
                 </div>
                 <div class="col-md-12 md-mt-20">
                     <div class="progress">
@@ -56,8 +65,10 @@
                 <div class="list-group" style="overflow-y: auto">
                     <div class="well" ng-repeat="member in data.teamMembers track by $index">
 
-                        <button type="button" class="close" aria-hidden="true" ng-click="removeMember(data.teamMembers,$index,member.id)"><i class="material-icons">close</i></button>
-                        <button type="button" class="close" aria-hidden="true" ng-click="editMember(data.teamMembers,$index,member.id)"><i class="material-icons">mode_edit</i></button>
+                        <button type="button" class="close" aria-hidden="true" ng-click="removeMember(data.teamMembers,$index,member.id)"><i class="material-icons">close</i>
+                        </button>
+                        <button type="button" class="close" aria-hidden="true" ng-click="editMember(data.teamMembers,$index,member.id)"><i class="material-icons">mode_edit</i>
+                        </button>
                         <div class="list-group-item">
                             <div class="row-picture">
                                 <img ngf-thumbnail="member.avatar" class="circle">
