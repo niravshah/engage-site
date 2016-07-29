@@ -12,9 +12,9 @@ content['ro'] = {};
 router.get('/ngo', function (req, res) {
     var host = '' + req.get('host');
     if (host.indexOf('ro') > -1) {
-        res.render('ngo/home', content['ro']);
+        res.render('ngo/join', content['ro']);
     } else {
-        res.render('ngo/home', content['en']);
+        res.render('ngo/join', content['en']);
     }
 });
 

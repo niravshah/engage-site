@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var generatePassword = require('password-generator');
-var mailjet = require('mailjet');
+var mailjet = require('./mailjet');
 var User = require('../models/user');
 
 module.exports = function (app) {
@@ -33,7 +33,7 @@ module.exports = function (app) {
                         next(newErr);
                     } else {
                         mailjet.sendRegistrationEmail(savedUser);
-                        res.json({success: true, user: savedUser});
+                        res.json({success: true, message: 'New User Created'});
                     }
                 });
             }

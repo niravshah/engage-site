@@ -61,13 +61,13 @@ $(document).ready(function(){
 //                    MAGNIFIC POPUP(LIGHTBOX) SETTINGS
 //------------------------------------------------------------------------  
 	          
-    $('.portfolio-list li').magnificPopup({
+    /*$('.portfolio-list li').magnificPopup({
         delegate: 'a',
         type: 'image',
         gallery: {
             enabled: true
         }
-    });
+    });*/
 
 	
 

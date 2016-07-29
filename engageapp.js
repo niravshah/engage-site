@@ -45,7 +45,6 @@ app.use(function(req,res,next){
 
 var index = require('./routes/index');
 var auth = require('./routes/auth')(app);
-var mailjet = require('./routes/mailjet');
 var ngo = require('./routes/ngo');
 var ngoOnboard = require('./routes/ngoOnboard');
 
@@ -53,7 +52,6 @@ app.use(auth);
 app.use(index);
 app.use(ngoOnboard);
 app.use(ngo);
-app.use(mailjet);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
