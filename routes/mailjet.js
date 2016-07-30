@@ -12,9 +12,7 @@ var notify = new EmailTemplate(templateDir);
 var mailjet = module.exports = {
     sendRegistrationEmail: function(user) {
         notify.render(user, function(err, result) {
-            if(err) {
-                res.status(500).send(err);
-            } else {
+            if(!err) {
                 transporter.sendMail({
                     from: 'hello@engagewithin.com',
                     to: user.uname,
@@ -29,6 +27,8 @@ var mailjet = module.exports = {
                         console.log('Mailjet Response',resp)
                     }
                 });
+            }else{
+                console.log('Mailjet Erro', err, user)
             }
         });
     }

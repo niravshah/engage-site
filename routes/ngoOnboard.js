@@ -6,6 +6,8 @@ var aws = require('aws-sdk');
 var Ngo = require('../models/ngo');
 var User = require('../models/user');
 var sid = require('shortid');
+var generatePassword = require('password-generator');
+var mailjet = require('./mailjet');
 
 var s3 = new aws.S3({signatureVersion: 'v4'});
 
@@ -34,16 +36,16 @@ var upload = multer({storage: s3Sotrage});
 //var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
-        res.render('ngo/onboarding');
+    res.render('ngo/onboarding');
 });
 
 
-router.get('/ngo/:sname/edit',function(req,res){
+router.get('/ngo/:sname/edit', function (req, res) {
     var sname = req.params.sname;
     Ngo.findOne({sname: sname}, function (err, ngo) {
         if (ngo) {
             res.render('ngo/onboarding', ngo);
-        }else{
+        } else {
             res.render('ngo/onboarding');
         }
 
@@ -87,21 +89,21 @@ router.post('/ngo', upload.any(), function (req, res) {
         req.body.addData.sname = req.body.addData.sname.toLowerCase().replace(/ /g, '-')
     }
 
-    if(typeof req.body.addData._id != 'undefined'){
+    if (typeof req.body.addData._id != 'undefined') {
 
-        Ngo.findOneAndUpdate({_id:req.body.addData._id},{$set:req.body.addData},function(err,doc){
+        Ngo.findOneAndUpdate({_id: req.body.addData._id}, {$set: req.body.addData}, function (err, doc) {
             if (err) res.status(500).json({"Error": err});
             else res.json(doc)
         });
 
-    }else{
+    } else {
         var newNgo = new Ngo(req.body.addData);
         newNgo.save(function (err, ngo) {
             if (err) res.status(500).json({"Error": err})
-            else{
+            else {
                 var uD = {};
                 uD.orgId = req.body.addData.sname;
-                User.findOneAndUpdate({_id:req.body.addData.uid},{$set:uD},function(err,doc){
+                User.findOneAndUpdate({_id: req.body.addData.uid}, {$set: uD}, function (err, doc) {
                     if (err) res.status(500).json({"Error": err});
                     else res.json(ngo)
                 });
@@ -135,13 +137,31 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
             res.status(500).json({'Error': err});
         } else {
             var origSize = ngo.teamMembers.length - 1;
-            ngo.teamMembers.push(data)
+            ngo.teamMembers.push(data);
             ngo.save(function (err, ngo) {
                 if (err) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.teamMembers[origSize + 1]);
+                    if (data.createEngageUser) {
+
+                        var newUser = {
+                            uname: data.email,
+                            password: generatePassword(),
+                            name: data.name,
+                            orgId:ngo.sname
+                        };
+
+                        User.findOneAndUpdate({uname:data.email}, newUser,{upsert:true},function (err, doc) {
+                            if (!err) {
+                                mailjet.sendRegistrationEmail(newUser);
+                            }
+
+                            res.json(ngo.teamMembers[origSize + 1]);
+                        });
+
+                    }
+
                 }
             })
         }
@@ -164,18 +184,21 @@ router.delete('/ngo/:id/members/:mid', function (req, res) {
                 }
             }
             if (spliceIndex > -1) {
-                ngo.teamMembers.splice(spliceIndex, 1)
+
+                User.find({uname: ngo.teamMembers[spliceIndex].email}).remove(function (err, doc) {
+                    ngo.teamMembers.splice(spliceIndex, 1);
+                    //console.log('Updated Ngo', ngo);
+                    ngo.save(function (err, ngo) {
+                        if (err) {
+                            res.status(500).json({'Error': err});
+                        }
+                        else {
+                            res.json(ngo);
+                        }
+                    })
+                });
             }
 
-            //console.log('Updated Ngo', ngo);
-            ngo.save(function (err, ngo) {
-                if (err) {
-                    res.status(500).json({'Error': err});
-                }
-                else {
-                    res.json(ngo);
-                }
-            })
         }
     });
 });

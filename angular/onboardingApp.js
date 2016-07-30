@@ -197,6 +197,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
         }
 
         $scope.newMember = {};
+        $scope.newMember.createEngageUser = true;
     };
 
     $scope.init();
