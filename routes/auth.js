@@ -32,7 +32,7 @@ module.exports = function (app) {
                         newErr.err = err;
                         next(newErr);
                     } else {
-                        mailjet.sendRegistrationEmail(savedUser);
+                        mailjet.sendOnboardEmail(savedUser);
                         res.json({success: true, message: 'New User Created'});
                     }
                 });

@@ -19,8 +19,7 @@ router.get('/ngo', function (req, res) {
 });
 
 router.get('/ngo/:id', function (req, res, next) {
-
-    Ngo.findOne({'sname': req.params.id}, function (err, ngo) {
+    Ngo.findOne({sname: req.params.id}, function (err, ngo) {
         if (err) {
             res.status(500).json({'Error': err});
         }
