@@ -39,11 +39,6 @@ swig.setDefaults({
   cache: false
 });
 
-app.use(function(req,res,next){
-  console.log(req.file, req.body);
-  next();
-});
-
 var index = require('./routes/index');
 var auth = require('./routes/auth')(app);
 var ngo = require('./routes/ngo');

@@ -12,10 +12,13 @@
             <a class="navbar-brand goto" href="#home">
                 <img src="./images/logo.png" height="30" alt="Engage">
             </a>
-            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"><span class="icon-bar"></span>  <span class="icon-bar"></span>  <span class="icon-bar"></span>
+            <button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse"
+                    data-target=".navMenuCollapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse navMenuCollapse">
-                <div class="login-panel"><a class="btn btn-primary" href="#request-demo">Request Demo</a><a class="btn btn-success" href="/ngo">NGO?</a></div>
+                <div class="login-panel"><a class="btn btn-primary" href="#request-demo">Request Demo</a><a
+                        class="btn btn-success" href="/ngo">NGO?</a></div>
                 <ul class="nav">
                     <li><a href="#home">Home</a>
                     </li>
@@ -34,7 +37,7 @@
     <section id="home" class="bg-color3 text-center">
         <img src="images/bg11.jpg" style="position: absolute;top: 0;left:0;width:100%;">
         <div class="container hero">
-            <img src="images/icon.png" alt="Engage Logo">
+            <img src="images/icon.png" alt="Engage Logo" class="md-pb-40" style="width: 200px;height:auto;">
             <h2 class="big-title"><b>{{s1_1}}</b><br/>{{s1_2}}</h2>
         </div>
     </section>
@@ -51,19 +54,19 @@
     <!-- SECTION 3: MEET ENGAGE -->
     <section id="about" class="bg-color3" style="padding: 100px 0px;">
 
-            <div class="row" style="padding:20px;">
-                <div class="col-md-7">
-                    <img class="screen" src="images/engage2.png" alt="screen">
-                </div>
-                <div class="col-md-5">
-                    <h2>{{s3_1}}</h2>
-                    <h4 class="sub-title" style="margin-bottom:20px;">{{s3_2}}</h4>
-                    <p>{{s3_3}}</p>
-                    <p>{{s3_4}}</p>
-                    <p class="sep-bottom">{{s3_5}}</p>
-                    <a class="btn btn-default btn-lg" href="#request-demo"><i class="icon left-icon icon-hourglass"></i>{{s3_6}}</a>
-                </div>
+        <div class="row" style="padding:20px;">
+            <div class="col-md-7">
+                <img class="screen" src="images/engage2.png" alt="screen">
             </div>
+            <div class="col-md-5">
+                <h2>{{s3_1}}</h2>
+                <h4 class="sub-title" style="margin-bottom:20px;">{{s3_2}}</h4>
+                <p>{{s3_3}}</p>
+                <p>{{s3_4}}</p>
+                <p class="sep-bottom">{{s3_5}}</p>
+                <a class="btn btn-default btn-lg" href="#request-demo"><i class="icon left-icon icon-hourglass"></i>{{s3_6}}</a>
+            </div>
+        </div>
 
     </section>
     <!-- END: SECTION 3: MEET ENGAGE -->
@@ -187,17 +190,22 @@
                 <div class="col-md-5">
                     <div class="form-container wow flipInY" data-wow-duration="1s" data-wow-delay="0.5s">
                         <h3 class="title">{{s8_1}}</h3>
-                        <form action='/mailjet' role="form" id="contact_form" novalidate>
+                        <form action='/contactform' role="form" id="contact_form" novalidate>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="contact_name" placeholder="Full name" name="name">
+                                <input type="text" class="form-control" id="contact_name" placeholder="Full name"
+                                       name="name">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" id="contact_email" placeholder="Email Address" name="email">
+                                <input type="email" class="form-control" id="contact_email" placeholder="Email Address"
+                                       name="email">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="4" placeholder="Your message or question" id="contact_message" name="message"></textarea>
+                                <textarea class="form-control" rows="4" placeholder="Your message or question"
+                                          id="contact_message" name="message"></textarea>
                             </div>
-                            <button type="submit" id="contact_submit" data-loading-text="•••" class="btn btn-lg btn-block btn-primary">{{s8_2}}</button>
+                            <button type="submit" id="contact_submit" data-loading-text="•••"
+                                    class="btn btn-lg btn-block btn-primary">{{s8_2}}
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -206,26 +214,18 @@
                     <p class="sep-bottom">{{s8_4}}</p>
                     <p class="sep-bottom">{{s8_5}}</p>
                     <p class="sep-bottom">{{s8_6}}
-                      
+
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="footer-center" class="text-center bg-color3">
+    <footer id="footer-center" class="text-center bg-color1 dark-bg">
         <div class="container">
-            <ul class="soc-list sep-bottom">
-                <li><a href="#" target="_blank"><i class="icon icon-twitter2"></i></a>
-                </li>
-                <li><a href="#" target="_blank"><i class="icon icon-googleplus2"></i></a>
-                </li>
-                <li><a href="#" target="_blank"><i class="icon icon-linkedin2"></i></a>
-                </li>
-            </ul>
-            <p class="editContent">© 2016 Engage Within
-                <br>
-                <img style="margin-top: 20px;" src="images/footer-logo.png" alt="">
+            <p class="editContent">© 2016 Engage Within</p>
+            <br>
+            <img style="margin-top: 20px;" src="images/footer-logo.png" alt="">
         </div>
     </footer>
 </div>
@@ -244,11 +244,10 @@
 {%endblock%}
 
 {%block scripts%}
-<script src="/scripts/jquery.smooth-scroll.min.js"></script>
-<script src="/scripts/jquery.magnific-popup.min.js"></script>
-<script src="/scripts/waypoints.min.js"></script>
 <script src="/scripts/custom.js"></script>
+<script src="/scripts/custom/index.js"></script>
 <script src="/scripts/jquery.validate.min.js"></script>
 <script src="/scripts/smoothscroll.js"></script>
+<script src="/scripts/jquery.smooth-scroll.min.js"></script>
 {%endblock%}
 

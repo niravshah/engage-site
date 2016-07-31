@@ -15,10 +15,25 @@ var welcomeTemplate = new EmailTemplate(welcomeTemplateDir);
 
 
 var mailjet = module.exports = {
+    newContact: function (newContact,cb) {
+
+        transporter.sendMail({
+            from: 'hello@engagewithin.com',
+            to: 'nirav.shah83@gmail.com',
+            subject: 'New Contact - Engage Within',
+            text: newContact
+        }, function (err, resp) {
+            if (err) {
+                console.log('Mailjet Error', err);
+                cb(err,null);
+            } else {
+                console.log('Mailjet Response', resp);
+                cb(null, err);
+            }
+        });
+    },
     sendRegistrationEmail: function (user) {
-        
-        user.homelink = "http://engagewithin.com/ngo/"+user.orgId;
-        
+        user.homelink = "http://engagewithin.com/ngo/" + user.orgId;
         welcomeTemplate.render(user, function (err, result) {
             if (!err) {
                 transporter.sendMail({

@@ -75,7 +75,7 @@ ul.step-center-block li:not(:last-child):before {
     left: 50%;
     bottom: 0;
     width: 1px;
-    background: #00c0ff;
+    background: #EAAD21;
 }
 
 ul.step-center-block li, ul.step-left-block li, ul.step-path-block li {
@@ -91,7 +91,7 @@ ul.step-center-block li .step-num, ul.step-left-block li .step-num {
     left: 50%;
     margin-left: -50px;
     top: 0;
-    border: 1px solid #00c0ff;
+    border: 1px solid #EAAD21;
     border-radius: 50%;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;

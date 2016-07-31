@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mailjet = require('./mailjet');
 
 var content = {};
 
@@ -108,6 +109,17 @@ router.get('/home', function (req, res) {
         res.render('index', content['en']);
     }
 
+});
+
+
+router.post('/contactform', function (req, res) {
+    mailjet.newContact(JSON.stringify(req.body),function(err,result){
+        if(err){
+            res.status(500).json(err);
+        }else{
+            res.status(200).json(result);
+        }
+    });
 });
 
 

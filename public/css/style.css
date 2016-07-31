@@ -189,11 +189,11 @@ hr {
 }
 
 ::selection {
-	background: #00c0ff;
+	background: #EAAD6E;
 	color: #fff;
 }
 ::-moz-selection {
- background: #00c0ff;
+ background: #EAAD6E;
  color: #fff;
 }
 
@@ -482,21 +482,35 @@ textarea.form-control {
 }
 
 .btn-primary {
-	background: #00c0ff;
-	border-color: #00c0ff;
+	background: #EAAD21;
+	border-color: #EAAD21;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-	background: #009acc;
-	border-color: #009acc;
+	background: #FFD93D;
+	border-color: #FFD93D;
 }
+
+.btn-success {
+	color: #ffffff;
+	background-color: #745BA7;
+	border-color: #745BA7;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+	background: #AF7AE5;
+	border-color: #AF7AE5;
+}
+
+
 
 .btn-primary-white {
 	background: #fff;
 	border-color: #fff;
-	color: #00c0ff;
+	color: #745BA7;
 }
 
 .btn-primary-white:hover,
@@ -504,20 +518,20 @@ textarea.form-control {
 .btn-primary-white:active {
 	background: #fff;
 	border-color: #fff;
-	color: #00c0ff;
+	color: #EAAD21;
 }
 
 .btn-default {
-	border: 1px solid #00c0ff;
-	color: #00c0ff;
+	border: 1px solid #745BA7;
+	color: #745BA7;
 	background: none;
 }
 
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active {
-	border: 1px solid #009acc;
-	color: #009acc;
+	border: 1px solid #AF7AE5;
+	color: #AF7AE5;
 	background: none;
 }
 
@@ -592,7 +606,7 @@ a.read-more:hover {
 }
 
 .bg-color2 {
-	background-color: #00c0ff;
+	background-color: #745BA7;
 }
 
 .bg-color3 {
@@ -657,7 +671,7 @@ h1.sub-title,
 h2.sub-title,
 h3.sub-title,
 h4.sub-title {
-	color: #00c0ff;
+	color: #745BA7;
 	margin: 0 0 60px 0;
 }
 
@@ -1113,13 +1127,13 @@ to {
 	display: inline-block;
 	height: 50px;
 	width: 50px;
-	border: 1px solid #00c0ff;
+	border: 1px solid #EAAD21;
 	border-radius: 50%;
 	overflow: hidden;
 	text-align: center;
 	line-height: 50px;
 	top: 0;
-	color: #00c0ff;
+	color: #EAAD21;
 }
 
 .item-list-right li .icon,
@@ -1339,7 +1353,7 @@ nav.navbar-slide.navbar-transparent:not(.show-menu) {
 .navbar .nav li a:hover,
 .navbar .nav li.active a {
 	background: none;
-	color: #00c0ff;
+	color: #745BA7;
 }
 
 .navbar > .container .navbar-brand,
