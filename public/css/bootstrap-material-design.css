@@ -273,7 +273,7 @@ body .container-fluid .jumbotron-danger {
 .input-group-btn .btn.btn-fab.btn-primary,
 .btn-group-raised .btn.btn-primary,
 .btn-group-raised .input-group-btn .btn.btn-primary {
-  background-color: #009688;
+  background-color: #745BA7;
   color: rgba(255,255,255, 0.84);
 }
 .btn.btn-raised.btn-success,
@@ -405,7 +405,7 @@ body .container-fluid .jumbotron-danger {
 .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-primary,
 .btn-group-raised .btn:not(.btn-link):active.btn-primary,
 .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-primary {
-  background-color: #00aa9a;
+  background-color: #9D7CB8;
 }
 .btn.btn-raised:not(.btn-link):hover.btn-success,
 .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-success,
@@ -1755,10 +1755,10 @@ fieldset[disabled] .form-group .form-control {
 }
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
-  background-image: -webkit-linear-gradient(#009688, #009688), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
-  background-image: -o-linear-gradient(#009688, #009688), -o-linear-gradient(#D2D2D2, #D2D2D2);
-  background-image: linear-gradient(#009688, #009688), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F8C524), to(#F8C524)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: -webkit-linear-gradient(#EAAD21, #EAAD21), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: -o-linear-gradient(#EAAD21, #EAAD21), -o-linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#EAAD21, #EAAD21), linear-gradient(#D2D2D2, #D2D2D2);
   -webkit-background-size: 100% 2px, 100% 1px;
           background-size: 100% 2px, 100% 1px;
   -webkit-box-shadow: none;
@@ -1768,11 +1768,11 @@ fieldset[disabled] .form-group .form-control {
           transition-duration: 0.3s;
 }
 .form-group.is-focused .form-control .material-input:after {
-  background-color: #009688;
+  background-color: #EAAD21;
 }
 .form-group.is-focused label,
 .form-group.is-focused label.control-label {
-  color: #009688;
+  color: #EAAD21;
 }
 .form-group.is-focused.label-placeholder label,
 .form-group.is-focused.label-placeholder label.control-label {
