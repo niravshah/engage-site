@@ -193,7 +193,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
         $scope.data = {};
         $scope.data.teamMembers = [];
         if (typeof  $rootScope.d != 'undefined') {
-            $scope.data.teamMembers = $rootScope.teamMembers || [];
+            $scope.data.teamMembers = $rootScope.d.teamMembers || [];
         }
 
         $scope.newMember = {};
