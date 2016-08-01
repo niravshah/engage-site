@@ -218,6 +218,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
                     $.snackbar({content: "New Team Member added successfully"});
                     $scope.data.teamMembers.push(resp.data);
                     $scope.newMember = {};
+                    $scope.newMember.createEngageUser = true;
                 }
             });
 

@@ -143,11 +143,12 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    if (data.createEngageUser) {
-
+                    console.log('createEngageUser', typeof data.createEngageUser);
+                    if (data.createEngageUser == 'true') {
+                        console.log('createEngageUser inside');
                         var newUser = {
                             uname: data.email,
-                            password: generatePassword(),
+                            pword: generatePassword(),
                             name: data.name,
                             orgId:ngo.sname
                         };
@@ -160,6 +161,8 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                             res.json(ngo.teamMembers[origSize + 1]);
                         });
 
+                    }else{
+                        res.json(ngo.teamMembers[origSize + 1]);
                     }
 
                 }

@@ -34,8 +34,8 @@ var mailjet = module.exports = {
     },
     sendRegistrationEmail: function (user) {        
         user.homelink = "http://engagewithin.com/ngo/" + user.orgId;       
-        var locals = {user:user}
-        welcomeTemplate.render(user, function (err, result) {
+        var locals = {user:user};
+        welcomeTemplate.render(locals, function (err, result) {
             if (!err) {
                 transporter.sendMail({
                     from: 'hello@engagewithin.com',
