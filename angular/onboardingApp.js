@@ -151,6 +151,8 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
                     $.snackbar({content: "Basic Details Updated"});
                     $rootScope.ngoId = resp.data._id;
                     $rootScope.sname = resp.data.sname;
+                    $rootScope.d = resp.data;
+                    $window.localStorage['jwtToken_sname']=resp.data.sname;
                 }
             });
         } else {
@@ -193,7 +195,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
         $scope.data = {};
         $scope.data.teamMembers = [];
         if (typeof  $rootScope.d != 'undefined') {
-            $scope.data.teamMembers = $rootScope.teamMembers || [];
+            $scope.data.teamMembers = $rootScope.d.teamMembers || [];
         }
 
         $scope.newMember = {};
@@ -218,6 +220,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
                     $.snackbar({content: "New Team Member added successfully"});
                     $scope.data.teamMembers.push(resp.data);
                     $scope.newMember = {};
+                    $scope.newMember.createEngageUser = true;
                 }
             });
 

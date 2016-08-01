@@ -93,7 +93,11 @@ router.post('/ngo', upload.any(), function (req, res) {
 
         Ngo.findOneAndUpdate({_id: req.body.addData._id}, {$set: req.body.addData}, function (err, doc) {
             if (err) res.status(500).json({"Error": err});
-            else res.json(doc)
+            else {
+                Ngo.findOne({_id:doc._id},function(err,updatedNgo){
+                    res.json(updatedNgo);
+                });
+            }
         });
 
     } else {
@@ -105,7 +109,7 @@ router.post('/ngo', upload.any(), function (req, res) {
                 uD.orgId = req.body.addData.sname;
                 User.findOneAndUpdate({_id: req.body.addData.uid}, {$set: uD}, function (err, doc) {
                     if (err) res.status(500).json({"Error": err});
-                    else res.json(ngo)
+                    else res.json(ngo);
                 });
 
             }
@@ -143,11 +147,12 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    if (data.createEngageUser) {
-
+                    console.log('createEngageUser', typeof data.createEngageUser);
+                    if (data.createEngageUser == 'true') {
+                        console.log('createEngageUser inside');
                         var newUser = {
                             uname: data.email,
-                            password: generatePassword(),
+                            pword: generatePassword(),
                             name: data.name,
                             orgId:ngo.sname
                         };
@@ -160,6 +165,8 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                             res.json(ngo.teamMembers[origSize + 1]);
                         });
 
+                    }else{
+                        res.json(ngo.teamMembers[origSize + 1]);
                     }
 
                 }

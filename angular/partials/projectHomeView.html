@@ -33,22 +33,22 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">Event Start Date </label>
-                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.sDate | date:'yyyy-MM-dd'}]}</a>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.sDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
                     <datetimepicker data-ng-model="newProject.sDate"
-                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' ,minView:'day'}"></datetimepicker>
+                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' ,minView:'hour'}"></datetimepicker>
                 </ul>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">Event End Date</label>
-                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.eDate | date:'yyyy-MM-dd'}]}</a>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.eDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                     <datetimepicker data-ng-model="newProject.eDate"
-                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView:'day' }"></datetimepicker>
+                                    data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView:'hour' }"></datetimepicker>
                 </ul>
             </div>
         </div>

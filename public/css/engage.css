@@ -123,7 +123,7 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
 }
 
 .slides-container-section {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .next-btn a {
