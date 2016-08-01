@@ -151,6 +151,8 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
                     $.snackbar({content: "Basic Details Updated"});
                     $rootScope.ngoId = resp.data._id;
                     $rootScope.sname = resp.data.sname;
+                    $rootScope.d = resp.data;
+                    $window.localStorage['jwtToken_sname']=resp.data.sname;
                 }
             });
         } else {
