@@ -116,7 +116,7 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
     }
 ]);
 
-app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$window', function ($scope, $rootScope, $http, $q, $window) {
+app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', function ($scope, $rootScope, $http, $q, $window,$state) {
 
 
     $scope.init = function () {
