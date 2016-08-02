@@ -153,6 +153,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
                     $rootScope.sname = resp.data.sname;
                     $rootScope.d = resp.data;
                     $window.localStorage['jwtToken_sname']=resp.data.sname;
+                    $state.transitionTo('team');
                 }
             });
         } else {
@@ -184,7 +185,7 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
 
 }]);
 
-app.controller('teamViewController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+app.controller('teamViewController', ['$scope', '$rootScope', '$http', '$state', function ($scope, $rootScope, $http, $state) {
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -221,6 +222,7 @@ app.controller('teamViewController', ['$scope', '$rootScope', '$http', function 
                     $scope.data.teamMembers.push(resp.data);
                     $scope.newMember = {};
                     $scope.newMember.createEngageUser = true;
+
                 }
             });
 
