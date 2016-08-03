@@ -16,20 +16,20 @@
                             <form name="teamDetailsForm" novalidate>
                                 <div class="row form-group label-floating required">
                                     <label for="i6" class="control-label">Name</label>
-                                    <input ng-model="newMember.name" name="name" type="text" class="form-control" id="i6" required>
+                                    <input ng-model="currentMember.name" name="name" type="text" class="form-control" id="i6" required>
                                 </div>
                                 <div class="row form-group label-floating required">
                                     <label for="i7" class="control-label">Email</label>
-                                    <input ng-model="newMember.email" type="email" class="form-control" id="i7" required>
+                                    <input ng-model="currentMember.email" type="email" class="form-control" id="i7" required>
                                 </div>
                                 <div class="row form-group label-floating required">
                                     <label for="i8" class="control-label">Title</label>
-                                    <input ng-model="newMember.title" type="text" class="form-control" id="i8" required>
+                                    <input ng-model="currentMember.title" type="text" class="form-control" id="i8" required>
                                 </div>
                                 <div class="row form-group md-pb-20">
                                     <div class="checkbox">
                                         <label>
-                                            <input ng-model="newMember.createEngageUser" type="checkbox" checked="">&nbsp Create Engage User
+                                            <input ng-model="currentMember.createEngageUser" type="checkbox" checked="">&nbsp Create Engage User
                                         </label>
                                     </div>
                                     <p class="help-block">Allow this person to add/update details of your Organization</p>
@@ -37,8 +37,8 @@
 
                                 <div class="row form-group">
                                     <div class="col-md-6">
-                                        <a ng-model="newMember.avatar" name="avatar" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
-                                        <p>{[{newMember.avatar.name}]}</p>
+                                        <a ng-model="currentMember.ngfAvatar" name="avatar" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
+                                        <p ng-id="currentMember.ngfAvatar">{[{newMember.ngfAvatar.name}]}</p>
                                     </div>
                                     <div class="col-md-6 next-btn">
                                         <a ng-disabled="teamDetailsForm.$invalid" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
@@ -51,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
-                    <a ui-sref="new.projects.info" ng-click="teamMembersNext()" class="btn btn-lg btn-raised btn-info">Next</a>
+                    <a ui-sref="new.projects.info" class="btn btn-lg btn-raised btn-info">Next</a>
                 </div>
                 <div class="col-md-12 md-mt-20">
                     <div class="progress">
@@ -63,8 +63,8 @@
         <div class="slides-container-section col-md-5 mdc-bg-blue-600">
             <div class="row md-p-50">
                 <div class="list-group" style="overflow-y: auto">
-                    <div class="well" ng-repeat="member in data.teamMembers track by $index">
-                        <button type="button" class="close" aria-hidden="true" ng-click="removeMember(data.teamMembers,$index,member.id)"><i class="material-icons">close</i>
+                    <div class="well" ng-repeat="member in teamMembers track by $index">
+                        <button type="button" class="close" aria-hidden="true" ng-click="removeMember(teamMembers,$index,member.id)"><i class="material-icons">close</i>
                         </button>
                         <!--button type="button" class="close" aria-hidden="true" ng-click="editMember(data.teamMembers,$index,member.id)"><i class="material-icons">mode_edit</i>
                         </button-->

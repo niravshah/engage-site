@@ -41,7 +41,7 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
         .state('new.team', {
             url: '/team',
             templateUrl: '/angular/partials/admin/new/team.html',
-            controller: 'teamViewController',
+            controller: 'teamController',
             authenticate: true
         })
         .state('new.projects', {
@@ -79,7 +79,8 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
     });
 }]);
 
-app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'Upload',function ($scope, $rootScope, $state, $http, Upload) {
+app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'DataService','Upload',function ($scope, $rootScope, $state, $http, dS, Upload) {
+
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();
@@ -96,5 +97,4 @@ app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http'
             cb(null, resp);
         });
     };
-
 }]);

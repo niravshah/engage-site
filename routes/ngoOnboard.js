@@ -104,14 +104,13 @@ router.post('/ngo', upload.any(), function (req, res) {
         newNgo.save(function (err, ngo) {
             if (err) res.status(500).json({"Error": err})
             else {
-
                 User.findOne({_id:req.body.addData.uid},function(err,user){
                     if(user){
                         user.orgId.push(req.body.addData.sname);
                     }
                     user.save(function(err, user){
                         if (err) res.status(500).json({"Error": err});
-                        else res.json(user);
+                        else res.json(ngo);
                     });
                 });
 

@@ -1,16 +1,9 @@
-app.controller('projectsController', ['$scope', '$rootScope', '$http',function ($scope, $rootScope, $http) {
+app.controller('projectsController', ['$scope', '$rootScope', '$http','DataService',function ($scope, $rootScope, $http, dS) {
     $scope.init = function () {
-        //console.log('projectsViewController init');
-
-        $scope.newProject = {};
-        $scope.newProject.eDate = new Date();
-        $scope.newProject.sDate = new Date();
-        $scope.data = {};
-        $scope.data.projects = {};
-        if (typeof  $rootScope.d != 'undefined') {
-            $scope.data.projects = $rootScope.d.projects || {};
-        }
-        $scope.teamMembers = $rootScope.teamMembers;
+        $scope.currentProject = dS.getCurrentProject();
+        $scope.projects = dS.getCurrentNgoProjects();
+        $scope.teamMembers = dS.getCurrentNgoTeamMembers();
+        $scope.ngoId = dS.getCurrentNgoId();
     };
 
     $scope.szSkillsConfig = {
@@ -72,22 +65,21 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http',function (
     $scope.init();
 
     $scope.addNewProject = function (isValid, $projectForm) {
-        console.log($projectForm.$error);
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
             var files = [];
-            if (typeof $scope.newProject.bannerNgf == 'object') {
+            if (typeof $scope.currentProject.bannerNgf == 'object') {
 
-                files.push($scope.newProject.bannerNgf);
-                $scope.newProject.banner = $scope.newProject.bannerNgf.name;
+                files.push($scope.currentProject.bannerNgf);
+                $scope.currentProject.banner = $scope.currentProject.bannerNgf.name;
             }
-            $scope.upload(files, $scope.newProject, '/ngo/' + $rootScope.ngoId + '/projects', function (resp, err) {
+            $scope.upload(files, $scope.currentProject, '/ngo/' + $scope.ngoId + '/projects', function (resp, err) {
                 if (err) {
                     $.snackbar({content: "Server error while adding new Project"});
                 } else {
                     $.snackbar({content: "New Project added successfully"});
-                    $scope.data.projects = resp.data.projects;
-                    $scope.newProject = {};
+                    dS.addCurrentNgoProject(resp.data);
+                    dS.setCurrentProject({eDate : new Date(),sDate :new Date()});
                 }
             });
 
@@ -105,7 +97,6 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http',function (
         });
 
     };
-
     $scope.editProject = function (array, index, mid) {
         /*$http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
          $scope.newProject = array[index];
@@ -114,13 +105,10 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http',function (
          $.snackbar({content: "Server Error"});
          });*/
 
-        $scope.newProject = array[index];
+        dS.setCurrentProject(array[index]);
     };
 
     $scope.inputOnTimeSet = function (newDate, oldDate) {
-        //console.log('inputOnTimeSet', newDate, oldDate);
         $('#dLabel1').dropdown('toggle');
     };
-
-
 }]);

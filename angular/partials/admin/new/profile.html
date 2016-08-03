@@ -10,13 +10,13 @@
                     <div class="col-md-7">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="i1" class="control-label">Name</label>
-                            <input ng-model="data.basicInfo.d.name" name="name" type="text" class="form-control" id="i1">
+                            <input ng-model="currentNgo.name" name="name" type="text" class="form-control" id="i1">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="sname" class="control-label">Unique Short Name</label>
-                            <input ng-model="data.basicInfo.d.sname" name="sname" type="text" class="form-control" id="sname"
+                            <input ng-model="currentNgo.sname" name="sname" type="text" class="form-control" id="sname"
                                    ng-model-options="{ updateOn: 'blur' }" ui-validate-async="{nameExists:'checkNameUnique($value, userForm.sname.$dirty)'}" required />
                             <ng-messages for="userForm.sname.$error" ng-if="userForm.sname.$dirty" multiple>
                                 <ng-message when="required">Short Name is Required</ng-message>
@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="form-group label-floating md-pb-20 required">
                             <label for="s1" class="control-label">Category</label>
-                            <select ng-model="data.basicInfo.d.category" name="category" id="s1" class="form-control">
+                            <select ng-model="currentNgo.category" name="category" id="s1" class="form-control">
                                 <option value=""></option>
                                 <option value="education">Education</option>
                                 <option value="arts-culture">Arts & Culture</option>
@@ -47,31 +47,38 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group label-floating md-pb-20">
                             <label for="i2" class="control-label">Address</label>
-                            <input ng-model="data.basicInfo.d.address" name="address" type="text" class="form-control"
+                            <input ng-model="currentNgo.address" name="address" type="text" class="form-control"
                                    id="i2">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group label-floating md-pb-20">
+                            <label for="i4" class="control-label">Phone Number</label>
+                            <input ng-model="currentNgo.phone" name="phone" type="text" class="form-control"
+                                   id="i4">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group label-floating md-pb-20">
                             <label for="i3" class="control-label">Website</label>
-                            <input ng-model="data.basicInfo.d.website" name="website" type="text" class="form-control"
+                            <input ng-model="currentNgo.website" name="website" type="text" class="form-control"
                                    id="i3">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group label-floating md-pb-20">
-                            <label for="i4" class="control-label">Phone Number</label>
-                            <input ng-model="data.basicInfo.d.phone" name="phone" type="text" class="form-control"
-                                   id="i4">
+                            <label for="email" class="control-label">Email</label>
+                            <input ng-model="currentNgo.email" name="email" type="email" class="form-control"
+                                   id="email">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group label-floating required">
                             <label for="bio" class="control-label">Your Mission Statement</label>
-                        <textarea ng-model="data.basicInfo.d.bio" name="bio" class="form-control" rows="5"
+                        <textarea ng-model="currentNgo.bio" name="bio" class="form-control" rows="5"
                                   id="bio"></textarea>
                             <span class="help-block">This information will appear at the top of your NGOs profile. Use this space to tell organizations more about what you do.</span>
                         </div>
@@ -80,17 +87,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <a ng-model="data.basicInfo.ngfBanner" id="ngfBanner" name="ngfBanner"
+                                    <a ng-model="currentNgo.ngfBanner" id="ngfBanner" name="ngfBanner"
                                        ngf-pattern="'image/*'"
                                        ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                                        class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                                    <a ng-model="data.basicInfo.ngfLogo" id="ngfLogo" name="ngfLogo" ngf-pattern="'image/*'"
+                                    <a ng-model="currentNgo.ngfLogo" id="ngfLogo" name="ngfLogo" ngf-pattern="'image/*'"
                                        ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                                        class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
                                 </div>
                                 <div class="row">
-                                    <span ng-if="data.basicInfo.banner">[ Banner File : {[{data.basicInfo.ngfBanner.name}]} ]</span>
-                                    <span ng-if="data.basicInfo.logo">[ Logo File : {[{data.basicInfo.ngfLogo.name}]} ]</span>
+                                    <span ng-if="currentNgo.ngfBanner">[ Banner File : {[{currentNgo.ngfBanner.name}]} ]</span>
+                                    <span ng-if="currentNgo.ngfLogo">[ Logo File : {[{currentNgo.ngfLogo.name}]} ]</span>
                                 </div>
                             </div>
                             <div class="col-md-6 next-btn">

@@ -3,13 +3,13 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
                 <label for="i1" class="control-label">Name</label>
-                <input ng-model="newProject.name" name="name" type="text" class="form-control" id="i1" required>
+                <input ng-model="currentProject.name" name="name" type="text" class="form-control" id="i1" required>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">Category</label>
-                <selectize config='szCategoryConfig' options='szCategory' ng-model="newProject.category" name="category"
+                <selectize config='szCategoryConfig' options='szCategory' ng-model="currentProject.category" name="category"
                         class="form-control">
                 </selectize>
             </div>
@@ -19,13 +19,13 @@
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">NGO Contact</label>
                 <selectize config='szContactConfig' options='teamMembers'
-                           ng-model="newProject.contact"></selectize>
+                           ng-model="currentProject.contact"></selectize>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="location" class="control-label">Event Address</label>
-                <input ng-model="newProject.location" name="location" type="text" class="form-control"
+                <input ng-model="currentProject.location" name="location" type="text" class="form-control"
                        id="location"/>
             </div>
         </div>
@@ -33,10 +33,10 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">Event Start Date </label>
-                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.sDate | date:'yyyy-MM-dd HH:mm'}]}</a>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{currentProject.sDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
-                    <datetimepicker data-ng-model="newProject.sDate"
+                    <datetimepicker data-ng-model="currentProject.sDate"
                                     data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' ,minView:'hour'}"></datetimepicker>
                 </ul>
             </div>
@@ -44,10 +44,10 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label class="control-label">Event End Date</label>
-                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{newProject.eDate | date:'yyyy-MM-dd HH:mm'}]}</a>
+                <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{currentProject.eDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="newProject.eDate"
+                    <datetimepicker data-ng-model="currentProject.eDate"
                                     data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle',minView:'hour' }"></datetimepicker>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
         <div class="col-md-12 md-mt-20">
             <div class="form-group label-floating">
                 <label for="description" class="control-label">Description</label>
-                        <textarea ng-model="newProject.description" name="description" class="form-control" rows="6"
+                        <textarea ng-model="currentProject.description" name="description" class="form-control" rows="6"
                                   id="description"></textarea>
             </div>
         </div>
@@ -64,14 +64,14 @@
             <div class="row md-mt-20">
                 <div class="col-md-6">
                     <div class="row">
-                        <a ng-model="newProject.bannerNgf" id="banner" name="banner"
+                        <a ng-model="currentProject.bannerNgf" id="banner" name="banner"
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                            class="btn btn-sm btn-raised btn-primary">Upload Image</a>
                         <a ui-sref="new.projects.skills" class="btn btn-sm btn-raised btn-primary">Add Team Requirements</a>
                     </div>
                     <div class="row">
-                        <span ng-if="newProject.newProjectBanner">[ Banner File : {[{data.basicInfo.bannerNgf.name}]} ]</span>
+                        <span ng-if="currentProject.newProjectBanner">[ Banner File : {[currentProject.bannerNgf.name}]} ]</span>
                     </div>
                 </div>
                 <div class="col-md-6 next-btn">

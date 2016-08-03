@@ -1,10 +1,8 @@
-app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', function ($scope, $rootScope, $http, $q, $window,$state) {
+app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', 'DataService', function ($scope, $rootScope, $http, $q, $window,$state, dS) {
 
 
     $scope.init = function () {
-        $scope.data = {};
-        $scope.data.basicInfo = {};
-        $scope.data.basicInfo.d = $rootScope.d || {};
+        $scope.currentNgo = dS.getCurrentNgo();
     };
 
     $scope.init();
@@ -12,27 +10,26 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
     $scope.saveNgo = function (isValid) {
         if (isValid) {
             var files = [];
-            if (typeof $scope.data.basicInfo.ngfBanner == 'object') {
-                $scope.data.basicInfo.d.banner = $scope.data.basicInfo.ngfBanner.name;
-                files.push($scope.data.basicInfo.ngfBanner);
+            if (typeof $scope.currentNgo.ngfBanner == 'object') {
+                $scope.currentNgo.banner = $scope.currentNgo.ngfBanner.name;
+                files.push($scope.currentNgo.ngfBanner);
             }
 
-            if (typeof $scope.data.basicInfo.ngfLogo == 'object') {
-                $scope.data.basicInfo.d.logo = $scope.data.basicInfo.ngfLogo.name;
-                files.push($scope.data.basicInfo.ngfLogo);
+            if (typeof $scope.currentNgo.ngfLogo == 'object') {
+                $scope.currentNgo.logo = $scope.currentNgo.ngfLogo.name;
+                files.push($scope.currentNgo.ngfLogo);
             }
 
-            $scope.data.basicInfo.d.uid = $window.localStorage['jwtToken_uid'];
+            $scope.currentNgo.uid = $window.localStorage['jwtToken_uid'];
 
-            $scope.upload(files, $scope.data.basicInfo.d, '/ngo', function (resp, err) {
+            $scope.upload(files, $scope.currentNgo, '/ngo', function (resp, err) {
                 if (err) {
                     //console.log('File Upload Error')
                     $.snackbar({content: "Server error while updating Profile"});
                 } else {
                     //console.log('File Upload Success', resp);
                     $.snackbar({content: "Profile details updated"});
-                    $rootScope.ngoId = resp.data._id;
-                    $rootScope.d = resp.data;
+                    dS.setCurrentNgo(resp.data);
                     $state.transitionTo('new.team');
                 }
             });

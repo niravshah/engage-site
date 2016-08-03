@@ -6,6 +6,7 @@ var ngoInfoSchema = new Schema({
     bio: {type: String},
     category: {type: String},
     website: {type: String},
+    email: {type: String},
     address: {type: String},
     phone: {type: String},
     banner: {type: String},

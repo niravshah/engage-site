@@ -1,4 +1,4 @@
-app.controller('teamController', ['$scope', '$rootScope', '$http', '$state', function ($scope, $rootScope, $http, $state) {
+app.controller('teamController', ['$scope', '$rootScope', '$http', 'DataService', function ($scope, $rootScope, $http, dS) {
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -6,14 +6,9 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', '$state', fun
     });
 
     $scope.init = function () {
-        $scope.data = {};
-        $scope.data.teamMembers = [];
-        if (typeof  $rootScope.d != 'undefined') {
-            $scope.data.teamMembers = $rootScope.d.teamMembers || [];
-        }
-
-        $scope.newMember = {};
-        $scope.newMember.createEngageUser = true;
+        $scope.teamMembers = dS.getCurrentNgoTeamMembers();
+        $scope.currentMember = dS.getCurrentTeamMember();
+        $scope.ngoId = dS.getCurrentNgoId();
     };
 
     $scope.init();
@@ -21,21 +16,18 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', '$state', fun
     $scope.addNewMember = function (isValid) {
         if (isValid) {
             //console.log('addNewMember', $scope.newMember);
-
             var files = [];
-            if (typeof $scope.newMember.avatar != 'undefined') {
-                files.push($scope.newMember.avatar);
-                $scope.newMember.avatar = $scope.newMember.avatar.name;
+            if (typeof $scope.currentMember.ngfAvatar != 'undefined') {
+                files.push($scope.currentMember.ngfAvatar);
+                $scope.currentMember.avatar = $scope.currentMember.ngfAvatar.name;
             }
-            $scope.upload(files, $scope.newMember, '/ngo/' + $rootScope.ngoId + '/members', function (resp, err) {
+            $scope.upload(files, $scope.currentMember, '/ngo/' + $scope.ngoId + '/members', function (resp, err) {
                 if (err) {
                     $.snackbar({content: "Server error while adding new team member"});
                 } else {
                     $.snackbar({content: "New Team Member added successfully"});
-                    $scope.data.teamMembers.push(resp.data);
-                    $scope.newMember = {};
-                    $scope.newMember.createEngageUser = true;
-
+                    dS.addCurrentNgoTeamMember(resp.data);
+                    dS.setCurrentTeamMember({createEngageUser: true});
                 }
             });
 
@@ -45,7 +37,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', '$state', fun
     };
 
     $scope.removeMember = function (array, index, mid) {
-        $http.delete('/ngo/' + $rootScope.ngoId + '/members/' + mid).then(function (response) {
+        $http.delete('/ngo/' + $scope.ngoId + '/members/' + mid).then(function (response) {
             array.splice(index, 1);
         }, function (error) {
             $.snackbar({content: "Server Error"});
@@ -54,16 +46,11 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', '$state', fun
     };
 
     $scope.editMember = function (array, index, mid) {
-        $http.delete('/ngo/' + $rootScope.ngoId + '/members/' + mid).then(function (response) {
+        $http.delete('/ngo/' + $scope.ngoId + '/members/' + mid).then(function (response) {
             $scope.newMember = array[index];
             array.splice(index, 1);
         }, function (error) {
             $.snackbar({content: "Server Error"});
         });
     };
-
-    $scope.teamMembersNext = function () {
-        $rootScope.teamMembers = $scope.data.teamMembers;
-    }
-
 }]);
