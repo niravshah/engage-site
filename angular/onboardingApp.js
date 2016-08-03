@@ -130,14 +130,14 @@ app.controller('mainInfoController', ['$scope', '$rootScope', '$http', '$q', '$w
     $scope.saveNgo = function (isValid) {
         if (isValid) {
             var files = [];
-            if ($scope.data.basicInfo.banner) {
-                $scope.data.basicInfo.d.banner = $scope.data.basicInfo.banner.name;
-                files.push($scope.data.basicInfo.banner);
+            if (typeof $scope.data.basicInfo.ngfBanner == 'object') {
+                $scope.data.basicInfo.d.banner = $scope.data.basicInfo.ngfBanner.name;
+                files.push($scope.data.basicInfo.ngfBanner);
             }
 
-            if ($scope.data.basicInfo.logo) {
-                $scope.data.basicInfo.d.logo = $scope.data.basicInfo.logo.name;
-                files.push($scope.data.basicInfo.logo);
+            if (typeof $scope.data.basicInfo.ngfLogo == 'object') {
+                $scope.data.basicInfo.d.logo = $scope.data.basicInfo.ngfLogo.name;
+                files.push($scope.data.basicInfo.ngfLogo);
             }
 
             $scope.data.basicInfo.d.uid = $window.localStorage['jwtToken_uid'];

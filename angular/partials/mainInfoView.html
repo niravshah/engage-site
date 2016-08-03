@@ -80,17 +80,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <a ng-model="data.basicInfo.banner" id="banner" name="banner"
+                                    <a ng-model="data.basicInfo.ngfBanner" id="ngfBanner" name="ngfBanner"
                                        ngf-pattern="'image/*'"
                                        ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                                        class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                                    <a ng-model="data.basicInfo.logo" id="logo" name="logo" ngf-pattern="'image/*'"
+                                    <a ng-model="data.basicInfo.ngfLogo" id="ngfLogo" name="ngfLogo" ngf-pattern="'image/*'"
                                        ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                                        class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
                                 </div>
                                 <div class="row">
-                                    <span ng-if="data.basicInfo.banner">[ Banner File : {[{data.basicInfo.banner.name}]} ]</span>
-                                    <span ng-if="data.basicInfo.logo">[ Logo File : {[{data.basicInfo.logo.name}]} ]</span>
+                                    <span ng-if="data.basicInfo.banner">[ Banner File : {[{data.basicInfo.ngfBanner.name}]} ]</span>
+                                    <span ng-if="data.basicInfo.logo">[ Logo File : {[{data.basicInfo.ngfLogo.name}]} ]</span>
                                 </div>
                             </div>
                             <div class="col-md-6 next-btn">
