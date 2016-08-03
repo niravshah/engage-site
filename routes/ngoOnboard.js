@@ -90,7 +90,6 @@ router.post('/ngo', upload.any(), function (req, res) {
     }
 
     if (typeof req.body.addData._id != 'undefined') {
-
         Ngo.findOneAndUpdate({_id: req.body.addData._id}, {$set: req.body.addData}, function (err, doc) {
             if (err) res.status(500).json({"Error": err});
             else {
@@ -105,11 +104,15 @@ router.post('/ngo', upload.any(), function (req, res) {
         newNgo.save(function (err, ngo) {
             if (err) res.status(500).json({"Error": err})
             else {
-                var uD = {};
-                uD.orgId = req.body.addData.sname;
-                User.findOneAndUpdate({_id: req.body.addData.uid}, {$set: uD}, function (err, doc) {
-                    if (err) res.status(500).json({"Error": err});
-                    else res.json(ngo);
+
+                User.findOne({_id:req.body.addData.uid},function(err,user){
+                    if(user){
+                        user.orgId.push(req.body.addData.sname);
+                    }
+                    user.save(function(err, user){
+                        if (err) res.status(500).json({"Error": err});
+                        else res.json(user);
+                    });
                 });
 
             }

@@ -18,6 +18,10 @@ router.get('/ngo', function (req, res) {
     }
 });
 
+router.get('/ngo/admin',function (req,res){
+   res.render('ngo/admin');
+});
+
 router.get('/ngo/:id', function (req, res, next) {
     Ngo.findOne({sname: req.params.id}, function (err, ngo) {
         if (err) {

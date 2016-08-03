@@ -51,7 +51,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
-                    <a ui-sref="projects.home" ng-click="teamMembersNext()" class="btn btn-lg btn-raised btn-info">Next</a>
+                    <a ui-sref="new.projects.info" ng-click="teamMembersNext()" class="btn btn-lg btn-raised btn-info">Next</a>
                 </div>
                 <div class="col-md-12 md-mt-20">
                     <div class="progress">
@@ -64,7 +64,6 @@
             <div class="row md-p-50">
                 <div class="list-group" style="overflow-y: auto">
                     <div class="well" ng-repeat="member in data.teamMembers track by $index">
-
                         <button type="button" class="close" aria-hidden="true" ng-click="removeMember(data.teamMembers,$index,member.id)"><i class="material-icons">close</i>
                         </button>
                         <!--button type="button" class="close" aria-hidden="true" ng-click="editMember(data.teamMembers,$index,member.id)"><i class="material-icons">mode_edit</i>

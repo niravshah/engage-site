@@ -5,7 +5,7 @@ var userSchema = new Schema({
     uname: {type: String},
     pword: {type: String},
     role: {type: String},
-    orgId: {type: String},
+    orgId: {type: Array,default:[]},
     resetPassword:{type:Boolean,default:true}
 });
 module.exports = mongoose.model('User', userSchema);
