@@ -32,8 +32,8 @@ var localStorage = multer.diskStorage({
     }
 });
 
-var upload = multer({storage: s3Sotrage});
-//var upload = multer({storage: localStorage});
+//var upload = multer({storage: s3Sotrage});
+var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
     res.render('ngo/onboarding');
@@ -213,16 +213,21 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     var files = req.files;
     var data = req.body.addData;
     var id = req.params.id;
+    var existingProject = false;
 
-    //console.log(files,data, id);
+    console.log(files,data, id);
 
-    data.id = sid.generate();
+    if(typeof data.id == 'undefined') {
+        data.id = sid.generate();
+    }else{
+        existingProject = true;
+    }
 
     for (var i = 0; i < files.length; i++) {
         //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
-            //data.banner = '/' + files[i].path;
-            data.banner = files[i].location;
+            data.banner = '/' + files[i].path;
+            //data.banner = files[i].location;
         }
     }
 
@@ -230,14 +235,26 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
         if (err) {
             res.status(500).json({'Error': err});
         } else {
+
+            if(existingProject == true){
+                var spliceIndex;
+                for(var i=0;i<ngo.projects.length;i++){
+                    if(ngo.projects[i].id==data.id){
+                        spliceIndex = i;
+                    }
+                }
+                ngo.projects.splice(spliceIndex,1);
+            }
+
             var origSize = ngo.projects.length - 1;
-            ngo.projects.push(data)
+            ngo.projects.push(data);
+
             ngo.save(function (err, ngo) {
                 if (err) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.projects[origSize + 1]);
+                    res.json(ngo.projects[origSize+1]);
                 }
             })
         }

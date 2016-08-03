@@ -328,11 +328,13 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
 
     $scope.init();
 
-    $scope.addNewProject = function (isValid) {
+    $scope.addNewProject = function (isValid, $projectForm) {
+        console.log($projectForm.$error);
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
             var files = [];
-            if (typeof $scope.newProject.banner != 'undefined') {
+            if (typeof $scope.newProject.banner != 'undefined' && typeof $scope.newProject.banner == 'object') {
+
                 files.push($scope.newProject.banner);
                 $scope.newProject.banner = $scope.newProject.banner.name;
             }
@@ -347,7 +349,7 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
             });
 
         } else {
-            $.snackbar({content: "Add New Project member form is not valid"});
+            $.snackbar({content: "Add New Project Form is not valid"});
         }
 
     };
@@ -362,13 +364,14 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
     };
 
     $scope.editProject = function (array, index, mid) {
-        $http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
+        /*$http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
             $scope.newProject = array[index];
             array.splice(index, 1);
         }, function (error) {
             $.snackbar({content: "Server Error"});
-        });
+        });*/
 
+        $scope.newProject = array[index];
     };
 
     $scope.inputOnTimeSet = function (newDate, oldDate) {

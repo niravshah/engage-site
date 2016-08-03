@@ -13,18 +13,16 @@
             </div>
         </div>
         <div class="slides-container-section col-md-5 mdc-bg-blue-600">
-            <div class="row md-p-10">
-                <div class="col-md-6 col-sm-4" ng-repeat="project in data.projects track by $index">
+            <div class="row md-mt-20">
+                <div class="col-md-6 col-sm-12" ng-repeat="project in data.projects track by $index">
                     <div class="card">
                         <div class="card-height-indicator"></div>
                         <div class="card-content">
                             <div class="card-image">
                                 <img ngf-thumbnail="project.banner" class="circle">
-                                <h3 class="card-image-headline">{[{project.name}]}</h3>
                             </div>
                             <div class="card-body">
-                                <p>{[{project.location}]}</p>
-                                <p>{[{project.sDate | date:'MM/dd/yyyy'}]}</p>
+                                <p>{[{project.name}]}</p>
                             </div>
                             <footer class="card-footer">
                                 <button ng-click="removeProject(data.projects,$index,project.id)"
