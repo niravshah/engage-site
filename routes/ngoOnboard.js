@@ -218,6 +218,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     console.log(files,data, id);
 
     if(typeof data.id == 'undefined') {
+        console.log('data id undefined');
         data.id = sid.generate();
     }else{
         existingProject = true;
@@ -243,6 +244,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                         spliceIndex = i;
                     }
                 }
+                console.log('spliceIndex', spliceIndex)
                 ngo.projects.splice(spliceIndex,1);
             }
 
@@ -254,7 +256,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.projects[origSize+1]);
+                    res.json(ngo);
                 }
             })
         }

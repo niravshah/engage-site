@@ -333,17 +333,17 @@ app.controller('projectsViewController', ['$scope', '$rootScope', '$http', '$win
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
             var files = [];
-            if (typeof $scope.newProject.banner != 'undefined' && typeof $scope.newProject.banner == 'object') {
+            if (typeof $scope.newProject.bannerNgf == 'object') {
 
-                files.push($scope.newProject.banner);
-                $scope.newProject.banner = $scope.newProject.banner.name;
+                files.push($scope.newProject.bannerNgf);
+                $scope.newProject.banner = $scope.newProject.bannerNgf.name;
             }
             $scope.upload(files, $scope.newProject, '/ngo/' + $rootScope.ngoId + '/projects', function (resp, err) {
                 if (err) {
                     $.snackbar({content: "Server error while adding new Project"});
                 } else {
                     $.snackbar({content: "New Project added successfully"});
-                    $scope.data.projects.push(resp.data);
+                    $scope.data.projects = resp.data.projects;
                     $scope.newProject = {};
                 }
             });
