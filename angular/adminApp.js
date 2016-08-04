@@ -10,13 +10,13 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
     $stateProvider
         .state('login', {
             url: '/login',
-            templateUrl: '/angular/partials/loginView.html',
+            templateUrl: '/angular/partials/admin/login.html',
             controller: 'loginController',
             authenticate: false
         })
         .state('reset', {
             url: '/reset',
-            templateUrl: '/angular/partials/resetView.html',
+            templateUrl: '/angular/partials/admin/reset.html',
             controller: 'resetController',
             authenticate: false
         })

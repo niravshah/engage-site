@@ -8,7 +8,6 @@ app.controller('dashboardController', ['$scope', '$rootScope', '$state',  '$http
     $scope.init();
     
     $scope.newNgo = function () {
-        dS.init();
         $state.transitionTo('new.profile');
     }
 }]);

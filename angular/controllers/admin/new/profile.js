@@ -1,8 +1,8 @@
-app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', 'DataService', function ($scope, $rootScope, $http, $q, $window,$state, dS) {
+app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', function ($scope, $rootScope, $http, $q, $window,$state) {
 
 
     $scope.init = function () {
-        $scope.currentNgo = dS.getCurrentNgo();
+        $scope.currentNgo = $rootScope.currentNgo || {};
     };
 
     $scope.init();
@@ -29,7 +29,8 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
                 } else {
                     //console.log('File Upload Success', resp);
                     $.snackbar({content: "Profile details updated"});
-                    dS.setCurrentNgo(resp.data);
+                    $scope.currentNgo = {};
+                    $rootScope.currentNgo = resp.data;
                     $state.transitionTo('new.team');
                 }
             });

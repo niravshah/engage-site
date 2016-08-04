@@ -1,4 +1,4 @@
-app.controller('teamController', ['$scope', '$rootScope', '$http', 'DataService', function ($scope, $rootScope, $http, dS) {
+app.controller('teamController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -6,9 +6,9 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', 'DataService'
     });
 
     $scope.init = function () {
-        $scope.teamMembers = dS.getCurrentNgoTeamMembers();
-        $scope.currentMember = dS.getCurrentTeamMember();
-        $scope.ngoId = dS.getCurrentNgoId();
+        $scope.teamMembers = $rootScope.currentNgo.teamMembers ||{};
+        $scope.ngoId = $rootScope.currentNgo._id;
+        $scope.currentMember = {};
     };
 
     $scope.init();
@@ -26,8 +26,8 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', 'DataService'
                     $.snackbar({content: "Server error while adding new team member"});
                 } else {
                     $.snackbar({content: "New Team Member added successfully"});
-                    dS.addCurrentNgoTeamMember(resp.data);
-                    dS.setCurrentTeamMember({createEngageUser: true});
+                    $scope.teamMembers.push(resp.data);
+                    $scope.currentMember = {createEngageUser: true};
                 }
             });
 
@@ -47,7 +47,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', 'DataService'
 
     $scope.editMember = function (array, index, mid) {
         $http.delete('/ngo/' + $scope.ngoId + '/members/' + mid).then(function (response) {
-            $scope.newMember = array[index];
+            $scope.currentMember = array[index];
             array.splice(index, 1);
         }, function (error) {
             $.snackbar({content: "Server Error"});

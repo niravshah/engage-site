@@ -1207,7 +1207,8 @@ a.mdc-bg-blue-500:focus {
   background-color: #1e88e5;
 }
 .mdc-bg-blue-600 {
-  background-color: #8665AB;
+ /*background-color: #8665AB;*/
+  background-color: #FFFFFF;
 }
 a.mdc-bg-blue-600:hover,
 a.mdc-bg-blue-600:focus {
