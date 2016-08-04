@@ -1,4 +1,4 @@
-app.controller('dashboardController', ['$scope', '$rootScope', '$state',  '$http', 'AuthService','DataService', function ($scope, $rootScope, $state, $http, aS, dS) {
+app.controller('dashboardController', ['$scope', '$rootScope', '$state',  '$http', 'AuthService', function ($scope, $rootScope, $state, $http, aS) {
 
     $scope.init = function(){
         var decodedToken = aS.getDecodedToken();

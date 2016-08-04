@@ -8,7 +8,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', function ($sc
     $scope.init = function () {
         $scope.teamMembers = $rootScope.currentNgo.teamMembers ||{};
         $scope.ngoId = $rootScope.currentNgo._id;
-        $scope.currentMember = {};
+        $scope.currentMember = {createEngageUser: true};
     };
 
     $scope.init();

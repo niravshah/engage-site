@@ -79,7 +79,7 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
     });
 }]);
 
-app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'DataService','Upload',function ($scope, $rootScope, $state, $http, dS, Upload) {
+app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'Upload',function ($scope, $rootScope, $state, $http, Upload) {
 
     angular.element(document).ready(function () {
         $.material.init();

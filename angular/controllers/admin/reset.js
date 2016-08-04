@@ -1,4 +1,4 @@
-app.controller('resetController', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
+    app.controller('resetController', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
     $scope.reset = function () {
         AuthService.reset($scope.data.uname, $scope.data.current, $scope.data.new, $scope.data.newAgain).then(function (res) {
             if (res.data.success == true) {

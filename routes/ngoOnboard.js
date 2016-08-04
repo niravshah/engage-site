@@ -248,16 +248,13 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                 }
                 ngo.projects.splice(spliceIndex,1);
             }
-
-            var origSize = ngo.projects.length - 1;
             ngo.projects.push(data);
-
-            ngo.save(function (err, ngo) {
+            ngo.save(function (err, savedNgo) {
                 if (err) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo.projects[origSize+1]);
+                    res.json(savedNgo.projects);
                 }
             })
         }

@@ -77,8 +77,8 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http', function 
                     $.snackbar({ content: "Server error while adding new Project" });
                 } else {
                     $.snackbar({ content: "New Project added successfully" });
-                    $scope.projects.push(resp.data);
-                    $scope.currentProject = { eDate: new Date(), sDate: new Date() };
+                    $scope.projects = resp.data;
+                    $scope.currentProject = {};
                 }
             });
 
