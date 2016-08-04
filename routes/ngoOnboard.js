@@ -9,14 +9,14 @@ var sid = require('shortid');
 var generatePassword = require('password-generator');
 var mailjet = require('./mailjet');
 
-var s3 = new aws.S3({signatureVersion: 'v4'});
+var s3 = new aws.S3({ signatureVersion: 'v4' });
 
 var s3Sotrage = multerS3({
     s3: s3,
     bucket: 'engage-site-nns',
     acl: 'public-read',
     metadata: function (req, file, cb) {
-        cb(null, {fieldName: file.fieldname});
+        cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
         cb(null, Date.now() + '-' + file.originalname);
@@ -32,17 +32,16 @@ var localStorage = multer.diskStorage({
     }
 });
 
-var upload = multer({storage: s3Sotrage});
+var upload = multer({ storage: s3Sotrage });
 //var upload = multer({storage: localStorage});
 
 router.get('/ngo/onboard', function (req, res) {
     res.render('ngo/onboarding');
 });
 
-
 router.get('/ngo/:sname/edit', function (req, res) {
     var sname = req.params.sname;
-    Ngo.findOne({sname: sname}, function (err, ngo) {
+    Ngo.findOne({ sname: sname }, function (err, ngo) {
         if (ngo) {
             res.render('ngo/onboarding', ngo);
         } else {
@@ -55,17 +54,17 @@ router.get('/ngo/:sname/edit', function (req, res) {
 router.post('/ngo/checksname', function (req, resp) {
     var sname = req.body.sname;
     sname = sname.toLowerCase().replace(/ /g, '-');
-    Ngo.findOne({sname: sname}, function (err, ngo) {
+    Ngo.findOne({ sname: sname }, function (err, ngo) {
         if (err) {
             //console.log('Error:', err);
-            resp.json({isNameValid: true});
+            resp.json({ isNameValid: true });
         }
         if (ngo) {
             //console.log('Ngo', ngo);
-            resp.json({isNameValid: false});
+            resp.json({ isNameValid: false });
         } else {
             //console.log('No Ngo, No Error');
-            resp.json({isNameValid: true});
+            resp.json({ isNameValid: true });
         }
     });
 });
@@ -90,10 +89,10 @@ router.post('/ngo', upload.any(), function (req, res) {
     }
 
     if (typeof req.body.addData._id != 'undefined') {
-        Ngo.findOneAndUpdate({_id: req.body.addData._id}, {$set: req.body.addData}, function (err, doc) {
-            if (err) res.status(500).json({"Error": err});
+        Ngo.findOneAndUpdate({ _id: req.body.addData._id }, { $set: req.body.addData }, function (err, doc) {
+            if (err) res.status(500).json({ "Error": err });
             else {
-                Ngo.findOne({_id:doc._id},function(err,updatedNgo){
+                Ngo.findOne({ _id: doc._id }, function (err, updatedNgo) {
                     res.json(updatedNgo);
                 });
             }
@@ -102,14 +101,14 @@ router.post('/ngo', upload.any(), function (req, res) {
     } else {
         var newNgo = new Ngo(req.body.addData);
         newNgo.save(function (err, ngo) {
-            if (err) res.status(500).json({"Error": err})
+            if (err) res.status(500).json({ "Error": err })
             else {
-                User.findOne({_id:req.body.addData.uid},function(err,user){
-                    if(user){
+                User.findOne({ _id: req.body.addData.uid }, function (err, user) {
+                    if (user) {
                         user.orgId.push(req.body.addData.sname);
                     }
-                    user.save(function(err, user){
-                        if (err) res.status(500).json({"Error": err});
+                    user.save(function (err, user) {
+                        if (err) res.status(500).json({ "Error": err });
                         else res.json(ngo);
                     });
                 });
@@ -138,15 +137,15 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
         }
     }
 
-    Ngo.findOne({_id: id}, function (err, ngo) {
+    Ngo.findOne({ _id: id }, function (err, ngo) {
         if (err) {
-            res.status(500).json({'Error': err});
+            res.status(500).json({ 'Error': err });
         } else {
             var origSize = ngo.teamMembers.length - 1;
             ngo.teamMembers.push(data);
             ngo.save(function (err, ngo) {
                 if (err) {
-                    res.status(500).json({'Error': err});
+                    res.status(500).json({ 'Error': err });
                 }
                 else {
                     if (data.createEngageUser == 'true') {
@@ -154,10 +153,10 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                             uname: data.email,
                             pword: generatePassword(),
                             name: data.name,
-                            orgId:ngo.sname
+                            orgId: ngo.sname
                         };
 
-                        User.findOneAndUpdate({uname:data.email}, newUser,{upsert:true},function (err, doc) {
+                        User.findOneAndUpdate({ uname: data.email }, newUser, { upsert: true }, function (err, doc) {
                             if (!err) {
                                 mailjet.sendRegistrationEmail(newUser);
                             }
@@ -165,7 +164,7 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
                             res.json(ngo.teamMembers[origSize + 1]);
                         });
 
-                    }else{
+                    } else {
                         res.json(ngo.teamMembers[origSize + 1]);
                     }
 
@@ -180,9 +179,9 @@ router.delete('/ngo/:id/members/:mid', function (req, res) {
 
     var id = req.params.id;
     var mid = req.params.mid;
-    Ngo.findOne({_id: id}, function (err, ngo) {
+    Ngo.findOne({ _id: id }, function (err, ngo) {
         if (err) {
-            res.status(500).json({'Error': err});
+            res.status(500).json({ 'Error': err });
         } else {
             var spliceIndex = -1;
             for (var i = 0; i < ngo.teamMembers.length; i++) {
@@ -192,12 +191,12 @@ router.delete('/ngo/:id/members/:mid', function (req, res) {
             }
             if (spliceIndex > -1) {
 
-                User.find({uname: ngo.teamMembers[spliceIndex].email}).remove(function (err, doc) {
+                User.find({ uname: ngo.teamMembers[spliceIndex].email }).remove(function (err, doc) {
                     ngo.teamMembers.splice(spliceIndex, 1);
                     //console.log('Updated Ngo', ngo);
                     ngo.save(function (err, ngo) {
                         if (err) {
-                            res.status(500).json({'Error': err});
+                            res.status(500).json({ 'Error': err });
                         }
                         else {
                             res.json(ngo);
@@ -217,12 +216,12 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     var id = req.params.id;
     var existingProject = false;
 
-    console.log(files,data, id);
+    console.log(files, data, id);
 
-    if(typeof data.id == 'undefined') {
+    if (typeof data.id == 'undefined') {
         console.log('data id undefined');
         data.id = sid.generate();
-    }else{
+    } else {
         existingProject = true;
     }
 
@@ -234,24 +233,24 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
         }
     }
 
-    Ngo.findOne({_id: id}, function (err, ngo) {
+    Ngo.findOne({ _id: id }, function (err, ngo) {
         if (err) {
-            res.status(500).json({'Error': err});
+            res.status(500).json({ 'Error': err });
         } else {
 
-            if(existingProject == true){
+            if (existingProject == true) {
                 var spliceIndex;
-                for(var i=0;i<ngo.projects.length;i++){
-                    if(ngo.projects[i].id==data.id){
+                for (var i = 0; i < ngo.projects.length; i++) {
+                    if (ngo.projects[i].id == data.id) {
                         spliceIndex = i;
                     }
                 }
-                ngo.projects.splice(spliceIndex,1);
+                ngo.projects.splice(spliceIndex, 1);
             }
             ngo.projects.push(data);
             ngo.save(function (err, savedNgo) {
                 if (err) {
-                    res.status(500).json({'Error': err});
+                    res.status(500).json({ 'Error': err });
                 }
                 else {
                     res.json(savedNgo.projects);
@@ -267,9 +266,9 @@ router.delete('/ngo/:id/projects/:mid', function (req, res) {
     var id = req.params.id;
     var mid = req.params.mid;
 
-    Ngo.findOne({_id: id}, function (err, ngo) {
+    Ngo.findOne({ _id: id }, function (err, ngo) {
         if (err) {
-            res.status(500).json({'Error': err});
+            res.status(500).json({ 'Error': err });
         } else {
             var spliceIndex = -1;
             for (var i = 0; i < ngo.projects.length; i++) {
@@ -283,8 +282,7 @@ router.delete('/ngo/:id/projects/:mid', function (req, res) {
 
             //console.log('Updated Ngo', ngo);
             ngo.save(function (err, ngo) {
-                if (err) {
-                    res.status(500).json({'Error': err});
+                if (err) {res.status(500).json({ 'Error': err });
                 }
                 else {
                     res.json(ngo);

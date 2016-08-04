@@ -5,6 +5,17 @@
                 <img class="ss-slide-logo" src="/images/logo.png">
                 <span class="section-header">Dashboard</span>
             </div>
+            <div class="row md-m-40">
+                <h2>You're Organizations</h2>
+            </div>
+            <div class="row md-m-40 well" ng-repeat="ngo in ngos track by $index">
+                <div class="col-md-4">
+                    <img ng-src="{[{ngo.banner}]}">
+                </div>
+                <div class="col-md-8">
+                    <h3>{[{ngo.sname}]}</h3>
+                </div>
+            </div>
         </div>
         <div class="slides-container-section col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
             <div class="row md-mt-20">

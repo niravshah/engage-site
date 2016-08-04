@@ -8,7 +8,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
                     event.preventDefault();
 
                 } else {
-                    $state.transitionTo('basic');
+                    $state.transitionTo('dashboard');
                     event.preventDefault();
                 }
 
