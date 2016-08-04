@@ -68,7 +68,7 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http','DataServi
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
             var files = [];
-            if (typeof $scope.currentProject.bannerNgf == 'object') {
+            if (typeof $scope.currentProject.bannerNgf != 'undefined') {
 
                 files.push($scope.currentProject.bannerNgf);
                 $scope.currentProject.banner = $scope.currentProject.bannerNgf.name;
@@ -98,13 +98,6 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http','DataServi
 
     };
     $scope.editProject = function (array, index, mid) {
-        /*$http.delete('/ngo/' + $rootScope.ngoId + '/projects/' + mid).then(function (response) {
-         $scope.newProject = array[index];
-         array.splice(index, 1);
-         }, function (error) {
-         $.snackbar({content: "Server Error"});
-         });*/
-
         dS.setCurrentProject(array[index]);
     };
 

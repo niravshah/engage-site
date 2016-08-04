@@ -28,7 +28,7 @@ router.get('/ngo/:id', function (req, res, next) {
             res.status(500).json({'Error': err});
         }
         else if (ngo) {
-            console.log(ngo)
+            console.log(ngo);
             res.render('ngo/landing', ngo);
         } else {
             next();

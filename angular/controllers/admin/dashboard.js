@@ -1,7 +1,8 @@
 app.controller('dashboardController', ['$scope', '$rootScope', '$state',  '$http', 'AuthService','DataService', function ($scope, $rootScope, $state, $http, aS, dS) {
 
     $scope.init = function(){
-        console.log(aS.getDecodedToken());
+        var decodedToken = aS.getDecodedToken();
+        console.log(decodedToken._doc._id);
     };
 
     $scope.init();
@@ -10,6 +11,4 @@ app.controller('dashboardController', ['$scope', '$rootScope', '$state',  '$http
         dS.init();
         $state.transitionTo('new.profile');
     }
-    
-    
 }]);

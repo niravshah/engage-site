@@ -77,10 +77,10 @@ router.post('/ngo', upload.any(), function (req, res) {
     for (var i = 0; i < req.files.length; i++) {
         //console.log(i, req.files[i].originalname, req.body.addData.logo, req.body.addData.banner, req.files[i].path)
         if (req.files[i].originalname == req.body.addData.logo) {
-            req.body.addData.logo = req.files[i].location
+            req.body.addData.logo = req.files[i].location;
             //req.body.addData.logo = '/' + req.files[i].path
         } else if (req.files[i].originalname == req.body.addData.banner) {
-            req.body.addData.banner = req.files[i].location
+            req.body.addData.banner = req.files[i].location;
             //req.body.addData.banner = '/' + req.files[i].path
         }
     }
@@ -133,8 +133,8 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
     for (var i = 0; i < files.length; i++) {
         //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.avatar) {
-            data.avatar = '/' + files[i].path;
-            //data.avatar = files[i].location;
+            //data.avatar = '/' + files[i].path;
+            data.avatar = files[i].location;
         }
     }
 
@@ -246,7 +246,6 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                         spliceIndex = i;
                     }
                 }
-                console.log('spliceIndex', spliceIndex)
                 ngo.projects.splice(spliceIndex,1);
             }
 
@@ -258,7 +257,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
                     res.status(500).json({'Error': err});
                 }
                 else {
-                    res.json(ngo);
+                    res.json(ngo.projects[origSize+1]);
                 }
             })
         }
