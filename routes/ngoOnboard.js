@@ -292,4 +292,14 @@ router.delete('/ngo/:id/projects/:mid', function (req, res) {
     });
 });
 
+router.post('/ngo/:id',function(req,res){
+    Ngo.findOneAndUpdate({sname:req.params.id},{status:'deleted'},function(err){
+        if(err){
+            res.status(500).json({success:false,error:err});
+        }else{
+            res.json({success:true,message:"Deleted Ngo"});
+        }
+    })
+});
+
 module.exports = router;

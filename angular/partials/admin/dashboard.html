@@ -8,12 +8,21 @@
             <div class="row md-m-40">
                 <h2>You're Organizations</h2>
             </div>
-            <div class="row md-m-40 well" ng-repeat="ngo in ngos track by $index">
-                <div class="col-md-4">
-                    <img ng-src="{[{ngo.banner}]}">
-                </div>
-                <div class="col-md-8">
-                    <h3>{[{ngo.sname}]}</h3>
+            <div class="projects-container" style="height: 60vh;overflow-y: auto">
+                <div class="row md-m-40 well" ng-repeat="ngo in ngos track by $index">
+                    <div class="col-md-4">
+                        <img ng-src="{[{ngo.banner}]}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h3>{[{ngo.sname}]}</h3>
+                        </div>
+                        <div class="row" style="float: right">
+                            <button ng-click="editNgo(ngo)" class="btn btn-sm btn-primary">Edit</button>
+                            <button ng-click="deleteNgo(ngo.sname)" class="btn btn-sm btn-danger">Delete</button>
+                            <button ng-click="viewNgo(ngo.sname)" class="btn btn-sm  btn-success">View</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ var ngoInfoSchema = new Schema({
     banner: {type: String},
     logo: {type: String},
     teamMembers: {type: Array, default:[]},
-    projects: {type: Array, default:[]}
+    projects: {type: Array, default:[]},
+    status:{type:String, default:'active'}
 });
 module.exports = mongoose.model('Ngo', ngoInfoSchema);

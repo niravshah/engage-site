@@ -18,11 +18,16 @@ module.exports = function (app) {
                 res.json({success: false, message: 'User already exists'});
             } else if (!user) {
 
-                var newUser = new User({uname: req.body.uname, name: req.body.name, orgId: req.body.orgId});
+                var newUser = new User({
+                    uname: req.body.uname,
+                    name: req.body.name,
+                    orgId: [req.body.orgId],
+                    role: 'admin'
+                });
 
-                if(typeof req.body.pword != 'undefined'){
+                if (typeof req.body.pword != 'undefined') {
                     newUser.pword = req.body.pword;
-                }else{
+                } else {
                     newUser.pword = generatePassword();
                 }
 
@@ -52,11 +57,11 @@ module.exports = function (app) {
                 res.json({success: false, message: 'User Not Found'});
             } else if (user) {
 
-                if(user.pword != req.body.current){
+                if (user.pword != req.body.current) {
                     res.json({success: false, message: 'Current Password Invalid'});
-                }else  if(req.body.newP != req.body.newAgain){
+                } else if (req.body.newP != req.body.newAgain) {
                     res.json({success: false, message: 'New Password does not match Retype New Password'});
-                }else {
+                } else {
 
                     user.resetPassword = false;
                     user.pword = req.body.newP;
@@ -89,20 +94,19 @@ module.exports = function (app) {
                 if (user.pword != req.body.pword) {
                     res.json({success: false, message: 'Authentication failed. Wrong password.'});
                 } else {
-                    
-                    if (req.body.sname != "") {
-                        if (user.orgId != req.body.sname) {
-                            res.json({success: false, message: 'You dont have access to this Organization'});
-                        }
+
+                    if (user.role != 'admin' && user.role != 'super') {
+                        res.json({success: false, message: 'You are not authorized to sign in as admin'});
+                    } else {
+                        var token = jwt.sign(user, app.get('superSecret'), {});
+                        res.json({
+                            success: true,
+                            message: 'Enjoy your token!',
+                            token: token,
+                            sname: req.body.sname,
+                            resetPassword: user.resetPassword
+                        });
                     }
-                    var token = jwt.sign(user, app.get('superSecret'), {});
-                    res.json({
-                        success: true,
-                        message: 'Enjoy your token!',
-                        token: token,
-                        sname: req.body.sname,
-                        resetPassword: user.resetPassword
-                    });
                 }
             }
         });
