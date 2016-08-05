@@ -90,10 +90,30 @@ router.post('/ngo', upload.any(), function (req, res) {
 
     if (typeof req.body.addData._id != 'undefined') {
         Ngo.findOneAndUpdate({ _id: req.body.addData._id }, { $set: req.body.addData }, function (err, doc) {
-            if (err) res.status(500).json({ "Error": err });
+            if (err) {
+                res.status(500).json({ "Error": err });
+            }
             else {
+                var oldSname = doc.sname;
                 Ngo.findOne({ _id: doc._id }, function (err, updatedNgo) {
-                    res.json(updatedNgo);
+                    var newSname = updatedNgo.sname;
+                    User.findOne({ _id: req.body.addData.uid }, function (err, user) {
+                        if (err) {
+                            res.status(500).json({ 'Error': 'An error occured while updating this Ngo' });
+                        } else {
+                            var spliceIndex = user.orgId.indexOf(oldSname);
+                            user.orgId.splice(spliceIndex, 1);
+                            user.orgId.push(newSname);
+                            user.save(function (err, resp) {
+                                if (err) {
+                                    res.status(500).json({ 'Error': 'An error occured while updating this Ngo' });
+                                } else {
+                                    res.json(updatedNgo);
+                                }
+                            });
+                        }
+                    });
+
                 });
             }
         });
@@ -282,7 +302,8 @@ router.delete('/ngo/:id/projects/:mid', function (req, res) {
 
             //console.log('Updated Ngo', ngo);
             ngo.save(function (err, ngo) {
-                if (err) {res.status(500).json({ 'Error': err });
+                if (err) {
+                    res.status(500).json({ 'Error': err });
                 }
                 else {
                     res.json(ngo);
@@ -292,12 +313,12 @@ router.delete('/ngo/:id/projects/:mid', function (req, res) {
     });
 });
 
-router.post('/ngo/:id',function(req,res){
-    Ngo.findOneAndUpdate({sname:req.params.id},{status:'deleted'},function(err){
-        if(err){
-            res.status(500).json({success:false,error:err});
-        }else{
-            res.json({success:true,message:"Deleted Ngo"});
+router.post('/ngo/:id', function (req, res) {
+    Ngo.findOneAndUpdate({ sname: req.params.id }, { status: 'deleted' }, function (err) {
+        if (err) {
+            res.status(500).json({ success: false, error: err });
+        } else {
+            res.json({ success: true, message: "Deleted Ngo" });
         }
     })
 });
