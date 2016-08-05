@@ -1,4 +1,4 @@
-app.controller('dashboardController', ['$scope', '$rootScope', '$state', '$http', 'AuthService', function ($scope, $rootScope, $state, $http, aS) {
+app.controller('dashboardController', ['$scope', '$rootScope', '$state', '$http','$window', 'AuthService', function ($scope, $rootScope, $state, $http, $window, aS) {
 
     $scope.ngos = {};
     $scope.init = function () {
@@ -7,7 +7,6 @@ app.controller('dashboardController', ['$scope', '$rootScope', '$state', '$http'
         $http.get('/user/' + userId + '/ngos').then(function (resp) {
             if (resp.data.success == true) {
                 $scope.ngos = resp.data.ngos;
-                console.log(resp.data);
             } else {
                 $.snackbar({content: resp.data.message});
             }
@@ -25,6 +24,11 @@ app.controller('dashboardController', ['$scope', '$rootScope', '$state', '$http'
     $scope.editNgo = function (ngo) {
         $rootScope.currentNgo = ngo;
         $state.transitionTo('new.profile');
+    };
+
+    $scope.viewNgo = function (sname) {
+        var link = '/ngo/' + sname;
+        $window.open(link, '_blank');
     };
 
     $scope.deleteNgo = function (sname) {

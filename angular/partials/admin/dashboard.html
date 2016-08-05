@@ -5,17 +5,14 @@
                 <img class="ss-slide-logo" src="/images/logo.png">
                 <span class="section-header">Dashboard</span>
             </div>
-            <div class="row md-m-40">
-                <h2>You're Organizations</h2>
-            </div>
             <div class="projects-container" style="height: 60vh;overflow-y: auto">
-                <div class="row md-m-40 well" ng-repeat="ngo in ngos track by $index">
+                <div class="row md-m-20 well" ng-repeat="ngo in ngos track by $index" style="max-height: 200px">
                     <div class="col-md-4">
-                        <img ng-src="{[{ngo.banner}]}">
+                        <img ng-src="{[{ngo.logo || '/images/icon_75_75.png'}]}" style="max-width:100%;max-height: 100%">
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <h3>{[{ngo.sname}]}</h3>
+                            <h4>{[{ngo.sname}]}</h4>
                         </div>
                         <div class="row" style="float: right">
                             <button ng-click="editNgo(ngo)" class="btn btn-sm btn-primary">Edit</button>
