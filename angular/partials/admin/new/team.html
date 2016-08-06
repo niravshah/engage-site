@@ -41,7 +41,7 @@
                                         <p ng-id="currentMember.ngfAvatar">{[{newMember.ngfAvatar.name}]}</p>
                                     </div>
                                     <div class="col-md-6 next-btn">
-                                        <a ng-disabled="teamDetailsForm.$invalid" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
+                                        <a ng-disabled="teamDetailsForm.$invalid && disableAddButton" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
                                     </div>
                                 </div>
                             </form>
@@ -49,6 +49,7 @@
                     </div>
                 </div>
             </div>
+            <span us-spinner="{radius:30, width:8, length: 16}" spinner-on="disableAddButton"></span>
             <div class="row">
                 <div class="col-md-12 md-mt-20 next-btn">
                     <a ui-sref="new.projects.info" class="btn btn-lg btn-raised btn-info">Next</a>

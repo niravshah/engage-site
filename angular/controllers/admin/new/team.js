@@ -9,6 +9,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', function ($sc
         $scope.teamMembers = $rootScope.currentNgo.teamMembers ||{};
         $scope.ngoId = $rootScope.currentNgo._id;
         $scope.currentMember = {createEngageUser: true};
+        $scope.disableAddButton = false;
     };
 
     $scope.init();
@@ -16,6 +17,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', function ($sc
     $scope.addNewMember = function (isValid) {
         if (isValid) {
             //console.log('addNewMember', $scope.newMember);
+            $scope.disableAddButton = true;
             var files = [];
             if (typeof $scope.currentMember.ngfAvatar != 'undefined') {
                 files.push($scope.currentMember.ngfAvatar);
@@ -28,6 +30,7 @@ app.controller('teamController', ['$scope', '$rootScope', '$http', function ($sc
                     $.snackbar({content: "New Team Member added successfully"});
                     $scope.teamMembers.push(resp.data);
                     $scope.currentMember = {createEngageUser: true};
+                    $scope.disableAddButton = false;
                 }
             });
 

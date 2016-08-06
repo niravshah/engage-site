@@ -75,10 +75,11 @@
                     </div>
                 </div>
                 <div class="col-md-6 next-btn">
-                    <a ng-click="addNewProject(projectForm.$valid, projectForm)"
+                    <a ng-disabled="projectForm.$invalid && disableAddButton" ng-click="addNewProject(projectForm.$valid, projectForm)"
                        class="btn btn-raised btn-info">Add Project</a>
                 </div>
             </div>
         </div>
     </form>
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-on="disableAddButton"></span>
 </div>

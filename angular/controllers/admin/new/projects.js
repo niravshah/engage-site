@@ -4,6 +4,7 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http', function 
         $scope.projects = $rootScope.currentNgo.projects;
         $scope.teamMembers = $rootScope.currentNgo.teamMembers;
         $scope.ngoId = $rootScope.currentNgo._id;
+        $scope.disableAddButton = false;
     };
 
     $scope.szSkillsConfig = {
@@ -66,6 +67,7 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http', function 
     $scope.addNewProject = function (isValid, $projectForm) {
         if (isValid) {
             //console.log('addNewProject', $scope.newProject);
+            $scope.disableAddButton = true;
             var files = [];
             if (typeof $scope.currentProject.bannerNgf != 'undefined') {
 
@@ -79,6 +81,7 @@ app.controller('projectsController', ['$scope', '$rootScope', '$http', function 
                     $.snackbar({ content: "New Project added successfully" });
                     $scope.projects = resp.data;
                     $scope.currentProject = {};
+                    $scope.disableAddButton = false;
                 }
             });
 

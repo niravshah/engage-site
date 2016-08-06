@@ -101,8 +101,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6 next-btn">
-                                <a ng-disabled="userForm.$invalid" ng-click="saveNgo(userForm.$valid)"
+                                <a ng-disabled="userForm.$invalid || disableNextButton" ng-click="saveNgo(userForm.$valid)"
                                    class="btn btn-lg btn-raised btn-info">Next</a>
+
                             </div>
                             <div class="col-md-12 md-mt-20">
                                 <div class="progress">
@@ -113,6 +114,7 @@
                     </div>
                 </form>
             </div>
+            <span us-spinner="{radius:30, width:8, length: 16}" spinner-on="disableNextButton"></span>
         </div>
         <div class="slides-container-section col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
             <div class="row md-mt-20">

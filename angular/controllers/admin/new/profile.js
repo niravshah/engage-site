@@ -3,12 +3,14 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
 
     $scope.init = function () {
         $scope.currentNgo = $rootScope.currentNgo || {};
+        $scope.disableNextButton = false;
     };
 
     $scope.init();
 
     $scope.saveNgo = function (isValid) {
         if (isValid) {
+            $scope.disableNextButton = true;
             var files = [];
             if (typeof $scope.currentNgo.ngfBanner == 'object') {
                 $scope.currentNgo.banner = $scope.currentNgo.ngfBanner.name;
@@ -29,6 +31,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
                 } else {
                     //console.log('File Upload Success', resp);
                     $.snackbar({content: "Profile details updated"});
+                    $scope.disableNextButton = false;
                     $scope.currentNgo = {};
                     $rootScope.currentNgo = resp.data;
                     $state.transitionTo('new.team');
