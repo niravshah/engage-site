@@ -46,7 +46,7 @@ router.get('/ngo/:id/:pid', function (req, res, next) {
             var currentProject;
             for(var i=0;i<ngo.projects.length;i++){
                 if(ngo.projects[i].id == req.params.pid){
-                    currentProject = ngo.project[i];
+                    currentProject = ngo.projects[i];
                 }
             }
 
