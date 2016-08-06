@@ -41,7 +41,7 @@
                                         <p ng-id="currentMember.ngfAvatar">{[{newMember.ngfAvatar.name}]}</p>
                                     </div>
                                     <div class="col-md-6 next-btn">
-                                        <a ng-disabled="teamDetailsForm.$invalid && disableAddButton" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
+                                        <a ng-disabled="teamDetailsForm.$invalid || disableAddButton" ng-click="addNewMember(teamDetailsForm.$valid);" class="btn btn-success btn-raised">Add</a>
                                     </div>
                                 </div>
                             </form>
