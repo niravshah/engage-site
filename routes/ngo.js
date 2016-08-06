@@ -36,6 +36,28 @@ router.get('/ngo/:id', function (req, res, next) {
     });
 
 });
+router.get('/ngo/:id/:pid', function (req, res, next) {
+    Ngo.findOne({sname: req.params.id}, function (err, ngo) {
+        if (err) {
+            res.status(500).json({'Error': err});
+        }
+        else if (ngo) {
+
+            var currentProject;
+            for(var i=0;i<ngo.projects.length;i++){
+                if(ngo.projects[i].id == req.params.pid){
+                    currentProject = ngo.project[i];
+                }
+            }
+
+            ngo.project = currentProject;
+            res.render('ngo/project', ngo);
+        } else {
+            next();
+        }
+    });
+
+});
 
 router.get('/ngo/:id/login', function (req, res, next) {
 
