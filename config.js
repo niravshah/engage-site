@@ -8,7 +8,7 @@ config['dev'] = {
 };
 
 config['live'] = {
-    mongoUrl: 'mongodb://mongo/engagesite',
+    mongoUrl: 'mongodb://localhost/engagesite',
     superSecret: "scoobydoobydoo",
     emailsEnabled: true,
     fileStorage:'s3'
