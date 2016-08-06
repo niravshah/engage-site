@@ -12,12 +12,13 @@
                     </div>
                     <div class="col-md-8">
                         <div class="row">
-                            <h4>{[{ngo.sname}]}</h4>
+                            <h4>{[{ngo.name}]} ({[{ngo.sname}]})</h4>
+                            <span class="label label-default">{[{ngo.status}]}</span>
                         </div>
                         <div class="row" style="float: right">
-                            <button ng-click="editNgo(ngo)" class="btn btn-sm btn-primary">Edit</button>
-                            <button ng-click="deleteNgo(ngo.sname)" class="btn btn-sm btn-danger">Delete</button>
-                            <button ng-click="viewNgo(ngo.sname)" class="btn btn-sm  btn-success">View</button>
+                            <button ng-click="editNgo(ngo)" class="btn btn-xs btn-raised btn-primary">Edit</button>
+                            <button ng-click="deleteNgo(ngo.sname)" class="btn btn-xs btn-raised btn-danger">Delete</button>
+                            <button ng-click="viewNgo(ngo.sname)" class="btn btn-xs btn-raised btn-success">View</button>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ config['dev'] = {
     fileStorage:'local'
 };
 
-config['int'] = {
+config['live'] = {
     mongoUrl: 'mongodb://mongo/engagesite',
     superSecret: "scoobydoobydoo",
     emailsEnabled: true,
