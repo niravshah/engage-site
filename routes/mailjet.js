@@ -1,9 +1,9 @@
 var env = process.env.NODE_ENV || 'dev';
 var config = require('../config')[env];
 
-var MAILJET_USERNAME = '5181531eca7071901ce351edc1afa862';
-var MAILJET_PASSWORD = 'ce9fcb65e84d8b1593d4489805be2ffd';
-var MAILJET_SERVER = 'in-v3.mailjet.com';
+var MAILJET_USERNAME = config.mailjet_user;
+var MAILJET_PASSWORD = config.mailjet_password;
+var MAILJET_SERVER = config.mailjet_server;
 
 var path = require('path');
 
