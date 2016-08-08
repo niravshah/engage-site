@@ -79,13 +79,13 @@
                 <div class="col-md-4">
                     <h4>Team Requirements</h4>
                     <p>Managing Team Size</p>
-                    {% if project.indexOf('managingTeam') !== -1 %}
+                    {% if project.managingTeam.length %}
                     <p>{{project.managingTeam}}</p>
                     {% else %}
                     <p>None</p>
                     {% endif %}
                     <p>Volunteers Team Size</p>
-                    {% if project.indexOf('volunteers') !== -1 %}
+                    {% if project.volunteers.length %}
                     <p>{{project.volunteers}}</p>
                     {% else %}
                     <p>None</p>
