@@ -40,3 +40,6 @@ jspm_packages
 
 /uploads/
 /.idea/
+
+# Config File
+config.js
