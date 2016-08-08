@@ -1,10 +1,14 @@
 var env = process.env.NODE_ENV || 'dev';
 var config = require('../config')[env];
 
+var MAILJET_USERNAME = '5181531eca7071901ce351edc1afa862';
+var MAILJET_PASSWORD = 'ce9fcb65e84d8b1593d4489805be2ffd';
+var MAILJET_SERVER = 'in-v3.mailjet.com';
+
 var path = require('path');
 
 var nodemailer = require('nodemailer');
-var transporter = nodemailer.createTransport('smtps://5181531eca7071901ce351edc1afa862:42b3f9777319e18107bc643e6b241e3d@in-v3.mailjet.com');
+var transporter = nodemailer.createTransport('smtps://' +  MAILJET_USERNAME +':' + MAILJET_PASSWORD +'@' + MAILJET_SERVER);
 
 var EmailTemplate = require('email-templates').EmailTemplate;
 
