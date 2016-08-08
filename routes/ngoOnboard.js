@@ -49,10 +49,6 @@ var getSavedFilePath = function (req, index) {
     }
 };
 
-router.get('/ngo/onboard', function (req, res) {
-    res.render('ngo/onboarding');
-});
-
 router.get('/ngo/:sname/edit', function (req, res) {
     var sname = req.params.sname;
     Ngo.findOne({sname: sname}, function (err, ngo) {
@@ -161,10 +157,8 @@ router.post('/ngo/:id/members', upload.any(), function (req, res) {
     data.id = sid.generate();
 
     for (var i = 0; i < files.length; i++) {
-        //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.avatar) {
-            //data.avatar = '/' + files[i].path;
-            data.avatar = files[i].location;
+            data.avatar = getSavedFilePath(req, i);
         }
     }
 
@@ -259,8 +253,7 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     for (var i = 0; i < files.length; i++) {
         //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
-            //data.banner = '/' + files[i].path;
-            data.banner = files[i].location;
+            data.banner = getSavedFilePath(req, i);
         }
     }
 

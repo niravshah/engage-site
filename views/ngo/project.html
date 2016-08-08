@@ -7,7 +7,8 @@
     {% if banner %}
     <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('{{banner}}')">
         {% else %}
-        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('/images/bg10.jpg')">
+        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50"
+                style="background-image: url('/images/bg10.jpg')">
             {% endif %}
             <div class="container">
                 <div class="slogan">
@@ -29,12 +30,28 @@
         <section>
             <div class="row md-rp-10 md-rl-10">
                 <div class="col-md-8">
-                    {{bio}}
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>{{project.name}}</h3>
+                                    {% for category in project.category %}
+                                    <span class="label label-primary">{{category}}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="row md-mt-20">
+                                <div class="col-md-12">
+                                    <p>Start Date: {{project.sDate | date('Y-m-d H:i:s',-480)}}</p>
+                                    <p>End Date: {{project.eDate | date('Y-m-d H:i:s',-480)}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="row">
-                        {{address}}
+                        {{project.location}}
                     </div>
                     <div class="row">
                         {{website}}
@@ -43,7 +60,7 @@
                         {{phone}}
                     </div>
                     <div class="row">
-                        <button class="btn btn-lg btn-info btn-raised">Request Activity Report</button>
+                        <button class="btn btn-lg btn-info btn-raised">Request Information</button>
                     </div>
                 </div>
             </div>
@@ -52,14 +69,39 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row md-mb-50">
-                        <div class="col-md-12">
-                            <h3>{{project.name}}</h3>
-                        </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            {{project.description}}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <h4>Team Requirements</h4>
+                    <p>Managing Team Size</p>
+                    {% if project.indexOf('managingTeam') !== -1 %}
+                    <p>{{project.managingTeam}}</p>
+                    {% else %}
+                    <p>None</p>
+                    {% endif %}
+                    <p>Volunteers Team Size</p>
+                    {% if project.indexOf('volunteers') !== -1 %}
+                    <p>{{project.volunteers}}</p>
+                    {% else %}
+                    <p>None</p>
+                    {% endif %}
+                    <p>Skills Required</p>
+                    <p>
+                    {%for skill in project.skillsRequired%}
+                        <span class="label label-info">{{skill}}</span>
+                    {% endfor %}
+                    </p>
+                    <p>Skills Gained</p>
+                    <p>
+                        {%for skill in project.skillsGained%}
+                        <span class="label label-success">{{skill}}</span>
+                        {% endfor %}
+                    </p>
                 </div>
             </div>
         </section>
