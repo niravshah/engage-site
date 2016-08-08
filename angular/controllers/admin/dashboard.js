@@ -4,7 +4,7 @@ app.controller('dashboardController', ['$scope', '$rootScope', '$state', '$http'
     $scope.init = function () {
         var decodedToken = aS.getDecodedToken();
         var userId = decodedToken._doc._id;
-        $http.get('/user/' + userId + '/ngos').then(function (resp) {
+        $http.get('/api/user/' + userId + '/ngos').then(function (resp) {
             if (resp.data.success == true) {
                 $scope.ngos = resp.data.ngos;
             } else {

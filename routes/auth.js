@@ -6,18 +6,19 @@ var mailjet = require('./mailjet');
 var User = require('../models/user');
 
 module.exports = function (app) {
-    router.post('/auth/register', function (req, res, next) {
+    router.post('/api/auth/register', function (req, res, next) {
 
         User.findOne({
             uname: req.body.uname
         }, function (err, user) {
 
-            if (err) throw err;
+            if (err){
+                next(err);
+            }
 
             if (user) {
                 res.json({success: false, message: 'User already exists'});
             } else if (!user) {
-
                 var newUser = new User({
                     uname: req.body.uname,
                     name: req.body.name,
@@ -45,13 +46,15 @@ module.exports = function (app) {
         });
     });
 
-    router.post('/auth/reset', function (req, res, next) {
+    router.post('/api/auth/reset', function (req, res, next) {
 
         User.findOne({
             uname: req.body.uname
         }, function (err, user) {
 
-            if (err) throw err;
+            if (err){
+                next(err)
+            }
 
             if (!user) {
                 res.json({success: false, message: 'User Not Found'});
@@ -62,7 +65,6 @@ module.exports = function (app) {
                 } else if (req.body.newP != req.body.newAgain) {
                     res.json({success: false, message: 'New Password does not match Retype New Password'});
                 } else {
-
                     user.resetPassword = false;
                     user.pword = req.body.newP;
                     user.save(function (err, doc) {
@@ -78,13 +80,15 @@ module.exports = function (app) {
         });
     });
 
-    router.post('/auth/login', function (req, res) {
+    router.post('/api/auth/login', function (req, res,next) {
 
         User.findOne({
             uname: req.body.uname
         }, function (err, user) {
 
-            if (err) throw err;
+            if (err){
+                next(err)
+            }
 
             if (!user) {
                 res.json({success: false, message: 'Authentication failed. User not found.'});

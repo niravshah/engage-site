@@ -1,14 +1,14 @@
 app.service('AuthService', ['$http', '$window', 'jwtHelper',
     function ($http, $window, jwtHelper) {
         this.login = function (username, password, sname) {
-            return $http.post('/auth/login', {
+            return $http.post('/api/auth/login', {
                 uname: username,
                 pword: password,
                 sname: sname || ''
             });
         };
         this.reset = function (uname, current, newP, newAgain) {
-            return $http.post('/auth/reset', {
+            return $http.post('/api/auth/reset', {
                 uname: uname,
                 current: current,
                 newP: newP,

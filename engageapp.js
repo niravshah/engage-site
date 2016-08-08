@@ -39,6 +39,25 @@ swig.setDefaults({
     cache: false
 });
 
+var winston = require('winston');
+require('winston-mongodb').MongoDB;
+require('winston-daily-rotate-file')
+
+var winston = new (winston.Logger)({
+    transports: [
+        new (winston.transports.DailyRotateFile )({
+            name: 'info-file',
+            filename: 'info.log',
+            level: 'info'
+        }),
+        new (winston.transports.MongoDB)({
+            db: config.mongoUrl,
+            collection:'error_logs',
+            level: 'error'
+        })
+    ]
+}); 
+
 var index = require('./routes/index');
 var auth = require('./routes/auth')(app);
 var ngo = require('./routes/ngo');
@@ -52,34 +71,36 @@ app.use(ngo);
 app.use(user);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function (req, res) {
     res.status(404).render(404);
 });
 
 // error handlers
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        console.log('Error!', err);
+if (env === 'dev') {
+    app.use(function (err, req, res) {
+        winston.log('error','Global Error Handler',{error: err});
+        console.log('Global Error Handler',err);
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
             error: err
         });
     });
-}
-
+}else {
 // production error handler
 // no stack traces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
+    app.use(function (err, req, res) {
+        winston.log('error','Global Error Handler',{error: err});
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
     });
-});
+}
 
 app.listen(9000, function () {
-    console.log('Example app listening on port 9000!');
+    console.log('Engage App listening on port 9000!');
 });

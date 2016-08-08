@@ -59,32 +59,4 @@ router.get('/ngo/:id/:pid', function (req, res, next) {
 
 });
 
-router.get('/ngo/:id/login', function (req, res, next) {
-
-    Ngo.findOne({'sname': req.params.id}, function (err, ngo) {
-        if (err) {
-            res.status(500).json({'Error': err});
-        }
-        else if (ngo) {
-            console.log(ngo)
-            res.render('ngo/login', ngo);
-        } else {
-            next();
-        }
-    });
-
-});
-
-router.get('/ngo/sname/:id',function(req,res){
-
-    Ngo.findOne({sname: req.params.id, status:'active'}, function (err, ngo) {
-        if (err) {
-            res.status(500).json({'Error': err});
-        }
-        else if (ngo) {
-            res.json(ngo);
-        }
-    });
-});
-
 module.exports = router;

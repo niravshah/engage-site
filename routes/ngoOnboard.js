@@ -49,18 +49,6 @@ var getSavedFilePath = function (req, index) {
     }
 };
 
-router.get('/ngo/:sname/edit', function (req, res) {
-    var sname = req.params.sname;
-    Ngo.findOne({sname: sname}, function (err, ngo) {
-        if (ngo) {
-            res.render('ngo/onboarding', ngo);
-        } else {
-            res.render('ngo/onboarding');
-        }
-
-    });
-});
-
 router.post('/ngo/checksname', function (req, resp) {
     var sname = req.body.sname;
     sname = sname.toLowerCase().replace(/ /g, '-');

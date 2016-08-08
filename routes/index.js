@@ -108,11 +108,10 @@ router.get('/home', function (req, res) {
     } else {
         res.render('index', content['en']);
     }
-
 });
 
 
-router.post('/contactform', function (req, res) {
+router.post('/api/contact', function (req, res) {
     mailjet.newContact(JSON.stringify(req.body),function(err,result){
         if(err){
             res.status(500).json(err);

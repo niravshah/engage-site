@@ -33,6 +33,9 @@
     "password-generator": "^2.0.2",
     "serve-favicon": "~2.3.0",
     "shortid": "^2.2.6",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.2.0",
+    "winston-mongodb": "^1.6.1"
   }
 }
