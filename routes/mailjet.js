@@ -4,6 +4,7 @@ var config = require('../config')[env];
 var path = require('path');
 var sgTransport = require('nodemailer-sendgrid-transport');
 var nodemailer = require('nodemailer');
+var EmailTemplate = require('email-templates').EmailTemplate;
 
 var MAILJET_USERNAME = config.mailjet_user;
 var MAILJET_PASSWORD = config.mailjet_password;
@@ -12,8 +13,6 @@ var SENDGRID_APIKEY = config.sendgridkey;
 
 //var transporter = nodemailer.createTransport('smtps://' +  MAILJET_USERNAME +':' + MAILJET_PASSWORD +'@' + MAILJET_SERVER);
 var transporter = nodemailer.createTransport(sgTransport({auth:{api_key:SENDGRID_APIKEY}}));
-
-var EmailTemplate = require('email-templates').EmailTemplate;
 
 var onboardTemplateDir = path.join(__dirname, 'templates', 'onboard');
 var onboardTemplate = new EmailTemplate(onboardTemplateDir);
