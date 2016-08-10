@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-7">
+    <div class="row" style="display: table">
+        <div style="display: table-cell" class="col-md-7">
             <div class="row md-mt-20 md-ml-20 md-mb-40">
                 <img class="ss-slide-logo" src="/images/logo.png">
                 <span class="section-header">Basic Info</span>
@@ -77,11 +77,20 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group label-floating required">
-                            <label for="bio" class="control-label">Your Mission Statement</label>
-                            <trix-editor angular-trix ng-model="currentNgo.bio"></trix-editor>
-                        <!--textarea ng-model="currentNgo.bio" name="bio" class="form-control" rows="5"
-                                  id="bio"></textarea-->
-                            <span class="help-block">This information will appear at the top of your NGOs profile. Use this space to tell organizations more about what you do.</span>
+                            <div class="md-pb-15">
+                                <p class="custom-control-label">Short Description</p>
+                                <p class="custom-control-label-help">Keep this short! This will appear at the top of your profile.</p>
+                            </div>
+                            <trix-editor id="bio" angular-trix ng-model="currentNgo.bio"></trix-editor>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="md-pb-15">
+                                <p class="custom-control-label">Additional Description</p>
+                                <p class="custom-control-label-help">Use this space to convey more information about your organization</p>
+                            </div>
+                            <trix-editor angular-trix ng-model="currentNgo.addDescription"></trix-editor>
                         </div>
                     </div>
                     <div class="col-md-12 img-upload-btns md-mt-20">
@@ -117,7 +126,7 @@
             </div>
             <span us-spinner="{radius:30, width:8, length: 16}" spinner-on="disableNextButton"></span>
         </div>
-        <div class="slides-container-section col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
+        <div style="display: table-cell" class="col-md-5 hidden-sm mdc-bg-blue-600 md-p-50">
             <div class="row md-mt-20">
                 <img class="center-block" src="/images/icon.png" style="height: 160px; width: auto">
             </div>

@@ -124,6 +124,7 @@ ul.step-path-block li.reverse .step-text, ul.step-center-block li.reverse .step-
 
 .slides-container-section {
     min-height: 100vh;
+    height:auto;
 }
 
 .next-btn a {
