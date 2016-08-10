@@ -1,0 +1,123 @@
+<div class="row">
+    <form class="md-p-20" name="userForm" novalidate>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="i1" class="control-label">Name</label>
+                <input ng-model="currentNgo.name" name="name" type="text" class="form-control" id="i1">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20 required">
+                <label for="sname" class="control-label">Unique Short Name</label>
+                <input ng-model="currentNgo.sname" name="sname" type="text" class="form-control" id="sname"
+                       ng-model-options="{ updateOn: 'blur' }" ui-validate-async="{nameExists:'checkNameUnique($value, userForm.sname.$dirty)'}" required />
+                <ng-messages for="userForm.sname.$error" ng-if="userForm.sname.$dirty" multiple>
+                    <ng-message when="required">Short Name is Required</ng-message>
+                    <ng-message when="nameExists">This Short Name Exists</ng-message>
+                </ng-messages>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="activityType" class="control-label">Activity Type</label>
+                <select ng-model="currentNgo.activityType" name="activityType" id="activityType" class="form-control">
+                    <option value=""></option>
+                    <option value="operational">Operational</option>
+                    <option value="advocacy">Advocacy</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="na">None of the Above</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="s1" class="control-label">Category</label>
+                <select ng-model="currentNgo.category" name="category" id="s1" class="form-control">
+                    <option value=""></option>
+                    <option value="education">Education</option>
+                    <option value="arts-culture">Arts & Culture</option>
+                    <option value="medical-research">Medical Research</option>
+                    <option value="patient-family-support">Patient and Family Support
+                    </option>
+                    <option value="disaster-relief-humanitarian">Disaster Relief & Humanitarian
+                    </option>
+                    <option value="peace-human-rights">Peace & Human Rights</option>
+                    <option value="child-sponsorship">Child Sponsorship</option>
+                    <option value="environment-conservation">Environmental Conservation & Protection
+                    </option>
+                    <option value="parks-nature">Parks and Nature Centers</option>
+                    <option value="wildlife-conservation">Wildlife Conservation</option>
+                    <option value="pet-animal-welfare">Pet and Animal Welfare</option>
+                    <option value="na">None of the Above</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="i2" class="control-label">Address</label>
+                <input ng-model="currentNgo.address" name="address" type="text" class="form-control"
+                       id="i2">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="i4" class="control-label">Phone Number</label>
+                <input ng-model="currentNgo.phone" name="phone" type="text" class="form-control"
+                       id="i4">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="i3" class="control-label">Website</label>
+                <input ng-model="currentNgo.website" name="website" type="text" class="form-control"
+                       id="i3">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-10">
+                <label for="email" class="control-label">Email</label>
+                <input ng-model="currentNgo.email" name="email" type="email" class="form-control"
+                       id="email">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group label-floating required">
+                <div class="md-pb-15">
+                    <p class="custom-control-label">Short Description</p>
+                    <p class="custom-control-label-help">Keep this short. This will appear at the top of your profile.</p>
+                </div>
+                <trix-editor id="bio" angular-trix ng-model="currentNgo.bio"></trix-editor>
+            </div>
+        </div>
+        <div class="col-md-12 img-upload-btns md-mt-20">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <a ng-model="currentNgo.ngfBanner" id="ngfBanner" name="ngfBanner"
+                           ngf-pattern="'image/*'"
+                           ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
+                           class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
+                        <a ng-model="currentNgo.ngfLogo" id="ngfLogo" name="ngfLogo" ngf-pattern="'image/*'"
+                           ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
+                           class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
+                        <a id="additionalDescription" name="additionalDescription" ui-sref="new.profile.additional"
+                           class="btn btn-sm btn-raised btn-primary">Additional Details</a>
+                    </div>
+                    <div class="row">
+                        <span ng-if="currentNgo.ngfBanner">[ Banner File : {[{currentNgo.ngfBanner.name}]} ]</span>
+                        <span ng-if="currentNgo.ngfLogo">[ Logo File : {[{currentNgo.ngfLogo.name}]} ]</span>
+                    </div>
+                </div>
+                <div class="col-md-4 next-btn">
+                    <a ng-disabled="userForm.$invalid || disableNextButton" ng-click="saveNgo(userForm.$valid)"
+                       class="btn btn-lg btn-raised btn-info">Next</a>
+                </div>
+                <div class="col-md-12 md-mt-20">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: 33.33%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

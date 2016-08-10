@@ -1,3 +1,18 @@
 .custom-control-label{
     font-weight: 500;
 }
+.custom-control-label-help{
+    font-size: 14px;
+    line-height: 0.2;
+    color: #a0a09f;
+}
+.admin-container{
+    min-height:100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin-container > [class*='col-']{
+    display: flex;
+    flex-direction: column;
+}

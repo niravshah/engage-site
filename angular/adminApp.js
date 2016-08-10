@@ -34,8 +34,20 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
         })
         .state('new.profile', {
             url: '/profile',
-            templateUrl: '/angular/partials/admin/new/profile.html',
+            templateUrl: '/angular/partials/admin/new/profile/main.html',
             controller: 'profileController',
+            authenticate: true,
+            controller: 'profileController',
+            redirectTo:'new.profile.basic'
+        })
+        .state('new.profile.basic', {
+            url: '/basic',
+            templateUrl: '/angular/partials/admin/new/profile/basic.html',
+            authenticate: true
+        })
+        .state('new.profile.additional', {
+            url: '/additional',
+            templateUrl: '/angular/partials/admin/new/profile/additional.html',
             authenticate: true
         })
         .state('new.team', {
@@ -75,6 +87,10 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
         if (!AuthService.validToken() && toState.authenticate) {
             $state.transitionTo('login');
             event.preventDefault();
+        }
+        if (toState.redirectTo) {
+            event.preventDefault();
+            $state.go(toState.redirectTo, toParams, {location: 'replace'})
         }
     });
 }]);

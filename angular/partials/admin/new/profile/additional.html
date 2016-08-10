@@ -1,0 +1,47 @@
+<div class="row md-p-40">
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="orientation" class="control-label">Orientation</label>
+                <select ng-model="currentNgo.orientation" name="activityType" id="orientation" class="form-control">
+                    <option value=""></option>
+                    <option value="charitable">Charitable</option>
+                    <option value="service">Service</option>
+                    <option value="participatory">Participatory</option>
+                    <option value="empowering">Empowering</option>
+                    <option value="na">None of the Above</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group label-floating md-pb-20">
+                <label for="level" class="control-label">Level</label>
+                <select ng-model="currentNgo.level" name="level" id="level" class="form-control">
+                    <option value=""></option>
+                    <option value="community">Community</option>
+                    <option value="city">City</option>
+                    <option value="national">National</option>
+                    <option value="international">International</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="md-pb-15">
+                    <p class="custom-control-label">Additional Description</p>
+                    <p class="custom-control-label-help">Use this additional space to convey more information about your
+                        organization.</p>
+                </div>
+                <trix-editor angular-trix ng-model="currentNgo.addDescription"></trix-editor>
+            </div>
+        </div>
+        <div class="col-md-12 img-upload-btns md-mt-20">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <a id="back" name="back" ui-sref="new.profile.basic"
+                           class="btn btn-sm btn-raised btn-primary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
