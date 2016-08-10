@@ -10,6 +10,8 @@
   "dependencies": {
     "angular-bootstrap-datetimepicker": "^1.0.1",
     "angular-date-time-input": "^1.1.0",
+    "angular-sanitize": "^1.5.8",
+    "angular-trix": "^1.0.2",
     "aws-sdk": "^2.4.8",
     "body-parser": "~1.13.2",
     "config-leaf": "^0.3.0",

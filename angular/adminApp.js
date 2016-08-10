@@ -1,4 +1,4 @@
-var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner']);
+var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');

@@ -78,8 +78,9 @@
                     <div class="col-md-12">
                         <div class="form-group label-floating required">
                             <label for="bio" class="control-label">Your Mission Statement</label>
-                        <textarea ng-model="currentNgo.bio" name="bio" class="form-control" rows="5"
-                                  id="bio"></textarea>
+                            <trix-editor angular-trix ng-model="currentNgo.bio"></trix-editor>
+                        <!--textarea ng-model="currentNgo.bio" name="bio" class="form-control" rows="5"
+                                  id="bio"></textarea-->
                             <span class="help-block">This information will appear at the top of your NGOs profile. Use this space to tell organizations more about what you do.</span>
                         </div>
                     </div>

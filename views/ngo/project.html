@@ -42,8 +42,12 @@
                             </div>
                             <div class="row md-mt-20">
                                 <div class="col-md-12">
+                                    {% if project.sDate %}
                                     <p>Start Date: {{project.sDate | date('Y-m-d H:i:s',-480)}}</p>
+                                    {% endif %}
+                                    {% if project.eDate %}
                                     <p>End Date: {{project.eDate | date('Y-m-d H:i:s',-480)}}</p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -72,7 +76,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            {{project.description}}
+                            {{project.description }}
                         </div>
                     </div>
                 </div>
