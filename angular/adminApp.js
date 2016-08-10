@@ -1,4 +1,4 @@
-var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix']);
+var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix','ngImgCrop']);
 
 app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -37,7 +37,6 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
             templateUrl: '/angular/partials/admin/new/profile/main.html',
             controller: 'profileController',
             authenticate: true,
-            controller: 'profileController',
             redirectTo:'new.profile.basic'
         })
         .state('new.profile.basic', {
@@ -50,6 +49,11 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
             templateUrl: '/angular/partials/admin/new/profile/additional.html',
             authenticate: true
         })
+        .state('new.profile.logo', {
+            url: '/logo',
+            templateUrl: '/angular/partials/admin/new/profile/logo.html',
+            authenticate: true
+        })
         .state('new.team', {
             url: '/team',
             templateUrl: '/angular/partials/admin/new/team.html',
@@ -57,11 +61,11 @@ app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $
             authenticate: true
         })
         .state('new.projects', {
-            abstract: true,
             url: '/projects',
             templateUrl: '/angular/partials/admin/new/projects/main.html',
             controller: 'projectsController',
-            authenticate: true
+            authenticate: true,
+            redirectTo:'new.project.info'
         })
         .state('new.projects.info', {
             url: '/info',

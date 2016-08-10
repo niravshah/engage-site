@@ -2,7 +2,7 @@
     font-weight: 500;
 }
 .custom-control-label-help{
-    font-size: 14px;
+    font-size: 12px;
     line-height: 0.2;
     color: #a0a09f;
 }
@@ -15,4 +15,28 @@
 .admin-container > [class*='col-']{
     display: flex;
     flex-direction: column;
+}
+
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:300px;
+    height:300px;
+}
+
+.resultArea{
+    background: #cee4cb;
+    overflow: hidden;
+    width:300px;
+    height:300px;
+    text-align: center;
+}
+
+.resultArea > span{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.resultArea >img{
+    vertical-align: middle;max-height: 200px;max-width: 200px;
 }

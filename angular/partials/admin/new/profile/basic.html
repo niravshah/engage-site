@@ -84,7 +84,7 @@
             <div class="form-group label-floating required">
                 <div class="md-pb-15">
                     <p class="custom-control-label">Short Description</p>
-                    <p class="custom-control-label-help">Keep this short. This will appear at the top of your profile.</p>
+                    <p class="custom-control-label-help">Keep this short. This will appear at the top of your profile. Use 'Additional Details' below for more detailed information.</p>
                 </div>
                 <trix-editor id="bio" angular-trix ng-model="currentNgo.bio"></trix-editor>
             </div>
@@ -97,15 +97,14 @@
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
                            class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
-                        <a ng-model="currentNgo.ngfLogo" id="ngfLogo" name="ngfLogo" ngf-pattern="'image/*'"
-                           ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
-                           class="btn btn-sm btn-raised btn-primary">Upload Logo</a>
+                        <a id="addLogoBtn" name="addLogoBtn" ui-sref="new.profile.logo"
+                           class="btn btn-sm btn-raised btn-primary">Add Logo</a>
                         <a id="additionalDescription" name="additionalDescription" ui-sref="new.profile.additional"
                            class="btn btn-sm btn-raised btn-primary">Additional Details</a>
                     </div>
                     <div class="row">
                         <span ng-if="currentNgo.ngfBanner">[ Banner File : {[{currentNgo.ngfBanner.name}]} ]</span>
-                        <span ng-if="currentNgo.ngfLogo">[ Logo File : {[{currentNgo.ngfLogo.name}]} ]</span>
+                        <span ng-if="currentNgo.ngfLogo">[ Logo File : {[{currentNgo.currentNgfLogo.name}]} ]</span>
                     </div>
                 </div>
                 <div class="col-md-4 next-btn">

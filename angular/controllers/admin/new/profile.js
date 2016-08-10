@@ -1,4 +1,4 @@
-app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', function ($scope, $rootScope, $http, $q, $window,$state) {
+app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', 'Upload',function ($scope, $rootScope, $http, $q, $window,$state,Upload) {
 
 
     $scope.init = function () {
@@ -17,9 +17,11 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
                 files.push($scope.currentNgo.ngfBanner);
             }
 
-            if (typeof $scope.currentNgo.ngfLogo == 'object') {
-                $scope.currentNgo.logo = $scope.currentNgo.ngfLogo.name;
-                files.push($scope.currentNgo.ngfLogo);
+            if (typeof $scope.currentNgo.ngfLogo == 'string' && $scope.currentNgo.ngfLogo != '') {
+                $scope.currentNgo.logo = $scope.currentNgo.currentNgfLogo.name;
+                files.push(Upload.dataUrltoBlob($scope.currentNgo.ngfLogo,$scope.currentNgo.logo));
+                delete $scope.currentNgo.ngfLogo;
+                delete $scope.currentNgo.currentNgfLogo;
             }
 
             $scope.currentNgo.uid = $window.localStorage['jwtToken_uid'];

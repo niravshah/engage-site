@@ -1,0 +1,40 @@
+<div class="row md-p-20">
+    <div class="col-md-12 md-pb-20">
+        <h3>Upload Logo</h3>
+    </div>
+    <div class="col-md-6 md-pb-20">
+
+        <a ng-model="currentNgo.currentNgfLogo" id="currentNgfLogo" name="currentNgfLogo" ngf-pattern="'image/*'"
+           ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
+           class="btn btn-sm btn-raised btn-primary">Browse</a>
+        <a id="clear" name="clear"
+           ng-click="currentNgo.currentNgfLogo=''; currentNgo.ngfLogo='' "
+           class="btn btn-sm btn-raised btn-warning">Clear</a>
+
+    </div>
+    <div class="col-md-6 md-pb-20">
+        <a id="back" name="back" ui-sref="new.profile.basic"
+           class="btn btn-sm btn-raised btn-success">Done</a>
+        <a id="cancel" name="cancel" ui-sref="new.profile.basic"
+           ng-click="currentNgo.currentNgfLogo=''; currentNgo.ngfLogo='' "
+           class="btn btn-sm btn-raised btn-warning">Cancel</a>
+    </div>
+    <div class="col-md-6">
+        <h4>Uploaded Image</h4>
+        <div ngf-drop ng-model="currentNgo.currentNgfLogo" ngf-pattern="image/*" class="cropArea">
+
+            <img-crop image="currentNgo.currentNgfLogo | ngfDataUrl"
+                      area-type="square" area-min-size="100"
+                      result-image="currentNgo.ngfLogo" ng-init="currentNgo.ngfLogo=''">
+            </img-crop>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Cropped Image</h4>
+        <div class="resultArea">
+            <span></span>
+            <img ng-src="{[{currentNgo.ngfLogo}]}"/>
+        </div>
+    </div>
+
+</div>

@@ -7,7 +7,7 @@
     {% if banner %}
     <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('{{banner}}')">
         {% else %}
-        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('/images/bg10.jpg')">
+        <header class="banner-bg dark-bg text-center md-pt-50 md-pb-50" style="background-image: url('/images/bg.png')">
             {% endif %}
             <div class="container">
                 <div class="slogan">
@@ -19,13 +19,14 @@
         <div class="ngo-logo-parent">
             <div class="ngo-logo-child">
                 {% if logo %}
-                <img src={{logo}} alt="logo">{% else %}
-                <div class="logo-replacement"></div>
+                <img src={{logo}} alt="logo">
                 {% endif %}
             </div>
         </div>
+        {% if logo %}
         <div class="filler">
         </div>
+        {% endif %}
         <section>
             <div class="row md-rp-10 md-rl-10">
                 <div class="col-md-8">
@@ -105,7 +106,25 @@
                 </div>
             </div>
         </section>
-        <footer id="footer-center" class="text-center bg-color1 dark-bg">
+        <section>
+            {% if addDescription%}
+            <div class="row md-rp-10 md-rl-10">
+                <div class="col-md-8">
+                    <div class="row md-mb-20">
+                        <div class="col-md-12">
+                            <h3>Organization Details</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{addDescription|safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        <footer id="footer-center" class="text-center bg-color1 img-bg">
             <div class="container">
                 <p class="editContent">© 2016 Engage Within</p>
                 <br>

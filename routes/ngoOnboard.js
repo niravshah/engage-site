@@ -69,7 +69,7 @@ router.post('/ngo/checksname', function (req, resp) {
 
 router.post('/ngo', upload.any(), function (req, res) {
 
-    //console.log('Multer', req.files, req.body);
+    console.log('Multer', req.files, req.body);
 
     for (var i = 0; i < req.files.length; i++) {
         if (req.files[i].originalname == req.body.addData.logo) {
