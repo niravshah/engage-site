@@ -1,10 +1,11 @@
 var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix','ngImgCrop','ErrorCatcher','ErrorReporter']);
 
 app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
+
     $provide.decorator("$exceptionHandler", function ($delegate, $injector) {
         return function (exception, cause) {
             var $rootScope = $injector.get("$rootScope");
-            $rootScope.logException({message: cause, reason: exception}); // This represents a custom method that exists within $rootScope
+            $rootScope.logException({message: exception.message, reason: exception.stack});
             $delegate(exception, cause);
         };
     });

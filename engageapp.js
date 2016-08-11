@@ -53,22 +53,26 @@ var winston = new (winston.Logger)({
         new (winston.transports.MongoDB)({
             db: config.mongoUrl,
             collection:'error_logs',
-            level: 'error'
+            level: 'error',
+            handleExceptions: true,
+            humanReadableUnhandledException: true
         })
     ]
-}); 
+});
 
 var index = require('./routes/index');
 var auth = require('./routes/auth')(app);
 var ngo = require('./routes/ngo');
 var ngoOnboard = require('./routes/ngoOnboard');
 var user = require('./routes/user');
+var errorReporter = require('./routes/errorReporter')
 
 app.use(auth);
 app.use(index);
 app.use(ngoOnboard);
 app.use(ngo);
 app.use(user);
+app.use(errorReporter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res) {

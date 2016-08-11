@@ -3,7 +3,7 @@ var router = express.Router();
 var Ngo = require('../models/ngo');
 var User = require('../models/user');
 
-router.get('/api/user/:id/ngos', function (req, res) {
+router.get('/api/user/:id/ngos', function (req, res,next) {
     User.findOne({_id: req.params.id}, function (err, user) {
         if (err) {
             res.status(500).json({success: false, message: "Error retrieving user data"})

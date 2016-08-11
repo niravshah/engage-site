@@ -1,16 +1,14 @@
-angular.module('ErrorCatcher', [])
-    .factory('errorHttpInterceptor', function ($exceptionHandler, $q) {
-        return {
-            responseError: function responseError(rejection) {
-                $exceptionHandler(rejection, "HTTP Error.\nHTTP config: " + rejection.config
-                    + "\nMethod: " + rejection.config.method
-                    + "\nUrl: " + rejection.config.url
-                    + "\nStatus: " + rejection.status
-                    + "\nStatus Message: " + rejection.statusText);
-                return $q.reject(rejection);
+angular.module('ErrorReporter', [])
+    .service('ErrorReporterService', ['$http',
+        function ($http) {
+            this.report = function (ex) {
+                if (ex.reason.url) {
+                    if (ex.reason.url != '/api/error') {
+                        $http.post('/api/error', {exception: ex});
+                    }
+                } else {
+                    $http.post('/api/error', {exception: ex});
+                }
             }
-        };
-    })
-    .config(function ($httpProvider) {
-        $httpProvider.interceptors.push('errorHttpInterceptor');
-    });
+        }]);
+
