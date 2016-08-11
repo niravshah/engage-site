@@ -1,4 +1,4 @@
-app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', 'Upload',function ($scope, $rootScope, $http, $q, $window,$state,Upload) {
+app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$window', '$state', 'Upload', function ($scope, $rootScope, $http, $q, $window, $state, Upload) {
 
 
     $scope.init = function () {
@@ -19,7 +19,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
 
             if (typeof $scope.currentNgo.ngfLogo == 'string' && $scope.currentNgo.ngfLogo != '') {
                 $scope.currentNgo.logo = $scope.currentNgo.currentNgfLogo.name;
-                files.push(Upload.dataUrltoBlob($scope.currentNgo.ngfLogo,$scope.currentNgo.logo));
+                files.push(Upload.dataUrltoBlob($scope.currentNgo.ngfLogo, $scope.currentNgo.logo));
                 delete $scope.currentNgo.ngfLogo;
                 delete $scope.currentNgo.currentNgfLogo;
             }
@@ -41,6 +41,18 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
             });
         } else {
             $.snackbar({content: "Profile update form is not valid"});
+        }
+    };
+
+    $scope.addLogo = function () {
+        if ($scope.currentNgo.logo) {
+            Upload.urlToBlob($scope.currentNgo.logo).then(function (blob) {
+                blob.name = $scope.currentNgo.logo.replace(/^.*[\\\/]/, '')
+                $scope.currentNgo.currentNgfLogo = blob;
+                $state.transitionTo('new.profile.logo');
+            });
+        } else {
+            $state.transitionTo('new.profile.logo');
         }
     };
 
