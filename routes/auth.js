@@ -102,7 +102,7 @@ module.exports = function (app) {
                     if (user.role != 'admin' && user.role != 'super') {
                         res.json({success: false, message: 'You are not authorized to sign in as admin'});
                     } else {
-                        var token = jwt.sign(user, app.get('superSecret'), {});
+                        var token = jwt.sign(user, app.get('superSecret'), {expiresIn:"4h"});
                         res.json({
                             success: true,
                             message: 'Enjoy your token!',
