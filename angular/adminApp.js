@@ -1,6 +1,14 @@
-var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix','ngImgCrop']);
+var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix','ngImgCrop','ErrorCatcher','ErrorReporter']);
 
-app.config(function ($interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
+app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
+    $provide.decorator("$exceptionHandler", function ($delegate, $injector) {
+        return function (exception, cause) {
+            var $rootScope = $injector.get("$rootScope");
+            $rootScope.logException({message: cause, reason: exception}); // This represents a custom method that exists within $rootScope
+            $delegate(exception, cause);
+        };
+    });
+
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
     jwtInterceptorProvider.tokenGetter = function () {
         return localStorage.getItem('id_token');
@@ -97,9 +105,10 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
             $state.go(toState.redirectTo, toParams, {location: 'replace'})
         }
     });
+
 }]);
 
-app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'Upload',function ($scope, $rootScope, $state, $http, Upload) {
+app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'Upload','ErrorReporterService',function ($scope, $rootScope, $state, $http, Upload,ErrorReporterService) {
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -116,5 +125,8 @@ app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http'
         }, function (resp) {
             cb(null, resp);
         });
+    };
+    $rootScope.logException = function(exp){
+        ErrorReporterService.report(exp);
     };
 }]);
