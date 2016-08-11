@@ -33,9 +33,16 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
 
         this.validToken = function () {
             var token = this.getToken();
-            if (typeof token != 'undefined')
-                return !jwtHelper.isTokenExpired(token);
-            else return false;
+            var date = jwtHelper.getTokenExpirationDate(token);
+            if (typeof token != 'undefined'){
+                if(date.setHours(0,0,0,0) < new Date().setHours(0,0,0,0)){
+                    return false;
+                }else{
+                    return true;
+                }
+            } else {
+                return false;
+            }
         };
 
         this.validSname = function (sname) {
