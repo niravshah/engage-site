@@ -5,11 +5,8 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthServic
                 AuthService.saveToken(res.data.token);
                 if (res.data.resetPassword == true) {
                     $state.transitionTo('reset');
-                    event.preventDefault();
-
                 } else {
                     $state.transitionTo('dashboard');
-                    event.preventDefault();
                 }
 
             } else {
