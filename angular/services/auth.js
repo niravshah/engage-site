@@ -27,18 +27,22 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
             return $window.localStorage['jwtToken'];
         };
 
-        this.getDecodedToken = function(){
+        this.getDecodedToken = function () {
             return jwtHelper.decodeToken($window.localStorage['jwtToken']);
         };
 
         this.validToken = function () {
             var token = this.getToken();
-            if (typeof token != 'undefined'){
+            if (typeof token != 'undefined') {
                 var date = jwtHelper.getTokenExpirationDate(token);
-                if(date.setHours(0,0,0,0) < new Date().setHours(0,0,0,0)){
-                    return false;
+                if (typeof date != 'undefined') {
+                    if (date.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
+                        return false;
+                    } else {
+                        return true;
+                    }
                 }else{
-                    return true;
+                    return false;
                 }
             } else {
                 return false;
