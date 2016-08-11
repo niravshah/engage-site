@@ -35,7 +35,7 @@ app.service('AuthService', ['$http', '$window', 'jwtHelper',
             var token = this.getToken();
             if (typeof token != 'undefined') {
                 var date = jwtHelper.getTokenExpirationDate(token);
-                if (typeof date != 'undefined') {
+                if (typeof date != 'undefined' && date != null) {
                     if (date.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
                         return false;
                     } else {
