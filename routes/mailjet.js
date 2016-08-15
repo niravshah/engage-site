@@ -14,10 +14,10 @@ var transporter = nodemailer.createTransport('smtps://' +  MAILJET_USERNAME +':'
 var SENDGRID_APIKEY = config.sendgridkey;
 var transporter = nodemailer.createTransport(sgTransport({auth:{api_key:SENDGRID_APIKEY}}));
 
-var onboardTemplateDir = path.join(__dirname, 'templates', 'onboard');
+var onboardTemplateDir = path.join(__dirname, 'email-templates', 'onboard');
 var onboardTemplate = new EmailTemplate(onboardTemplateDir);
 
-var welcomeTemplateDir = path.join(__dirname, 'templates', 'welcome');
+var welcomeTemplateDir = path.join(__dirname, 'email-templates', 'welcome');
 var welcomeTemplate = new EmailTemplate(welcomeTemplateDir);
 
 module.exports = {
