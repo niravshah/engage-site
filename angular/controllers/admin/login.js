@@ -1,4 +1,5 @@
 app.controller('loginController', ['$scope', '$rootScope', '$state', 'AuthService', function ($scope, $rootScope, $state, AuthService) {
+
     $scope.login = function () {
         AuthService.login($scope.data.uname, $scope.data.pword, $rootScope.sname).then(function (res) {
             if (res.data.success == true) {

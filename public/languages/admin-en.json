@@ -1,0 +1,45 @@
+{
+  "login": {
+    "name": "Name",
+    "password": "Password",
+    "welcome":"Welcome to Engage!",
+    "subtitle":"Please Login to Continue"
+  },
+  "dashboard":{
+    "welcome":"Welcome Onboard!",
+    "subtitle":"Let us help you change the world",
+    "create":"Create New Organization"
+  },
+  "profile":{
+    "title":"Profile Info",
+    "welcome":"Setup Your Profile",
+    "subtitle":"Introduce your Organization to Corporate Partners",
+    "help1":"This one time setup will create a dedicated space for your organization on the Engage platform. You will then be able to showcase the work that your organization has been doing and engage with corporates to seek partnership for your key projects.",
+    "help2":"Lets start with the basics. The information you fill on the left will appear on your organizations home page. So make sure you get your Organizations details and key objectives listed down accurately.",
+    "name": "Name",
+    "shortName": "Short Name",
+    "activityType": "Activity Type",
+    "category": "Category",
+    "address": "Address",
+    "phoneNumber": "Phone Number",
+    "email": "Email",
+    "shortDescription": "Short Description",
+    "shortDescriptionHelp": "Keep this short. This will appear at the top of your profile. Use 'Additional Details' below for more detailed information.",
+    "uploadBanner": "Upload Banner",
+    "addLogo": {
+      "title": "Add Logo",
+      "uploadLogo": "Upload Logo",
+      "originalImage": "Original Image",
+      "croppedImage": "Modified Image"
+    },
+    "additionalDetails":{
+      "title":"Additional Details",
+      "orientation":"Orientation",
+      "level":"Level",
+      "additionalDescription":"Additional Description",
+      "additionalDescriptionHelp":"Use this additional space to convey more information about your organization.s"
+    }
+
+  }
+
+}

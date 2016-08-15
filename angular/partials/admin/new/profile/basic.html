@@ -2,13 +2,13 @@
     <form class="md-p-20" name="userForm" novalidate>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="i1" class="control-label">Name</label>
+                <label for="i1" class="control-label">{[{'profile.name'|translate}]}</label>
                 <input ng-model="currentNgo.name" name="name" type="text" class="form-control" id="i1">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="sname" class="control-label">Unique Short Name</label>
+                <label for="sname" class="control-label">{[{'profile.shortName'|translate}]}</label>
                 <input ng-model="currentNgo.sname" name="sname" type="text" class="form-control" id="sname"
                        ng-model-options="{ updateOn: 'blur' }" ui-validate-async="{nameExists:'checkNameUnique($value, userForm.sname.$dirty)'}" required />
                 <ng-messages for="userForm.sname.$error" ng-if="userForm.sname.$dirty" multiple>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="activityType" class="control-label">Activity Type</label>
+                <label for="activityType" class="control-label">{[{'profile.activityType'|translate}]}</label>
                 <select ng-model="currentNgo.activityType" name="activityType" id="activityType" class="form-control">
                     <option value=""></option>
                     <option value="operational">Operational</option>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="s1" class="control-label">Category</label>
+                <label for="s1" class="control-label">{[{'profile.category'|translate}]}</label>
                 <select ng-model="currentNgo.category" name="category" id="s1" class="form-control">
                     <option value=""></option>
                     <option value="education">Education</option>
@@ -54,14 +54,14 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="i2" class="control-label">Address</label>
+                <label for="i2" class="control-label">{[{'profile.address'|translate}]}</label>
                 <input ng-model="currentNgo.address" name="address" type="text" class="form-control"
                        id="i2">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="i4" class="control-label">Phone Number</label>
+                <label for="i4" class="control-label">{[{'profile.phoneNumber'|translate}]}</label>
                 <input ng-model="currentNgo.phone" name="phone" type="text" class="form-control"
                        id="i4">
             </div>
@@ -75,7 +75,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-10">
-                <label for="email" class="control-label">Email</label>
+                <label for="email" class="control-label">{[{'profile.email'|translate}]}</label>
                 <input ng-model="currentNgo.email" name="email" type="email" class="form-control"
                        id="email">
             </div>
@@ -83,8 +83,8 @@
         <div class="col-md-12">
             <div class="form-group label-floating required">
                 <div class="md-pb-15">
-                    <p class="custom-control-label">Short Description</p>
-                    <p class="custom-control-label-help">Keep this short. This will appear at the top of your profile. Use 'Additional Details' below for more detailed information.</p>
+                    <p class="custom-control-label">{[{'profile.shortDescription'|translate}]}</p>
+                    <p class="custom-control-label-help">{[{'profile.shortDescriptionHelp'|translate}]}</p>
                 </div>
                 <trix-editor id="bio" angular-trix ng-model="currentNgo.bio"></trix-editor>
             </div>
@@ -96,11 +96,11 @@
                         <a ng-model="currentNgo.ngfBanner" id="ngfBanner" name="ngfBanner"
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
-                           class="btn btn-sm btn-raised btn-primary">Upload Banner</a>
+                           class="btn btn-sm btn-raised btn-primary">{[{'profile.uploadBanner'|translate}]}</a>
                         <a id="addLogoBtn" name="addLogoBtn" ng-click="addLogo()"
-                           class="btn btn-sm btn-raised btn-primary">Add Logo</a>
+                           class="btn btn-sm btn-raised btn-primary">{[{'profile.addLogo.title'|translate}]}</a>
                         <a id="additionalDescription" name="additionalDescription" ui-sref="new.profile.additional"
-                           class="btn btn-sm btn-raised btn-primary">Additional Details</a>
+                           class="btn btn-sm btn-raised btn-primary">{[{'profile.additionalDetails.title'|translate}]}</a>
                     </div>
                     <div class="row">
                         <span ng-if="currentNgo.ngfBanner">[ Banner File : {[{currentNgo.ngfBanner.name}]} ]</span>

@@ -1,0 +1,39 @@
+{
+  "login": {
+    "name": "Nume",
+    "password": "Parola",
+    "welcome": "BUN VENIT",
+    "subtitle": "Pentru a continua, va rugam sa va logati"
+  },
+  "dashboard": {
+    "welcome": "BINE ATI VENIT PE ENGAGE!",
+    "subtitle": "Te ajutam sa schimbi lumea",
+    "create": "CREEAZA ORGANIZATIE"
+  },
+  "profile": {
+    "title": "INFO PROFIL",
+    "name": "Nume",
+    "shortName": "Acronimul organizatiei",
+    "activityType": "Tip Activitate",
+    "category": "Categorie Organizatie",
+    "address": "Adresa",
+    "phoneNumber": "Telefon",
+    "email": "Email",
+    "shortDescription": "Scurta Descriere",
+    "shortDescriptionHelp": "Aceasta este o scurta descriere a organizatiei si va aparea in antetul profilului. Selectati rubrica mai multe detalii pentru informatii aditionale",
+    "uploadBanner": "UPLOADEZA BANNER",
+    "addLogo": {
+      "title": "ADAUGA LOGO",
+      "uploadLogo": "Uploadeaza Logo",
+      "originalImage": "Imagine Originala",
+      "croppedImage": "Imagine Modificata"
+    },
+    "additionalDetails":{
+      "title":"MAI MULTE DETALII",
+      "orientation":"Orientare",
+      "level":"Nivel",
+      "additionalDescription":"Descriere Aditionala",
+      "additionalDescriptionHelp":"Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
+    }
+  }
+}

@@ -1,6 +1,23 @@
-var app = angular.module('adminApp', ['ui.router', 'angular-jwt','ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate', 'ngMessages','angularSpinner','ngSanitize','angularTrix','ngImgCrop','ErrorCatcher','ErrorReporter']);
+var app = angular.module('adminApp', ['ui.router', 'angular-jwt', 'ngFileUpload', 'selectize', 'ui.bootstrap.datetimepicker', 'ui.validate',
+    'ngMessages', 'angularSpinner', 'ngSanitize', 'angularTrix', 'ngImgCrop', 'ErrorCatcher', 'ErrorReporter', 'pascalprecht.translate']);
 
-app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider) {
+app.config(function  ($provide, $interpolateProvider, $stateProvider, $urlRouterProvider, $httpProvider, jwtInterceptorProvider, $translateProvider) {
+
+    $translateProvider.useStaticFilesLoader({
+        prefix: '/languages/admin-',
+        suffix: '.json'
+    });
+
+    $translateProvider.determinePreferredLanguage(function () {
+        if(window.location.host.indexOf('ro') > 0){
+            return 'ro';
+        }
+        return 'ro';
+    });
+
+    $translateProvider.useSanitizeValueStrategy('sanitize');
+
+    $translateProvider.fallbackLanguage('en');
 
     $provide.decorator("$exceptionHandler", function ($delegate, $injector) {
         return function (exception, cause) {
@@ -11,11 +28,15 @@ app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterP
     });
 
     $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+
     jwtInterceptorProvider.tokenGetter = function () {
         return localStorage.getItem('id_token');
     };
+
     $httpProvider.interceptors.push('jwtInterceptor');
+
     $urlRouterProvider.otherwise('/dashboard');
+
     $stateProvider
         .state('login', {
             url: '/login',
@@ -35,18 +56,18 @@ app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterP
             controller: 'dashboardController',
             authenticate: true
         })
-        .state('new',{
-            url:'/new',
-            templateUrl:'/angular/partials/admin/new/main.html',
-            abstract:true,
-            authenticate:true
+        .state('new', {
+            url: '/new',
+            templateUrl: '/angular/partials/admin/new/main.html',
+            abstract: true,
+            authenticate: true
         })
         .state('new.profile', {
             url: '/profile',
             templateUrl: '/angular/partials/admin/new/profile/main.html',
             controller: 'profileController',
             authenticate: true,
-            redirectTo:'new.profile.basic'
+            redirectTo: 'new.profile.basic'
         })
         .state('new.profile.basic', {
             url: '/basic',
@@ -74,12 +95,12 @@ app.config(function ($provide, $interpolateProvider, $stateProvider, $urlRouterP
             templateUrl: '/angular/partials/admin/new/projects/main.html',
             controller: 'projectsController',
             authenticate: true,
-            redirectTo:'new.project.info'
+            redirectTo: 'new.project.info'
         })
         .state('new.projects.info', {
             url: '/info',
             templateUrl: '/angular/partials/admin/new/projects/info.html',
-            authenticate:true
+            authenticate: true
         })
         .state('new.projects.skills', {
             url: '/team-skills',
@@ -109,7 +130,7 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
 
 }]);
 
-app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http', 'Upload','ErrorReporterService',function ($scope, $rootScope, $state, $http, Upload,ErrorReporterService) {
+app.controller('adminAppController', ['$scope', '$rootScope', '$state', '$http', 'Upload', 'ErrorReporterService', function ($scope, $rootScope, $state, $http, Upload, ErrorReporterService) {
 
     angular.element(document).ready(function () {
         $.material.init();
@@ -127,7 +148,7 @@ app.controller('adminAppController', ['$scope', '$rootScope', '$state',  '$http'
             cb(null, resp);
         });
     };
-    $rootScope.logException = function(exp){
+    $rootScope.logException = function (exp) {
         ErrorReporterService.report(exp);
     };
 }]);

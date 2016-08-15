@@ -1,6 +1,6 @@
 <div class="row md-p-20">
     <div class="col-md-12 md-pb-20">
-        <h3>Upload Logo</h3>
+        <h3>{[{'profile.addLogo.uploadLogo'|translate}]}</h3>
     </div>
     <div class="col-md-6 md-pb-20">
         <a ng-model="currentNgo.currentNgfLogo" id="currentNgfLogo" name="currentNgfLogo" ngf-pattern="'image/*'"
@@ -20,7 +20,7 @@
            class="btn btn-sm btn-raised btn-warning">Cancel</a>
     </div>
     <div class="col-md-6">
-        <h4>Original Image</h4>
+        <h4>{[{'profile.addLogo.originalImage'|translate}]}</h4>
         <div ngf-drop ng-model="currentNgo.currentNgfLogo" ngf-pattern="image/*" class="cropArea">
             <img-crop image="currentNgo.currentNgfLogo | ngfDataUrl"
                       area-type="square" area-min-size="100"
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <h4>Cropped Image</h4>
+        <h4>{[{'profile.addLogo.croppedImage'|translate}]}</h4>
         <div class="resultArea">
             <span></span>
             <img ng-src="{[{currentNgo.ngfLogo}]}"/>

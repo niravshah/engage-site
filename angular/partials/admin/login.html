@@ -12,14 +12,14 @@
                             <div class="panel-body">
                                 <div class="col-md-12">
                                     <div class="form-group label-floating md-pb-20 required">
-                                        <label for="uname" class="control-label">Name</label>
+                                        <label for="uname" class="control-label">{[{'login.name'|translate}]}</label>
                                         <input ng-model="data.uname" name="uname" type="text" class="form-control"
                                                id="uname">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group label-floating md-pb-20 required">
-                                        <label for="pword" class="control-label">Password</label>
+                                        <label for="pword" class="control-label">{[{'login.password'|translate}]}</label>
                                         <input ng-model="data.pword" name="pword" type="password" class="form-control"
                                                id="pword">
                                     </div>
@@ -40,8 +40,8 @@
                 <img class="center-block" src="/images/icon.png" style="height: 160px;width: auto;">
             </div>
             <div class="row text-center" style="color:#FFFFFF">
-                <h1 class="text-uppercase" style="font-weight: 400">Welcome to Engage!</h1>
-                <h3>Please Login to Continue</h3>
+                <h1 class="text-uppercase" style="font-weight: 400">{[{'login.welcome'|translate}]}</h1>
+                <h3>{[{'login.subtitle'|translate}]}</h3>
             </div>
         </div>
     </div>
