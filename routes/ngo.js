@@ -21,6 +21,10 @@ content['en'] = {
     "s5_2":"Besides helping NGOs connect successful corporate organization, another key goal of engage is to help corporate engage employee and develop their professional skills. We feel working with NGOs on community projects is an excellent way to achieve this.",
     "s5_3":"You can list the initiatives you need corporate help and support under the projects section of your profile.",
     "s5_4":"Besides listing how these initiatives impact the local community, make sure you articulate how getting involved in these initiatives can help volunteers develop their professional and inter-personal skills.",
+    "s5_5":"",
+    "s6_1":"Look for Partnerships",
+    "s6_2":"We want to make Engage the ideal platform for NGOs and corporates to connect and interact.",
+    "s6_3":"Once your profile is live and listed on the platform, you can invite corporate partners by yourselves or through our engagement representatives to seek partnerships and sponsorships."
 };
 content['ro'] = {
     "s1_1": "Join Engage",
@@ -38,10 +42,12 @@ content['ro'] = {
     "s4_3":"Acest lucru iti va oferi credibilitate si te va ajuta sa demonstrezi competenta si abilitatile echipei tale.",
     "s5_1":"Listeaza Proiectul",
     "s5_2":"Un alt rol important al acestei platforme este de a ajuta angajatii din companii sa isi inbunatateasca abilitatile, noi credem ca acest lucru poate fi facut prin implicarea angajatilor in cauze umanitare care sa le dezvolte abilitatile profesionale si interpersonale.",
-    "s5_3":"Aceasta platforma va inlocui teambuildingul traditional cu o cultura puternica de voluntariat si va crea o relatie de tip win-win intre firme si ONGuri."
+    "s5_3":"Aceasta platforma va inlocui teambuildingul traditional cu o cultura puternica de voluntariat si va crea o relatie de tip win-win intre firme si ONGuri.",
     "s5_4":"In timpul proiectului cat si la sfarsitul acestuia, voluntarii si ONGul pot folosi sistemul de management proiect si rating pentru a recunoaste candidatii care s-au remarcat in mod special.",
     "s5_5":"Fiecare proiect va fi postat atat in functie de abilitatile dezvoltate in voluntari cat si in functie de beneficiile pe care acesta le va oferi comunitatii.",
-
+    "s6_1":"Gaseste Parteneri",
+    "s6_2":"Vrem ca Engage sa fie locul unde interesele corporatiilor se aliniaza cu cele ale ONGurilor.",
+    "s6_3":"Dupa publicarea profilului va puteti transfera proeictele deja existente pe platforma sau puteti cauta noi parteneri in baza noastra de date."
 };
 
 router.get('/ngo', function (req, res) {
