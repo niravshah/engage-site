@@ -35,5 +35,14 @@
       "additionalDescription":"Descriere Aditionala",
       "additionalDescriptionHelp":"Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
     }
+  },
+  "team":{
+    "title":"MEMBRII ECHIPEI",
+    "add":"Adauga Membrii Echipei",
+    "name":"Nume",
+    "role":"Rolul / Pozitie",
+    "createEngageUser":"Creeaza User",
+    "createEngageUserHelp":"Bifati aceasta casuta daca vreti ca userul sa poata administra pagina",
+    "uploadImage":"UPLOADEAZA IMAGINE"
   }
 }

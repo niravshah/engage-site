@@ -39,7 +39,15 @@
       "additionalDescription":"Additional Description",
       "additionalDescriptionHelp":"Use this additional space to convey more information about your organization.s"
     }
-
+  },
+  "team":{
+    "title":"Team Members",
+    "add":"Add Team Members",
+    "name":"Name",
+    "role":"Role / Position",
+    "createEngageUser":"Create Engage User",
+    "createEngageUserHelp":"Allow this person to add/update details of your Organization",
+    "uploadImage":"Upload Image"
   }
 
 }

@@ -3,19 +3,19 @@
         <div class="col-md-7">
             <div class="row md-mt-20 md-ml-20 md-mb-20">
                 <a href="/ngo/admin"><img class="ss-slide-logo" src="/images/logo.png"></a>
-                <span class="section-header">Team Members</span>
+                <span class="section-header">{[{'team.title'|translate}]}</span>
             </div>
 
             <div class="row md-p-20">
                 <div class="col-md-8">
                     <div class="panel panel-primary">
                         <div class="panel-heading md-pt-10 md-pb-10">
-                            <h4>Add Team Members</h4>
+                            <h4>{[{'team.add'|translate}]}</h4>
                         </div>
                         <div class="panel-body">
                             <form name="teamDetailsForm" novalidate>
                                 <div class="row form-group label-floating required">
-                                    <label for="i6" class="control-label">Name</label>
+                                    <label for="i6" class="control-label">{[{'team.name'|translate}]}</label>
                                     <input ng-model="currentMember.name" name="name" type="text" class="form-control" id="i6" required>
                                 </div>
                                 <div class="row form-group label-floating required">
@@ -23,21 +23,21 @@
                                     <input ng-model="currentMember.email" type="email" class="form-control" id="i7" required>
                                 </div>
                                 <div class="row form-group label-floating required">
-                                    <label for="i8" class="control-label">Title</label>
+                                    <label for="i8" class="control-label">{[{'team.role'|translate}]}</label>
                                     <input ng-model="currentMember.title" type="text" class="form-control" id="i8" required>
                                 </div>
                                 <div class="row form-group md-pb-20">
                                     <div class="checkbox">
                                         <label>
-                                            <input ng-model="currentMember.createEngageUser" type="checkbox" checked="">&nbsp Create Engage User
+                                            <input ng-model="currentMember.createEngageUser" type="checkbox" checked="">&nbsp Create Admin User
                                         </label>
                                     </div>
-                                    <p class="help-block">Allow this person to add/update details of your Organization</p>
+                                    <p class="help-block">{[{'team.createEngageUserHelp'|translate}]}</p>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col-md-6">
-                                        <a ng-model="currentMember.ngfAvatar" name="avatar" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">Upload Image</a>
+                                        <a ng-model="currentMember.ngfAvatar" name="avatar" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB" ngf-select class="btn btn-primary btn-raised">{[{'team.uploadImage'|translate}]}</a>
                                         <p ng-id="currentMember.ngfAvatar">{[{newMember.ngfAvatar.name}]}</p>
                                     </div>
                                     <div class="col-md-6 next-btn">
