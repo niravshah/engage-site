@@ -1,0 +1,2 @@
+git config --global http.proxy http://domain\uname:pword@proxy:80
+git config http.sslVerify false
