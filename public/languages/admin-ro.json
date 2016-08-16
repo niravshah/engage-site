@@ -28,21 +28,39 @@
       "originalImage": "Imagine Originala",
       "croppedImage": "Imagine Modificata"
     },
-    "additionalDetails":{
-      "title":"MAI MULTE DETALII",
-      "orientation":"Orientare",
-      "level":"Nivel",
-      "additionalDescription":"Descriere Aditionala",
-      "additionalDescriptionHelp":"Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
-    }
+    "additionalDetails": {
+      "title": "MAI MULTE DETALII",
+      "orientation": "Orientare",
+      "level": "Nivel",
+      "additionalDescription": "Descriere Aditionala",
+      "additionalDescriptionHelp": "Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
+    },
+    "activityTypeOptions": [
+      {
+        "label": "Operational",
+        "value": "operational"
+      },
+      {
+        "label": "Advocacy",
+        "value": "advocacy"
+      },
+      {
+        "label": "Hybrid",
+        "value": "hybrid"
+      },
+      {
+        "label": "Niciuna din cele mentionate",
+        "value": "na"
+      }
+    ]
   },
-  "team":{
-    "title":"MEMBRII ECHIPEI",
-    "add":"Adauga Membrii Echipei",
-    "name":"Nume",
-    "role":"Rolul / Pozitie",
-    "createEngageUser":"Creeaza User",
-    "createEngageUserHelp":"Bifati aceasta casuta daca vreti ca userul sa poata administra pagina",
-    "uploadImage":"UPLOADEAZA IMAGINE"
+  "team": {
+    "title": "MEMBRII ECHIPEI",
+    "add": "Adauga Membrii Echipei",
+    "name": "Nume",
+    "role": "Rolul / Pozitie",
+    "createEngageUser": "Creeaza User",
+    "createEngageUserHelp": "Bifati aceasta casuta daca vreti ca userul sa poata administra pagina",
+    "uploadImage": "UPLOADEAZA IMAGINE"
   }
 }

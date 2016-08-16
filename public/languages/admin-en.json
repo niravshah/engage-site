@@ -38,7 +38,12 @@
       "level":"Level",
       "additionalDescription":"Additional Description",
       "additionalDescriptionHelp":"Use this additional space to convey more information about your organization.s"
-    }
+    },
+    "activityTypeOptions":[
+      {"label":"Operational", "value":"operational"},
+      {"label":"Advocacy", "value":"advocacy"},
+      {"label":"Hybrid", "value":"hybrid"},
+      {"label":"None of the Above", "value":"na"}]
   },
   "team":{
     "title":"Team Members",

@@ -131,7 +131,7 @@ app.run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, Au
 }]);
 
 app.controller('adminAppController', ['$scope', '$rootScope', '$state', '$http', 'Upload', 'ErrorReporterService', function ($scope, $rootScope, $state, $http, Upload, ErrorReporterService) {
-
+    
     angular.element(document).ready(function () {
         $.material.init();
         $.material.ripples();

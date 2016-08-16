@@ -20,12 +20,15 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="activityType" class="control-label">{[{'profile.activityType'|translate}]}</label>
-                <select ng-model="currentNgo.activityType" name="activityType" id="activityType" class="form-control">
+                <pre>{[{activityTypeOptions}]}</pre>
+                <select ng-options="item.value as item.label for item in activityTypeOptions track by item.value" ng-model="currentNgo.activityType" name="activityType" id="activityType" class="form-control">
+                    <!--
                     <option value=""></option>
                     <option value="operational">Operational</option>
                     <option value="advocacy">Advocacy</option>
                     <option value="hybrid">Hybrid</option>
                     <option value="na">None of the Above</option>
+                    -->
                 </select>
             </div>
         </div>
