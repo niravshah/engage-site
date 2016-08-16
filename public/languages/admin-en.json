@@ -1,58 +1,127 @@
 {
-  "login": {
-    "name": "Name",
-    "password": "Password",
-    "welcome":"Welcome to Engage!",
-    "subtitle":"Please Login to Continue"
-  },
-  "dashboard":{
-    "welcome":"Welcome Onboard!",
-    "subtitle":"Let us help you change the world",
-    "create":"Create New Organization"
-  },
-  "profile":{
-    "title":"Profile Info",
-    "welcome":"Setup Your Profile",
-    "subtitle":"Introduce your Organization to Corporate Partners",
-    "help1":"This one time setup will create a dedicated space for your organization on the Engage platform. You will then be able to showcase the work that your organization has been doing and engage with corporates to seek partnership for your key projects.",
-    "help2":"Lets start with the basics. The information you fill on the left will appear on your organizations home page. So make sure you get your Organizations details and key objectives listed down accurately.",
-    "name": "Name",
-    "shortName": "Short Name",
-    "activityType": "Activity Type",
-    "category": "Category",
-    "address": "Address",
-    "phoneNumber": "Phone Number",
-    "email": "Email",
-    "shortDescription": "Short Description",
-    "shortDescriptionHelp": "Keep this short. This will appear at the top of your profile. Use 'Additional Details' below for more detailed information.",
-    "uploadBanner": "Upload Banner",
-    "addLogo": {
-      "title": "Add Logo",
-      "uploadLogo": "Upload Logo",
-      "originalImage": "Original Image",
-      "croppedImage": "Modified Image"
+    "login": {
+        "name": "Name",
+        "password": "Password",
+        "welcome": "Welcome to Engage!",
+        "subtitle": "Please Login to Continue"
     },
-    "additionalDetails":{
-      "title":"Additional Details",
-      "orientation":"Orientation",
-      "level":"Level",
-      "additionalDescription":"Additional Description",
-      "additionalDescriptionHelp":"Use this additional space to convey more information about your organization.s"
+    "dashboard": {
+        "welcome": "Welcome Onboard!",
+        "subtitle": "Let us help you change the world",
+        "create": "Create New Organization"
     },
-    "activityTypeOptions":[
-      {"label":"Operational", "value":"operational"},
-      {"label":"Advocacy", "value":"advocacy"},
-      {"label":"Hybrid", "value":"hybrid"},
-      {"label":"None of the Above", "value":"na"}]
-  },
-  "team":{
-    "title":"Team Members",
-    "add":"Add Team Members",
-    "name":"Name",
-    "role":"Role / Position",
-    "createEngageUser":"Create Engage User",
-    "createEngageUserHelp":"Allow this person to add/update details of your Organization",
-    "uploadImage":"Upload Image"
-  }
-
+    "profile": {
+        "title": "Profile Info",
+        "welcome": "Setup Your Profile",
+        "subtitle": "Introduce your Organization to Corporate Partners",
+        "help1": "This one time setup will create a dedicated space for your organization on the Engage platform. You will then be able to showcase the work that your organization has been doing and engage with corporates to seek partnership for your key projects.",
+        "help2": "Lets start with the basics. The information you fill on the left will appear on your organizations home page. So make sure you get your Organizations details and key objectives listed down accurately.",
+        "name": "Name",
+        "shortName": "Short Name",
+        "activityType": "Activity Type",
+        "category": "Category",
+        "address": "Address",
+        "phoneNumber": "Phone Number",
+        "email": "Email",
+        "shortDescription": "Short Description",
+        "shortDescriptionHelp": "Keep this short. This will appear at the top of your profile. Use 'Additional Details' below for more detailed information.",
+        "uploadBanner": "Upload Banner",
+        "addLogo": {
+            "title": "Add Logo",
+            "uploadLogo": "Upload Logo",
+            "originalImage": "Original Image",
+            "croppedImage": "Modified Image"
+        },
+        "additionalDetails": {
+            "title": "Additional Details",
+            "orientation": "Orientation",
+            "level": "Level",
+            "additionalDescription": "Additional Description",
+            "additionalDescriptionHelp": "Use this additional space to convey more information about your organization.s"
+        },
+        "activityTypeOptions": {
+            "operational": "Operational",
+            "advocacy": "Advocacy",
+            "hybrid": "Hybrid",
+            "na": "None of the Above"
+        },
+        "categoryOptions": {
+            "philanthropy": "Philanthropy",
+            "voluntary": "Voluntary",
+            "social services": "Social Services",
+            "education": "Education",
+            "research": "Research",
+            "culture": "Culture",
+            "health": "Health",
+            "arts": "Arts",
+            "sports": "Sports",
+            "recreation": "Recreation",
+            "environmental-protection ": "Environmental Protection ",
+            "rights": "Rights",
+            "defense": "Defense",
+            "economic-development": "Economic Development",
+            "womens-rights": "Women's Rights",
+            "gender-equality": "Gender Equality",
+            "business-interests": "Business Interests",
+            "international-cooperation": "International Co-operation",
+            "na": "None of the Above"
+        },
+        "orientationOptions": {
+            "charitable": "Charitable",
+            "service": "Service",
+            "participatory": "Participatory",
+            "empowering": "Empowering",
+            "na": "None of the Above"
+        },
+        "operationLevelOptions": {
+            "local-community": "Local Community",
+            "national": "National",
+            "international": "International"
+        },
+        "skillsOptions":{
+            "verbal-communication":"Verbal Communication",
+            "teamwork":"Teamwork",
+            "creativity":"Creativity",
+            "initiative-motivation":"Initiative / Motivation",
+            "written-communication":"Written Communication",
+            "planning-organization":"Planning & Organization",
+            "flexibility":"Flexibility",
+            "time-management":"Time Management",
+            "leadership":"Leadership",
+            "active-listening":"Active Listening",
+            "tasks-prioritization ":"Tasks Prioritization ",
+            "influence":"Influence",
+            "team-building":"Team Building",
+            "resilience":"Resilience",
+            "energy-enthusiasm":"Energy & Enthusiasm"
+        }
+    },
+    "team": {
+        "title": "Team Members",
+        "add": "Add Team Members",
+        "name": "Name",
+        "role": "Role / Position",
+        "createEngageUser": "Create Engage User",
+        "createEngageUserHelp": "Allow this person to add/update details of your Organization",
+        "uploadImage": "Upload Image"
+    },
+    "projects":{
+        "title":"PROJECTS",
+        "subtitle":"ADD PROJECTS",
+        "name":"Name",
+        "category":"Project Category",
+        "ngoContact":"NGO Contact",
+        "eventAddress":"Event Address",
+        "eventStart":"Event Start",
+        "eventEnd":"Event End",
+        "description":"Description",
+        "uploadImage":"Upload Image",
+        "addTeamReq":"Add Team Requirements",
+        "managingTeam":"Managing Team Size",
+        "volunteersNeeded":"Volunteers Needed",
+        "selectSize":"Select Team Size",
+        "skillsRequired":"Skills Required",
+        "skillsGained":"Skills Gained",
+        "specialQualifications":"Special Qualifications or Background Check Required"
+    }
 }

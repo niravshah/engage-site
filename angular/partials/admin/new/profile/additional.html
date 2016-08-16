@@ -2,21 +2,14 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="orientation" class="control-label">{[{'profile.additionalDetails.orientation'|translate}]}</label>
-                <select ng-model="currentNgo.orientation" name="activityType" id="orientation" class="form-control">
-                    <option value=""></option>
-                    <option value="charitable">Charitable</option>
-                    <option value="service">Service</option>
-                    <option value="participatory">Participatory</option>
-                    <option value="empowering">Empowering</option>
-                    <option value="na">None of the Above</option>
+                <select ng-options="item.value as item.label for item in orientationOptions track by item.value" ng-model="currentNgo.orientation" name="activityType" id="orientation" class="form-control">
                 </select>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="level" class="control-label">{[{'profile.additionalDetails.level'|translate}]}</label>
-                <select ng-model="currentNgo.level" name="level" id="level" class="form-control">
-                    <option value=""></option>
+                <select ng-options="item.value as item.label for item in operationLevelOptions track by item.value" ng-model="currentNgo.level" name="level" id="level" class="form-control">
                     <option value="community">Community</option>
                     <option value="city">City</option>
                     <option value="national">National</option>

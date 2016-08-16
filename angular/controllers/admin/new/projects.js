@@ -1,41 +1,27 @@
-app.controller('projectsController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+app.controller('projectsController', ['$scope', '$rootScope', '$http','OptionsService', function ($scope, $rootScope, $http,oS) {
     $scope.init = function () {
         $scope.currentProject = {};
         $scope.projects = $rootScope.currentNgo.projects;
         $scope.teamMembers = $rootScope.currentNgo.teamMembers;
         $scope.ngoId = $rootScope.currentNgo._id;
         $scope.disableAddButton = false;
+        $scope.szCategory = [];
+        $scope.szSkills = [];
+        oS.getSkillsOptions('profile',function(data){$scope.szSkills = data});
+        oS.getCategoryOptions('profile',function(data){$scope.szCategory = data});
     };
 
     $scope.szSkillsConfig = {
-        valueField: 'id',
-        labelField: 'value',
+        valueField: 'value',
+        labelField: 'label',
         placeholder: 'Pick Skills'
     };
 
-    $scope.szSkills = [
-        { id: 'leadership', value: 'Leadership' },
-        { id: 'listening', value: 'Listening' },
-        { id: 'talking-to-others', value: 'Talking to Others' },
-        { id: 'reading-and-writing', value: 'Reading & Writing' },
-        { id: 'teamwork', value: 'Teamwork' },
-        { id: 'organising', value: 'Organising' }
-    ];
-
     $scope.szCategoryConfig = {
-        valueField: 'id',
-        labelField: 'value',
+        valueField: 'value',
+        labelField: 'label',
         placeholder: 'Select Category'
     };
-    $scope.szCategory = [
-        { id: 'education', value: 'Teaching' },
-        { id: 'arts-culture', value: 'Training' },
-        { id: 'coaching', value: 'Coaching' },
-        { id: 'youth-work', value: 'Youth Work' },
-        { id: 'conservation', value: 'Conservation' },
-        { id: 'diy-odd-jobs', value: 'DIY / Odd Jobs' },
-        { id: 'community-services', value: 'Community Service' }
-    ];
 
     $scope.szContactConfig = {
         valueField: 'email',

@@ -2,13 +2,13 @@
     <form class="md-p-20" name="projectForm" novalidate>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20 required">
-                <label for="i1" class="control-label">Name</label>
+                <label for="i1" class="control-label">{[{'projects.name'|translate}]}</label>
                 <input ng-model="currentProject.name" name="name" type="text" class="form-control" id="i1" required>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label class="control-label">Category</label>
+                <label class="control-label">{[{'projects.category'|translate}]}</label>
                 <selectize config='szCategoryConfig' options='szCategory' ng-model="currentProject.category" name="category"
                         class="form-control">
                 </selectize>
@@ -17,14 +17,14 @@
 
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label class="control-label">NGO Contact</label>
+                <label class="control-label">{[{'projects.ngoContact'|translate}]}</label>
                 <selectize config='szContactConfig' options='teamMembers'
                            ng-model="currentProject.contact"></selectize>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label for="location" class="control-label">Event Address</label>
+                <label for="location" class="control-label">{[{'projects.eventAddress'|translate}]}</label>
                 <input ng-model="currentProject.location" name="location" type="text" class="form-control"
                        id="location"/>
             </div>
@@ -32,7 +32,7 @@
 
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label class="control-label">Event Start Date </label>
+                <label class="control-label">{[{'projects.eventStart'|translate}]}</label>
                 <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{currentProject.sDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
-                <label class="control-label">Event End Date</label>
+                <label class="control-label">{[{'projects.eventEnd'|translate}]}</label>
                 <a href="javascript:void(0)" class="btn btn-default btn-raised">{[{currentProject.eDate | date:'yyyy-MM-dd HH:mm'}]}</a>
                 <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-default btn-raised dropdown-toggle" data-toggle="dropdown"><i class="material-icons">date_range</i></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -55,7 +55,7 @@
 
         <div class="col-md-12 md-mt-20">
             <div class="form-group label-floating">
-                <label for="description" class="control-label">Description</label>
+                <label for="description" class="control-label">{[{'projects.description'|translate}]}</label>
                         <textarea ng-model="currentProject.description" name="description" class="form-control" rows="6"
                                   id="description"></textarea>
             </div>
@@ -67,8 +67,8 @@
                         <a ng-model="currentProject.bannerNgf" id="banner" name="banner"
                            ngf-pattern="'image/*'"
                            ngf-accept="'image/*'" ngf-max-size="2MB" ngf-select
-                           class="btn btn-sm btn-raised btn-primary">Upload Image</a>
-                        <a ui-sref="new.projects.skills" class="btn btn-sm btn-raised btn-primary">Add Team Requirements</a>
+                           class="btn btn-sm btn-raised btn-primary">{[{'projects.uploadImage'|translate}]}</a>
+                        <a ui-sref="new.projects.skills" class="btn btn-sm btn-raised btn-primary">{[{'projects.addTeamReq'|translate}]}</a>
                     </div>
                     <div class="row">
                         <span ng-if="currentProject.newProjectBanner">[ Banner File : {[currentProject.bannerNgf.name}]} ]</span>

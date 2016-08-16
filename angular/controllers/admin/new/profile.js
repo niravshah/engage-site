@@ -6,7 +6,12 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$q', '$wi
             $scope.currentNgo = $rootScope.currentNgo || {};
             $scope.disableNextButton = false;
             $scope.activityTypeOptions = [];
+            $scope.categoryOptions = [];
+            $scope.operationLevelOptions = [];
             oS.getActivityTypeOptions('profile',function(vals){$scope.activityTypeOptions = vals});
+            oS.getCategoryOptions('profile',function(vals){$scope.categoryOptions = vals});
+            oS.getOrientationOptions('profile',function(vals){$scope.orientationOptions = vals});
+            oS.getOperationLevelOptions('profile',function(vals){$scope.operationLevelOptions = vals});
         };
 
         $scope.init();

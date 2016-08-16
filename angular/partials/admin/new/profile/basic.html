@@ -20,38 +20,14 @@
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="activityType" class="control-label">{[{'profile.activityType'|translate}]}</label>
-                <pre>{[{activityTypeOptions}]}</pre>
                 <select ng-options="item.value as item.label for item in activityTypeOptions track by item.value" ng-model="currentNgo.activityType" name="activityType" id="activityType" class="form-control">
-                    <!--
-                    <option value=""></option>
-                    <option value="operational">Operational</option>
-                    <option value="advocacy">Advocacy</option>
-                    <option value="hybrid">Hybrid</option>
-                    <option value="na">None of the Above</option>
-                    -->
                 </select>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group label-floating md-pb-20">
                 <label for="s1" class="control-label">{[{'profile.category'|translate}]}</label>
-                <select ng-model="currentNgo.category" name="category" id="s1" class="form-control">
-                    <option value=""></option>
-                    <option value="education">Education</option>
-                    <option value="arts-culture">Arts & Culture</option>
-                    <option value="medical-research">Medical Research</option>
-                    <option value="patient-family-support">Patient and Family Support
-                    </option>
-                    <option value="disaster-relief-humanitarian">Disaster Relief & Humanitarian
-                    </option>
-                    <option value="peace-human-rights">Peace & Human Rights</option>
-                    <option value="child-sponsorship">Child Sponsorship</option>
-                    <option value="environment-conservation">Environmental Conservation & Protection
-                    </option>
-                    <option value="parks-nature">Parks and Nature Centers</option>
-                    <option value="wildlife-conservation">Wildlife Conservation</option>
-                    <option value="pet-animal-welfare">Pet and Animal Welfare</option>
-                    <option value="na">None of the Above</option>
+                <select ng-options="item.value as item.label for item in categoryOptions track by item.value" ng-model="currentNgo.category" name="category" id="s1" class="form-control">
                 </select>
             </div>
         </div>

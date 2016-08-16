@@ -1,66 +1,121 @@
 {
-  "login": {
-    "name": "Nume",
-    "password": "Parola",
-    "welcome": "BUN VENIT",
-    "subtitle": "Pentru a continua, va rugam sa va logati"
-  },
-  "dashboard": {
-    "welcome": "BINE ATI VENIT PE ENGAGE!",
-    "subtitle": "Te ajutam sa schimbi lumea",
-    "create": "CREEAZA ORGANIZATIE"
-  },
-  "profile": {
-    "title": "INFO PROFIL",
-    "name": "Nume",
-    "shortName": "Acronimul organizatiei",
-    "activityType": "Tip Activitate",
-    "category": "Categorie Organizatie",
-    "address": "Adresa",
-    "phoneNumber": "Telefon",
-    "email": "Email",
-    "shortDescription": "Scurta Descriere",
-    "shortDescriptionHelp": "Aceasta este o scurta descriere a organizatiei si va aparea in antetul profilului. Selectati rubrica mai multe detalii pentru informatii aditionale",
-    "uploadBanner": "UPLOADEZA BANNER",
-    "addLogo": {
-      "title": "ADAUGA LOGO",
-      "uploadLogo": "Uploadeaza Logo",
-      "originalImage": "Imagine Originala",
-      "croppedImage": "Imagine Modificata"
+    "login": {
+        "name": "Nume",
+        "password": "Parola",
+        "welcome": "BUN VENIT",
+        "subtitle": "Pentru a continua, va rugam sa va logati"
     },
-    "additionalDetails": {
-      "title": "MAI MULTE DETALII",
-      "orientation": "Orientare",
-      "level": "Nivel",
-      "additionalDescription": "Descriere Aditionala",
-      "additionalDescriptionHelp": "Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
+    "dashboard": {
+        "welcome": "BINE ATI VENIT PE ENGAGE!",
+        "subtitle": "Te ajutam sa schimbi lumea",
+        "create": "CREEAZA ORGANIZATIE"
     },
-    "activityTypeOptions": [
-      {
-        "label": "Operational",
-        "value": "operational"
-      },
-      {
-        "label": "Advocacy",
-        "value": "advocacy"
-      },
-      {
-        "label": "Hybrid",
-        "value": "hybrid"
-      },
-      {
-        "label": "Niciuna din cele mentionate",
-        "value": "na"
-      }
-    ]
-  },
-  "team": {
-    "title": "MEMBRII ECHIPEI",
-    "add": "Adauga Membrii Echipei",
-    "name": "Nume",
-    "role": "Rolul / Pozitie",
-    "createEngageUser": "Creeaza User",
-    "createEngageUserHelp": "Bifati aceasta casuta daca vreti ca userul sa poata administra pagina",
-    "uploadImage": "UPLOADEAZA IMAGINE"
-  }
+    "profile": {
+        "title": "INFO PROFIL",
+        "name": "Nume",
+        "shortName": "Acronimul organizatiei",
+        "activityType": "Tip Activitate",
+        "category": "Categorie Organizatie",
+        "address": "Adresa",
+        "phoneNumber": "Telefon",
+        "email": "Email",
+        "shortDescription": "Scurta Descriere",
+        "shortDescriptionHelp": "Aceasta este o scurta descriere a organizatiei si va aparea in antetul profilului. Selectati rubrica mai multe detalii pentru informatii aditionale",
+        "uploadBanner": "UPLOADEZA BANNER",
+        "addLogo": {
+            "title": "ADAUGA LOGO",
+            "uploadLogo": "Uploadeaza Logo",
+            "originalImage": "Imagine Originala",
+            "croppedImage": "Imagine Modificata"
+        },
+        "additionalDetails": {
+            "title": "MAI MULTE DETALII",
+            "orientation": "Orientare",
+            "level": "Nivel",
+            "additionalDescription": "Descriere Aditionala",
+            "additionalDescriptionHelp": "Folositi acest camp pentru a introduce mai multe detalii despre organizatie."
+        },
+        "activityTypeOptions": {
+            "operational": "Operational",
+            "advocacy": "Advocacy",
+            "hybrid": "Hybrid",
+            "na": "Niciuna din cele mentionate"
+        },
+        "categoryOptions": {
+            "philanthropy": "Filantropie",
+            "voluntary": "Voluntariat",
+            "social services": "Servicii Sociale",
+            "education": "Educatie ",
+            "research": "Cercetare",
+            "culture": "Cultura",
+            "health": "Sanatate",
+            "arts": "Arta",
+            "sports": "Sport",
+            "recreation": "Recreere",
+            "environmental-protection ": "Protectia Mediului",
+            "defense": "Apararea Drepturilor",
+            "economic-development": "Dezvoltare Economica",
+            "womens-rights": "Drepturile Femeilor",
+            "gender-equality": "Egalitatea de Gen",
+            "business-interests": "eprezentare interese afaceri",
+            "international-cooperation": "Cooperare Internationala",
+            "na": "Niciuna din cele mentionate"
+        },
+        "orientationOptions": {
+            "charitable": "Charritable",
+            "service": "Service",
+            "participatory": "Participatory",
+            "empowering": "Empowering",
+            "na": "Niciuna din cele mentionate"
+        },
+        "operationLevelOptions": {
+            "local-community": "Comunitate Locala",
+            "national": "National",
+            "international": "International"
+        },
+        "skillsOptions":{
+            "verbal-communication":"Comunicare Verbala",
+            "teamwork":"Munca in Echipa",
+            "creativity":"Creativitate",
+            "initiative-motivation":"Initiativa / Motivare",
+            "written-communication":"Comunicare Scrisa",
+            "planning-organization":"Planificare & Organizare",
+            "flexibility":"Flexibilitate",
+            "time-management":"Gestionare Timp",
+            "leadership":"Leadership",
+            "active-listening":"Ascultare Activa",
+            "tasks-prioritization ":"Prioritizare Taskuri",
+            "influence":"Persuasiune / Influenta",
+            "team-building":"Teambuilding",
+            "resilience":"Rezilienta",
+            "energy-enthusiasm":"Nivel Energie & Entuziasm"
+        }
+    },
+    "team": {
+        "title": "MEMBRII ECHIPEI",
+        "add": "Adauga Membrii Echipei",
+        "name": "Nume",
+        "role": "Rolul / Pozitie",
+        "createEngageUser": "Creeaza User",
+        "createEngageUserHelp": "Bifati aceasta casuta daca vreti ca userul sa poata administra pagina",
+        "uploadImage": "UPLOADEAZA IMAGINE"
+    },
+    "projects":{
+        "title":"PROIECTE",
+        "name":"Nume",
+        "category":"Categorie Proiect",
+        "ngoContact":"Persoana de contact",
+        "eventAddress":"Adresa Eveniment",
+        "eventStart":"Start Eveniment",
+        "eventEnd":"Incheiere Eveniment",
+        "description":"Descriere",
+        "uploadImage":"UPLOADEAZA IMAGINE",
+        "addTeamReq":"ADAUGA CERINTE ECHIPA",
+        "managingTeam":"Echipa Management",
+        "volunteersNeeded":"Echipa Voluntari",
+        "selectSize":"Selecteaza numarul de vountari",
+        "skillsRequired":"Alege abilitatile necesare",
+        "skillsGained":"Alege abilitatile dezvoltate de acest proiect",
+        "specialQualifications":"Calificari speciale pentru acest proiect"
+    }
 }
