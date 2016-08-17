@@ -105,6 +105,8 @@ if (env === 'dev') {
     });
 }
 
-app.listen(9000, function () {
+/*app.listen(9000, function () {
     console.log('Engage App listening on port 9000!');
-});
+});*/
+
+module.exports = app;

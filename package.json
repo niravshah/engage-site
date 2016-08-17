@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test":"node nightwatch.js",
     "start": "node ./bin/www",
     "encrypt": "encrypt config.js config.js.cast5",
     "decrypt": "decrypt config.js.cast5 config.js"
@@ -28,6 +29,7 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "multer-s3": "^2.3.2",
+    "nightwatch": "^0.9.7",
     "node-mailjet": "^3.0.1",
     "nodemailer": "^2.5.0",
     "nodemailer-sendgrid-transport": "^0.2.0",
