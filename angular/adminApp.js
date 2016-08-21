@@ -12,7 +12,7 @@ app.config(function  ($provide, $interpolateProvider, $stateProvider, $urlRouter
         if(window.location.host.indexOf('ro') > 0){
             return 'ro';
         }
-        return 'ro';
+        return 'en';
     });
 
     $translateProvider.useSanitizeValueStrategy('sanitize');
