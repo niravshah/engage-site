@@ -6,7 +6,10 @@
     "test":"node nightwatch.js",
     "start": "node ./bin/www",
     "encrypt": "encrypt config.js config.js.cast5",
-    "decrypt": "decrypt config.js.cast5 config.js"
+    "decrypt": "decrypt config.js.cast5 config.js",
+    "me_encrypt": "encrypt me_config.js me_config.js.cast5",
+    "me_decrypt": "decrypt me_config.js.cast5 me_config.js"
+
   },
   "dependencies": {
     "angular-bootstrap-datetimepicker": "^1.0.1",

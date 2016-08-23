@@ -36,10 +36,10 @@ config['dev'] = {
             sslEnabled:  false,
             sslKey: '',
         },
-        useBasicAuth: '',
+        useBasicAuth: true,
         basicAuth: {
-            username: 'admin',
-            password: 'pass',
+            username: 'engagesite',
+            password: 'engagesite',
         },
         options: {
             console: true,
@@ -71,8 +71,8 @@ config['live'] = {
             auth: [
                 {
                     database: 'engagesite',
-                    username: '',
-                    password: '',
+                    username: 'engagesite',
+                    password: 'AppEngage0816',
                 }
 
             ],
@@ -93,10 +93,10 @@ config['live'] = {
             sslEnabled:  false,
             sslKey: '',
         },
-        useBasicAuth: '',
+        useBasicAuth: true,
         basicAuth: {
-            username: 'admin',
-            password: 'pass',
+            username: 'engagesite',
+            password: 'engagesite',
         },
         options: {
             console: true,
