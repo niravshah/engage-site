@@ -8,6 +8,7 @@ var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
 var Ngo = require('../models/ngo');
 var User = require('../models/user');
+var Project = require('../models/project');
 var sid = require('shortid');
 var generatePassword = require('password-generator');
 var mailjet = require('./mailjet');
@@ -231,12 +232,14 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
 
     console.log(files, data, id);
 
+
     if (typeof data.id == 'undefined') {
-        console.log('data id undefined');
         data.id = sid.generate();
     } else {
         existingProject = true;
     }
+
+    var query = {shortid:data.id};
 
     for (var i = 0; i < files.length; i++) {
         //console.log(files[i].originalname, data.avatar);
@@ -249,6 +252,9 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
         if (err) {
             res.status(500).json({'Error': err});
         } else {
+
+            data.ngo = ngo._id;
+            Project.findOneAndUpdate(query,data,{upsert:true},function(err,doc){});
 
             if (existingProject == true) {
                 var spliceIndex;
