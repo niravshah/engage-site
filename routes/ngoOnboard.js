@@ -70,8 +70,6 @@ router.post('/ngo/checksname', function (req, resp) {
 
 router.post('/ngo', upload.any(), function (req, res) {
 
-    console.log('Multer', req.files, req.body);
-
     for (var i = 0; i < req.files.length; i++) {
         if (req.files[i].originalname == req.body.addData.logo) {
             req.body.addData.logo = getSavedFilePath(req, i);
@@ -230,9 +228,6 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     var id = req.params.id;
     var existingProject = false;
 
-    console.log(files, data, id);
-
-
     if (typeof data.id == 'undefined') {
         data.id = sid.generate();
     } else {
@@ -242,7 +237,6 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
     var query = {shortid:data.id};
 
     for (var i = 0; i < files.length; i++) {
-        //console.log(files[i].originalname, data.avatar);
         if (files[i].originalname == data.banner) {
             data.banner = getSavedFilePath(req, i);
         }
@@ -254,7 +248,14 @@ router.post('/ngo/:id/projects', upload.any(), function (req, res) {
         } else {
 
             data.ngo = ngo._id;
-            Project.findOneAndUpdate(query,data,{upsert:true},function(err,doc){});
+            data.status = "new";
+            Project.findOneAndUpdate(query,data,{upsert:true},function(err,doc){
+                if(err){
+                    console.log("Error creating Shadow Project Entity", err);
+                }else{
+                    console.log("Shadow Project Entity Created!");
+                }
+            });
 
             if (existingProject == true) {
                 var spliceIndex;

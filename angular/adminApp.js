@@ -106,7 +106,8 @@ app.config(function  ($provide, $interpolateProvider, $stateProvider, $urlRouter
             url: '/team-skills',
             templateUrl: '/angular/partials/admin/new/projects/teamskills.html',
             authenticate: true
-        });
+        })
+        .state('project',{})
 
 });
 
